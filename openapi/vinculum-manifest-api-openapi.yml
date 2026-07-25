@@ -1,0 +1,214 @@
+swagger: '2.0'
+info:
+  title: Vinculum Advance Shipping Notice Manifest API
+  description: API to retrieve or manipulate ASN related information.
+host: erp.vineretail.com
+tags:
+- name: Manifest
+  description: API to create Manifest
+paths:
+  /RestWS/api/eretail/v1/manifest/create:
+    post:
+      tags:
+      - Manifest
+      summary: API For Create Manifest(Hit Quota 40/5 min)
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: ApiOwner
+        required: true
+        type: string
+        description: API Owner.
+      - in: header
+        name: ApiKey
+        required: true
+        type: string
+        description: API Key.
+      - in: body
+        name: JSON Format
+        description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle" >businessType</td><td style="vertical-align:middle" >Varchar(20)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >Possible value B2C</td></tr><tr align="center"><td style="vertical-align:middle" >manifestType</td><td style="vertical-align:middle" >Varchar(3)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >Possible value Marketplace</td></tr><tr align="center"><td style="vertical-align:middle" >channelCode</td><td style="vertical-align:middle" >Varchar(5)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >ChannelCode must be MarketPlace Type</td></tr><tr align="center"><td style="vertical-align:middle" >status</td><td style="vertical-align:middle" >Varchar(10)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >Status should be Confirmed</td></tr><tr align="center"><td style="vertical-align:middle" >vehicleNo</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >optional</td><td style="vertical-align:middle" >VehicleNo</td></tr><tr align="center"><td style="vertical-align:middle" >manifestSubmission</td><td style="vertical-align:middle" >Varchar(3)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >manifestSubmission only yes/no</td></tr><tr align="center"><td style="vertical-align:middle" >remarks</td><td style="vertical-align:middle" >Varchar(200)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >Remarks is mandatory</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Line Level</b></td></tr><tr align="center"><td style="vertical-align:middle" >deliveryNo</td><td style="vertical-align:middle" >Varchar(20)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >Max 20 deliveryNo are allowed in deliveryNo List</td></tr><tr align="center"><td style="vertical-align:middle" >trackingNo</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >Tracking No is Mandotary</td></tr><tr align="center"><td style="vertical-align:middle" >packagingType</td><td style="vertical-align:middle" >Varchar()</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >packagingType is Mandotary</td></tr><tr align="center"><td style="vertical-align:middle" >length</td><td style="vertical-align:middle" >decimal(10,3)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >length is Mandotary</td></tr><tr align="center"><td style="vertical-align:middle" >breadth</td><td style="vertical-align:middle" >decimal(10,3)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >breadth is Mandotary</td></tr><tr align="center"><td style="vertical-align:middle" >height</td><td style="vertical-align:middle" >decimal(10,3)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >height is Mandotary</td></tr><tr align="center"><td style="vertical-align:middle" >weight</td><td style="vertical-align:middle" >decimal(20,5)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >weight is Mandotary</td></tr><tr align="center"><tr><td style="vertical-align:middle" colspan=4> <b>JSON FORMAT<br/> <b>{<br/>&nbsp;&nbsp;&nbsp;"manifest":{<br/>&nbsp;&nbsp;&nbsp;"businessType":"B2C",<br/>&nbsp;&nbsp;&nbsp;"manifestType":"marketplace",<br/>&nbsp;&nbsp;&nbsp;"channelCode":"M12",<br/>&nbsp;&nbsp;&nbsp;"status":"Confirmed",<br/>&nbsp;&nbsp;&nbsp;"vehicleNo":"",<br/>&nbsp;&nbsp;&nbsp;"manifestSubmission":"yes",<br/>&nbsp;&nbsp;&nbsp;"remarks":"",<br/>&nbsp;&nbsp;&nbsp;"orderList":[<br/>&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;"deliveryNo":"CHEAB9D19223",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"trackingNo":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"packagingType":"FEDEX_TUBE",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"length":"1",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"breadth":"1",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"height":"1",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"weight":"1"<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} </b></tbody> </table>
+        schema:
+          properties:
+            manifest:
+              $ref: '#/definitions/createmanifest0'
+      responses:
+        200:
+          description: <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>E10082</p></td><td style="vertical-align:middle" width='167'><p>BusinessType is Mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>E10083</p></td><td style="vertical-align:middle" width='167'><p>BusinessType should be B2C</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>E10085</p></td><td style="vertical-align:middle" width='167'><p>ManifestType should be Marketplace</p></td></tr> <tr align="center"><td style="vertical-align:middle" width='167'><p>E10087</p></td><td style="vertical-align:middle" width='167'><p>Either Delivery No or Tracking No is Mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>E90456</p></td><td style="vertical-align:middle" width='167'><p>ChannelCode is mandatory.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>E9193</p></td><td style="vertical-align:middle" width='167'><p>Status is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>E10090</p></td><td style="vertical-align:middle" width='167'><p>Length/Breadth/Height/Weight should be Numeric</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>E5</p></td><td style="vertical-align:middle" width='167'><p>Empty Request</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>E10086</p></td><td style="vertical-align:middle" width='167'><p>Status should be Confirmed</p></td></tr><td style="vertical-align:middle" colspan=4> <b>Success Response</b><br/>{<br/>&nbsp;&nbsp;"responseCode":9000,<br/>&nbsp;&nbsp;"responseMessage":"Success",<br/>&nbsp;&nbsp;"requestStatus":[</br>&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"responseMessage":"ShippedCount :0,ErrorCount :1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"response":{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"manifestId":"CHE000003581",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"status":"confirmed",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"manifestDate":"24/08/2023",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"manifestDocument":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"delivery":[</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"orderNo":"M12112",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"extOrderNo":"sh112233",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"orderType":"Prepaid",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"outboundDelivery":"CHEC28C75553",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"trackingNo":"653633mndfjhdj2l",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"packDate":"21/04/2023 11:57:58",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"packUser":"sa",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "extManifestNo":null,</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"extInvoiceNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"errorDescription":null,</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"extTransporter":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"length":"11",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"breadth":"11",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"height":"11",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"weight":"11",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"status":"Shipped"</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</br>&nbsp;&nbsp;&nbsp;&nbsp;]</br>&nbsp;&nbsp;}</br>&nbsp;&nbsp;}<br/>}</td></tr><br/></tbody></table><p>&nbsp;</p></tbody></table>
+  /RestWS/api/eretail/v1/manifest/createB2bManifest:
+    post:
+      tags:
+      - Manifest
+      summary: Max no. of Lines/Response:20 API For Order Invoice Pdf(Hit Quota 40/5 min)
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: DbId
+        required: true
+        type: string
+        description: DB Identifier.
+      - in: header
+        name: ApiKey
+        required: true
+        type: string
+        description: API Key.
+      - in: body
+        name: OrderUnAllocateJson
+        description: <table class="table-style-three"><tbody><tr><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">extManifestNo</td><td style="vertical-align:middle">varchar(20)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Manifest No. of external system</td></tr><tr align="center"><td style="vertical-align:middle">manifestType</td><td style="vertical-align:middle">varchar(20)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Possible Values  selfship </td></tr><tr align="center"><td style="vertical-align:middle">transporterCode</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Transporter code</td></tr><tr align="center"><td style="vertical-align:middle>fulfillmentLocation</td><td style="vertical-align:middle">fulfillmentLocation</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Ext Loccode or Loccode of the location from where order is being fulfilled</td></tr><tr align="center"><td style="vertical-align:middle">lrNo</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">Mandatory unless the transporter is API enabled</td></tr><tr align="center"><td style="vertical-align:middle">status</td><td style="vertical-align:middle">varchar(200)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Possible values Pending, Confirmed, Invoiced.Confirmed status is accepted only if current status of manifest is Invoiced </td></tr><tr align="center"><td style="vertical-align:middle">vehicleNo</td><td style="vertical-align:middle">varchar(20)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Possible Values  selfship </td></tr><tr align="center"><td style="vertical-align:middle">driverName</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">Driver Name, Mandatory based on configuration</td></tr><tr align="center"><td style="vertical-align:middle">remarks</td><td style="vertical-align:middle">Varchar(250)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Remarks if any</td></tr><tr align="center"><td style="vertical-align:middle">lpnList</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">List of LPN to be added (Max 200 LPNs per request) </td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined Field </td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined Field </td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined Field </td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined Field </td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined Field </td></tr><tr align="center"><td style="vertical-align:middle">udf6</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined Field </td></tr><tr align="center"><td style="vertical-align:middle">udf7</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined Field </td><tr align="center"><td style="vertical-align:middle">udf8</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined Field </td></tr><tr align="center"><td style="vertical-align:middle">udf9</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined Field </td></tr><tr align="center"><td style="vertical-align:middle">udf10</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined Field </td></tr><tr><td  colspan=5> <b>Case - </b><br/> { <b>"manifestData":{<br/>&nbsp;&nbsp;&nbsp;&nbsp;"extManifestNo":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"manifestType":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"transporterCode":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"fulfillmentLocation":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"lrNo":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"status":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"vehicleNo":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"driverName":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"remarks":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"lpnList":[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"userDefinedFields":{<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf5":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf6":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf7":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf8":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf9":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf10":""&nbsp;&nbsp;&nbsp;&nbsp;&nbsp}<br/>}</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} </td></tr></tbody></table><p>&nbsp;</p><br/>
+        schema:
+          properties:
+            manifestData:
+              $ref: '#/definitions/createmanifest07'
+      responses:
+        200:
+          description: <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9</p></td><td style="vertical-align:middle" width='167'><p>Please Enter Extern Manifest No</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9</p></td><td style="vertical-align:middle" width='167'><p>ManifestType is Mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9</p></td><td style="vertical-align:middle" width='167'><p>FulfillmentLocation is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9</p></td><td style="vertical-align:middle" width='167'><p>Status is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9</p></td><td style="vertical-align:middle" width='167'><p>Max 200 LPN can be selected at time</p></td></tr></tbody></table>
+          schema:
+            $ref: '#/definitions/createmanifestB2Bresponse'
+definitions:
+  createmanifest0:
+    properties:
+      businessType:
+        type: string
+        example: B2C
+      manifestType:
+        type: string
+        example: marketplace
+      channelCode:
+        type: string
+        example: M12
+      status:
+        type: string
+        example: Confirmed
+      vehicleNo:
+        type: string
+        example: ''
+      manifestSubmission:
+        type: string
+        example: 'yes'
+      remarks:
+        type: string
+        example: ''
+      orderList:
+        type: array
+        items:
+          $ref: '#/definitions/createmanifest1'
+  userDefinedFieldCreaeB2b:
+    properties:
+      udf1:
+        type: string
+        example: ''
+      udf2:
+        type: string
+        example: ''
+      udf3:
+        type: string
+        example: ''
+      udf4:
+        type: string
+        example: ''
+      udf5:
+        type: string
+        example: ''
+      udf6:
+        type: string
+        example: ''
+      udf7:
+        type: string
+        example: ''
+      udf8:
+        type: string
+        example: ''
+      udf9:
+        type: string
+        example: ''
+      udf10:
+        type: string
+        example: ''
+  createmanifestB2Bresponse:
+    properties:
+      responseCode:
+        type: string
+        example: '0'
+      responseMessage:
+        type: string
+        example: SUCCESS
+      requestId:
+        type: string
+        example: ''
+      extManifestNo:
+        type: string
+        example: MAN233333
+      manifestNo:
+        type: string
+        example: TWH000003699
+      invoiceNo:
+        type: string
+        example: null
+      lrNo:
+        type: string
+        example: null
+      manifestStatus:
+        type: string
+        example: InvoiceInProcess
+  createmanifest07:
+    properties:
+      extManifestNo:
+        type: string
+        example: MAN233333
+      manifestType:
+        type: string
+        example: marketplace
+      transporterCode:
+        type: string
+        example: '232322'
+      fulfillmentLocation:
+        type: string
+        example: Confirmed
+      lrNo:
+        type: string
+        example: ''
+      status:
+        type: string
+        example: ''
+      vehicleNo:
+        type: string
+        example: ''
+      driverName:
+        type: string
+        example: ''
+      remarks:
+        type: string
+        example: ''
+      lpnList:
+        type: string
+        example: []
+      userDefinedFields:
+        $ref: '#/definitions/userDefinedFieldCreaeB2b'
+  createmanifest1:
+    properties:
+      deliveryNo:
+        type: string
+        example: CHEAB9D19223
+      trackingNo:
+        type: string
+        example: ''
+      packagingType:
+        type: string
+        example: FEDEX_TUBE
+      length:
+        type: string
+        example: 1
+      breadth:
+        type: string
+        example: 1
+      height:
+        type: string
+        example: 1
+      weight:
+        type: string
+        example: 1

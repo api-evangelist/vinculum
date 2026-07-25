@@ -1,0 +1,729 @@
+swagger: '2.0'
+info:
+  title: Vinculum Advance Shipping Notice Purchase Orders API
+  description: API to retrieve or manipulate ASN related information.
+host: erp.vineretail.com
+tags:
+- name: Purchase Orders
+  description: API to retrieve or manipulate Purchase Order related information.
+paths:
+  /RestWS/api/eretail/v1/po/create:
+    post:
+      tags:
+      - Purchase Orders
+      summary: Max no. of lines/Hit:10 API For Creating PO(Hit Quota 40/5 min)
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/json
+      parameters:
+      - in: formData
+        name: RequestBody
+        type: string
+        description: '<table class="table-style-three"><tbody><tr><tr align="center"><td style="vertical-align:middle" width=''100''><strong>Field Name </strong></td><td style="vertical-align:middle" width=''100''><strong>Data Type </strong></td><td style="vertical-align:middle" width=''100''><strong>Mandatory </strong></td><td style="vertical-align:middle" width=''300''><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">vendor_code</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">Can create PO with vendor code or external vendor  code</td></tr><tr align="center"><td style="vertical-align:middle">delivery_date</td><td style="vertical-align:middle">datetime</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">Expected delivery date of PO, date format(DD/MM/YYYY HH:MM:SS)</td></tr><tr align="center"><td style="vertical-align:middle">buyer</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">IF not passed system will pick default Buyer</td></tr><tr align="center"><td style="vertical-align:middle">externalpocode</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">PoCode from External system</td></tr><tr align="center"><td style="vertical-align:middle">status</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Valid status - Confirmed, Released, Cancelled, Closed or Short Closed</td></tr><tr align="center"><td style="vertical-align:middle">pocreated_loc</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Location or external Location code</td></tr><tr align="center"><td style="vertical-align:middle">del_loc</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Location or external Location code</td></tr><tr align="center"><td style="vertical-align:middle">terms</td><td style="vertical-align:middle">Text</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Po Terms and condition if any</td></tr><tr align="center"><td style="vertical-align:middle">potype</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Outright, Consignment</td></tr><tr align="center"><td style="vertical-align:middle">remarks</td><td style="vertical-align:middle">Varchar(5000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">PO Remarks if any</td></tr><tr align="center"><td style="vertical-align:middle">referenceno</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Reference PO  if any</td></tr><tr align="center"><td style="vertical-align:middle">recvValidCode</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Pass recvValidCode otherwise pick default recvValidCode</td></tr><tr align="center"><td style="vertical-align:middle">currencyCode</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">ISO currency code</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">mailTo</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">1 or more than 1 mail can be saved comma seprated</td></tr><tr align="center"><td style="vertical-align:middle">mailCc</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">1 or more than 1 mail can be saved comma seprated</td></tr><tr align="center"><td style="vertical-align:middle">autoEmail</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Should be "yes or "no"</td></tr><tr align="center"><td style="vertical-align:middle">potag</td><td style="vertical-align:middle">Varchar</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Max 10 tags are allowed</td></tr><tr align="center"><td style="vertical-align:middle">pomethod</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible vallues are drop ship and cross doc</td></tr><tr align="center"><td style="vertical-align:middle">expiryDate</td><td style="vertical-align:middle">datetime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Expiry date of PO, date format(DD/MM/YYYY HH:MM:SS)</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Items Details</b></td></tr><tr align="center"><td style="vertical-align:middle">skucode</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Sku code as per masters</td></tr><tr align="center"><td style="vertical-align:middle">poqty</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">PO quantity</td></tr><tr align="center"><td style="vertical-align:middle">unitcost</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">If not passed system will pick from masters</td></tr><tr align="center"><td style="vertical-align:middle">ext_lineno</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lineno from external system</td></tr><tr align="center"><td style="vertical-align:middle">mrp</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">If not passed system will pick from masters</td></tr><tr align="center"><td style="vertical-align:middle">expdeldate</td><td style="vertical-align:middle">DateTime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">If not passed header date will be copied</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr></td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>additional Charges</b></td></tr><tr align="center"><td style="vertical-align:middle">chargeName</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Pass charge name</td></td></tr><tr align="center"><td style="vertical-align:middle">chargeValue</td><td style="vertical-align:middle">decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Value should not less than or equal to 0</td><tr><td  colspan=5> <b>case-<br/>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"po":{</br> &nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"AAA001",</br>&nbsp;&nbsp;&nbsp;&nbsp;"delivery_date":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"buyer":"Test_buyer",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"externalpocode":"8286",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"status":"confirmed",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"pocreated_loc":"NWB",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"del_loc":"NWH",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"terms":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"potype":"outright",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"remarks":"test remarks",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"referenceno":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"recvValidCode":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"currencyCode":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf5":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"mailTo":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"mailCc":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"autoEmail":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"potag":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"expiryDate":"14/12/2016 15:40:30",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"pomethod":"drop ship",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"items":[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skucode":"SSSKU011",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"poqty":"2",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"unitcost":"10",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"ext_lineno":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"mrp":"101.000",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"expdeldate":"14/12/2016 15:40:30",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf5":""</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skucode":"SSSKU012",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"poqty":"1",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"unitcost":"30",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"ext_lineno":"2",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"mrp":"101.000",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"expdeldate":"14/12/2016 15:40:30",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf5":""</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"additionalCharges":[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"chargeName":"WAC",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"chargeValue":""<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}<br/></b><br/>
+
+          <br/></td></tr></tbody></table><p>&nbsp;</p><br/>'
+        required: true
+      - in: formData
+        name: ApiOwner
+        type: string
+        description: This Field Will Be Used To Send API Owner
+        required: true
+      - in: formData
+        name: ApiKey
+        type: string
+        description: This is the API Key
+        required: true
+      responses:
+        200:
+          description: <table border='1'width='672'>  <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>904</p></td><td style="vertical-align:middle" width='167'><p>Vendor Code is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>905</p></td><td style="vertical-align:middle" width='167'><p>Po Created Location Code is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>906</p></td><td style="vertical-align:middle" width='167'><p>Po Creation Error while processing</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9081</p></td><td style="vertical-align:middle" width='167'><p>Invalid Delivery_loc Location</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9081</p></td><td style="vertical-align:middle" width='167'><p>Invalid PO_CREATED_LOCATION Location</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9081</p></td><td style="vertical-align:middle" width='167'><p>No Serving(Delivery) Location</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9081</p></td><td style="vertical-align:middle" width='167'><p>No OrgId Found For [**] Serving Location</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9050</p></td><td style="vertical-align:middle" width='167'><p>PO present with status [**]</p></td></tr></tbody></table>
+          schema:
+            $ref: '#/definitions/pocreate'
+  /RestWS/api/eretail/v4/po/create:
+    post:
+      tags:
+      - Purchase Orders
+      summary: Max no. of lines/Hit:10 API For Creating PO(Hit Quota 40/5 min)
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: ApiKey
+        required: true
+        type: string
+        description: API Key.
+      - in: body
+        name: POCreateJSON
+        description: <table><tr align="center" ><td width="100" style="color:#ec0c0c !important;font-size:16px !important;"><strong>Beta Version (Case Pack Compatible)</strong></td></tr></table><table class="table-style-three"><tbody><tr><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">vendorCode</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">Can create PO with vendor code or external vendor  code</td></tr><tr align="center"><td style="vertical-align:middle">deliveryDate</td><td style="vertical-align:middle">datetime</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">Expected delivery date of PO, date format(DD/MM/YYYY HH:MM:SS)</td></tr><tr align="center"><td style="vertical-align:middle">buyer</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">IF not passed system will pick default Buyer</td></tr><tr align="center"><td style="vertical-align:middle">externalPoCode</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">PoCode from External system</td></tr><tr align="center"><td style="vertical-align:middle">status</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Valid status - Confirmed, Released, Cancelled, Closed or Short Closed</td></tr><tr align="center"><td style="vertical-align:middle">pocreatedLoc</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Location or external Location code</td></tr><tr align="center"><td style="vertical-align:middle">delLoc</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Location or external Location code</td></tr><tr align="center"><td style="vertical-align:middle">formCApplicable</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible values are Yes/No</td></tr><tr align="center"><td style="vertical-align:middle">terms</td><td style="vertical-align:middle">Text</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Po Terms and condition if any</td></tr><tr align="center"><td style="vertical-align:middle">poType</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Outright, Consignment</td></tr><tr align="center"><td style="vertical-align:middle">remarks</td><td style="vertical-align:middle">Varchar(5000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">PO Remarks if any</td></tr><tr align="center"><td style="vertical-align:middle">referenceNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Reference PO code if any</td></tr><tr align="center"><td style="vertical-align:middle">recvValidCode</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Pass recvValidCode otherwise pick default recvValidCode</td></tr><tr align="center"><td style="vertical-align:middle">poMethod</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible vallues are drop ship and cross doc</td></tr><tr align="center"><td style="vertical-align:middle">expiryDate</td><td style="vertical-align:middle">DateTime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Expiry date of PO, date format(DD/MM/YYYY HH:MM:SS)</td></tr><tr align="center"><td style="vertical-align:middle" >udf1</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">user defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf2</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">user defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf3</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">user defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf4</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">user defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf5</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">user defined field</td></tr><tr align="center"><td style="vertical-align:middle">mailTo</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">1 or more than 1 mail can be saved comma seprated</td></tr><tr align="center"><td style="vertical-align:middle">mailCc</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">1 or more than 1 mail can be saved comma seprated</td></tr><tr align="center"><td style="vertical-align:middle">autoEmail</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">should be "yes or "no"</td></tr><tr align="center"><td style="vertical-align:middle" >potag</td><td style="vertical-align:middle" >Varchar</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">max 10 potags are allowed</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Items Details</b></td></tr><tr align="center"><td style="vertical-align:middle">skuCode</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Sku code as per masters</td></tr><tr align="center"><td style="vertical-align:middle">uomQty</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">UOM Qty</td></tr><tr align="center"><td style="vertical-align:middle">unitCost</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">If not passed system will pick from masters</td></tr><tr align="center"><td style="vertical-align:middle">extLineNo</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lineno from external system</td></tr><tr align="center"><td style="vertical-align:middle">mrp</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">MRP</td></tr><tr align="center"><td style="vertical-align:middle">expDelDate</td><td style="vertical-align:middle">DateTime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">If not passed header date will be copied</td></tr><tr align="center"><td style="vertical-align:middle">uomName</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Name of the Unit of Measurement</td></tr><tr align="center"><td style="vertical-align:middle">caseSize</td><td style="vertical-align:middle">int(11)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">This is only for case pack and user will provide the case pack size lime 10,20 etc</td></tr><tr align="center"><td style="vertical-align:middle" >udf1</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Line level user defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf2</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Line level user defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf3</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Line level user defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf4</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Line level user defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf5</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Line level user defined field</tr></td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>additional Charges</b></td></tr><tr align="center"><td style="vertical-align:middle">chargeName</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">pass charge name</td></td></tr><tr align="center"><td style="vertical-align:middle">chargeValue</td><td style="vertical-align:middle">decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">value should not less than or equal to 0</td></td></tr></table>
+        schema:
+          type: object
+          required:
+          - siteLocation
+          - status
+          properties:
+            po:
+              $ref: '#/definitions/pocreate1'
+      responses:
+        200:
+          description: <table border='1'width='672'>  <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>904</p></td><td style="vertical-align:middle" width='167'><p>Vendor Code is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>905</p></td><td style="vertical-align:middle" width='167'><p>Po Created Location Code is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>906</p></td><td style="vertical-align:middle" width='167'><p>Po Creation Error while processing</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9081</p></td><td style="vertical-align:middle" width='167'><p>Invalid Delivery_loc Location</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9081</p></td><td style="vertical-align:middle" width='167'><p>Invalid PO_CREATED_LOCATION Location</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9081</p></td><td style="vertical-align:middle" width='167'><p>No Serving(Delivery) Location</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9081</p></td><td style="vertical-align:middle" width='167'><p>No OrgId Found For [**] Serving Location</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9050</p></td><td style="vertical-align:middle" width='167'><p>PO present with status [**]</p></td></tr></tbody></table>
+          schema:
+            $ref: '#/definitions/pocreate'
+  /RestWS/api/eretail/v1/po/popull:
+    post:
+      tags:
+      - Purchase Orders
+      summary: Max no. of lines/Response:100 API For PO Details(Hit Quota 40/5 min)
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/json
+      parameters:
+      - in: formData
+        name: RequestBody
+        type: string
+        description: <table class="table-style-three"><tbody><tr><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">poCode</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">Either poCode or Date filter mandatory</td></tr><tr align="center"><td style="vertical-align:middle" >status</td><td style="vertical-align:middle" >Array</td><td style="vertical-align:middle" >Conditional</td><td style="vertical-align:middle" >&nbsp;e. g. Pending, Confirmed&nbsp;,Received etc.(Status can be passed only with fromdate and toDate)</td></tr><tr align="center"><td style="vertical-align:middle">fromDate</td><td style="vertical-align:middle">datetime</td><td style="vertical-align:middle">Mandatory**</td><td style="vertical-align:middle">Either poCode or Date filter mandatory, Date format:DD/MM/YYYY HH:MM:SS</td></tr><tr align="center"><td style="vertical-align:middle">toDate</td><td style="vertical-align:middle">datetime</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Either poCode or Date filter mandatory, Date format:DD/MM/YYYY HH:MM:SS</td></tr><tr align="center"><td style="vertical-align:middle">pageNumber</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Page number ( pagination)</td></tr><tr align="center"><td style="vertical-align:middle">vendorcode</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">Vendor Code (It will be passed only with date filter)</td></tr><tr align="center"><td style="vertical-align:middle">del_loc</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">Delivery Location (It will be passed only with date filter)</td></tr><tr align="center"><td style="vertical-align:middle">filterBy</td><td style="vertical-align:middle">Varchar(1)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Get PO on the basis of updation or creation date Default:2, Possible values are 1 (update date),2(create date)</td></tr><tr><td  colspan=5> <b>Case 1-Get Po by pocode</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"poCode":"NWB968",</br>&nbsp;&nbsp;&nbsp;&nbsp;"status":["Confirmed"],</br>&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"",</br>&nbsp;&nbsp;&nbsp;"pageNumber":"",</br>&nbsp;&nbsp;&nbsp;"filterBy":"1"</br>&nbsp;&nbsp;&nbsp;"vendorcode":"",</br>&nbsp;&nbsp;&nbsp;"del_loc":"",</br>&nbsp;}</b><br/><br/><br/> <b>Case 2-Get Po by date filter</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"poCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"status":[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"20/11/2016 00:00:00",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"14/11/2016 00:00:00",</br>&nbsp;&nbsp;&nbsp;&nbsp;"vendorcode":"AA001",</br>&nbsp;&nbsp;&nbsp;&nbsp;"del_loc":"NWH",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1",</br>&nbsp;&nbsp;&nbsp;"filterBy":""</br>&nbsp;}</b> <br/></td></tr></tbody></table><p>&nbsp;</p><br/>
+        required: true
+      - in: formData
+        name: ApiOwner
+        type: string
+        description: This Field Will Be Used To Send API Owner
+        required: true
+      - in: formData
+        name: ApiKey
+        type: string
+        description: This is the API Key
+        required: true
+      responses:
+        200:
+          description: <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9</p></td><td style="vertical-align:middle" width='167'><p>Invalid PO Code.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>907</p></td><td style="vertical-align:middle" width='167'><p>No Filters Found for Fetching PO</p></td><tr></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>916</p></td><td style="vertical-align:middle" width='167'><p>From Date and To Date range should not be more than 7 days.</p></td><tr><tr align="center"><td style="vertical-align:middle" width='167'><p>8048</p></td><td style="vertical-align:middle" width='167'><p>vendorCode and delivery location can be passed only with fromdate and toDate.</p></td><tr></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>8059</p></td><td style="vertical-align:middle" width='167'><p>Status can be passed only with Fromdate and ToDate.</p></td></tr></tbody></table>
+          schema:
+            $ref: '#/definitions/popull'
+  /RestWS/api/eretail/v1/po/gatepassdetail:
+    post:
+      tags:
+      - Purchase Orders
+      summary: Max no. of lines/Response:100 API For GatePass Details(Hit Quota 40/5 min)
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/json
+      parameters:
+      - in: formData
+        name: RequestBody
+        type: string
+        description: <table class="table-style-three"><tbody><tr><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">gatepassno</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">*Only if details by GatePassNumber</td></tr><tr align="center"><td style="vertical-align:middle">date_from</td><td style="vertical-align:middle">datetime</td><td style="vertical-align:middle">Condtional</td><td style="vertical-align:middle">*Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle">date_to</td><td style="vertical-align:middle">datetime</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">*Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle">del_loc</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">*Location is mandatory when filter by date, extloccode or eretail location code</td></tr><tr align="center"><td style="vertical-align:middle">filterBy</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Get gatePass on the basis of updation or creation date Default:1, Possible values are 2 (update date),1(create date)</td></tr><tr><tr align="center"><td style="vertical-align:middle">pageNumber </td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Default 1. (Page Size 100 Orders)</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Additional Information</b></td></tr><tr align="left"><td style="vertical-align:middle" colspan=4 >Max Allowance - 100 Gatepassno at a time.</td></tr><tr><td  colspan=5> <b>Case 1-Get GatePass by GatePassNumber</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"gatepassno":["NWH000010807","NB2000001071"],</br>&nbsp;&nbsp;&nbsp;&nbsp;"date_from":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_to":"",</br>&nbsp;&nbsp;&nbsp;"del_loc":"",</br>&nbsp;&nbsp;&nbsp;"filterBy":"",</br>&nbsp;&nbsp;&nbsp;"pageNumber":""</br>&nbsp;}</b><br/><br/><br/> <b>Case 2-Get GatePass by date filter</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"gatepassno":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;"date_from":"24/09/2019 00:00:00",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_to":"30/09/2019 17:00:00",</br>&nbsp;&nbsp;&nbsp;"del_loc":"NWB",</br>&nbsp;&nbsp;&nbsp;"filterBy":"1",</br>&nbsp;&nbsp;&nbsp;"pageNumber":"1"</br>&nbsp;}</b><br/><br/><br/></td></tr></tbody></table><p>&nbsp;</p><br/>
+        required: true
+      - in: formData
+        name: ApiOwner
+        type: string
+        description: This Field Will Be Used To Send API Owner
+        required: true
+      - in: formData
+        name: ApiKey
+        type: string
+        description: This is the API Key
+        required: true
+      responses:
+        200:
+          description: <table border='1'width='672'><h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>834</p></td><td style="vertical-align:middle" width='167'><p>Maximum 100 GatePass allowed at a time </p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>835</p></td><td style="vertical-align:middle" width='167'><p>To date is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>901</p></td><td style="vertical-align:middle" width='167'><p>From Date is Mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>916</p></td><td style="vertical-align:middle" width='167'><p>From Date and To Date range should not be more than 7 days.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>925</p></td><td style="vertical-align:middle" width='167'><p>No Filters Found for Fetching GatePass</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>805</p></td><td style="vertical-align:middle" width='167'><p>To Date Should be Greater Than From Date</p></td></tr></tbody></table>
+          schema:
+            $ref: '#/definitions/gatePassDetail'
+  /RestWS/api/eretail/v1/po/poStatusUpdate:
+    post:
+      tags:
+      - Purchase Orders
+      summary: API For Update PO Status(Hit Quota 40/5 min)
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: ApiKey
+        required: true
+        type: string
+        description: API Key.
+      - in: body
+        name: POStatusUpdateJSON
+        description: <table class="table-style-three"><tbody><tr><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">poCode</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">Either poCode or extPoCode is mandatory</td></tr><tr align="center"><td style="vertical-align:middle">extPoCode</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">PoCode from External system</td></tr><tr align="center"><td style="vertical-align:middle">status</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">Valid status - Pending Confirmation,Confirmed, Released, ReOpen,ReConfirmed,Closed,Cancelled,etc., Defined in Codelkup with lkupcode POSTS.</td></tr></table>
+        schema:
+          type: object
+          required:
+          - poCode
+          - status
+          properties:
+            poList:
+              type: array
+              items:
+                $ref: '#/definitions/poStatusUpdate1'
+      responses:
+        200:
+          description: <table border='1'width='672'>  <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9047</p></td><td style="vertical-align:middle" width='167'><p>PO Code is mandatory.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>5004</p></td><td style="vertical-align:middle" width='167'><p>Status is mandatory</p></td></tr></tbody></table>
+          schema:
+            $ref: '#/definitions/poStatusUpdate2'
+definitions:
+  RequestStatus3:
+    properties:
+      externalpocode:
+        type: string
+        example: '8286'
+      pocode:
+        type: string
+        example: 8286po
+      outputKey:
+        type: integer
+        example: NWB968
+      status:
+        type: string
+        example: Success
+      errorDesc:
+        type: integer
+        example: 'null'
+  pocreate:
+    properties:
+      responseCode:
+        type: integer
+        example: 0
+      responseMessage:
+        type: string
+        example: Success
+      requestStatus:
+        $ref: '#/definitions/RequestStatus3'
+  poStatusUpdate3:
+    properties:
+      responseCode:
+        type: integer
+        example: '0'
+      responseMessage:
+        type: string
+        example: Success
+      poCode:
+        type: string
+        example: CHE251833
+      extPoCode:
+        type: string
+        example: ''
+      errorDescription:
+        type: string
+        example: ''
+  gatePassDetail:
+    properties:
+      responseCode:
+        type: integer
+        example: 0
+      responseMessage:
+        type: string
+        example: Success
+      response:
+        $ref: '#/definitions/responseGatePassdetail'
+  pocreate1:
+    properties:
+      vendorCode:
+        type: string
+        example: cutril
+      deliveryDate:
+        type: string
+        example: 04/02/2021 15:40:30
+      buyer:
+        type: string
+        example: test
+      externalPoCode:
+        type: string
+        example: user001
+      status:
+        type: string
+        example: confirmed
+      pocreatedLoc:
+        type: string
+        example: che
+      delLoc:
+        type: string
+        example: che
+      formCApplicable:
+        type: string
+        example: ''
+      terms:
+        type: string
+        example: ''
+      poType:
+        type: string
+        example: Consignment
+      remarks:
+        type: string
+        example: ''
+      recvValidCode:
+        type: string
+        example: ''
+      poMethod:
+        type: string
+        example: ''
+      expiryDate:
+        type: string
+        example: 20/04/2021 15:40:30
+      referenceNo:
+        type: string
+        example: ''
+      udf1:
+        type: string
+        example: ''
+      udf2:
+        type: string
+        example: ''
+      udf3:
+        type: string
+        example: ''
+      udf4:
+        type: string
+        example: ''
+      udf5:
+        type: string
+        example: ''
+      mailTo:
+        type: string
+        example: ''
+      mailCc:
+        type: string
+        example: ''
+      autoEmail:
+        type: string
+        example: ''
+      potag:
+        type: string
+        example: abc,edf
+      items:
+        type: array
+        items:
+          $ref: '#/definitions/pocreate2'
+      additionalCharges:
+        type: array
+        items:
+          $ref: '#/definitions/pocreate3'
+  responseGatePassdetail:
+    properties:
+      totalGatepass:
+        type: integer
+        example: 1
+      totalPages:
+        type: integer
+        example: 1
+      currentPage:
+        type: integer
+        example: 1
+      gatePassList:
+        type: array
+        items:
+          $ref: '#/definitions/gatePassList'
+  RequestStatus2:
+    properties:
+      poList:
+        type: array
+        items:
+          $ref: '#/definitions/PoList'
+  gatePassList:
+    properties:
+      gatepassno:
+        type: string
+        example: NWH000010807
+      del_loc:
+        type: string
+        example: NWH
+      locname:
+        type: string
+        example: Nykaa Warehouse DEL1
+      status:
+        type: string
+        example: Confirmed
+      type:
+        type: string
+        example: With PO
+      pocode:
+        type: string
+        example: NHO139437
+      vendor_code:
+        type: integer
+        example: HNDVP
+      vendor_name:
+        type: string
+        example: ABC
+      po_amt:
+        type: string
+        example: '219104.194'
+      invoice_amt:
+        type: string
+        example: '684.789'
+      invoiceno:
+        type: string
+        example: del-296-167964
+      invoicedate:
+        type: string
+        example: 16/12/2016 12:59:31
+      invoiceqty:
+        type: string
+        example: '4'
+      ewaybill:
+        type: integer
+        example: ''
+      no_ofboxes:
+        type: string
+        example: '1'
+      vehicleno:
+        type: string
+        example: DL1LT4129
+      itemcount:
+        type: string
+        example: '7'
+      igpdate:
+        type: string
+        example: ''
+  poStatusUpdate2:
+    properties:
+      responseCode:
+        type: integer
+        example: 0
+      responseMessage:
+        type: string
+        example: Success
+      response:
+        type: array
+        items:
+          $ref: '#/definitions/poStatusUpdate3'
+      requestId:
+        type: string
+        example: ''
+  poStatusUpdate1:
+    properties:
+      poCode:
+        type: string
+        example: CHE251833
+      extPoCode:
+        type: string
+        example: ''
+      status:
+        type: string
+        example: Closed
+  pocreate3:
+    properties:
+      chargeName:
+        type: string
+        example: xyz
+      chargeValue:
+        type: string
+        example: ''
+  Items3:
+    type: object
+    properties:
+      skucode:
+        type: string
+        example: SSSKU011
+      skuname:
+        type: string
+        example: simple sku
+      poqty:
+        type: string
+        example: '2'
+      receivedqty:
+        type: string
+        example: '2'
+      unitcost:
+        type: string
+        example: '10.000'
+      taxamount:
+        type: string
+        example: '1.00'
+      excise:
+        type: string
+        example: ''
+      externallinenumber:
+        type: string
+        example: '1'
+      expdeldate:
+        type: number
+        example: 25/11/2016 15:40:30
+      udf1:
+        type: string
+        example: ''
+      udf2:
+        type: string
+        example: ''
+      udf3:
+        type: string
+        example: ''
+      udf4:
+        type: string
+        example: ''
+      udf5:
+        type: string
+        example: ''
+      udf6:
+        type: string
+        example: ''
+      udf7:
+        type: string
+        example: ''
+      udf8:
+        type: string
+        example: ''
+      udf9:
+        type: string
+        example: ''
+      udf10:
+        type: string
+        example: ''
+      polineno:
+        type: string
+        example: '1'
+      mrp:
+        type: string
+        example: '3099.00'
+      vendorskucode:
+        type: string
+        example: ABC1000
+      cgstAmt:
+        type: string
+        example: '123.00'
+      sgstAmt:
+        type: string
+        example: '156.08250'
+      igstAmt:
+        type: string
+        example: '0.00000'
+      cgstRt:
+        type: string
+        example: '9.0'
+      sgstRt:
+        type: string
+        example: '9.0'
+      igstRt:
+        type: string
+        example: '0.0'
+      gstRT:
+        type: string
+        example: '18.000'
+      closedQty:
+        type: string
+        example: '10'
+      asnQty:
+        type: string
+        example: '10'
+      openQty:
+        type: string
+        example: '10'
+      conversion:
+        type: string
+        example: '1.00000'
+      uom:
+        type: string
+        example: Each
+      eaqty:
+        type: string
+        example: '10.000'
+  popull:
+    properties:
+      responseCode:
+        type: integer
+        example: 0
+      responseStatus:
+        type: string
+        example: Success
+      totalPo:
+        type: integer
+        example: 230
+      totalPages:
+        type: integer
+        example: 3
+      currentPage:
+        type: integer
+        example: 1
+      requestStatus:
+        $ref: '#/definitions/RequestStatus2'
+  Items4:
+    type: object
+    properties:
+      chargeName:
+        type: string
+        example: deep
+      chargeType:
+        type: string
+        example: Absolute
+      chargeValue:
+        type: string
+        example: '30.000'
+      chargeAmount:
+        type: string
+        example: '30.000'
+  PoList:
+    properties:
+      pocode:
+        type: string
+        example: nwb68
+      podate:
+        type: string
+        example: ''
+      vendor_code:
+        type: string
+        example: aa001
+      vendor_name:
+        type: string
+        example: ABC
+      exp_del_date:
+        type: string
+        example: 26/11/2016 15:40:30
+      buyername:
+        type: string
+        example: test_buyer
+      ext_pocode:
+        type: string
+        example: '8646'
+      status:
+        type: string
+        example: '2017-12-16 12:59:31.0'
+      po_amt:
+        type: string
+        example: '60.00'
+      po_currency:
+        type: string
+        example: INR
+      po_taxamt:
+        type: string
+        example: '5.00'
+      poexcise:
+        type: string
+        example: ''
+      po_disc_amt:
+        type: string
+        example: '0.00'
+      po_qty:
+        type: number
+        example: '2'
+      pocreated_loc:
+        type: string
+        example: NWB
+      del_loc:
+        type: string
+        example: NWH
+      formcapplicable:
+        type: string
+        example: 'no'
+      terms:
+        type: string
+        example: test terms
+      po_type:
+        type: string
+        example: outright
+      remarks:
+        type: string
+        example: Test remarks
+      referenceno:
+        type: string
+        example: ''
+      udf1:
+        type: integer
+        example: ''
+      udf2:
+        type: integer
+        example: ''
+      udf3:
+        type: integer
+        example: ''
+      udf4:
+        type: integer
+        example: ''
+      udf5:
+        type: integer
+        example: ''
+      udf6:
+        type: integer
+        example: ''
+      udf7:
+        type: integer
+        example: ''
+      udf8:
+        type: integer
+        example: ''
+      udf9:
+        type: integer
+        example: ''
+      udf10:
+        type: integer
+        example: ''
+      masterPOCode:
+        type: string
+        example: ''
+      potags:
+        type: array
+        example:
+        - abc
+        - def
+      expiry_date:
+        type: string
+        example: 03/06/2020 15:40:30
+      ext_del_loc:
+        type: string
+        example: vin2020
+      createDate:
+        type: string
+        example: 01/06/2020 19:17:58
+      updateDate:
+        type: string
+        example: 01/06/2020 19:17:58
+      externalVendorCode:
+        type: string
+        example: cip-2020
+      del_locname:
+        type: string
+        example: Chennai_WH
+      items:
+        type: array
+        items:
+          $ref: '#/definitions/Items3'
+      additionalCharges:
+        type: array
+        example: []
+      printUrl:
+        type: string
+        example: ''
+        items:
+          $ref: '#/definitions/Items4'
+  pocreate2:
+    properties:
+      skuCode:
+        type: string
+        example: Test1
+      uomQty:
+        type: string
+        example: '10.000'
+      unitCost:
+        type: string
+        example: '100.550'
+      extLineNo:
+        type: string
+        example: '1'
+      expDelDate:
+        type: string
+        example: 04/02/2021 15:40:30
+      mrp:
+        type: string
+        example: '100'
+      uomName:
+        type: string
+        example: ''
+      caseSize:
+        type: string
+        example: ''
+      udf1:
+        type: string
+        example: ''
+      udf2:
+        type: string
+        example: ''
+      udf3:
+        type: string
+        example: ''
+      udf4:
+        type: string
+        example: ''
+      udf5:
+        type: string
+        example: ''

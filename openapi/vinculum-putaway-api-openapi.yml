@@ -1,0 +1,93 @@
+swagger: '2.0'
+info:
+  title: Vinculum Advance Shipping Notice Putaway API
+  description: API to retrieve or manipulate ASN related information.
+host: erp.vineretail.com
+tags:
+- name: Putaway
+  description: API to create putaway
+paths:
+  /RestWS/api/eretail/v1/putaway/create:
+    post:
+      tags:
+      - Putaway
+      summary: API For Inventory Movement Process(Hit Quota 40/5 min)
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: ApiOwner
+        required: true
+        type: string
+        description: API Owner.
+      - in: header
+        name: ApiKey
+        required: true
+        type: string
+        description: API Key.
+      - in: body
+        name: PutawayJSON
+        description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">type</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">Putaway type, should be - INBRT, CLDODR</td></tr><tr align="center"><td style="vertical-align:middle">mode</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">Putaway mode, should be - UDP</td></tr><tr align="center"><td style="vertical-align:middle">inboundNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">Mandatory Inbound No/ext Inbound No. when putaway type is INBRT</td></tr><tr align="center"><td style="vertical-align:middle">orderNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle"> Mandatory fields in case of cancel order putaway and optional in case of inbound realtime putaway.</td></tr><tr align="center"><td style="vertical-align:middle">putawayStatus</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle"> Mandatory fields in case of cancel order putaway and optional in case of inbound realtime putaway.</td></tr><tr align="center"><td style="vertical-align:middle">QC_status</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">Possible Values Passed, mandatory when putaway type is INBRT</td></tr><tr align="center"><td style="vertical-align:middle">remarks</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Remarks, if any</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Items Fields</b></td></tr><tr align="center"><td style="vertical-align:middle">Lineno</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">line No.</td></tr><tr align="center"><td style="vertical-align:middle">skucode</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">eRetail sku code</td></tr><tr align="center"><td style="vertical-align:middle">putawayqty</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">putaway quantity, mandatory when putaway type is INBRT</td></tr><tr align="center"><td style="vertical-align:middle">putawayBin</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">Putaway bin, mandatory when putaway type is INBRT</td></tr><tr align="center"><td style="vertical-align:middle">From_LPN</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">A valid From Box ID</td></tr><tr align="center"><td style="vertical-align:middle">To_LPN</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle"> A valid To Box ID</td></tr><tr align="center"><td style="vertical-align:middle">UOM</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">UOM</td></tr><tr align="center"><td style="vertical-align:middle">LOT</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">LotNo</td></tr><td style="vertical-align:middle" colspan=4> </tbody></table>
+        schema:
+          properties:
+            putaway:
+              $ref: '#/definitions/putawayCreate'
+      responses:
+        200:
+          description: <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9072</p></td><td style="vertical-align:middle" width='167'><p>Location is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9076</p></td><td style="vertical-align:middle" width='167'><p>A task is already registered. Kindly try after sometime</p></td></tr></tbody></table><table> <tbody> <td style="vertical-align:middle" colspan=4> <b>Case 1- Success Response <br/>{<br/>&nbsp;&nbsp;"responseCode":0,<br/>&nbsp;&nbsp;"responseMessage":"Success",<br/>&nbsp;&nbsp;"responseList":[</br>&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"status":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"message":"SUCCESS"</br>&nbsp;&nbsp;&nbsp;&nbsp;}</br>&nbsp;&nbsp;]<br/>}</b><br/></b></tbody></table>
+definitions:
+  putawayCreate1:
+    properties:
+      Lineno:
+        type: string
+        example: '1'
+      skucode:
+        type: string
+        example: CYCTEST1
+      putawayqty:
+        type: string
+        example: '1'
+      putawayBin:
+        type: string
+        example: TEST011
+      From_LPN:
+        type: string
+        example: ''
+      To_LPN:
+        type: string
+        example: ''
+      UOM:
+        type: string
+        example: ''
+      LOT:
+        type: string
+        example: ''
+  putawayCreate:
+    properties:
+      type:
+        type: string
+        example: INBRT
+      mode:
+        type: string
+        example: UDP
+      inboundNo:
+        type: string
+        example: XYZ00000405
+      orderNo:
+        type: string
+        example: ''
+      putawayStatus:
+        type: string
+        example: ''
+      QC_status:
+        type: string
+        example: Passed
+      remarks:
+        type: string
+        example: Test1
+      items:
+        type: array
+        items:
+          $ref: '#/definitions/putawayCreate1'

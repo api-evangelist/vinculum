@@ -1,0 +1,263 @@
+swagger: '2.0'
+info:
+  title: Vinculum Advance Shipping Notice Listing Managment API
+  description: API to retrieve or manipulate ASN related information.
+host: erp.vineretail.com
+tags:
+- name: Listing Managment
+  description: API to retrieve or manipulate Order related information.
+paths:
+  /productFetch:
+    post:
+      tags:
+      - Listing Managment
+      summary: API For Fetching product
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: ApiKey
+        required: true
+        type: string
+        description: API Key.
+      - in: formData
+        name: RequestBody
+        required: true
+        type: string
+        description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle" >updatedDate</td><td style="vertical-align:middle" >DateTime</td><td style="vertical-align:middle" >Conditional</td><td style="vertical-align:middle" >Either the updatedDate  skuCode  needed</td></tr><tr align="center"><td style="vertical-align:middle" >skuCode</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Conditional</td><td style="veritcal-align:middle">Either the updatedDate  skuCode  needed</td></tr><tr align="center"><td style="vertical-align:middle" >pageNumber</td><td style="vertical-align:middle" >Integer</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle">Default 1. (Page Size 500 Orders)</td></tr><tr align="center"><td style="vertical-align:middle" >limit</td><td style="vertical-align:middle" >Integer</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle">Maximum 100 records process</td></tr><tr align="center"><tr><td style="vertical-align:middle" colspan=4> <b>Request Body =<br/> {  <br/>&nbsp;&nbsp;&nbsp;"updatedDate":"01/01/2015 00:00:00",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skuCode":[  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"TEST_STORE_ABC_TESTING_001",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"TEST_STORE_ABC_TESTING-003"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"limit":10<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> </tbody> </table>
+      responses:
+        200:
+          description: <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td><tr align="center"><td style="vertical-align:middle" width='167'><p>0</p></td><td style="vertical-align:middle" width='167'><p>Success</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9</p></td><td style="vertical-align:middle" width='167'><p>Generic Error</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>11</p></td><td style="vertical-align:middle" width='167'><p>Invalid API credentials</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>14</p></td><td style="vertical-align:middle" width='167'><p>API credentials are no more active</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>15</p></td><td style="vertical-align:middle" width='167'><p>API credentials has been expired</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>2000</p></td><td style="vertical-align:middle" width='167'><p>authToken expired/Invalid authToken.</p></td></tbody></table>
+          schema:
+            items:
+              $ref: '#/definitions/ProductFetch1'
+  /inventoryPriceUpdate:
+    post:
+      tags:
+      - Listing Managment
+      summary: API For Updating Inventory Price
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: ApiKey
+        required: true
+        type: string
+        description: API Key.
+      - in: formData
+        name: RequestBody
+        required: true
+        type: string
+        description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle" >sku </td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" ></td></tr><tr align="center"><td style="vertical-align:middle" >invQty </td><td style="vertical-align:middle" >Decimal(10,3)</td><td style="vertical-align:middle">Mandatory</td><td style="veritcal-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle" >salePrice  </td><td style="vertical-align:middle" >Decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle"  colspan=4><b>Process Maximum 100 records<br/></td></tr><tr align="center"><tr><td style="vertical-align:middle" colspan=4> <b>Request Body =<br/> {  <br/>&nbsp;&nbsp;&nbsp;"invPriceList":[  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"sku":"TEST_STORE_ABC_TESTING-004-BUY-3-FREE-1",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"invQty":"11",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"salePrice":"1299.00" <br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></tbody></table>
+      responses:
+        200:
+          description: <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td><tr align="center"><td style="vertical-align:middle" width='167'><p>0</p></td><td style="vertical-align:middle" width='167'><p>success(when invQty value pass is null)</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>11</p></td><td style="vertical-align:middle" width='167'><p>Invalid API credentials</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>14</p></td><td style="vertical-align:middle" width='167'><p>API credentials are no more active</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>15</p></td><td style="vertical-align:middle" width='167'><p>API credentials has been expired</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>304</p></td><td style="vertical-align:middle" width='167'><p>[SKU & Seller] Code Combination not found in the System.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>2000</p></td><td style="vertical-align:middle" width='167'><p>authToken expired/Invalid authToken.</p></td></tr></tbody></table>
+          schema:
+            items:
+              $ref: '#/definitions/InventoryPricedetail1'
+  /inventoryPriceStatus:
+    post:
+      tags:
+      - Listing Managment
+      summary: API For Inventory Price Status
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: ApiKey
+        required: true
+        type: string
+        description: API Key.
+      - in: formData
+        name: RequestBody
+        required: true
+        type: string
+        description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">moderationIdsList </td><td style="vertical-align:middle">Integer(11)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Array of moderation Id needed. </td></tr><tr><td style="vertical-align:middle" colspan=4> <b>Request Body<br/> {<br/> &nbsp;&nbsp;&nbsp;"moderationIdsList":[108,109]</br>&nbsp;&nbsp;&nbsp;}<br/></b><br/><br/></tbody></table>
+      responses:
+        200:
+          description: <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td><tr align="center"><td style="vertical-align:middle" width='167'><p>0</p></td><td style="vertical-align:middle" width='167'><p>Success</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>11</p></td><td style="vertical-align:middle" width='167'><p>Invalid API credentials</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>14</p></td><td style="vertical-align:middle" width='167'><p>API credentials are no more active</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>15</p></td><td style="vertical-align:middle" width='167'><p>API credentials has been expired</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>2000</p></td><td style="vertical-align:middle" width='167'><p>authToken expired/Invalid authToken.</p></td></tbody></table>
+          schema:
+            items:
+              $ref: '#/definitions/inventrypriceStatus1'
+  /skuBackOrder:
+    post:
+      tags:
+      - Listing Managment
+      summary: API For fetching SKU Back Order Quantity for JIT Vendors
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: ApiKey
+        required: true
+        type: string
+        description: API Key.
+      responses:
+        200:
+          description: <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>14</p></td><td style="vertical-align:middle" width='167'><p>API credentials are no more active</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>15</p></td><td style="vertical-align:middle" width='167'><p>API credentials has been expired</p></td></tr></tbody></table>
+          schema:
+            $ref: '#/definitions/SkuBackOrder'
+definitions:
+  ProductFetch1:
+    properties:
+      responseCode:
+        type: integer
+        example: 0
+      responseMessage:
+        type: string
+        example: Success
+      productList:
+        type: array
+        items:
+          $ref: '#/definitions/ProductList1'
+  InventoryPricedetail1:
+    properties:
+      responseCode:
+        type: integer
+        example: 0
+      responseMessage:
+        type: string
+        example: Success
+      skus:
+        type: array
+        items:
+          $ref: '#/definitions/InventoryList1'
+  inventrypriceStatus1:
+    properties:
+      responseCode:
+        type: integer
+        example: 0
+      responseMessage:
+        type: string
+        example: Success
+      skus:
+        type: array
+        items:
+          $ref: '#/definitions/inventoryPriceList1'
+  SkuBackOrder:
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/skuBack'
+  InventoryList1:
+    type: object
+    properties:
+      moderationId:
+        type: string
+        example: 24
+      sku:
+        type: string
+        example: TEST_STORE_ABC_TESTING-004-BUY-3-FREE-1
+      requestedInvQty:
+        type: string
+        example: 11
+      approvedInvQty:
+        type: string
+        example: null
+      status:
+        type: string
+        example: Pending
+      requestedSalePrice:
+        type: string
+        example: null
+  skuBack:
+    properties:
+      vendorCode:
+        type: string
+        example: jit_15
+      sku:
+        type: string
+        example: SA2
+      qty:
+        type: string
+        example: 3
+      price:
+        type: string
+        example: 3000
+      vendorSKUCode:
+        type: string
+        example: abc123
+  ProductList1:
+    type: object
+    properties:
+      sku:
+        type: string
+        example: NYJCH00000001
+      vendorSkuCode:
+        type: string
+        example: 100061_INTIMA
+      mfgSkuCode:
+        type: string
+        example: 100061_INTIMA
+      skuName:
+        type: string
+        example: NYJCH00000001
+      mrp:
+        type: string
+        example: 1500.0
+      salePrice:
+        type: string
+        example: 1500.0
+      baseCost:
+        type: string
+        example: 1000.0
+      status:
+        type: string
+        example: 1
+      lastUpdateDate:
+        type: string
+        example: 12/04/2017 16:11:38
+      brand:
+        type: string
+        example: Natrol
+      color:
+        type: string
+        example: null
+      size:
+        type: string
+        example: null
+      weight:
+        type: string
+        example: 0.0
+      length:
+        type: string
+        example: 0.0
+      width:
+        type: string
+        example: 0.0
+      height:
+        type: string
+        example: 0.0
+      serialTracking:
+        type: string
+        example: 0
+  inventoryPriceList1:
+    type: object
+    properties:
+      moderationId:
+        type: string
+        example: 108
+      sku:
+        type: string
+        example: 224808
+      requestedInvQty:
+        type: string
+        example: 1.0
+      approvedInvQty:
+        type: string
+        example: null
+      status:
+        type: string
+        example: Pending
+      requestedSalePrice:
+        type: string
+        example: 1299.0

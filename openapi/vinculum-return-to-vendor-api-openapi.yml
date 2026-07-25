@@ -1,0 +1,456 @@
+swagger: '2.0'
+info:
+  title: Vinculum Advance Shipping Notice Return to Vendor API
+  description: API to retrieve or manipulate ASN related information.
+host: erp.vineretail.com
+tags:
+- name: Return to Vendor
+  description: API to retrieve or manipulate Return to Vendor related information.
+paths:
+  /RestWS/api/eretail/v1/rtv/create:
+    post:
+      tags:
+      - Return to Vendor
+      summary: Max no. of Lines/hit:100 API For Creating RTV(Hit Quota 40/5 min)
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/json
+      parameters:
+      - in: formData
+        name: RequestBody
+        type: string
+        description: <table class="table-style-three"><tbody><tr><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">created_loc</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">1.Eretail location code or location code of external system.<br/>2.Location code is mandatory when vendor code is passed.<br/>3.This is not mandatory when PO Code is passed</td></tr><tr align="center"><td style="vertical-align:middle">extern_rtvno</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">RTVNo of External system</td></tr><tr align="center"><td style="vertical-align:middle">po_code</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">1.Either of PO code or Vendor code or GRN code is mandatory.<br/>2.PO code can be either eRetail Po code or External PO code.<br/>3.Priority is given in the following order - grn_code -> po_code -> vendor_code.</td></tr><tr align="center"><td style="vertical-align:middle">vendor_code</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">1.Either of PO code or Vendor code or GRN code is mandatory.<br/>2.Priority is given in the following order - grn_code -> po_code -> vendor_code.</td></tr><tr align="center"><td style="vertical-align:middle">grn_code</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">1.Either of PO code or Vendor code or GRN code is mandatory.<br/>2.Priority is given in the following order - grn_code -> po_code -> vendor_code.</td></tr><tr align="center"><td style="vertical-align:middle">status</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">Valid statuses- Pending, Confirmed, Cancelled</td></tr><tr align="center"><td style="vertical-align:middle">rtv_date</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">RTV date, Date format should be like DD/MM/YYYY HH:MM:SS</td></tr><tr align="center"><td style="vertical-align:middle">rtv_type</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Mandaatory*</td><td style="vertical-align:middle">Possible values are Normal or Damage</td></tr><tr align="center"><td style="vertical-align:middle">remarks</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">RTV remarks if any</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(2000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(2000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf6</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf7</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf8</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf9</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf10</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Item(s)</b></td></tr><tr align="center"><td style="vertical-align:middle">po_ext_lineno</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">1.PO Lineno of external system.<br/>2.This is mandatory when PO Code is passed</td></tr><tr align="center"><td style="vertical-align:middle">grn_ext_lineno</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">1.GRN Lineno of external system.<br/>2.This is mandatory when GRN Code is passed</td></tr><tr align="center"><td style="vertical-align:middle">rtv_ext_lineno</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">RTV Lineno of external system</td></tr><tr align="center"><td style="vertical-align:middle">unit_base_cost</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">1.RTV source is without PO then it will be taken as the base cost for the sku for that RTV.<br/>2.RTV source is with PO then it will work as working currently.<br/>3.If unit_base_cost is not passed in the request, then in this case it will work as working currently. </td></tr><tr align="center"><td style="vertical-align:middle">qty</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">Quantity to be returned</td></tr><tr align="center"><td style="vertical-align:middle">sku</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">SKU code of the sku to be returned</td></tr><tr align="center"><td style="vertical-align:middle">reason</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Vendor Return Reasons if any(defined in codelkup table with lkupcode RTVRSN)</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(2000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(1000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf6</td><td style="vertical-align:middle">Varchar(2000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf7</td><td style="vertical-align:middle">Varchar(1000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf8</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf9</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf10</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Additional Information</b></td></tr><tr align="left"><td style="vertical-align:middle" colspan=4 >Max Allowance - 100 rtv_List items at a time.</td></tr><tr><td  colspan=5> <b>Case -</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"rtvList":[</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "created_loc":"EXTLOC",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"extern_rtvno":"EXT001",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"po_code":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"AB001",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"grn_code":"CHE000011962",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"status":"Confirmed",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"rtv_date":"14/12/2016 15:30:40",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"rtv_type":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"remarks":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf5":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf6":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf7":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf8":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf9":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf10":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"items":[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"po_ext_lineno":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"rtv_ext_lineno":"1001",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"grn_ext_lineno":"1",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"unit_base_cost":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"qty":"1",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"sku":"GPUMHWYTWY",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"reason":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"GPUMHWYTWY",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf5":"GPUMHWYTWY",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf6":"GPUMHWYTWY",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf7":"GPUMHWYTWY",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf8":"GPUMHWYTWY",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf9":"GPUMHWYTWY",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf10":"GPUMHWYTWY"</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</b><br/><br/> </tr></tbody></table><p>&nbsp;</p><br/>
+        required: true
+      - in: formData
+        name: ApiOwner
+        type: string
+        description: This Field Will Be Used To Send API Owner
+        required: true
+      - in: formData
+        name: ApiKey
+        type: string
+        description: This is the API Key
+        required: true
+      responses:
+        200:
+          description: <table border='1'width='672'>  <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td><tr align="center"><td style="vertical-align:middle" width='167'><p>508</p></td><td style="vertical-align:middle" width='167'><p>Maximum Limit Exceeded(100 Orders Max)</p></td></tr><tr  align="center"><td style="vertical-align:middle" width='167'><p>11011</p></td><td style="vertical-align:middle" width='167'><p>Either SKU [**] / po_ext_lineno [**] are not correct</p></td></tr><tr  align="center"><td style="vertical-align:middle" width='167'><p>13001</p></td><td style="vertical-align:middle" width='167'><p>All validatation related error messages Ex- Either of PO code or Vendor code is mandatory</p></td></tr><tr  align="center"><td style="vertical-align:middle" width='167'><p>13001</p></td><td style="vertical-align:middle" width='167'><p>Po Code is not found in ERP</p></td></tr><tr  align="center"><td style="vertical-align:middle" width='167'><p>13003</p></td><td style="vertical-align:middle" width='167'><p>Order Status not found in ERP</p></td></tr><tr  align="center"><td style="vertical-align:middle" width='167'><p>13004</p></td><td style="vertical-align:middle" width='167'><p>Rtv type not found in ERP</p></td></tr><tr  align="center"><td style="vertical-align:middle" width='167'><p>13005</p></td><td style="vertical-align:middle" width='167'><p>Vendor Code is not found in ERP</p></td></tr><tr  align="center"><td style="vertical-align:middle" width='167'><p>13007</p></td><td style="vertical-align:middle" width='167'><p>sku [**] not belongs to this vendor</p></td></tr><tr  align="center"><td style="vertical-align:middle" width='167'><p>13011</p></td><td style="vertical-align:middle" width='167'><p>Rtv Quantity [**] should not be greater than AVL Qty.</p></td></tr><tr  align="center"><td style="vertical-align:middle" width='167'><p>13012</p></td><td style="vertical-align:middle" width='167'><p>Rtv Quantity [**] should be less than (PO Rcvd - Previous RTV) Qty.</p></td></tr><tr  align="center"><td style="vertical-align:middle" width='167'><p>13013</p></td><td style="vertical-align:middle" width='167'><p>RTV already present with [**] status</p></td></tr><tr><td style="vertical-align:middle" colspan=5> <b>Case 1- When list contains single record<br/>{<br/> &nbsp;"responseCode":0,</br>&nbsp;"responseMessage":"Success",<br/>&nbsp;"requeststatus":{<br/></br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"uniqueKey":"EXT001",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"requestKey":"EXT001",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"outputKey":"RTV59841",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"status":"Success",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"errorDesc":null<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</b><br/><br/> <b>Case 2- When more than one records<br/>{<br/> &nbsp;"responseCode":0,</br>&nbsp;"responseMessage":"Success",<br/>&nbsp;"requestId":"lsdfjl9734jls834ojsdljfsjsdfssdfdj"<br/>&nbsp;}</b><br/><br/></td></tbody></table>
+  /RestWS/api/eretail/v2/rtv/create:
+    post:
+      tags:
+      - Return to Vendor
+      summary: Max no. of Lines/hit:100 API For Creating RTV(Hit Quota 40/5 min)
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/json
+      parameters:
+      - in: formData
+        name: RequestBody
+        type: string
+        description: <table class="table-style-three"><tbody><tr><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">created_loc</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">1.Eretail location code or location code of external system.<br/>2.Location code is mandatory when vendor code is passed.<br/>3.This is not mandatory when PO Code is passed</td></tr><tr align="center"><td style="vertical-align:middle">extern_rtvno</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">RTVNo of External system</td></tr><tr align="center"><td style="vertical-align:middle">po_code</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">1.Either of PO code or Vendor code or GRN code is mandatory.<br/>2.PO code can be either eRetail Po code or External PO code.<br/>3.Priority is given in the following order - grn_code -> po_code -> vendor_code.</td></tr><tr align="center"><td style="vertical-align:middle">vendor_code</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">1.Either of PO code or Vendor code or GRN code is mandatory.<br/>2.Priority is given in the following order - grn_code -> po_code -> vendor_code.</td></tr><tr align="center"><td style="vertical-align:middle">grn_code</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">1.Either of PO code or Vendor code or GRN code is mandatory.<br/>2.Priority is given in the following order - grn_code -> po_code -> vendor_code.</td></tr><tr align="center"><td style="vertical-align:middle">status</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">Valid statuses- Pending, Confirmed, Cancelled</td></tr><tr align="center"><td style="vertical-align:middle">rtv_date</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">RTV date, Date format should be like DD/MM/YYYY HH:MM:SS</td></tr><tr align="center"><td style="vertical-align:middle">rtv_type</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Mandaatory*</td><td style="vertical-align:middle">Possible values are Normal or Damage</td></tr><tr align="center"><td style="vertical-align:middle">remarks</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">RTV remarks if any</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(2000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(2000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf6</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf7</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf8</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf9</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf10</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Item(s)</b></td></tr><tr align="center"><td style="vertical-align:middle">po_ext_lineno</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">1.PO Lineno of external system.<br/>2.This is mandatory when PO Code is passed</td></tr><tr align="center"><td style="vertical-align:middle">grn_ext_lineno</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">1.GRN Lineno of external system.<br/>2.This is mandatory when GRN Code is passed</td></tr><tr align="center"><td style="vertical-align:middle">rtv_ext_lineno</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">RTV Lineno of external system</td></tr><tr align="center"><td style="vertical-align:middle">unit_base_cost</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">1.RTV source is without PO then it will be taken as the base cost for the sku for that RTV.<br/>2.RTV source is with PO then it will work as working currently.<br/>3.If unit_base_cost is not passed in the request, then in this case it will work as working currently. </td></tr><tr align="center"><td style="vertical-align:middle">qty</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">Quantity to be returned</td></tr><tr align="center"><td style="vertical-align:middle">sku</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">SKU code of the sku to be returned</td></tr><tr align="center"><td style="vertical-align:middle">reason</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Vendor Return Reasons if any(defined in codelkup table with lkupcode RTVRSN)</td></tr><tr align="center"><td style="vertical-align:middle">uom</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Name of the Unit of Measurement</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(2000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(1000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf6</td><td style="vertical-align:middle">Varchar(2000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf7</td><td style="vertical-align:middle">Varchar(1000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf8</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf9</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf10</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Additional Information</b></td></tr><tr align="left"><td style="vertical-align:middle" colspan=4 >Max Allowance - 100 rtv_List items at a time.</td></tr><tr><td  colspan=5> <b>Case -</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"rtvList":[</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "created_loc":"EXTLOC",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"extern_rtvno":"EXT001",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"po_code":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"AB001",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"grn_code":"CHE000011962",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"status":"Confirmed",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"rtv_date":"14/12/2016 15:30:40",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"rtv_type":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"remarks":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf5":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf6":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf7":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf8":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf9":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf10":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"items":[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"po_ext_lineno":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"rtv_ext_lineno":"1001",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"grn_ext_lineno":"1",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"unit_base_cost":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"qty":"1",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"sku":"GPUMHWYTWY",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"reason":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"uom":"INNER PACK",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"GPUMHWYTWY",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf5":"GPUMHWYTWY",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf6":"GPUMHWYTWY",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf7":"GPUMHWYTWY",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf8":"GPUMHWYTWY",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf9":"GPUMHWYTWY",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf10":"GPUMHWYTWY"</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</b><br/><br/> </tr></tbody></table><p>&nbsp;</p><br/>
+        required: true
+      - in: formData
+        name: ApiOwner
+        type: string
+        description: This Field Will Be Used To Send API Owner
+        required: true
+      - in: formData
+        name: ApiKey
+        type: string
+        description: This is the API Key
+        required: true
+      responses:
+        200:
+          description: <table border='1'width='672'>  <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td><tr align="center"><td style="vertical-align:middle" width='167'><p>508</p></td><td style="vertical-align:middle" width='167'><p>Maximum Limit Exceeded(100 Orders Max)</p></td></tr><tr  align="center"><td style="vertical-align:middle" width='167'><p>11011</p></td><td style="vertical-align:middle" width='167'><p>Either SKU [**] / po_ext_lineno [**] are not correct</p></td></tr><tr  align="center"><td style="vertical-align:middle" width='167'><p>13001</p></td><td style="vertical-align:middle" width='167'><p>All validatation related error messages Ex- Either of PO code or Vendor code is mandatory</p></td></tr><tr  align="center"><td style="vertical-align:middle" width='167'><p>13001</p></td><td style="vertical-align:middle" width='167'><p>Po Code is not found in ERP</p></td></tr><tr  align="center"><td style="vertical-align:middle" width='167'><p>13003</p></td><td style="vertical-align:middle" width='167'><p>Order Status not found in ERP</p></td></tr><tr  align="center"><td style="vertical-align:middle" width='167'><p>13004</p></td><td style="vertical-align:middle" width='167'><p>Rtv type not found in ERP</p></td></tr><tr  align="center"><td style="vertical-align:middle" width='167'><p>13005</p></td><td style="vertical-align:middle" width='167'><p>Vendor Code is not found in ERP</p></td></tr><tr  align="center"><td style="vertical-align:middle" width='167'><p>13007</p></td><td style="vertical-align:middle" width='167'><p>sku [**] not belongs to this vendor</p></td></tr><tr  align="center"><td style="vertical-align:middle" width='167'><p>13011</p></td><td style="vertical-align:middle" width='167'><p>Rtv Quantity [**] should not be greater than AVL Qty.</p></td></tr><tr  align="center"><td style="vertical-align:middle" width='167'><p>13012</p></td><td style="vertical-align:middle" width='167'><p>Rtv Quantity [**] should be less than (PO Rcvd - Previous RTV) Qty.</p></td></tr><tr  align="center"><td style="vertical-align:middle" width='167'><p>13013</p></td><td style="vertical-align:middle" width='167'><p>RTV already present with [**] status</p></td></tr><tr><td style="vertical-align:middle" colspan=5> <b>Case 1- When list contains single record<br/>{<br/> &nbsp;"responseCode":0,</br>&nbsp;"responseMessage":"Success",<br/>&nbsp;"requeststatus":{<br/></br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"uniqueKey":"EXT001",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"requestKey":"EXT001",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"outputKey":"RTV59841",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"status":"Success",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"errorDesc":null<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</b><br/><br/> <b>Case 2- When more than one records<br/>{<br/> &nbsp;"responseCode":0,</br>&nbsp;"responseMessage":"Success",<br/>&nbsp;"requestId":"lsdfjl9734jls834ojsdljfsjsdfssdfdj"<br/>&nbsp;}</b><br/><br/></td></tbody></table>
+  /RestWS/api/eretail/v1/rtv/detail:
+    post:
+      tags:
+      - Return to Vendor
+      summary: Max no. of Lines/Response:100 API For Geting RTV detail(Hit Quota 40/5 min)
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/json
+      parameters:
+      - in: formData
+        name: RequestBody
+        type: string
+        description: <table class="table-style-three"><tbody><tr><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">rtvNo</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">*Only if details by rtvNo/ExtrtvNo, Maximum 100 RTV allowed at a time</td></tr><tr align="center"><td style="vertical-align:middle" >status</td><td style="vertical-align:middle" >Array</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >&nbsp;e. g. Pending, Confirmed&nbsp;,Allocated etc.</td></tr><tr align="center"><td style="vertical-align:middle">po_code</td><td style="vertical-align:middle">Varchar</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">*Only if details by po_code</td></tr><tr align="center"><td style="vertical-align:middle">vendor_code</td><td style="vertical-align:middle">Varchar</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">*Date range filter is mandatory if passed</td></tr><tr align="center"><td style="vertical-align:middle">created_loc</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">*Date range filter is mandatory if passed</td></tr><tr align="center"><td style="vertical-align:middle">date_from</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">*Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle">date_to</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">*Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle">filterBy</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">get rtvs on the basis of updation or creation date Default:1, Possible values are 2 (update date),1(create date)</td></tr><tr align="center"><td style="vertical-align:middle">pageNumber</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Default 1. (Page Size 100 Orders)</td></tr><tr align="center"><td style="vertical-align:middle">rtvType</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Define in codelkup table with lkupcode RTVTYPE</td></tr><tr align="center"><td style="vertical-align:middle">onHold</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Hold status of RTV, Possible values are Yes or No</td></tr><td  colspan=5> <b>Case 1-Request by poCode</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"rtvNo":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;"status":["Confirmed"],</br>&nbsp;&nbsp;&nbsp;&nbsp;"po_code":"NHO14523",</br>&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"created_loc":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_from":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_to":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1"</br>&nbsp;&nbsp;&nbsp;&nbsp;"rtvType":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"onHold":""</br>&nbsp;}</b><br/><br/><br/> <b>Case 2-Request by rtvNumber</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"rtvNo":["NWB12804","ND22657"],</br>&nbsp;&nbsp;&nbsp;&nbsp;"status":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;"po_code":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"created_loc":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_from":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_to":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1"</br>&nbsp;&nbsp;&nbsp;&nbsp;"rtvType":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"onHold":""</br>&nbsp;}</b><br/><br/><br/> <b>Case 3-Request by date range filter</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"rtvNo":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;"status":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"Kn001",</br>&nbsp;&nbsp;&nbsp;&nbsp;"created_loc":"NWB",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_from":"20/09/2019 00:00:00",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_to":"24/09/2019 00:00:00",</br>&nbsp;&nbsp;&nbsp;&nbsp;"po_code":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1"</br>&nbsp;&nbsp;&nbsp;&nbsp;"rtvType":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"onHold":""</br>&nbsp;}</b><br/><br/><br/> </b><br/><br/><br/> </tr></tbody></table><p>&nbsp;</p><br/>
+        required: true
+      - in: formData
+        name: ApiOwner
+        type: string
+        description: This Field Will Be Used To Send API Owner
+        required: true
+      - in: formData
+        name: ApiKey
+        type: string
+        description: This is the API Key
+        required: true
+      responses:
+        200:
+          description: <table border='1'width='672'><h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>807</p></td><td style="vertical-align:middle" width='167'><p>No Filters Found for Fetching Orders</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>833</p></td><td style="vertical-align:middle" width='167'><p>Maximum 100 RTV allowed at a time </p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>835</p></td><td style="vertical-align:middle" width='167'><p>To date is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>901</p></td><td style="vertical-align:middle" width='167'><p>From Date is Mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>916</p></td><td style="vertical-align:middle" width='167'><p>From Date and To Date range should not be more than 7 days</p></td></tr></tbody></table>
+          schema:
+            $ref: '#/definitions/rtvdetail'
+  /RestWS/api/eretail/v3/rtv/detail:
+    post:
+      tags:
+      - Return to Vendor
+      summary: Max no. of Lines/Response:100 API For Rtv Detail(Hit Quota 40/5 min)
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: ApiOwner
+        required: true
+        type: string
+        description: API Owner.
+      - in: header
+        name: ApiKey
+        required: true
+        type: string
+        description: API Key.
+      - in: body
+        name: RtvDetailJson
+        description: <table class="table-style-three"><tbody><tr><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">rtvNo</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">*Only if details by rtvNo, Maximum 100 RTV allowed at a time</td></tr><tr align="center"><td style="vertical-align:middle" >status</td><td style="vertical-align:middle" >Array</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >&nbsp;e. g. Pending, Confirmed&nbsp;,Allocated etc.</td></tr><tr align="center"><td style="vertical-align:middle">po_code</td><td style="vertical-align:middle">Varchar</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">*Only if details by po_code</td></tr><tr align="center"><td style="vertical-align:middle">vendor_code</td><td style="vertical-align:middle">Varchar</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">*Date range filter is mandatory if passed</td></tr><tr align="center"><td style="vertical-align:middle">created_loc</td><td style="vertical-align:middle">Varchar</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">*Date range filter is mandatory if passed</td></tr><tr align="center"><td style="vertical-align:middle">date_from</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">*Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle">date_to</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">*Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle">onHold</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Hold status of RTV, Possible values are Yes or No</td></tr><tr align="center"><td style="vertical-align:middle">filterBy</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">get rtvs on the basis of updation or creation date Default:1, Possible values are 2 (update date),1(create date)</td></tr><tr align="center"><td style="vertical-align:middle">pageNumber</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Default 1. (Page Size 100 Orders)</td></tr><tr><td  colspan=5> <b>Case 1-Request by poCode</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"rtvNo":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;"status":["Confirmed"],</br>&nbsp;&nbsp;&nbsp;&nbsp;"po_code":"NHO14523",</br>&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"created_loc":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_from":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_to":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"onHold":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1"</br>&nbsp;}</b><br/><br/><br/> <b>Case 2-Request by rtvNumber</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"rtvNo":["NWB12804","ND22657"],</br>&nbsp;&nbsp;&nbsp;&nbsp;"status":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;"po_code":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"created_loc":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_from":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_to":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"onHold":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1"</br>&nbsp;}</b><br/><br/><br/> <b>Case 3-Request by date range filter</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"rtvNo":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;"po_code":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"Kn001",</br>&nbsp;&nbsp;&nbsp;&nbsp;"created_loc":"NWB",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_from":"20/9/2019 00:00:00",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_to":"24/09/2019 00:00:00",</br>&nbsp;&nbsp;&nbsp;&nbsp;"onHold":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1"</br>&nbsp;}</b><br/><br/><br/> </b><br/><br/><br/> </tr></tbody></table><p>&nbsp;</p><br/>
+        schema:
+          type: object
+          required:
+          - rtvNo
+          properties:
+            rtvNo:
+              type: string
+              items:
+                type: string
+              example:
+              - ''
+            po_code:
+              type: string
+              items:
+                type: string
+              example: ''
+            vendor_code:
+              type: string
+              items:
+                type: string
+              example: ''
+            fromDate:
+              type: string
+              example: 02/01/2022 15:40:30
+            toDate:
+              type: string
+              example: 04/01/2022 15:40:30
+            created_loc:
+              type: string
+              example: CHE
+            status:
+              type: string
+              example: []
+            onHold:
+              type: string
+              example: CHE
+            pageNumber:
+              type: string
+              example: '1'
+            filterBy:
+              type: string
+              example: 1
+      responses:
+        200:
+          description: <table border='1'width='672'><h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>807</p></td><td style="vertical-align:middle" width='167'><p>No Filters Found for Fetching Orders</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>833</p></td><td style="vertical-align:middle" width='167'><p>Maximum 100 RTV allowed at a time </p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>835</p></td><td style="vertical-align:middle" width='167'><p>To date is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>901</p></td><td style="vertical-align:middle" width='167'><p>From Date is Mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>916</p></td><td style="vertical-align:middle" width='167'><p>From Date and To Date range should not be more than 7 days</p></td></tr></tbody></table>
+          schema:
+            $ref: '#/definitions/rtvdetail'
+definitions:
+  rtvdetail:
+    properties:
+      responseCode:
+        type: integer
+        example: 0
+      responseMessage:
+        type: string
+        example: Success
+      response:
+        $ref: '#/definitions/responsertvdetail'
+  rtvList:
+    properties:
+      rtvNo:
+        type: string
+        example: NWB12804
+      poNo:
+        type: string
+        example: NHO123082
+      extPoNo:
+        type: string
+        example: NHO123082
+      vendor:
+        type: string
+        example: CKPLM
+      vendor_name:
+        type: string
+        example: ABC
+      externalVendorCode:
+        type: string
+        example: cip-2020
+      rtvDate:
+        type: string
+        example: 04/12/2018 12:34:31
+      rtvType:
+        type: string
+        example: Normal Return
+      rtvSource:
+        type: string
+        example: With PO
+      status:
+        type: string
+        example: Allocated
+      rtvAmt:
+        type: string
+        example: '78.977'
+      rtvQty:
+        type: string
+        example: '4.00'
+      taxAmt:
+        type: string
+        example: '22.909'
+      onHold:
+        type: string
+        example: '0'
+      created_loc:
+        type: string
+        example: NWH
+      updateDate:
+        type: string
+        example: 04/12/2018 12:34:31
+      remarks:
+        type: string
+        example: ''
+      userDefinedField:
+        type: array
+        items:
+          $ref: '#/definitions/userdefineddetail'
+      items:
+        type: array
+        items:
+          $ref: '#/definitions/Itemsrtvdetail'
+      del_locname:
+        type: string
+        example: FABINDIA SURFACE
+      printUrl:
+        type: string
+        example: ''
+  Itemsrtvdetail:
+    type: object
+    properties:
+      skuCode:
+        type: string
+        example: K0022
+      skuName:
+        type: string
+        example: KProduct 2
+      baseCost:
+        type: string
+        example: '127.127'
+      rtvQty:
+        type: string
+        example: '4'
+      openQty:
+        type: string
+        example: '0'
+      committedQty:
+        type: string
+        example: '0'
+      pickedQty:
+        type: string
+        example: '0'
+      shipedQty:
+        type: string
+        example: '0'
+      closedQty:
+        type: string
+        example: '0'
+      taxAmount:
+        type: string
+        example: '22.907'
+      reason:
+        type: string
+        example: ''
+      vendorskucode:
+        type: string
+        example: K01
+      size:
+        type: string
+        example: S
+      taxPercentage:
+        type: string
+        example: '0.00'
+      gstRt:
+        type: string
+        example: '5'
+      igstAmt:
+        type: string
+        example: ''
+      cgstAmt:
+        type: string
+        example: '967.00'
+      sgstAmt:
+        type: string
+        example: '967.00'
+      cesRt:
+        type: string
+        example: ''
+      cesAmt:
+        type: string
+        example: ''
+      cesNonAdvlAmt:
+        type: string
+        example: ''
+      stateCesRt:
+        type: string
+        example: ''
+      stateCesAmt:
+        type: string
+        example: ''
+      stateCesNonAdvlAmt:
+        type: string
+        example: ''
+      hsnCode:
+        type: string
+        example: '1101'
+      igstRt:
+        type: string
+        example: ''
+      cgstRt:
+        type: string
+        example: '3'
+      sgstRt:
+        type: string
+        example: '3'
+      ugstRt:
+        type: string
+        example: ''
+      ugstAmt:
+        type: string
+        example: ''
+      skuBrand:
+        type: string
+        example: ''
+      udf1:
+        type: string
+        example: '100'
+      udf2:
+        type: string
+        example: '200'
+      udf3:
+        type: string
+        example: '300'
+      udf4:
+        type: string
+        example: '40'
+      udf5:
+        type: string
+        example: '4000'
+      udf6:
+        type: string
+        example: '66'
+      udf7:
+        type: string
+        example: '66'
+      udf8:
+        type: string
+        example: '7'
+      udf9:
+        type: string
+        example: '88'
+      udf10:
+        type: string
+        example: '33'
+      lottableno:
+        type: string
+        example: '234'
+      lottableno1:
+        type: string
+        example: '234'
+      lottableno2:
+        type: string
+        example: 2019-07-20 00:00.0
+      lottableno3:
+        type: string
+        example: 2019-07-21 00:00.0
+      lottableno4:
+        type: string
+        example: 2019-07-23 00:00.0
+      lottableno5:
+        type: string
+        example: lot5
+      lottableno6:
+        type: string
+        example: lot6
+      lottableno7:
+        type: string
+        example: lot7
+      bomSKU:
+        type: string
+        example: ''
+      bomSkuName:
+        type: string
+        example: ''
+      bomType:
+        type: string
+        example: ''
+      lineNo:
+        type: string
+        example: ''
+      extLineNo:
+        type: string
+        example: ''
+  responsertvdetail:
+    properties:
+      totalRtvs:
+        type: integer
+        example: 1
+      totalPages:
+        type: integer
+        example: 1
+      currentPage:
+        type: integer
+        example: 1
+      rtvList:
+        type: array
+        items:
+          $ref: '#/definitions/rtvList'
+  userdefineddetail:
+    type: object
+    properties:
+      udf1:
+        type: string
+        example: ''
+      udf2:
+        type: string
+        example: ''
+      udf3:
+        type: string
+        example: ''
+      udf4:
+        type: string
+        example: ''
+      udf5:
+        type: string
+        example: ''
+      udf6:
+        type: string
+        example: ''
+      udf7:
+        type: string
+        example: ''
+      udf8:
+        type: string
+        example: ''
+      udf9:
+        type: string
+        example: ''
+      udf10:
+        type: string
+        example: ''

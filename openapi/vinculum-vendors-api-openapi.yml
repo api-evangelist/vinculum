@@ -1,0 +1,499 @@
+swagger: '2.0'
+info:
+  title: Vinculum Advance Shipping Notice Vendors API
+  description: API to retrieve or manipulate ASN related information.
+host: erp.vineretail.com
+tags:
+- name: Vendors
+  description: API to retrieve or manipulate Vendor related information.
+paths:
+  /RestWS/api/eretail/v1/master/vendorCreate:
+    post:
+      tags:
+      - Vendors
+      summary: API For Creating Vendor(Hit Quota 40/5 min)
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/json
+      parameters:
+      - in: formData
+        name: RequestBody
+        required: true
+        type: string
+        description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">ext_vendor_code</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Ext Vendor Code must not exceed 50 characters</td></tr><tr align="center"><td style="vertical-align:middle">parent_vendor_code</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Parent Vendor code in external system</td></tr><tr align="center"><td style="vertical-align:middle">vendor_name</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Name of the vendor</td></tr><tr align="center"><td style="vertical-align:middle">status</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Status of vendor. Possible values are - Pending Confirmation, Confirmed, Deactivated</td></tr><tr align="center"><td style="vertical-align:middle">vendor_shortname</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Short name of vendor</td></tr><tr align="center"><td style="vertical-align:middle">ext_paymentterm</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Payment Term</td></tr><tr align="center"><td style="vertical-align:middle">taxZone</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">As per the Masters</td></tr><tr align="center"><td style="vertical-align:middle">vendorCurrency</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">ISO currency code</td></tr><tr align="center"><td style="vertical-align:middle">vendorType</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible values are Outright Purchase ,Marketplace,JIT(default Outright Purcahse if not passing)</td></tr><tr align="center"><td style="vertical-align:middle">defaultDeliveryMode</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">*Conditional</td><td style="vertical-align:middle">Possible Values Drop Ship, Ship via FC, Vendor Self Delivery, Defined in Codelkup with lkupcode 'DLVRMOD'.Mandatory when vendorType is of type Marketplace.</br>This is mandatory when vendorType is of type Marketplace.</td></tr><tr align="center"><td style="vertical-align:middle">returnDays</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Return acceptance days for the Vendor</td></tr><tr align="center"><td style="vertical-align:middle">costDerivative</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible values are Gross, Net</td></tr><tr align="center">  <td style="vertical-align:middle" >shipAddress1</td>  <td style="vertical-align:middle" >Varchar(250)</td>  <td style="vertical-align:middle" >Mandatory</td>  <td style="vertical-align:middle" >line 1 of vendor's shipping address</td></tr><tr align="center"><td style="vertical-align:middle" >shipAddress2</td><td style="vertical-align:middle" >Varchar(250)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >line 2 of vendor's shipping address</td></tr><tr align="center"><td style="vertical-align:middle" >shipAddress3</td><td style="vertical-align:middle" >Varchar(250)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >line 3 of vendor's shipping address</td></tr><tr align="center"><td style="vertical-align:middle" >shipContactPerson</td><td style="vertical-align:middle" >Varchar(200)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >Contact name of person at Shipping Address</td></tr><tr align="center"><td style="vertical-align:middle" >shipPhone</td><td style="vertical-align:middle" >Varchar(20)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >Contact No. of Vendor's Shipping address</td></tr><tr align="center"><td style="vertical-align:middle" >shipEmail</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Email Id of Vendor's Shipping address</td></tr><tr align="center"><td style="vertical-align:middle" >shipCity</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >City Name of Vendor's Shipping adress</td></tr><tr align="center"><td style="vertical-align:middle" >shipState</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >State Name of Vendor's Shipping Address</td></tr><tr align="center"><td style="vertical-align:middle" >shipCountry</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >Country Name of vendor's Shipping Address</td></tr><tr align="center"><td style="vertical-align:middle" >shipPincode</td><td style="vertical-align:middle" >Varchar(10)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >Pincode of Vendor's Shipping Address</td></tr><tr align="center"><td style="vertical-align:middle" >latitude</td><td style="vertical-align:middle" >Varchar(100)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >Latitudes range from -90 to 90, e. g. 17.572375290155</td></tr><tr align="center"><td style="vertical-align:middle" >longitude</td><td style="vertical-align:middle" >Varchar(100)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >Longitudes range from -180 to 80, e. g. -179.572375290155</td></tr><tr align="center"><td style="vertical-align:middle" >billContactPerson</td><td style="vertical-align:middle" >Varchar(255)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >Contact name of person at billing Address</td></tr><tr align="center"><td style="vertical-align:middle" >billAddress1</td><td style="vertical-align:middle" >Varchar(250)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >line 1 of vendor's billing address</td></tr><tr align="center"><td style="vertical-align:middle" >billAddress2</td><td style="vertical-align:middle" >Varchar(250)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >line 2 of vendor's billing address</td></tr><tr align="center"><td style="vertical-align:middle" >billAddress3</td><td style="vertical-align:middle" >Varchar(250)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >line 3 of vendor's billing address</td></tr><tr align="center"><td style="vertical-align:middle" >billPhone</td><td style="vertical-align:middle" >Varchar(255)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >Contact No. of Vendor's billing address</td></tr><tr align="center"><td style="vertical-align:middle" >billEmail</td><td style="vertical-align:middle" >Varchar(255)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >Email Id of Vendor's billing address</td></tr><tr align="center"><td style="vertical-align:middle" >billCity</td><td style="vertical-align:middle" >Varchar(40)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >City Name of Vendor's billing adress</td></tr><tr align="center"><td style="vertical-align:middle" >billState</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >State Name of Vendor's billing Address</td></tr><tr align="center"><td style="vertical-align:middle" >billCountry</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >Country Name of vendor's billing Address</td></tr><tr align="center"><td style="vertical-align:middle" >billPincode</td><td style="vertical-align:middle" >Varchar(255)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Pincode of Vendor's billing Address</td></tr><tr align="center"><td style="vertical-align:middle" >udf1</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined fields</td></tr><tr align="center"><td style="vertical-align:middle" >udf2</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined fields</td></tr><tr align="center"><td style="vertical-align:middle" >udf3</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined fields</td></tr><tr align="center"><td style="vertical-align:middle" >udf4</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined fields</td></tr><tr align="center"><td style="vertical-align:middle" >udf5</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined fields</td></tr> <tr align="center"><td style="vertical-align:middle" >udf6</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined fields</td></tr><tr align="center"><td style="vertical-align:middle" >udf7</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined fields</td></tr><tr align="center"><td style="vertical-align:middle" >udf8</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined fields</td></tr><tr align="center"><td style="vertical-align:middle" >udf9</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined fields</td></tr><tr align="center"><td style="vertical-align:middle" >udf10</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined fields</td></tr> <tr align="center"><td style="vertical-align:middle" >cstno</td><td style="vertical-align:middle" >Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">CST of vendor</td></tr><tr align="center"><td style="vertical-align:middle" >vatno</td><td style="vertical-align:middle" >Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">vat of vendor</td></tr><tr align="center"><td style="vertical-align:middle" >tinno</td><td style="vertical-align:middle" >Varchar(20)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">tin of vendor</td></tr><tr align="center"><td style="vertical-align:middle" >digitalsignatureurl</td><td style="vertical-align:middle" >Varchar(300)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">digital signature Url of vendor</td></tr><tr align="center"><td style="vertical-align:middle" >digitalsignaturebytestream</td><td style="vertical-align:middle" >Byte Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle" >linkToStore</td><td style="vertical-align:middle" >Varchar</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">1 or more than 1 store can be linked comma seprated</td></tr><tr align="center"><td style="vertical-align:middle" >locCode</td><td style="vertical-align:middle" >Varchar(5)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">Mandatory to be filled in case VendorType = "JIT" else non-mandatory.</td></tr><tr align="center"><td style="vertical-align:middle" >byPassSKUVendorLink</td><td style="vertical-align:middle" >Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible values are YES or NO</td></tr><tr align="center"><td style="vertical-align:middle" >invoiceNoBy</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible values are market place  or self</td></tr><tr align="center"><td style="vertical-align:middle" >allowHopping</td><td style="vertical-align:middle" >Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible values are YES or NO</td></tr><tr align="center"><td style="vertical-align:middle" >sla</td><td style="vertical-align:middle" >smallint</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible values are in hours only</td></tr><tr align="center"><td style="vertical-align:middle" >panNo</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">PAN No. of Vendor</td></tr><tr align="center"><td style="vertical-align:middle" >bankName</td><td style="vertical-align:middle" >Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">bankName</td></tr><tr align="center"><td style="vertical-align:middle" >accountNo</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">accountNo</td></tr><tr align="center"><td style="vertical-align:middle" >branchName</td><td style="vertical-align:middle" >Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">branchName</td></tr><tr align="center"><td style="vertical-align:middle" >branchAddress</td><td style="vertical-align:middle" >Varchar(250)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">branchAddress</td></tr><tr align="center"><td style="vertical-align:middle" >ifscCode</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">IFSCCoder</td></tr><tr align="center"><td style="vertical-align:middle" >swiftCode</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">swiftCode</td></tr><tr align="center"><td style="vertical-align:middle" >micrCode</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">MICRCode</td></tr><tr align="center"><td style="vertical-align:middle" >minOrderValue</td><td style="vertical-align:middle" >Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">minOrderValue</td></tr><tr align="center"><td style="vertical-align:middle" >isTaxExempted</td><td style="vertical-align:middle" >Varchar(12)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">isTaxExempted</td></tr><tr align="center"><td style="vertical-align:middle" >glCode</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">GLCode</td></tr><tr align="center"><td style="vertical-align:middle" >isCostBasedOnMargin</td><td style="vertical-align:middle" >Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">isCostBasedOnMargin</td></tr><tr align="center"><td style="vertical-align:middle" >gstinno</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">gstinno of Vendor</td></tr><tr align="center"><td style="vertical-align:middle" >endEffDate</td><td style="vertical-align:middle" >Varchar(12)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">PAN No. of Vendor</td></tr><tr align="center"><td style="vertical-align:middle" >returnFlag</td><td style="vertical-align:middle" >tinyint(1)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible values are 1 and 0</td></tr><tr align="center"><td style="vertical-align:middle" >isAutoPO</td><td style="vertical-align:middle" >Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible values are True or false</td></tr><tr align="center"><td style="vertical-align:middle" >licenseNo</td><td style="vertical-align:middle" >Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">license No. of Vendor</td></tr><tr align="center"><td style="vertical-align:middle" >otpValidation</td><td style="vertical-align:middle" >Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible value Yes or No </td></tr><tr align="center"><td style="vertical-align:middle" >vendorChannelType</td><td style="vertical-align:middle" >Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Channel associated with Vendor, Defined in Codelkup with lkupcode 'VENDCHNLTYP'</td></tr><tr align="center"><td style="vertical-align:middle" >skipPhoneEmailValidation</td><td style="vertical-align:middle" >Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible value Yes or No </td></tr><tr align="center"><td style="vertical-align:middle" >diRecValidation</td><td style="vertical-align:middle" >Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle"> Pass recvValidCode to be applied for Direct Inbound</td></tr><tr align="center"><td style="vertical-align:middle" >poRecValidation</td><td style="vertical-align:middle" >Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Pass recvValidCode to be applied for PO Inbound(Priority - PO level if provided)</td></tr><tr align="center"><td style="vertical-align:middle" >asnRecValidation</td><td style="vertical-align:middle" >Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Pass recvValidCode to be applied for ASN Inbound</td></tr><tr align="center"><td style="vertical-align:middle" >vendorToEmail</td><td style="vertical-align:middle" >Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Vendor:To Email</td></tr><tr align="center"><td style="vertical-align:middle" >vendorCcEmail</td><td style="vertical-align:middle" >Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Vendor:CC Email</td></tr><tr><td style="vertical-align:middle" colspan=4> <b>Input JSON Format-<br/> {<br/>&nbsp;&nbsp;&nbsp;"vendor":<br/>&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"ext_vendor_code":"VEND001",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"parent_vendor_code":"ABC123",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vendor_name":"RG Textiles",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"status":" Pending Confirmation",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vendor_shortname":"Raghu Ram",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"ext_paymentterm":"7 DAYS",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"taxZone":"delhi",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vendorCurrency":"INR",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vendorType":"Outright Purchase",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"defaultDeliveryMode":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"returnDays":"10",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"costDerivative":"Gross",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shipAddress1":"dslkjfgnsjkvn",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shipAddress2":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shipAddress3":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shipContactPerson":"Mr. Raghu",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shipPhone":"9876543210",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shipEmail":"rgtax@gmail.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shipState":"Haryana",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shipCountry":"INDIA",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shipCity":"Ambala",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shipPincode":"382039",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"latitude":"54.23",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"longitude":"120.22",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"billAddress1":"dslkjfgnsjkvn",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"billAddress2":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"billAddress3":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"billContactPerson":"Mr. Raghu",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"billPhone":"9876543210",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"billEmail":"rgtax@gmail.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"billState":"Haryana",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"billCountry":"INDIA",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"billCity":"Ambala",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"billPincode":"382039",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf5":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf6":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf7":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf8":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf9":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf10":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"cstno":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vatno":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"tinno":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"digitalsignatureurl":" http://static.vineretail.com/eRetailWeb/ClientLogo.jpg ",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"digitalsignaturebytestream":" /9j/4AAQSkZJRgABAQEAYABgAAD/4QBaRXhpZ",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"linkToStore":"IWH,UWH,LWH",<br/>&nbsp;&nbsp;&nbsp;"locCode":"IWH",<br/>&nbsp;&nbsp;&nbsp;"byPassSKUVendorLink":"YES",<br/>&nbsp;&nbsp;&nbsp;"invoiceNoBy":"",<br/>&nbsp;&nbsp;&nbsp;"allowHopping":"",<br/>&nbsp;&nbsp;&nbsp;"sla":"",<br/>&nbsp;&nbsp;&nbsp;"panNo":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"bankName":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"accountNo":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"branchName":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"branchAddress":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"ifscCode":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"swiftCode":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"micrCode":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"minOrderValue":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"isTaxExempted":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"glCode":"",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"isCostBasedOnMargin":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"gstinno":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"endEffDate":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"returnFlag":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"isAutoPO":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"licenseNo":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"otpValidation":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vendorChannelType":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skipPhoneEmailValidation":"",<br/>&nbsp;&nbsp;&nbsp;"diRecValidation":"",<br/>&nbsp;&nbsp;&nbsp;"poRecValidation":"",<br/>&nbsp;&nbsp;&nbsp;"asnRecValidation":"",<br/>&nbsp;&nbsp;&nbsp;"vendorToEmail":["empire12@gmail.com","samsung10@gmail.com"],<br/>&nbsp;&nbsp;&nbsp;"vendorCcEmail":["empire1@gmail.com","samsung1@gmail.com"]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;}</b></tbody></table>
+      - in: formData
+        name: ApiOwner
+        required: true
+        type: string
+        description: API Owner.
+      - in: formData
+        name: ApiKey
+        required: true
+        type: string
+        description: API Key.
+      responses:
+        200:
+          description: <table border='1'width='672'>  <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>1001</p></td><td style="vertical-align:middle" width='167'><p>Vendor Creation Error while processing</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>1002</p></td><td style="vertical-align:middle" width='167'><p>Ext Vendor Code is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>1003</p></td><td style="vertical-align:middle" width='167'><p>Ship Phone length should not be greater than 20 characters</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>1004</p></td><td style="vertical-align:middle" width='167'><p>Ship Email length should not be greater than 50 characters</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>E10117</p></td><td style="vertical-align:middle" width='167'><p> Please Enter Valid TOMail {0}</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>E10118</p></td><td style="vertical-align:middle" width='167'><p>Please Enter Valid CCMail {0}</p></td></tr></tbody></table>
+          schema:
+            $ref: '#/definitions/VendorCreateResponse'
+  /RestWS/api/eretail/v1/vendor/vendordetail:
+    post:
+      tags:
+      - Vendors
+      summary: Max no. of Lines/Response:100 API For Vendor Details(Hit Quota 40/5 min)
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/json
+      parameters:
+      - in: formData
+        name: RequestBody
+        type: string
+        description: <table class="table-style-three"><tbody><tr><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">vendorCodes</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">*Only if details by vendor, Max 100</td></tr><tr align="center"><td style="vertical-align:middle">date_from</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">*Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle">date_to</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">*Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle">pageNumber</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Default 1. (Page Size 100 Orders)</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Additional Information</b></td></tr><tr align="left"><td style="vertical-align:middle" colspan=4 >Max Allowance - 100 vendorCodes at time.</td></tr><tr><td  colspan=5> <b>Case 1- When Vendor List is passed</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"vendorCodes":["VEND001"],</br>&nbsp;&nbsp;&nbsp;&nbsp;"date_from":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_to":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1" &nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;<br/>&nbsp;}</b><br/><br/><br/> <b>Case 2- With Date Range</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"vendorCodes":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;"date_from":"01/08/2017 00:00:00",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_to":"01/08/2017 00:00:00",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1" &nbsp;&nbsp;&nbsp;&nbsp<br/>&nbsp;&nbsp;&nbsp;&nbsp;}</b></td></tr></tbody></table><p>&nbsp;</p><br/>
+        required: true
+      - in: formData
+        name: ApiOwner
+        type: string
+        description: This Field Will Be Used To Send API Owner
+        required: true
+      - in: formData
+        name: ApiKey
+        type: string
+        description: This is the API Key
+        required: true
+      responses:
+        200:
+          description: <table border='1'width='672'>  <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>3005</p></td><td style="vertical-align:middle" width='167'><p>No. of Vendors cannot be more than 100</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>3006</p></td><td style="vertical-align:middle" width='167'><p>Either Vendor code OR date is mandatory</p></td></tr></tbody></table>
+          schema:
+            $ref: '#/definitions/vendordetail'
+  /RestWS/api/eretail/v1/vendor/vendlocskumapping/create:
+    post:
+      tags:
+      - Vendors
+      summary: Max no. of Lines/hit:50 API For Vendor Location SKU Mapping(Hit Quota 40/5 min)
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: ApiOwner
+        required: true
+        type: string
+        description: API Owner.
+      - in: header
+        name: ApiKey
+        required: true
+        type: string
+        description: API Key.
+      - in: body
+        name: VendlocskumappingJSON
+        description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">skuCode</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Sku code as per masters</td></tr><tr align="center"><td style="vertical-align:middle">vendorSkuCode</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Seller SKU code if any</td></tr><tr align="center"><td style="vertical-align:middle">vendorCode</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Vendor code as per masters</td></tr><tr align="center"><td style="vertical-align:middle">skuCost</td><td style="vertical-align:middle">decimal(20,5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">It should be numeric value</td></tr><tr align="center"><td style="vertical-align:middle">leadTime</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Numeric values in Days</td></tr><tr align="center"><td style="vertical-align:middle">minOrderQty</td><td style="vertical-align:middle">decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">It should be numeric value</td></tr><tr align="center"><td style="vertical-align:middle">maxOrderQty</td><td style="vertical-align:middle">decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">It should be numeric value</td></tr><tr align="center"><td style="vertical-align:middle">locCode</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Location Code</td></tr><tr align="center"><td style="vertical-align:middle">purchaseUnitFactor</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">It should be numeric value</td></tr><tr align="center"><td style="vertical-align:middle">isPrimary</td><td style="vertical-align:middle">Integer(1)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible values are 1 or 0</td></tr><tr align="center"><td style="vertical-align:middle">isActive</td><td style="vertical-align:middle">Integer(1)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible values are 1 or 0</td></tr><tr align="center"><td style="vertical-align:middle">returnFlag</td><td style="vertical-align:middle">Integer(1)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible values are 1 or 0</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">skuMRP</td><td style="vertical-align:middle">decimal(50,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Sku MRP</td></tr><tr align="center"><td style="vertical-align:middle">marginPrec</td><td style="vertical-align:middle">decimal(20,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Margin Percentage</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Additional Information</b></td></tr><tr align="left"><td style="vertical-align:middle" colspan=4 >Max Allowance - 50 itemList at a time</td></tr><tr><td style="vertical-align:middle" colspan=4> <b>JSON Format</br>&nbsp;{</br>&nbsp;"itemList":[</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skuCode":"BookX",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vendorSkuCode":"BookY",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vendorCode":"12345",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skuCost":"100.000",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"leadTime":"15",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"minOrderQty":"10",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"maxOrderQty":"500",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"locCode":"NWB",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"purchaseUnitFactor":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"isPrimary":"0",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"isActive":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"returnFlag":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf5":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skuMRP":"120.0",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"marginPrec":"10.0"</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]</br>&nbsp;}</b></br></br></tbody></table>
+        schema:
+          type: object
+          required:
+          - skuCode
+          - vendorSkuCode
+          - vendorCode
+          - skuCost
+          - locCode
+          properties:
+            itemList:
+              type: array
+              items:
+                $ref: '#/definitions/vendlocskumapping0'
+      responses:
+        200:
+          description: <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>1001</p></td><td style="vertical-align:middle" width='167'><p>Specified Vendor is  not found in the system</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>1017</p></td><td style="vertical-align:middle" width='167'><p>Sku Cost must be numeric and non-negative</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>1018</p></td><td style="vertical-align:middle" width='167'><p>Max Order qty  must be numeric and non-negative</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>1019</p></td><td style="vertical-align:middle" width='167'><p>Min Order qty  must be numeric and non-negative</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9006</p></td><td style="vertical-align:middle" width='167'><p>Invalid Location Provided</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>2009</p></td><td style="vertical-align:middle" width='167'><p>Vendor code is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>5017</p></td><td style="vertical-align:middle" width='167'><p>Loc code is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>5024</p></td><td style="vertical-align:middle" width='167'><p>Sku code is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9231</p></td><td style="vertical-align:middle" width='167'><p>Maximum limit exceeded</p></td></tr></tbody></table><table> <tbody> <td style="vertical-align:middle" colspan=4> <b>Success Response</b><br/>{<br/>&nbsp;&nbsp;"responseCode":0,<br/>&nbsp;&nbsp;"responseMessage":"Success",<br/>&nbsp;&nbsp;"response":[</br>&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"responseCode":0,</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"responseMessage":"SUCCESS",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"outputData":"1008"</br>&nbsp;&nbsp;&nbsp;&nbsp;}</br>&nbsp;&nbsp;]<br/>}</b></tbody></table>
+  /RestWS/api/eretail/v1/vendor/vendorSkuMapping/create:
+    post:
+      tags:
+      - Vendors
+      summary: Max no. of Lines/hit:50 API For Vendor SKU Mapping(Hit Quota 40/5 min)
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: ApiOwner
+        required: true
+        type: string
+        description: API Owner.
+      - in: header
+        name: ApiKey
+        required: true
+        type: string
+        description: API Key.
+      - in: body
+        name: VendorSkuMappingJSON
+        description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"> <td style="vertical-align:middle">skuCode</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">SKU Code as per masters.</td></tr><tr align="center"><td style="vertical-align:middle">vendorSkuCode</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Seller SKU code if any</td></tr><tr align="center"><td style="vertical-align:middle">vendorCode</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Vendor code as per masters</td></tr><tr align="center"><td style="vertical-align:middle">skuCost</td><td style="vertical-align:middle">decimal(50,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">It should be numeric value</td></tr><tr align="center"><td style="vertical-align:middle">leadTime</td><td style="vertical-align:middle">int(11)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Numeric values in Days</td></tr><tr align="center"><td style="vertical-align:middle">minOrderQty</td><td style="vertical-align:middle">decimal(7,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">It should be numeric value</td></tr><tr align="center"><td style="vertical-align:middle">maxOrderQty</td><td style="vertical-align:middle">decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">It should be numeric value</td></tr><tr align="center"><td style="vertical-align:middle">purchaseUnitFactor</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">It should be numeric value</td></tr><tr align="center"><td style="vertical-align:middle">isPrimary</td><td style="vertical-align:middle">Boolean</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Possible values are true or false</td></tr><tr align="center"><td style="vertical-align:middle">isActive</td><td style="vertical-align:middle">Boolean</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Possible values are true or false</td></tr><tr align="center"><td style="vertical-align:middle">returnFlag</td><td style="vertical-align:middle">Boolean</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Possible values are true or false</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optaional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optaional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">stdMargin</td><td style="vertical-align:middle">Decimal(20,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Margin%</td></tr><tr align="center"><td style="vertical-align:middle">mrp</td><td style="vertical-align:middle">Decimal(50,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Sku Mrp</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Additional Information</b></td></tr><tr align="left"><td style="vertical-align:middle" colspan=4 >Max Allowance - 50 itemList at a time</td></tr><tr><td style="vertical-align:middle" colspan=4><b>JSON Format</br>&nbsp;{</br>&nbsp;"itemList":[</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skuCode":"DS_SKU_005",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vendorSkuCode":"Test",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vendorCode":"RHVET",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skuCost":"100.000",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"leadTime":"15",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"minOrderQty":"10",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"maxOrderQty":"500",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"purchaseUnitFactor":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"isPrimary":"true",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"isActive":"false",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"returnFlag":"false",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf5":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"stdMargin":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"mrp":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]</br>&nbsp;}</b></br></br></tbody></table>
+        schema:
+          type: object
+          required:
+          - skuCode
+          - vendorSkuCode
+          - vendorCode
+          - skuCost
+          properties:
+            itemList:
+              type: array
+              items:
+                $ref: '#/definitions/vendorSkuMapping0'
+      responses:
+        200:
+          description: <table border='1'width='672'><h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message. </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>0</p></td><td style="vertical-align:middle" width='167'><p>Success.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>5</p></td><td style="vertical-align:middle" width='167'><p>Empty Request.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9</p></td><td style="vertical-align:middle" width='167'><p>Generic Error.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>18</p></td><td style="vertical-align:middle" width='167'><p>API Module Misconfigured</p>.</td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>5111</p></td><td style="vertical-align:middle" width='167'><p>Max Limit Exceeded(50 Sku Max)</p></td></tr></tbody><table><table><tbody><td style="vertical-align:middle" colspan=4> <b>Success Response</b><br/>{<br/>&nbsp;&nbsp;"responseCode":0,<br/>&nbsp;&nbsp;"responseMessage":"Success",<br/>&nbsp;&nbsp;"response":[</br>&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skuCode":"DS_SKU_005",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vendorCode":"RHVET",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"status":"Success",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"message":"Record Successfully Saved/update"</br>&nbsp;&nbsp;&nbsp;&nbsp;}</br>&nbsp;&nbsp;]<br/>}</b></tbody></table>
+definitions:
+  vendordetail:
+    properties:
+      responseCode:
+        type: integer
+        example: 0
+      responseMessage:
+        type: string
+        example: Success
+      totalVendors:
+        type: integer
+        example: 1
+      totalPages:
+        type: integer
+        example: 1
+      currentPage:
+        type: integer
+        example: 1
+      vendorList:
+        type: array
+        items:
+          $ref: '#/definitions/VendorList'
+  vendlocskumapping0:
+    properties:
+      skuCode:
+        type: string
+        example: BookX
+      vendorSkuCode:
+        type: string
+        example: BookY
+      vendorCode:
+        type: string
+        example: '12345'
+      skuCost:
+        type: string
+        example: '100.000'
+      leadTime:
+        type: string
+        example: '15'
+      minOrderQty:
+        type: string
+        example: '10'
+      maxOrderQty:
+        type: string
+        example: '500'
+      locCode:
+        type: string
+        example: NWB
+      purchaseUnitFactor:
+        type: string
+        example: '1'
+      isPrimary:
+        type: string
+        example: '0'
+      isActive:
+        type: string
+        example: '1'
+      returnFlag:
+        type: string
+        example: '1'
+      udf1:
+        type: string
+        example: ''
+      udf2:
+        type: string
+        example: ''
+      udf3:
+        type: string
+        example: ''
+      udf4:
+        type: string
+        example: ''
+      udf5:
+        type: string
+        example: ''
+      skuMRP:
+        type: string
+        example: '120.0'
+      marginPrec:
+        type: string
+        example: '10.0'
+  VendorList:
+    type: object
+    properties:
+      vendorCode:
+        type: string
+        example: VEND001
+      vendorName:
+        type: string
+        example: RG Textiles
+      status:
+        type: string
+        example: Pending Confirmation
+      vendorShortName:
+        type: string
+        example: Raghu Ram
+      paymentTerm:
+        type: string
+        example: 7DAYS
+      taxZone:
+        type: string
+        example: delhi
+      vendorCurrency:
+        type: string
+        example: INR
+      vendorType:
+        type: string
+        example: Outright Purchase
+      defaultDeliveryMode:
+        type: string
+        example: ''
+      shipAddress1:
+        type: string
+        example: dslkjfgnsjkvn
+      shipAddress2:
+        type: string
+        example: ''
+      shipAddress3:
+        type: string
+        example: ''
+      shipContactPerson:
+        type: string
+        example: Mr.Raghu
+      shipPhone:
+        type: string
+        example: '9876543210'
+      shipEmail:
+        type: string
+        example: rgtax@gmail.com
+      shipstate:
+        type: string
+        example: Haryana
+      shipCountry:
+        type: string
+        example: INDIA
+      shipCity:
+        type: string
+        example: Ambala
+      shipPinCode:
+        type: string
+        example: '382039'
+      billAddress1:
+        type: string
+        example: dslkjgnsjkvn
+      billAddress2:
+        type: string
+        example: ''
+      billAddress3:
+        type: string
+        example: ''
+      billContactPerson:
+        type: string
+        example: Mr.Raghu
+      billPhone:
+        type: string
+        example: '9876543210'
+      billEmail:
+        type: string
+        example: rgtax@gmail.com
+      billstate:
+        type: string
+        example: Haryana
+      billCountry:
+        type: string
+        example: INDIA
+      billCity:
+        type: string
+        example: Ambala
+      billPincode:
+        type: string
+        example: '382039'
+      udf1:
+        type: string
+        example: ''
+      udf2:
+        type: string
+        example: ''
+      udf3:
+        type: string
+        example: ''
+      udf4:
+        type: string
+        example: ''
+      udf5:
+        type: string
+        example: ''
+      cstno:
+        type: string
+        example: ''
+      vatno:
+        type: string
+        example: ''
+      tinno:
+        type: string
+        example: ''
+      digitalSignatureUrl:
+        type: string
+        example: http://static.vineretail.com/eRetailWeb/50/LogoImages/ClientLogo.jpg
+      jitVendorLocation:
+        type: string
+        example: NWB
+      jitLocationPincode:
+        type: string
+        example: '123456'
+      creditDays:
+        type: string
+        example: 100% Advance
+      pan_ITNumber:
+        type: string
+        example: ''
+      GSTno:
+        type: string
+        example: ''
+      Longitute:
+        type: string
+        example: '120.22'
+      GLCode:
+        type: string
+        example: vend001
+      Latitude:
+        type: string
+        example: '54.23'
+      ParentVendor:
+        type: string
+        example: ''
+      bankName:
+        type: string
+        example: ''
+      accountNo:
+        type: string
+        example: ''
+      branchName:
+        type: string
+        example: ''
+      branchAddress:
+        type: string
+        example: ''
+      ifscCode:
+        type: string
+        example: ''
+      swiftCode:
+        type: string
+        example: ''
+      micrCode:
+        type: string
+        example: ''
+      noOfExpiryDays:
+        type: string
+        example: ''
+      minOrderValue:
+        type: string
+        example: ''
+      isTaxExempted:
+        type: string
+        example: ''
+      sorDays:
+        type: string
+        example: ''
+      isCostBasedOnMargin:
+        type: string
+        example: ''
+      licenseNo:
+        type: string
+        example: ''
+      locationType:
+        type: string
+        example: ''
+      vendorToEmail:
+        type: string
+        example: []
+      vendorCcEmail:
+        type: string
+        example: []
+  vendorSkuMapping0:
+    properties:
+      skuCode:
+        type: string
+        example: DS_SKU_005
+      vendorSkuCode:
+        type: string
+        example: Test
+      vendorCode:
+        type: string
+        example: RHVET
+      skuCost:
+        type: string
+        example: '100.000'
+      leadTime:
+        type: string
+        example: '15'
+      minOrderQty:
+        type: string
+        example: '10'
+      maxOrderQty:
+        type: string
+        example: '500'
+      purchaseUnitFactor:
+        type: string
+        example: '1'
+      isPrimary:
+        type: string
+        example: 'true'
+      isActive:
+        type: string
+        example: 'false'
+      returnFlag:
+        type: string
+        example: 'false'
+      udf1:
+        type: string
+        example: ''
+      udf2:
+        type: string
+        example: ''
+      udf3:
+        type: string
+        example: ''
+      udf4:
+        type: string
+        example: ''
+      udf5:
+        type: string
+        example: ''
+      stdMargin:
+        type: string
+        example: ''
+      mrp:
+        type: string
+        example: ''
+  vendorCre:
+    properties:
+      ext_vendor_code:
+        type: string
+        example: VEND001
+      outputKey:
+        type: string
+        example: VEND001
+      status:
+        type: string
+        example: Success
+      errorDesc:
+        type: string
+        example: ''
+  VendorCreateResponse:
+    properties:
+      responseCode:
+        type: integer
+        example: 0
+      responseMessage:
+        type: string
+        example: Success
+      requestStatus:
+        $ref: '#/definitions/vendorCre'

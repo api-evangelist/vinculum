@@ -1,0 +1,720 @@
+swagger: '2.0'
+info:
+  title: Vinculum Advance Shipping Notice Order Returns API
+  description: API to retrieve or manipulate ASN related information.
+host: erp.vineretail.com
+tags:
+- name: Order Returns
+  description: API to retrieve or create return for an order.
+paths:
+  /RestWS/api/eretail/v1/order/return:
+    post:
+      tags:
+      - Order Returns
+      summary: Max no. of Lines/hit:100 API For Returning an Order(Hit Quota 40/5 min)
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/json
+      parameters:
+      - in: formData
+        name: RequestBody
+        required: true
+        type: string
+        description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle" >requestType</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >requestType should be like Request or Request & Inbound</td></tr><tr align="center"><td style="vertical-align:middle" >returnType</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >returnType should be like RTO or Delivered Return</td></tr><tr align="center"><td style="vertical-align:middle" >returnBin</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >Return Bin</td></tr><tr align="center"><td style="vertical-align:middle" >order_location</td><td style="vertical-align:middle" >Varchar(3)</td><td style="vertical-align:middle" >Conditional</td><td style="vertical-align:middle" >eRetail Location Code or loccode of external system. API will pick Loc Code from Order API configuration, if single Location Code is configured. If API is mapped with multiple locations, it is mandatory to provide the field in request</td></tr><tr align="center"><td style="vertical-align:middle" >order_no</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >Orderno from external system</td></tr><tr align="center"><td style="vertical-align:middle" >invoice_no</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >Either the invoice_no or tracking_no needed</td></tr><tr align="center"><td style="vertical-align:middle" >tracking_no</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >Either the invoice_no or tracking_no needed</td></tr><tr align="center"><td style="vertical-align:middle" >status</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >&nbsp;e. g.<b> Pending, Confirmed.</b> Master Code:ODRSTS&nbsp;</td></tr><tr align="center"><td style="vertical-align:middle" >custRetCode</td><td style="vertical-align:middle" >Varchar(12)</td><td style="vertical-align:middle" >Optional*</td><td style="vertical-align:middle" >Mandatory In case of Cancellation.</td></tr><tr align="center"><td style="vertical-align:middle" >extCustRetCode</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >Return Customer Code from External System</td></tr><tr align="center"><td style="vertical-align:middle" >return_date</td><td style="vertical-align:middle" >datetime</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >Format given in Generic Information section</td></tr><tr align="center"><td style="vertical-align:middle" >customer_name</td><td style="vertical-align:middle" >Varchar(100)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >If not passed will pick from order</td></tr><tr align="center"><td style="vertical-align:middle" >customer_address1</td><td style="vertical-align:middle" >Varchar(1000)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >If not passed will pick from order</td></tr><tr align="center"><td style="vertical-align:middle" >customer_address2</td><td style="vertical-align:middle" >Varchar(200)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >If not passed will pick from order</td></tr><tr align="center"><td style="vertical-align:middle" >customer_address3</td><td style="vertical-align:middle" >Varchar(200)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >If not passed will pick from order</td></tr><tr align="center"><td style="vertical-align:middle" >customer_address4</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >If not passed will pick from order</td></tr><tr align="center"><td style="vertical-align:middle" >customer_country</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >If not passed will pick from order</td></tr><tr align="center"><td style="vertical-align:middle" >customer_state</td><td style="vertical-align:middle" >int(11)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >If not passed will pick from order</td></tr><tr align="center"><td style="vertical-align:middle" >customer_city</td><td style="vertical-align:middle" >Varchar(200)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" ></td></tr><tr align="center"><td style="vertical-align:middle" >customer_pincode</td><td style="vertical-align:middle" >Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle" >If not passed will pick from order</td></tr><tr align="center"><td style="vertical-align:middle" >customer_email</td><td style="vertical-align:middle" >Varchar(255)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >If not passed will pick from order</td></tr><tr align="center"><td style="vertical-align:middle" >remarks</td><td style="vertical-align:middle" >Varchar(5000)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >If not passed then first item 'return_reason' will be set.</td></tr><tr align="center"><td style="vertical-align:middle" >transporter</td><td style="vertical-align:middle" >int(11)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >Transportercode as per masters</td></tr><tr align="center"><td style="vertical-align:middle" >category</td><td style="vertical-align:middle" >Varchar(200)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >Define in codelkup table with lkupcode DRTYPE</td></tr><tr align="center"><td style="vertical-align:middle" >coupon</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >Valid Coupon No</td></tr><tr align="center"><td style="vertical-align:middle" >udf1</td><td style="vertical-align:middle" >Varchar(2000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">UDF1 must NOT be greater than 2000 characters</td></tr><tr align="center"><td style="vertical-align:middle" >udf2</td><td style="vertical-align:middle" >Varchar(2000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle"> UDF2 must NOT be greater than 2000 characters</td></tr><tr align="center"><td style="vertical-align:middle" >udf3</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf4</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf5</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf6</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf7</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf8</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf9</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf10</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle" >geoType</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Conditional</td><td style="vertical-align:middle" > Geocode system type (eg. What3Words).</td></tr><tr align="center"><td style="vertical-align:middle" >geoAddress</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >Customer's ship to geocode address</td></tr><tr align="center"><td style="vertical-align:middle" >geoLatitude</td><td style="vertical-align:middle" >Text</td><td style="vertical-align:middle" >Conditional</td><td style="vertical-align:middle" >Geocode latitude, Geotype is mandatory for this field</td></tr><tr align="center"><td style="vertical-align:middle" >geoLongitude</td><td style="vertical-align:middle" >Text</td><td style="vertical-align:middle" >Conditional</td><td style="vertical-align:middle" >Geocode longitude, Geotype is mandatory for this field</td></tr><tr align="center"><td style="vertical-align:middle" >return_tracking_no</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" > Reverse AWB No</td></tr><tr align="center"><td style="vertical-align:middle" >transporterName</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" > If both Transcode and transporterName are present, Transcode takes priority, and the transporterName is retrieved accordingly. Otherwise, the provided value is used. </td></tr><tr align="center"><td style="vertical-align:middle" >updatedPrice</td><td style="vertical-align:middle" >decimal(10,3)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" > The default value will be set to the sum of the line-level updated prices, unless a specific value is provided in this field.</td></tr><tr align="center"><td style="vertical-align:middle" >delType</td><td style="vertical-align:middle" >Varchar(200)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >Accepted Values are PickUp, Delivery or No PickUp, By default, the value will be set to PickUp if not provided.</td></tr><tr align="center"><td style="vertical-align:middle" >referenceNo</td><td style="vertical-align:middle" >Varchar(255)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >Tracking Number (Must be unique)</td></tr><tr align="center"><td style="vertical-align:middle" >customer_altPhoneNo</td><td style="vertical-align:middle" >Varchar(20)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >If not passed will pick from order</td></tr><tr align="center"><td style="vertical-align:middle" >customer_phoneNo</td><td style="vertical-align:middle" >Varchar(20)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >If not passed will pick from order</td></tr><tr align="center"><td style="vertical-align:middle" >customer_altEmail</td><td style="vertical-align:middle" >Varchar(255)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >If not passed will pick from order</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Items Fields</b></td></tr><tr align="center"><td style="vertical-align:middle" >lineno</td><td style="vertical-align:middle" >smallint(6)</td><td style="vertical-align:middle" >Conditional</td><td style="vertical-align:middle" >Mandatory If the order is having more than one Order Line for same SKU</td></tr><tr align="center"><td style="vertical-align:middle" >ext_lineno</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >Line no of external system</td></tr><tr align="center"><td style="vertical-align:middle" >sku</td><td style="vertical-align:middle" >Varchar(20)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >Sku code as per masters</td></tr><tr align="center"><td style="vertical-align:middle" >bagId</td><td style="vertical-align:middle" >Varchar(250)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" ></td></tr><tr align="center"><td style="vertical-align:middle" >channelSkuCode</td><td style="vertical-align:middle" >Varchar(100)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >External System SKU code/Marketplace SKU code</td></tr><tr align="center"><td style="vertical-align:middle" >channelProductId</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >ProductId of the SKU created in external system/Marketplace</td></tr><tr align="center"><td style="vertical-align:middle" >return_qty</td><td style="vertical-align:middle" >decimal(10,3)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" >Return qty</td></tr><tr align="center"><td style="vertical-align:middle" >return_reason</td><td style="vertical-align:middle" >Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">If passed and not exists then system will create this automatically</td></tr><tr align="center"><td style="vertical-align:middle" >udf1</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf2</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf3</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf4</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf5</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf6</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf7</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf8</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf9</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf10</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle" >updatedPrice</td><td style="vertical-align:middle" >decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Updated price of SKU</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Return Payment Details</b></td></tr><tr align="center"><td style="vertical-align:middle" >paymentMode</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:left">Cheque/Giftcard Redemption Amount/Loyalty Points/Wallet/IMPS/Multi Finance/NETB/DD/Credit Card/Debit Card/Cash/Coupon/Store Credit/Credit/Advance Payment</td></tr><tr align="center"><td style="vertical-align:middle" >docNo</td></td><td style="vertical-align:middle" >Varchar(50)</td></td><td style="vertical-align:middle" >Optional</td></td></td><td style="vertical-align:middle" >Transaction document number</td></tr><tr align="center"><td style="vertical-align:middle" >docdate</td></td><td style="vertical-align:middle" >Varchar(50)</td></td><td style="vertical-align:middle" >Optional</td></td></td><td style="vertical-align:middle" >Date of the payment document in a suitable format DD/MM/YYYY HH:MM:SS</td></tr><tr align="center"><td style="vertical-align:middle" >docBank</td></td><td style="vertical-align:middle" >Varchar(50)</td></td><td style="vertical-align:middle" >Optional</td></td></td><td style="vertical-align:middle" >Name of the bank associated with the payment document.</td></tr><tr align="center"><td style="vertical-align:middle" >ifscCode</td></td><td style="vertical-align:middle" >Varchar(50)</td></td><td style="vertical-align:middle" >Optional</td></td></td><td style="vertical-align:middle" >IFSC code of the bank branch associated with the transaction.</td></tr><tr align="center"><td style="vertical-align:middle" >docAmt</td></td><td style="vertical-align:middle" >Varchar(50)</td></td><td style="vertical-align:middle" >Optional</td></td></td><td style="vertical-align:middle" >Amount specified in the payment document.</td></tr><tr align="center"><td style="vertical-align:middle" >returnAmountReceived</td></td><td style="vertical-align:middle" >Decimal(10,3)</td></td><td style="vertical-align:middle" >Optional</td></td></td><td style="vertical-align:middle" >Total return amount received as part of the payment.</td></tr><tr align="center"><td style="vertical-align:middle" >branch</td></td><td style="vertical-align:middle" >Varchar(50)</td></td><td style="vertical-align:middle" >Optional</td></td></td><td style="vertical-align:middle" >Branch name associated with the payment or document, if applicable.</td></tr><tr align="center"><td style="vertical-align:middle" >authCode</td></td><td style="vertical-align:middle" >Varchar(50)</td></td><td style="vertical-align:middle" >Optional</td></td></td><td style="vertical-align:middle" >Authentication code </td></tr><tr align="center"><td style="vertical-align:middle" >edcNo</td></td><td style="vertical-align:middle" >Varchar(50)</td></td><td style="vertical-align:middle" >Optional</td></td></td><td style="vertical-align:middle" >edc Number</td></tr><tr align="center"><td style="vertical-align:middle" >udf1</td></td><td style="vertical-align:middle" >Varchar(2000)</td></td><td style="vertical-align:middle" >Optional</td></td></td><td style="vertical-align:middle" >Items UDF1 must NOT be greater than 2000 characters</td></tr><tr align="center"><td style="vertical-align:middle" >udf2</td></td><td style="vertical-align:middle" >Varchar(2000)</td></td><td style="vertical-align:middle" >Optional</td></td></td><td style="vertical-align:middle" >Items UDF2 must NOT be greater than 2000 characters</td></tr><tr align="center"><td style="vertical-align:middle" >udf3</td></td><td style="vertical-align:middle" >Varchar(50)</td></td><td style="vertical-align:middle" >Optional</td></td></td><td style="vertical-align:middle" >User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle" >udf4</td></td><td style="vertical-align:middle" >Varchar(50)</td></td><td style="vertical-align:middle" >Optional</td></td></td><td style="vertical-align:middle" >User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle" >udf5</td></td><td style="vertical-align:middle" >Varchar(50)</td></td><td style="vertical-align:middle" >Optional</td></td></td><td style="vertical-align:middle" >User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle" >udf6</td></td><td style="vertical-align:middle" >Varchar(50)</td></td><td style="vertical-align:middle" >Optional</td></td></td><td style="vertical-align:middle" >User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle" >udf7</td></td><td style="vertical-align:middle" >Varchar(50)</td></td><td style="vertical-align:middle" >Optional</td></td></td><td style="vertical-align:middle" >User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle" >udf8</td></td><td style="vertical-align:middle" >Varchar(50)</td></td><td style="vertical-align:middle" >Optional</td></td></td><td style="vertical-align:middle" >User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle" >udf9</td></td><td style="vertical-align:middle" >Varchar(50)</td></td><td style="vertical-align:middle" >Optional</td></td></td><td style="vertical-align:middle" >User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle" >udf10</td></td><td style="vertical-align:middle" >Varchar(50)</td></td><td style="vertical-align:middle" >Optional</td></td></td><td style="vertical-align:middle" >User Defined Field</td></tr><tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Additional Information</b></td></tr><tr align="left"><td style="vertical-align:middle" colspan=4 >Max Allowance - 100 Orders.  </td></tr><tr align="center"><tr><td style="vertical-align:middle" colspan=4> <b>Input JSON Format-<br/> {<br/>&nbsp;&nbsp;"orderReturn":[<br/>&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;"requestType":"Request & Inbound",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"returnType":"Delivered Return",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"returnBin":"PACKBIN",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"order_location":"TWH",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"order_no":"101196954",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"invoice_no":"TWH000003699",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"tracking_no":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"status":"Confirmed",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"custRetCode":"AABB0001",&nbsp;&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;&nbsp;"extCustRetCode":"AAAA009",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"return_date":"21/01/2017 22:40:30",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"customer_name":"Anuj Kaul",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"customer_address1":"House number 50, First Floor ",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"customer_address2":"ABC Road, Green Park ",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"customer_address3":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"customer_address4":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"customer_country":"India",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"customer_state":"Maharashtra",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"customer_city":"Mumbai",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"customer_pincode":"400001",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"customer_email":"anujkaul86@gmail.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"customer_altEmail":"anujkaul86@gmail.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"customer_phoneNo":"9889098998",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"customer_altPhoneNo":"9889098998",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"remarks":"DamagedGood",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"transporter":"12345",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"category":"Credit Coupon",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"coupon":"VIN2020",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf5":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf6":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf7":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf8":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf9":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf10":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"geoType" :"What3WorDS",</br>&nbsp;&nbsp;&nbsp;&nbsp;"geoAddress" :"101 add",</br>&nbsp;&nbsp;&nbsp;&nbsp;"geoLatitude":"101 latitude",</br>&nbsp;&nbsp;&nbsp;&nbsp;"geoLongitude":"101 longitude",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"return_tracking_no":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"transporterName":"Rana singth",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"delType":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"referenceNo":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"updatedPrice":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"items":[<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lineno":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"ext_lineno":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"sku":"SKU101",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"bagId":"00000005-667556246964-1",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"channelSkuCode":"8196511",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"channelProductId":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"return_qty":"1",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"return_reason":"Sizenotcorrect.",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf5":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf6":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf7":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf8":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf9":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf10":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"updatedPrice":""<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"refundPaymentItems":[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"paymentMode":"Cash",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"docNo":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"docdate":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"docBank":"Axis",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"ifscCode":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"docAmt":"100.00",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"returnAmountReceived":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"branch":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"authCode":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"edcNo":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf5":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf6":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf7":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf8":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf9":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf10":""<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;}<br/>&nbsp;&nbsp;]<br/>}</b></tbody></table>
+      - in: formData
+        name: ApiOwner
+        required: true
+        type: string
+        description: API Owner.
+      - in: formData
+        name: ApiKey
+        required: true
+        type: string
+        description: API Key.
+      responses:
+        200:
+          description: <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>104</p></td><td style="vertical-align:middle" width='167'><p>Order Creation Error while processing</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>501</p></td><td style="vertical-align:middle" width='167'><p>No Access for given Order Location.</p></td><tr align="center"><td style="vertical-align:middle" width='167'><p>502</p></td><td style="vertical-align:middle" width='167'><p>Order Location is mandatory.</p></td><tr align="center"><td style="vertical-align:middle" width='167'><p>504</p></td><td style="vertical-align:middle" width='167'><p>Order_no is mandatory and must be unique within the request.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>701</p></td><td style="vertical-align:middle" width='167'><p>Maximum Limit Exceeded(100 SKUs Max)</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9007</p></td><td style="vertical-align:middle" width='167'><p>No Access for given Order Location</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>11001</p></td><td style="vertical-align:middle" width='167'><p>Validation related errors</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>11002</p></td><td style="vertical-align:middle" width='167'><p>Order Not Found in ERP</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>11003</p></td><td style="vertical-align:middle" width='167'><p>Invoice Number is not found in ERP</p></td></tr></tbody></table><table> <tbody> <td style="vertical-align:middle" colspan=4> <b>Case 1- For Single Return Submitted<br/>{<br/>&nbsp;&nbsp;"responseCode":0,<br/>&nbsp;&nbsp;"responseMessage":"Success",<br/>&nbsp;&nbsp;"requestStatus":{<br/>&nbsp;&nbsp;&nbsp;&nbsp;"uniqueKey":"TWH001234",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"requestKey":"TWH001234",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"outputKey":"TWH968",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"status":"Success",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"errorDesc":null,<br/>&nbsp;&nbsp;&nbsp;&nbsp;"errorCode":null<br/>&nbsp;&nbsp;}<br/>}<br/><br/>Case 2- For Multiple Return Submitted<br/>{<br/>&nbsp;&nbsp;"responseCode":0,<br/>&nbsp;&nbsp;"responseMessage":"Success",<br/>&nbsp;&nbsp;"requestId":"02cb470eaf40466c80bdba8faedd4be5"<br/>}</b></tbody></table>
+  /RestWS/api/eretail/v1/order/orderreturn:
+    post:
+      tags:
+      - Order Returns
+      summary: Max no. of Lines/Response:100 API To Get Returned Order(Hit Quota 40/5 min)
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/json
+      parameters:
+      - in: formData
+        name: RequestBody
+        required: true
+        type: string
+        description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">order_no</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">*Only if details by order number</td></tr><tr align="center"><td style="vertical-align:middle">status</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Passed only with fromdate and toDate</td></tr><tr align="center"><td style="vertical-align:middle">date_from</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Mandatory**</td><td style="vertical-align:middle">**Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle">date_to</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Mandatory**</td><td style="vertical-align:middle">**Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle">pageNumber</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Default page number is 1</td></tr><tr align="center"><td style="vertical-align:middle">filterBy</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Default filterBy apply on confirmDate, filterBy=1 or Null or "" - date will be filtered by confirmDate, 2 for CrtDate, 3 for UpdDate, 4 for RefundDate, 5 for Canceldate and  6 for Grn Date which is return close Date</td></tr><tr align="center"><td style="vertical-align:middle">customer_code</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">List of customer code can be passed so that basis on customer code order and return can be pulled</td></tr><tr align="center"><td style="vertical-align:middle">brand</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">List of brands can be passed so that basis on brands order and return can be pulled</td></tr><tr align="center"><td style="vertical-align:middle">ret_del_loc</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">delivery location of customer return</td></tr><tr align="center"><td style="vertical-align:middle">returnSource</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">ex. 1/2/3(1 -> dropship, 2 -> both, 3 -> return without order)</td></tr><tr align="center"><td style="vertical-align:middle">return_no</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">List of return no can be passed so that basis on return no order and return can be pulled</td></tr><tr align="center"><td style="vertical-align:middle">tracking_no</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Tracking No</td></tr><tr align="center"><td style="vertical-align:middle">return_tracking_no</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Reverse AWB No</td></tr><tr align="center"><td style="vertical-align:middle">channel_code</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">List of channel code can be passed so that basis on channel code order and return can be pulled</td></tr><tr align="center"><td style="vertical-align:middle">returnType</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">List of return type can be passed so that basis on return can be pulled</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Additional Information</b></td></tr><tr align="left"><td style="vertical-align:middle" colspan=4 >Max Allowed Date Range-  7. Days. </td></tr><tr align="left"><td style="vertical-align:middle" colspan=4 >Max Allowed brands  -10.</td></tr><tr align="center"><tr><td style="vertical-align:middle" colspan=5> <b>Input JSON Format-<br/> Case 1-Get orders detail by Order No<br/>&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;"order_no":["NHW1600256"],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"return_no":[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"customer_code":[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"channel_code":[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"tracking_no":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"return_tracking_no":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"status":[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_from":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_to":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"returnSource":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":,<br/>&nbsp;&nbsp;&nbsp;&nbsp;"ret_del_loc":"CHE",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"brand":[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"returnType":[]<br/>&nbsp;}<br/>&nbsp;Case 2- Get order return details by date filter<br/>&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;"order_no":[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"return_no":[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"customer_code":[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"channel_code":[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"tracking_no":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"return_tracking_no":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"status":["Confirmed", "Closed"],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_from":"DD/MM/YYYY HH:mm:ss",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_to":"DD/MM/YYYY HH:mm:ss",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"returnSource":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":"CHE",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;"brand":[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"returnType":["1","2"]<br/><br/>&nbsp;}<br/>Case 4-Get orders detail by using filterBy filter<br/>&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;"order_no":[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"return_no":[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"customer_code":[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"channel_code":[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"tracking_no":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"status":[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"return_tracking_no":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"ret_del_loc":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_from":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_to":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;"returnSource":2,<br/>&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;"brand":[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"returnType":["1","2","3"]<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;</b><br/></td></tr></tbody></table>
+      - in: formData
+        name: ApiOwner
+        required: true
+        type: string
+        description: API Owner.
+      - in: formData
+        name: ApiKey
+        required: true
+        type: string
+        description: API Key.
+      responses:
+        200:
+          description: <table border='1'width='672'>  <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>805</p></td><td style="vertical-align:middle" width='167'><p>Order Pull Date Range Should not be more then 7 days</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>903</p></td><td style="vertical-align:middle" width='167'><p>Order Return Not Found</p></td></tr>><tr align="center"><td style="vertical-align:middle" width='167'><p>10096</p></td><td style="vertical-align:middle" width='167'><p>Maximum Limit Exceeded(10 Brands Max)</p></td></tr>><tr align="center"><td style="vertical-align:middle" width='167'><p>10097</p></td><td style="vertical-align:middle" width='167'><p>Invalid Brand Code</p></td><tr align="center"><td style="vertical-align:middle" width='167'><p>8059</p></td><td style="vertical-align:middle" width='167'><p>Status can be passed only with fromdate and toDate</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>10066</p></td><td style="vertical-align:middle" width='167'><p>Either order_no or return_no is mandatory</p></td></tr></tr>
+          schema:
+            $ref: '#/definitions/OrderReturn'
+  /RestWS/api/eretail/v1/order/returncancel:
+    post:
+      tags:
+      - Order Returns
+      summary: Max no. of Lines/hit:50 API For CustomerReturnCancel(Hit Quota 40/5 min)
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/json
+      parameters:
+      - in: formData
+        name: RequestBody
+        type: string
+        description: '<table class="table-style-three"><tbody><tr><tr align="center"><td style="vertical-align:middle" width=''100''><strong>Field Name </strong></td><td style="vertical-align:middle" width=''100''><strong>Data Type </strong></td><td style="vertical-align:middle" width=''100''><strong>Mandatory </strong></td><td style="vertical-align:middle" width=''300''><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">custReturnNo</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">*Either CustRetCode Or ExtCustReturnNo</td></tr><td  colspan=5> <b>JSON FORMAT-</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"custReturnNo":["CHE703","CHE697","CHE699","CHE1323f"]<br/>&nbsp;}</b>
+
+          </b></td></tr></tbody></table><p>&nbsp;</p><br/>'
+        required: true
+      - in: formData
+        name: ApiOwner
+        type: string
+        description: This Field Will Be Used To Send API Owner
+        required: true
+      - in: formData
+        name: ApiKey
+        type: string
+        description: This is the API Key
+        required: true
+      responses:
+        200:
+          description: <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody></tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9</p></td><td style="vertical-align:middle" width='167'><p>Invalid  Status of custRetNo For Return Cancellation/Invalid CustReturnNumber For Return Cancellation/Multiple  return no. found with same ext return no. Please pass the return no to cancel the return.</p></td></tbody></table><table> <tbody> <td style="vertical-align:middle" colspan=4> <b>Case 1-Response <br/>{<br/>&nbsp;&nbsp;"responseCode":0,<br/>&nbsp;&nbsp;"responseMessage":"Success",<br/>&nbsp;&nbsp;"response":[</br>&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"responseCode":9,</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"responseMessage":"Failed",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"errorDesc":"Invalid  Status of custRetNo For Return Cancellation",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"custReturnNo":"Che703"</br>&nbsp;&nbsp;&nbsp;&nbsp;},</br>&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"responseCode":0,</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"responseMessage":"Success",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"errorDesc":"null",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"custReturnNo":"CHE697"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp<br/>&nbsp;&nbsp;&nbsp;},</br>&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"responseCode":9,</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"responseMessage":"Failed",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"errorDesc":"Multiple  return no. found with same ext return no. Please pass the return no to cancel the return.",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"custReturnNo":"CHE699"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp<br/>&nbsp;&nbsp;&nbsp;},</br>&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"responseCode":9,</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"responseMessage":"Failed",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"errorDesc":"Invalid CustReturnNumber For Return Cancellation",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"custReturnNo":"CHE1323f"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp<br/>&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp]<br/>}</b></tbody></table>
+  /RestWS/api/eretail/v1/order/returnupdate:
+    post:
+      tags:
+      - Order Returns
+      summary: Max no.of Lines/hit:50 API For Update Return(Hit Quota 40/5 min)
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/json
+      parameters:
+      - in: formData
+        name: RequestBody
+        type: string
+        description: <table class="table-style-three"><tbody><tr><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">returnNo</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Either the returnNo or extReturnNo needed</td></tr><tr align="center"><td style="vertical-align:middle">extReturnNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Either the returnNo or extReturnNo needed</td></tr><tr align="center"><td style="vertical-align:middle">updatedReverseAWB</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Reverse AWB No</td></tr><tr align="center"><td style="vertical-align:middle">updatedextTransporter</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">extTransporter name</td></tr><tr align="center"><td style="vertical-align:middle">updatedStatus</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible Updated Return Status:- "Confirmed,Cancelled,Reverse Pick Up Done,Reverse Pickup Delivered,Reverse Pick Up Terminated,Lost In Transit"</td></tr><tr align="center"><td style="vertical-align:middle">cancellationReason</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">IF not present system will create this automatically</td></tr><tr align="center"><td style="vertical-align:middle">cancellationRemarks</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Cancellation Remarks</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Additional Information</b></td></tr><tr align="left"><td style="vertical-align:middle" colspan=4 >Max Allowance - 50 returnupdate at a time.</td></tr><tr><td  colspan=5> <b>Case- </b><br/> <b>{</br>&nbsp;&nbsp;"orderReturn":[{</br>&nbsp;&nbsp;&nbsp;&nbsp;"returnNo":"CHE4563",</br>&nbsp;&nbsp;&nbsp;&nbsp;"extReturnNo":"CHE32323",</br>&nbsp;&nbsp;&nbsp;&nbsp;"updatedReverseAWB":"awb098765",</br>&nbsp;&nbsp;&nbsp;&nbsp;"updatedextTransporter":"Delivery",</br>&nbsp;&nbsp;&nbsp;&nbsp;"updatedStatus":"",</br>&nbsp;&nbsp;&nbsp&nbsp;"cancellationReason":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"cancellationRemarks":""</br>&nbsp;&nbsp;}]</br>} </tr></tbody></table><p>&nbsp;</p><br/>
+        required: true
+      - in: formData
+        name: ApiOwner
+        type: string
+        description: This Field Will Be Used To Send API Owner
+        required: true
+      - in: formData
+        name: ApiKey
+        type: string
+        description: This is the API Key
+        required: true
+      responses:
+        200:
+          description: <table border='1'width='672'>  <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>5</p></td><td style="vertical-align:middle" width='167'><p>Empty Request</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9079</p></td><td style="vertical-align:middle" width='167'><p>Maximum 50 record can be processed in one request.</p></td></tr><tr><td style="vertical-align:middle" colspan=5> <b>Case 1- When Single return Update:<br/> {<br/> &nbsp;"responsecode":"0",</br>&nbsp;"responseMessage":"Success"<br/>&nbsp;"response":[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"returnNo":"TESTAM0018",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"extReturnNo":"TESTAM0018",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"status":null,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"error":"Error"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;]<br/>}</b><br/><br/> <b>Case 2- When Multiple return Update:<br/>{<br/> &nbsp;"responsecode":"0",</br>&nbsp;"responseMessage":"Success"<br/>&nbsp;"response":[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"returnNo":"TESTAM0018",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"extReturnNo":"TESTAM0018",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"status":1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"error":""<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"returnNo":"TESTAM0019",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"extReturnNo":"TESTAM0019",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"status":9,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"error":"return not found"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp}<br/>&nbsp;&nbsp;&nbsp;&nbsp;]<br/>}</b><br/><br/></b><br/><br/></tbody></table>
+definitions:
+  STD1:
+    properties:
+      shipping_charges:
+        type: string
+        example: '0.000'
+      shipping_tax_amt:
+        type: string
+        example: '0.000'
+      shippingChargeUnitPrice:
+        type: string
+        example: '3.819'
+      shippingCgstVal:
+        type: string
+        example: '0.000'
+      shippingSgstVal:
+        type: string
+        example: '0.000'
+      shippingIgstVal:
+        type: string
+        example: '0.000'
+      shippingUgstVal:
+        type: string
+        example: '0.000'
+  onn:
+    properties:
+      cgstVal:
+        type: string
+        example: '0.000'
+      sgstVal:
+        type: string
+        example: '0.000'
+      igstVal:
+        type: string
+        example: '3.819'
+      cesVal:
+        type: string
+      stCesVal:
+        type: string
+        example: '0.000'
+      ugstVal:
+        type: string
+        example: '0.000'
+  RefundPaymentInfo:
+    properties:
+      paymentMode:
+        type: string
+        example: Cash
+      docNo:
+        type: string
+        example: NHON0025915O
+      docdate:
+        type: string
+        example: ''
+      docBank:
+        type: string
+        example: ''
+      ifscCode:
+        type: string
+        example: ''
+      docAmt:
+        type: string
+        example: '1000.00'
+      returnAmountReceived:
+        type: string
+        example: '450.00'
+      branch:
+        type: string
+        example: ''
+      authCode:
+        type: string
+        example: ''
+      edcNo:
+        type: string
+        example: ''
+      udf1:
+        type: string
+        example: ''
+      udf2:
+        type: string
+        example: ''
+      udf3:
+        type: string
+        example: ''
+      udf4:
+        type: string
+        example: ''
+      udf5:
+        type: string
+        example: ''
+      udf6:
+        type: string
+        example: ''
+      udf7:
+        type: string
+        example: ''
+      udf8:
+        type: string
+        example: ''
+      udf9:
+        type: string
+        example: ''
+      udf10:
+        type: string
+        example: ''
+  OrderReturn:
+    properties:
+      responseCode:
+        type: integer
+        example: 0
+      responseMessage:
+        type: string
+        example: Success
+      response:
+        items:
+          $ref: '#/definitions/responselistforreturn'
+  itemlistforOrderreturn:
+    properties:
+      lineno:
+        type: string
+        example: '1'
+      ext_lineno:
+        type: string
+        example: ''
+      sku:
+        type: string
+        example: DSHPOSSKU02
+      skuName:
+        type: string
+        example: DSHPOSSKU02
+      brand:
+        type: string
+        example: Rajdhani
+      status:
+        type: string
+        example: ''
+      unit_price_excl_tax:
+        type: string
+        example: ''
+      return_qty:
+        type: string
+        example: '1'
+      order_qty:
+        type: string
+        example: ''
+      received_qty:
+        type: string
+        example: '1'
+      line_unitprice:
+        type: string
+        example: '100.000'
+      line_amt:
+        type: string
+        example: '100.00'
+      discount_amt:
+        type: string
+        example: '0.000'
+      invoice_qty:
+        type: string
+        example: '1'
+      bagId:
+        type: string
+        example: 00000005-667556246964-1
+      return_reason:
+        type: string
+        example: Delayed Delivery
+      serialNo1:
+        type: string
+        example:
+        - xxxx1
+      serialNo2:
+        type: string
+        example:
+        - xxxx2
+      serialNo3:
+        type: string
+        example:
+        - xxxx3
+      gstRt:
+        type: string
+        example: ''
+      igstAmt:
+        type: string
+        example: ''
+      cgstAmt:
+        type: string
+        example: ''
+      sgstAmt:
+        type: string
+        example: ''
+      cesRt:
+        type: string
+        example: ''
+      cesAmt:
+        type: string
+        example: ''
+      cesNonAdvlAmt:
+        type: string
+        example: ''
+      stateCesRt:
+        type: string
+        example: ''
+      stateCesAmt:
+        type: string
+        example: ''
+      stateCesNonAdvlAmt:
+        type: string
+        example: ''
+      hsnCode:
+        type: string
+        example: ''
+      igstRt:
+        type: string
+        example: ''
+      cgstRt:
+        type: string
+        example: ''
+      sgstRt:
+        type: string
+        example: ''
+      ugstRt:
+        type: string
+        example: ''
+      ugstAmt:
+        type: string
+        example: ''
+      taxableAmount:
+        type: string
+        example: '0.00'
+      shipping_charges:
+        type: string
+        example: ''
+      shipping_tax_amt:
+        type: string
+        example: ''
+      handling_charges:
+        type: string
+        example: ''
+      other_charges:
+        type: string
+        example: ''
+      other1_tax_amt:
+        type: string
+        example: ''
+      giftVoucher:
+        type: string
+        example: '0.00'
+      storeCredit:
+        type: string
+        example: '0.00'
+      mopValue:
+        type: string
+        example: '0.00'
+      udf1:
+        type: string
+        example: ''
+      udf2:
+        type: string
+        example: ''
+      udf3:
+        type: string
+        example: ''
+      udf4:
+        type: string
+        example: ''
+      udf5:
+        type: string
+        example: ''
+      udf6:
+        type: string
+        example: ''
+      udf7:
+        type: string
+        example: ''
+      udf8:
+        type: string
+        example: ''
+      udf9:
+        type: string
+        example: ''
+      udf10:
+        type: string
+        example: ''
+      updatedPrice:
+        type: string
+        example: '498.29'
+      channelSkuCode:
+        type: string
+        example: null
+      channelProductId:
+        type: string
+        example: null
+      skuImage:
+        type: string
+        example: null
+      lotNo:
+        type: string
+        example: null
+      extLotNo:
+        type: string
+        example: null
+      lottable01:
+        type: string
+        example: null
+      lottable02:
+        type: string
+        example: null
+      lottable03:
+        type: string
+        example: null
+      lottable04:
+        type: string
+        example: null
+      lottable05:
+        type: string
+        example: null
+      lottable06:
+        type: string
+        example: null
+      lottable07:
+        type: string
+        example: null
+      primaryUPC:
+        type: string
+        example: null
+      bundleSkuCode:
+        type: string
+        example: null
+      bomSkuName:
+        type: string
+        example: ''
+      bomType:
+        type: string
+        example: ''
+      ShippingtaxDtls:
+        $ref: '#/definitions/STD'
+      orderLineNo:
+        type: string
+        example: '1'
+  responselistforreturn:
+    properties:
+      totalReturns:
+        type: integer
+        example: 2
+      totalPages:
+        type: integer
+        example: 1
+      currentPage:
+        type: integer
+        example: 1
+      order:
+        type: array
+        items:
+          $ref: '#/definitions/orderlistforreturn'
+  STD:
+    properties:
+      shipping_charges:
+        type: string
+        example: '0.000'
+      shipping_tax_amt:
+        type: string
+        example: '0.000'
+      shippingChargeUnitPrice:
+        type: string
+        example: '3.819'
+      shippingCgstRate:
+        type: string
+        example: '0.000'
+      shippingCgstVal:
+        type: string
+        example: '0.000'
+      shippingSgstRate:
+        type: string
+        example: '0.000'
+      shippingSgstVal:
+        type: string
+        example: '0.000'
+      shippingIgstRate:
+        type: string
+        example: '0.000'
+      shippingIgstVal:
+        type: string
+        example: '0.000'
+      shippingUgstRate:
+        type: string
+        example: '0.000'
+      shippingUgstVal:
+        type: string
+        example: '0.000'
+  orderlistforreturn:
+    properties:
+      return_no:
+        type: string
+        example: NWBR000146XX
+      return_location:
+        type: string
+        example: NWB
+      returnLocationName:
+        type: string
+        example: ''
+      channelName:
+        type: string
+        example: ''
+      return_amount:
+        type: string
+        example: '100.00'
+      return_confirmdate:
+        type: string
+        example: 17/11/2016 18:14:22
+      return_closedate:
+        type: string
+        example: ''
+      order_no:
+        type: string
+        example: POS477
+      order_type:
+        type: string
+        example: Prepaid
+      eretailorder_no:
+        type: string
+        example: POS477
+      return_date:
+        type: string
+        example: 17/11/2016 18:14:22
+      invoice_no:
+        type: string
+        example: NYK000674840
+      delivery_no:
+        type: string
+        example: POSS47700322
+      tracking_no:
+        type: string
+        example: ''
+      return_tracking_no:
+        type: string
+        example: ''
+      transporter_error_desc:
+        type: string
+        example: ''
+      status:
+        type: string
+        example: Closed
+      return_type:
+        type: string
+        example: Delivered Return
+      return_category:
+        type: string
+        example: Refund
+      remarks:
+        type: string
+        example: ''
+      refund_remarks:
+        type: string
+        example: ''
+      ext_return_location:
+        type: string
+        example: VIN20
+      customerCode:
+        type: string
+        example: '167033'
+      extCustomerCode:
+        type: string
+        example: '78899'
+      ext_del_loc:
+        type: string
+        example: CHE
+      return_transporter_name:
+        type: string
+        example: ''
+      refund_status:
+        type: string
+        example: '0'
+      refund_date:
+        type: string
+        example: ''
+      creditNoteNo:
+        type: string
+        example: ''
+      customer_name:
+        type: string
+        example: ''
+      customer_address1:
+        type: string
+        example: ''
+      customer_address2:
+        type: string
+        example: ''
+      customer_address3:
+        type: string
+        example: ''
+      customer_address4:
+        type: string
+        example: ''
+      customer_country:
+        type: string
+        example: ''
+      customer_state:
+        type: string
+        example: ''
+      customer_state_code:
+        type: string
+        example: ''
+      customer_city:
+        type: string
+        example: ''
+      customer_pincode:
+        type: string
+        example: ''
+      customer_email:
+        type: string
+        example: ''
+      customer_altEmail:
+        type: string
+        example: ''
+      customer_phoneNo:
+        type: string
+        example: ''
+      customer_altPhoneNo:
+        type: string
+        example: ''
+      udf1:
+        type: string
+        example: ''
+      udf2:
+        type: string
+        example: ''
+      udf3:
+        type: string
+        example: ''
+      udf4:
+        type: string
+        example: ''
+      udf5:
+        type: string
+        example: ''
+      udf6:
+        type: string
+        example: ''
+      udf7:
+        type: string
+        example: ''
+      udf8:
+        type: string
+        example: ''
+      udf9:
+        type: string
+        example: ''
+      udf10:
+        type: string
+        example: ''
+      orderCurrency:
+        type: string
+        example: INR
+      conversionRate:
+        type: string
+        example: '1.000'
+      extReturnNo:
+        type: string
+        example: CHE2210
+      extInvoiceNo:
+        type: string
+        example: errhwiu
+      customer_Phone_No:
+        type: string
+        example: '9876543219'
+      updatedPrice:
+        type: string
+        example: '498.29'
+      trackingURL:
+        type: string
+        example: null
+      externOrderNo:
+        type: string
+        example: U446
+      einvoicePosted:
+        type: string
+        example: ''
+      irn:
+        type: string
+        example: ''
+      qrCode:
+        type: string
+        example: ''
+      items:
+        type: array
+        items:
+          $ref: '#/definitions/itemlistforOrderreturn'
+      taxDtls:
+        $ref: '#/definitions/onn'
+      shippingTaxDtls:
+        $ref: '#/definitions/STD1'
+      refundPaymentItems:
+        type: array
+        items:
+          $ref: '#/definitions/RefundPaymentInfo'

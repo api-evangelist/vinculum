@@ -1,0 +1,1077 @@
+swagger: '2.0'
+info:
+  title: Vinculum Advance Shipping Notice Inbounds API
+  description: API to retrieve or manipulate ASN related information.
+host: erp.vineretail.com
+tags:
+- name: Inbounds
+  description: API to retrieve or manipulate Inbound related information.
+paths:
+  /RestWS/api/eretail/v1/inbound/detail:
+    post:
+      tags:
+      - Inbounds
+      summary: Max no. of lines/Response:100 API For Inbound Details(Hit Quota 40/5 min)
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/json
+      parameters:
+      - in: formData
+        name: RequestBody
+        type: string
+        description: <table class="table-style-three"><tbody><tr><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">poCode</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Either (poCode / asnCode/inboundCode/returnCode/stoNo) or Date filter mandatory</td></tr><tr align="center"><td style="vertical-align:middle">asnCode</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Either (poCode / asnCode/inboundCode/returnCode/stoNo) or Date filter mandatory</td></tr><tr align="center"><td style="vertical-align:middle">stoNo</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Either (poCode / asnCode/inboundCode/returnCode/stoNo) or Date filter mandatory</td></tr><tr align="center"><td style="vertical-align:middle">delloc</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Mandatory when date range is passed</td></tr><tr align="center"><td style="vertical-align:middle">fromDate</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Either (poCode / asnCode/inboundCode/returnCode/stoNo) or Date filter mandatory</td></tr><tr align="center"><td style="vertical-align:middle">toDate</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Either (poCode / asnCode/inboundCode/returnCode/stoNo) or Date filter mandatory</td></tr><tr align="center"><td style="vertical-align:middle">pageNumber</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Default 1</td></tr><tr align="center"><td style="vertical-align:middle">inboundcode</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Either (poCode / asnCode/inboundCode/returnCode/stoNo) or Date filter mandatory</td></tr><tr align="center"><td style="vertical-align:middle">returnCode</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Either (poCode / asnCode/inboundCode/returnCode/stoNo) or Date filter mandatory</td></tr><tr align="center"><td style="vertical-align:middle">vendor_code</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Vendor Code(If details by date filter)</td></tr><tr align="center"><td style="vertical-align:middle">filterBy</td><td style="vertical-align:middle">Varchar(1)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">get PO on the basis of updation or creation date Default:GRNdate, Possible values are 1 (update date),2(create date)</td></tr><tr align="center"><td style="vertical-align:middle">inbType</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Inbound Type, Defined in Codelkup with lkupcode 'INBTYPE'.</td></tr><tr><td  colspan=5> <b>Case 1-Request by poCode</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"poCode":"DEL38206",</br>&nbsp;&nbsp;&nbsp;&nbsp;"asnCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"stoNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"delloc":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"inbType":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"inboundcode":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"returnCode":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp"filterBy":"1"</br>&nbsp;}</b><br/><br/><br/> <b>Case 2-Request by inboundCode</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"poCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"asnCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"stoNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"inboundcode":"BTD000000000",</br>&nbsp;&nbsp;&nbsp;&nbsp;"delloc":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"returnCode":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"inbType":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":""<br/>&nbsp;}</b><br/><br/><br/> <b>Case 3-Request by date range filter</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"poCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"asnCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"stoNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"delloc":"CHE",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"10/12/2017 00:00:00",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"17/12/2017 00:00:00",</br>&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"inboundcode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"inbType":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"returnCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":""<br/>&nbsp;}</b> </b><br/><br/><br/> <b>Case 4-Request by asnCode</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"poCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"asnCode":"ASN001",</br>&nbsp;&nbsp;&nbsp;&nbsp;"stoNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"delloc":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"inboundcode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"returnCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"inbType":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":"&nbsp;<br/>}</b><br/><br/><br/> <b>Case 5-Request by returnCode</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"poCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"asnCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"stoNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"inboundcode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"returnCode":"CHE1234",</br>&nbsp;&nbsp;&nbsp;&nbsp;"delloc":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;"inbType":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":""<br/>&nbsp;}</b><br/><br/><br/> <b>Case 6-Request by stoNo</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"poCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"asnCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"stoNo":"CHE168458",</br>&nbsp;&nbsp;&nbsp;&nbsp;"inboundcode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"returnCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"delloc":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;"inbType":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":""<br/>&nbsp;}</b><br/><br/><br/> <br/></td></tr></tbody></table><p>&nbsp;</p><br/>
+        required: true
+      - in: formData
+        name: ApiOwner
+        type: string
+        description: This Field Will Be Used To Send API Owner
+        required: true
+      - in: formData
+        name: ApiKey
+        type: string
+        description: This is the API Key
+        required: true
+      responses:
+        200:
+          description: <table border='1'width='672'>  <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>804</p></td><td style="vertical-align:middle" width='167'><p>To Date Should be Greater Than From Date.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>901</p></td><td style="vertical-align:middle" width='167'><p>From Date is Mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>923</p></td><td style="vertical-align:middle" width='167'><p>Invalid delivery_loc Location</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>2102</p></td><td style="vertical-align:middle" width='167'><p>Location is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>2021</p></td><td style="vertical-align:middle" width='167'><p>Invalid PO Code.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>13003</p></td><td style="vertical-align:middle" width='167'><p>Please Enter valid ASN Code</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>13004</p></td><td style="vertical-align:middle" width='167'><p>Please Enter valid PO Code</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>13005</p></td><td style="vertical-align:middle" width='167'><p>Invalid Delivery Location</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>13006</p></td><td style="vertical-align:middle" width='167'><p>Please enter valid Inbound Code</p></td></tr></tbody></table>
+          schema:
+            $ref: '#/definitions/inbounddetail'
+  /RestWS/api/eretail/v3/inbound/detail:
+    post:
+      tags:
+      - Inbounds
+      summary: Max no. of lines/Response:100 API For Inbound Details(Hit Quota 40/5 min)
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: ApiOwner
+        required: true
+        type: string
+        description: API Owner.
+      - in: header
+        name: ApiKey
+        required: true
+        type: string
+        description: API Key.
+      - in: body
+        name: InboundDetailJSON
+        description: <table class="table-style-three"><tbody><tr><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">poCode</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Either (poCode / asnCode/inboundCode/stoNo) or Date filter mandatory</td></tr><tr align="center"><td style="vertical-align:middle">asnCode</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Either (poCode / asnCode/inboundCode/stoNo) or Date filter mandatory</td></tr><tr align="center"><td style="vertical-align:middle">stoNo</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Either (poCode / asnCode/inboundCode/returnCode/stoNo) or Date filter mandatory</td></tr><tr align="center"><td style="vertical-align:middle">delloc</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Mandatory when date range is passed</td></tr><tr align="center"><td style="vertical-align:middle">fromDate</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Either (poCode / asnCode / stoNo) or Date filter mandatory</td></tr><tr align="center"><td style="vertical-align:middle">toDate</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Either (poCode / asnCode / stoNo) or Date filter mandatory</td></tr><tr align="center"><td style="vertical-align:middle">pageNumber</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Default 1</td></tr><tr align="center"><td style="vertical-align:middle">inbType</td><td style="vertical-align:middle">varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Inbound Type, Defined in Codelkup with lkupcode 'INBTYPE'.</td></tr><tr align="center"><td style="vertical-align:middle">inboundcode</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Either (poCode / asnCode/inboundCode /stoNo) or Date filter mandatory</td></tr><tr align="center"><td style="vertical-align:middle">vendor_code</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Vendor Code(If details by date filter)</td></tr><tr align="center"><td style="vertical-align:middle">filterBy</td><td style="vertical-align:middle">Varchar(1)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">get PO on the basis of updation or creation date Default:GRNdate, Possible values are 1 (update date),2(create date)</td></tr><tr><td  colspan=5> <b>Case 1-Request by poCode</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"poCode":"DEL38206",</br>&nbsp;&nbsp;&nbsp;&nbsp;"asnCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"stoNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"delloc":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"inbType":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"inboundcode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp"filterBy":""</br>&nbsp;}</b><br/><br/><br/> <b>Case 2-Request by inboundCode</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"poCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"asnCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"stoNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"inboundcode":"BTD000000000",</br>&nbsp;&nbsp;&nbsp;&nbsp;"delloc":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"inbType":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":""<br/>&nbsp;}</b><br/><br/><br/> <b>Case 3-Request by date range filter</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"poCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"asnCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"stoNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"delloc":"CHE",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"10/12/2017 00:00:00",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"17/12/2017 00:00:00",</br>&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"inbType":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"inboundcode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":""<br/>&nbsp;}</b> </b><br/><br/><br/> <b>Case 4-Request by asnCode</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"poCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"asnCode":"ASN001",</br>&nbsp;&nbsp;&nbsp;&nbsp;"stoNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"delloc":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"inboundcode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"inbType":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":""&nbsp;<br/>}</b> <br/> <b>Case 5-Request by stoNo</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"poCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"asnCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"stoNo":"CHE168458",</br>&nbsp;&nbsp;&nbsp;&nbsp;"delloc":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"inboundcode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"inbType":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":""&nbsp;<br/>}</b> <br/></td></tr></tbody></table><p>&nbsp;</p><br/>
+        schema:
+          type: object
+          required:
+          - poCode
+          properties:
+            poCode:
+              type: string
+              items:
+                type: string
+              example: ''
+            asnCode:
+              type: string
+              example: ''
+            stoNo:
+              type: string
+              example: ''
+            inboundcode:
+              type: string
+              example: BWD000000320
+            delloc:
+              type: string
+              example: ''
+            fromDate:
+              type: string
+              example: ''
+            toDate:
+              type: string
+              example: ''
+            vendor_code:
+              type: string
+              example: ''
+            inbType:
+              type: string
+              example: ''
+            pageNumber:
+              type: string
+              example: '1'
+            filterBy:
+              type: string
+              example: 1
+      responses:
+        200:
+          description: <table border='1'width='672'>  <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>804</p></td><td style="vertical-align:middle" width='167'><p>To Date Should be Greater Than From Date.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>901</p></td><td style="vertical-align:middle" width='167'><p>From Date is Mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>923</p></td><td style="vertical-align:middle" width='167'><p>Invalid delivery_loc Location</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>2102</p></td><td style="vertical-align:middle" width='167'><p>Location is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>2021</p></td><td style="vertical-align:middle" width='167'><p>Invalid PO Code.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>13003</p></td><td style="vertical-align:middle" width='167'><p>Please Enter valid ASN Code</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>13004</p></td><td style="vertical-align:middle" width='167'><p>Please Enter valid PO Code</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>13005</p></td><td style="vertical-align:middle" width='167'><p>Invalid Delivery Location</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>13006</p></td><td style="vertical-align:middle" width='167'><p>Please enter valid Inbound Code</p></td></tr></tbody></table>
+          schema:
+            $ref: '#/definitions/inbounddetail'
+  /RestWS/api/eretail/v4/inbound/create:
+    post:
+      tags:
+      - Inbounds
+      summary: API For Inbound create(Hit Quota 40/5 min)
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: ApiOwner
+        required: true
+        type: string
+        description: API Owner.
+      - in: header
+        name: ApiKey
+        required: true
+        type: string
+        description: API Key.
+      - in: body
+        name: InboundCreateJSONV4
+        description: '<table class="table-style-three"><tbody><tr align="center"><tr align="center"><td style="vertical-align:middle" width=''100''><strong>Field Name </strong></td><td style="vertical-align:middle" width=''100''><strong>Data Type </strong></td><td style="vertical-align:middle" width=''100''><strong>Mandatory </strong></td><td style="vertical-align:middle" width=''300''><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">receiveType</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">  receiveType can be PO/STO/ASN/RET/DI</td></tr><tr align="center"><td style="vertical-align:middle">pocode</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Could be either PO code or externPO Code If PO code not given then create direct inbound else PO inbound</td></tr><tr align="center"><td style="vertical-align:middle">vendor_code</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Mandatory if receive type is DI</td></tr><tr align="center"><td style="vertical-align:middle">asnNo</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Mandatory if receive type is ASN</td></tr><tr align="center"><td style="vertical-align:middle">status</td><td style="vertical-align:middle">Varchar (200)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">Valid status- Pending, Confirmed, GRN in process, Cancelled  (Only grn in process can be cancelled)</td></tr><tr align="center"><td style="vertical-align:middle">stoNo</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Mandatory if receive type is STO</td></tr><tr align="center"><td style="vertical-align:middle">returnNo</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Mandatory if receive type is RET</td></tr><tr align="center"><td style="vertical-align:middle">delivery_loc</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">eRetail valid loccode or loccode of external system</td></tr><tr align="center"><td style="vertical-align:middle">extInboundNo</td><td style="vertical-align:middle">Varchar (50)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">Inbound code from External system</td></tr><tr align="center"><td style="vertical-align:middle">invoiceno</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Invoice Number, must be unique in system</td></tr><tr align="center"><td style="vertical-align:middle">invoicedate</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Invoice date, Date format should be like DD/MM/YYYY HH:MM:SS</td></tr><tr align="center"><td style="vertical-align:middle">invoice_amt</td><td style="vertical-align:middle">Decimal(20,5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Total Invoice Amount</td></tr><tr align="center"><td style="vertical-align:middle">invoicetax</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Tax amount associated with the invoice.</td></tr><tr align="center"><td style="vertical-align:middle">no_ofboxes</td><td style="vertical-align:middle">Int(11)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">NumberOFBoxes</td></tr><tr align="center"><td style="vertical-align:middle">vehicleno</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Vehicle identifier for the shipment.</td></tr><tr align="center"><td style="vertical-align:middle">challan_no</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Unique challan number for the shipment</td></tr><tr align="center"><td style="vertical-align:middle">challan_date</td><td style="vertical-align:middle">DateTime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Date and time of challan issuance.</td></tr><tr align="center"><td style="vertical-align:middle">remarks</td><td style="vertical-align:middle">Varchar(5000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Remarks against Inbound</td></tr><tr align="center"><td style="vertical-align:middle">weight</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Weight of the shipment.</td></tr><tr align="center"><td style="vertical-align:middle">material_rcvddate</td><td style="vertical-align:middle">DateTime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Timestamp of material receipt.</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User-defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User-defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User-defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User-defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User-defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf6</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User-defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf7</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User-defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf8</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User-defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf9</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User-defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf10</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User-defined field</td></tr><tr align="center"><td style="vertical-align:middle">validateShelfLife</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Indicates whether shelf life validation is required, accept values  yes or no</td></tr><tr align="center"><td style="vertical-align:middle">transporterCode</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Transportercode as per masters</td></tr><tr align="center"><td style="vertical-align:middle">ewayBill</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Tracking no</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Items Fields</b></td></tr><tr align="center"><td style="vertical-align:middle">lineno</td><td style="vertical-align:middle">smallint(6)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">GRN Lineno </td></tr><tr align="center"><td style="vertical-align:middle">sku</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">SKU code of the sku to be inbound</td></tr><tr align="center"><td style="vertical-align:middle">receivedqty</td><td style="vertical-align:middle">Integer(7)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">SKU Qty to be received</td></tr><tr align="center"><td style="vertical-align:middle">bin</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Bin code configured in eRetail</td></tr><tr align="center"><td style="vertical-align:middle">cost</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Unit cost of SKU</td></tr><tr align="center"><td style="vertical-align:middle">imeino</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">IMEI number for electronic items, if applicable</td></tr><tr align="center"><td style="vertical-align:middle">lottable01</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr><tr align="center"><td style="vertical-align:middle">lottable02</td><td style="vertical-align:middle">DateTime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields (DD/MM/YYYY)</td></tr><tr align="center"><td style="vertical-align:middle">lottable03</td><td style="vertical-align:middle">DateTime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields (DD/MM/YYYY)</td></tr><tr align="center"><td style="vertical-align:middle">lottable04</td><td style="vertical-align:middle">DateTime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields (DD/MM/YYYY)</td></tr><tr align="center"><td style="vertical-align:middle">lottable05</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr><tr align="center"><td style="vertical-align:middle">lottable06</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr><tr align="center"><td style="vertical-align:middle">lottable07</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr><tr align="center"><td style="vertical-align:middle">usns</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">1.Array of unique sequence number (eg. ["a080","a079"])</td></tr><tr align="center"><td style="vertical-align:middle">lpn</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">LPN</td></tr><tr align="center"><td style="vertical-align:middle">uom</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">UOM Name</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User-defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User-defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User-defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User-defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf6</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User-defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf7</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User-defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf8</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User-defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf9</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User-defined field</td</tr><tr align="center"><td style="vertical-align:middle">udf10</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User-defined field</td></tr><tr align="center"><td style="vertical-align:middle">lotNo</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot No</td></tr><tr align="center"><td style="vertical-align:middle">extLineno</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Ext line no of parent document</td></tr><tr align="center"><td style="vertical-align:middle">invoiceQty</td><td style="vertical-align:middle">decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Invoice Qty</td></tr><tr><td  colspan=5> <b>Case -1 Using pocode</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"inbound":{</br> &nbsp;&nbsp;&nbsp;&nbsp;"receiveType":"PO",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pocode":"8286",</br>&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"asnNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"returnNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"deliveryNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"stoNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"extInboundNo":"2759",</br>&nbsp;&nbsp;&nbsp;&nbsp;"status":"Confirmed",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"delivery_loc":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"invoiceno":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"invoicedate":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"invoice_amt":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"invoicetax":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"no_ofboxes":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"vehicleno":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"challan_no":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"challan_date":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"remarks":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"weight":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"material_rcvddate":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf5":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf6":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf7":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf8":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf9":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf10":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"validateShelfLife":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"ewayBill":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"transporterCode  ":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"items":[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lineno":"1",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"sku":"ssku001",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"receivedqty":"2",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"bin":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"cost":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"imeino":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable01":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable02":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable03":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable04":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable05":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable06":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable07":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"usns":["a080","a079"],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lpn":"A011",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"uom":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"extLineno":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lotNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"invoiceQty":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf6":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf7":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf8":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf9":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf10":""</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}<br/></b><br/> <b>Case -2 Direct Inbound</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"inbound":{</br> &nbsp;&nbsp;&nbsp;&nbsp;"receiveType":"DI",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pocode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"Vendor1",</br>&nbsp;&nbsp;&nbsp;&nbsp;"asnNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"returnNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"deliveryNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"stoNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"extInboundNo":"2759",</br>&nbsp;&nbsp;&nbsp;&nbsp;"status":"Confirmed",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"delivery_loc":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"invoiceno":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"invoicedate":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"invoice_amt":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"invoicetax":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"no_ofboxes":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"vehicleno":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"challan_no":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"challan_date":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"remarks":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"weight":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"material_rcvddate":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf5":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf6":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf7":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf8":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf9":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf10":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"validateShelfLife":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"ewayBill":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"transporterCode  ":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"items":[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lineno":"1",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"sku":"ssku001",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"receivedqty":"2",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"bin":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"cost":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"imeino":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable01":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable02":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable03":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable04":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable05":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable06":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable07":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"usns":["a080","a079"],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lpn":"A011",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"extLineno":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lotNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"invoiceQty":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"uom":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf6":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf7":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf8":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf9":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf10":""</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}<br/></b><br/> <b>Case -3 Using asnNo</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"inbound":{</br> &nbsp;&nbsp;&nbsp;&nbsp;"receiveType":"ASN",</br> &nbsp;&nbsp;&nbsp;&nbsp;"pocode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"asnNo":"2755",</br>&nbsp;&nbsp;&nbsp;&nbsp;"returnNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"deliveryNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"stoNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"extInboundNo":"2759",</br>&nbsp;&nbsp;&nbsp;&nbsp;"status":"GRN In Process",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"delivery_loc":"UJW",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"invoiceno":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"invoicedate":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"invoice_amt":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"invoicetax":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"no_ofboxes":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"vehicleno":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"challan_no":"4657",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"challan_date":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"remarks":"My my",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"weight":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"material_rcvddate":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf5":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf6":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf7":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf8":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf9":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf10":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"validateShelfLife":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"ewayBill":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"transporterCode  ":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"items":[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lineno":"1",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"sku":"SKMRP",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"receivedqty":"1",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"bin":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"cost":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"imeino":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable01":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable02":"19/04/2022",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable03":"19/04/2022",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable04":"19/04/2022",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable05":"19/04/2022",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable06":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable07":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"usns":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lpn":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"extLineno":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lotNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"invoiceQty":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"uom":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf6":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf7":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf8":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf9":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf10":""</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}<br/></b><br/> <b>Case -4 RETURN</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"inbound":{</br> &nbsp;&nbsp;&nbsp;&nbsp;"receiveType":"RET",</br> &nbsp;&nbsp;&nbsp;&nbsp;"pocode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"returnNo":"UJW1546",</br>&nbsp;&nbsp;&nbsp;&nbsp;"asnNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"deliveryNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"stoNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"extInboundNo":"2759",</br>&nbsp;&nbsp;&nbsp;&nbsp;"status":"GRN In Process",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"delivery_loc":"UJW",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"invoiceno":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"invoicedate":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"invoice_amt":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"invoicetax":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"no_ofboxes":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"vehicleno":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"challan_no":"4657",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"challan_date":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"remarks":"My my",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"weight":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"material_rcvddate":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf5":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf6":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf7":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf8":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf9":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf10":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"validateShelfLife":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"ewayBill":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"transporterCode  ":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"items":[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lineno":"1",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"sku":"SKMRP",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"receivedqty":"1",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"bin":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"cost":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"imeino":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable01":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable02":"19/04/2022",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable03":"19/04/2022",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable04":"19/04/2022",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable05":"19/04/2022",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable06":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable07":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"usns":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lpn":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"extLineno":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lotNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"invoiceQty":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"uom":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf6":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf7":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf8":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf9":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf10":""</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}<br/></b><br/> <b>Case -5 Using STO</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"inbound":{</br> &nbsp;&nbsp;&nbsp;&nbsp;"receiveType":"STO",</br> &nbsp;&nbsp;&nbsp;&nbsp;"pocode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"asnNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"returnNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"deliveryNo":"UJW000322636",</br>&nbsp;&nbsp;&nbsp;&nbsp;"stoNo":"UJW18650",</br>&nbsp;&nbsp;&nbsp;&nbsp;"extInboundNo":"2759",</br>&nbsp;&nbsp;&nbsp;&nbsp;"status":"GRN In Process",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"delivery_loc":"UJW",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"invoiceno":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"invoicedate":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"invoice_amt":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"invoicetax":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"no_ofboxes":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"vehicleno":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"challan_no":"4657",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"challan_date":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"remarks":"My my",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"weight":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"material_rcvddate":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf5":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf6":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf7":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf8":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf9":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"udf10":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"validateShelfLife":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"ewayBill":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"transporterCode  ":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"items":[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lineno":"1",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"sku":"SKMRP",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"receivedqty":"1",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"bin":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"cost":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"imeino":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable01":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable02":"19/04/2022",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable03":"19/04/2022",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable04":"19/04/2022",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable05":"19/04/2022",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable06":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable07":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"usns":["i000008","i00009"],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lpn":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"extLineno":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lotNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"invoiceQty":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"uom":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf6":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf7":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf8":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf9":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf10":""</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}<br/></b><br/>
+
+          <br/></td></tr></tbody></table><p>&nbsp;</p><br/>'
+        schema:
+          properties:
+            inbound:
+              $ref: '#/definitions/inboundCreate4'
+      responses:
+        200:
+          description: <table border='1'width='672'><h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>422</p></td><td style="vertical-align:middle" width='167'><p>Invalid Location</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>908</p></td><td style="vertical-align:middle" width='167'><p>Either PO Code or Vendor Code is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>909</p></td><td style="vertical-align:middle" width='167'><p>Inbound Creation Error while processing</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>910</p></td><td style="vertical-align:middle" width='167'><p>One of the sku's not found in ERP.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>1104</p></td><td style="vertical-align:middle" width='167'><p>Multiple PO Codes found for this External PO Code.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>1105</p></td><td style="vertical-align:middle" width='167'><p>PO must be in released status to create inbound.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>1106</p></td><td style="vertical-align:middle" width='167'><p>Vendor Code not associated with given PO Code.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>1107</p></td><td style="vertical-align:middle" width='167'><p>Invalid Delivery Location Provided.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>1110</p></td><td style="vertical-align:middle" width='167'><p>Vendor Code not associated with given PO Code.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>1116</p></td><td style="vertical-align:middle" width='167'><p>One of the SKUs line number not associated with the given External PO Code.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>1158</p></td><td style="vertical-align:middle" width='167'><p>SKU [**] not found in PO</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>1218</p></td><td style="vertical-align:middle" width='167'><p>One of the SKUs not associated with the given PO Code.</p></td></tr></tbody></table>
+          schema:
+            $ref: '#/definitions/inboundcreatev4'
+  /RestWS/api/eretail/v1/inbound/qc:
+    post:
+      tags:
+      - Inbounds
+      summary: API For Inbound QC (API allows only rejection and qc is confirmed directly)(Hit Quota 40/5 min)
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/json
+      parameters:
+      - in: formData
+        name: RequestBody
+        type: string
+        description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width="100"><strong>Field Name</strong></td><td style="vertical-align:middle" width="100"><strong>Data Type</strong></td><td style="vertical-align:middle" width="100"><strong>Mandatory</strong></td><td style="vertical-align:middle" width="300"><strong>Description</strong></td></tr><tr align="center"><td style="vertical-align:middle">inboundNo</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">Either inbound no. or grn no. is Mandatory</td></tr><tr align="center"><td style="vertical-align:middle">grnNo</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">Either inbound no. or grn no. is Mandatory</td></tr><tr align="center"><td style="vertical-align:middle">location</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Mandatory</td><td style="veritcal-align:middle">eRetail Location Code or loccode of external system. API will pick Loc Code from inbound qc API configuration, if single Location Code is configured. If API is mapped with multiple locations.</td></tr><tr align="center"><td style="vertical-align:middle">rejectBin</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Reject Bin where inventory need to be moved after qc. Bin must belongs to bad bucket.</td></tr><tr align="center"><td colspan="4" style="vertical-align:middle"><b>items</b></td></tr><tr align="center"><td style="vertical-align:middle">sku</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">In case of USN and Lot Scanning not Mandatory otherwise Mandatory</td></tr><tr align="center"><td style="vertical-align:middle">bin</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">In case of USN Scanning not Mandatory otherwise Mandatory</td></tr><tr align="center"><td style="vertical-align:middle">lot</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">only mandatory when lot scanning</td></tr><tr align="center"><td style="vertical-align:middle">rejectQty</td><td style="vertical-align:middle">decimal(10,3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">In case of USN, it should be integer otherwise Reject Qty should be upto 2 decimal places only</td></tr><tr align="center"><td style="vertical-align:middle">usn</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">In case of USN Scanning mandatory otherwise not</td></tr><tr align="center"><td style="vertical-align:middle">reason</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Should exist in codelkup where lkupcode like "QCRJRSN"</td></tr><tr align="center"><td style="vertical-align:middle">remark</td><td style="vertical-align:middle">Varchar(5000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Remarks</td></tr><tr><td colspan="4" style="vertical-align:middle"> <b>JSON FORMAT-<br/>{<br/>&nbsp;&nbsp;"inbound":{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"inboundNo":"EWH000000465",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"grnNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"location":"EWH",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"rejectBin":"Holdbin",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"items":[</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"sku":"GAPD200SCPR000",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"bin":"stagebin",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lot":"EWH000000002",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"rejectQty":"2",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"usn":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"reason":"BARCODE NOT GETTING SCANNED",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"remark":""</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</br>&nbsp;&nbsp;&nbsp;&nbsp;}<br/></b></td></tr></tbody></table>
+        required: true
+      - in: formData
+        name: ApiOwner
+        type: string
+        description: This Field Will Be Used To Send API Owner
+        required: true
+      - in: formData
+        name: ApiKey
+        type: string
+        description: This is the API Key
+        required: true
+      responses:
+        200:
+          description: <table border="1" style="width:672"><tbody> <tr><td colspan="2"><h2 style="text-align:center;color:#FFFF00;">API Generic Error Codes</h2></td></tr><tr style="text-align:center;"><td style="vertical-align:middle;width:167;"><p><strong>Response Code</strong></p></td><td style="vertical-align:middle;width:167;"><p><strong>Response Message</strong></p></td><tr style="text-align:center;"><td style="vertical-align:middle;width:167;"><p>422</p></td><td style="vertical-align:middle;width:167;"><p>Invalid Location</p></td></tr></tr><tr style="text-align:center;"><td style="vertical-align:middle;width:167;"><p>801</p></td><td style="vertical-align:middle;width:167;"><p>Item detail is mandatory.</p></td></tr><tr style="text-align:center;"><td style="vertical-align:middle;width:167;"><p>930</p></td><td style="vertical-align:middle;width:167;"><p>Either Inbound No. or GRN No. is mandatory</p></td></tr><tr style="text-align:center;"><td style="vertical-align:middle;width:167;"><p>1010</p></td><td style="vertical-align:middle;width:167;"><p>All validation related error messages Ex-USN is mandatory</p></td></tr><tr style="text-align:center;"><td style="vertical-align:middle;width:167;"><p>2102</p></td><td style="vertical-align:middle;width:167;"><p>Location is mandatory.</p></td></tr> <tr><td colspan="2" style="vertical-align:middle"><b>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;"responseCode":0,<br/>&nbsp;&nbsp;&nbsp;&nbsp;"responseMessage":"Success",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"requestStatus":{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"inboundNo":"EWH000000465",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"grnNo":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"status":"Success",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"uniqueKey":null,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"errorDesc":null<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}</b></td></tr></tbody></table>
+  /RestWS/api/eretail/v1/inbound/cancel:
+    post:
+      tags:
+      - Inbounds
+      summary: Max no. of lines/Hit:100  For Inbound Cancel(Hit Quota 40/5 min)
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: ApiOwner
+        required: true
+        type: string
+        description: API Owner.
+      - in: header
+        name: ApiKey
+        required: true
+        type: string
+        description: API Key.
+      - in: body
+        name: InboundCancelSON
+        description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">inboundNos</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">List of inbounds with status <b>Pending Confirmation(maximum 100 inbounds)</b></td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Additional Information</b></td></tr><tr align="left"><td style="vertical-align:middle" colspan=4 >Max Allowance - 100 inboundNos at a time.</td></tr><tr><td style="vertical-align:middle" colspan=4> <b></br>&nbsp;Case 1:&nbsp;Cancel Inbound by Inbound Number</br>&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"inboundNos":["IWH000033899"]</br>&nbsp;}</br></br>&nbsp;</tbody></table>
+        schema:
+          type: object
+          required:
+          - inboundNos
+          properties:
+            inboundNos:
+              type: array
+              items:
+                type: string
+              example:
+              - IWH000033899
+      responses:
+        200:
+          description: <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9</p></td><td style="vertical-align:middle" width='167'><p>InboundNo cannot be cancel as status Cancelled found in ERP</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>8201</p></td><td style="vertical-align:middle" width='167'><p>No request data found for Inbound Cancel processing</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>8202</p></td><td style="vertical-align:middle" width='167'><p>No inboundNo(s) found in ERP to Cancel</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9202</p></td><td style="vertical-align:middle" width='167'><p>InboundNo cannot be empty</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9203</p></td><td style="vertical-align:middle" width='167'><p>Maximum 100 InboundNo can be cancelled</p></td></tr></tbody></table>
+          schema:
+            $ref: '#/definitions/inboundcancel1'
+  /RestWS/api/eretail/v1/inbound/qcdetail:
+    post:
+      tags:
+      - Inbounds
+      summary: API For Inbound QC Details
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: ApiOwner
+        required: true
+        type: string
+        description: API Owner.
+      - in: header
+        name: ApiKey
+        required: true
+        type: string
+        description: API Key.
+      - in: body
+        name: InboundDetailJSON
+        description: <table class="table-style-three"><tbody><tr><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">inboundNo</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Either Inbound or GRN is mandatory</td></tr><tr align="center"><td style="vertical-align:middle">grnNo</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Either Inbound or GRN is mandatory</td></tr><td colspan=10> <b>Case 1-Request by inboundNo</b><br/> <b>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;"inboundNo":"CHE000000173",</br>&nbsp; &nbsp;&nbsp;"grnNo":"CHE000010077",</br>&nbsp;}</b><br/><br/><br/> </tbody></table>
+        schema:
+          type: object
+          required:
+          - inboundNo
+          properties:
+            inboundNo:
+              type: string
+              example: CHE000000173
+            grnNo:
+              type: string
+              example: CHE000010077
+      responses:
+        200:
+          description: <table border='1'width='672'>  <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></t> </tbody></table>
+          schema:
+            $ref: '#/definitions/inboundqcdetail'
+  /RestWS/api/eretail/v1/inbound/getGrnAttachment:
+    post:
+      tags:
+      - Inbounds
+      summary: Max no. of lines/Response:100 API For Inbound Grn Attachment
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: ApiOwner
+        required: true
+        type: string
+        description: API Owner.
+      - in: header
+        name: ApiKey
+        required: true
+        type: string
+        description: API Key.
+      - in: body
+        name: InboundGRNJSON
+        description: <table class="table-style-three"><tbody><tr><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">inboundNo</td><td style="vertical-align:middle">varchar(12)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Either (InboundNo / asnNo/ grnNo) or Date filter mandatory.</td></tr><tr align="center"><td style="vertical-align:middle">asnNo</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Either (InboundNo / asnNo/ grnNo) or Date filter mandatory.</td></tr><tr align="center"><td style="vertical-align:middle">grnNo</td><td style="vertical-align:middle">varchar(12)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Either (InboundNo / asnNo/ grnNo) or Date filter mandatory.</td><tr align="center"><td style="vertical-align:middle">fromDate</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Either (InboundNo / asnNo/ grnNo) or Date filter mandatory.</td></tr><tr align="center"><td style="vertical-align:middle">toDate</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Either (InboundNo / asnNo/ grnNo) or Date filter mandatory.</td></tr><tr align="center"><td style="vertical-align:middle">location</td><td style="vertical-align:middle">varchar(3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">eretail location code / Ext LocCode.</td><tr align="center"><td style="vertical-align:middle">filterBy</td><td style="vertical-align:middle">varchar(1)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">get GRN attachment on the basis of Create Date or Update Date. Default:1, Possible values are 1 (Create date),2(Update date).</td></tr></tr><td colspan=10> <b>Case 1-Request by inboundNo</b><br/> <b>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;"inboundNo":"UJW000000173",</br>&nbsp; &nbsp;&nbsp;"grnNo":"",</br>&nbsp; &nbsp;&nbsp;"asnNo":"",</br>&nbsp; &nbsp;&nbsp;"fromDate":"",</br>&nbsp; &nbsp;&nbsp;"toDate":"",</br>&nbsp; &nbsp;&nbsp;"location":"UJW",</br>&nbsp; &nbsp;&nbsp;"filterBy":"1"</br>&nbsp;}</b><br/><br/><br/><b>Case 2-Request by GrnNo</b><br/> <b>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;"inboundNo":"",</br>&nbsp; &nbsp;&nbsp;"grnNo":"UJW000007745",</br>&nbsp; &nbsp;&nbsp;"asnNo":"",</br>&nbsp; &nbsp;&nbsp;"fromDate":"",</br>&nbsp; &nbsp;&nbsp;"toDate":"",</br>&nbsp; &nbsp;&nbsp;"location":"UJW",</br>&nbsp; &nbsp;&nbsp;"filterBy":"1"</br>&nbsp;}</b><br/><br/><br/><b>Case 3-Request by AsnNo</b><br/> <b>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;"inboundNo":"",</br>&nbsp; &nbsp;&nbsp;"grnNo":"",</br>&nbsp; &nbsp;&nbsp;"asnNo":"994",</br>&nbsp; &nbsp;&nbsp;"fromDate":"",</br>&nbsp; &nbsp;&nbsp;"toDate":"",</br>&nbsp; &nbsp;&nbsp;"location":"UJW",</br>&nbsp; &nbsp;&nbsp;"filterBy":"1"</br>&nbsp;}</b><br/><br/><br/><b>Case 4-Request by Date Range Filter</b><br/> <b>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;"inboundNo":"",</br>&nbsp; &nbsp;&nbsp;"grnNo":"",</br>&nbsp; &nbsp;&nbsp;"asnNo":"",</br>&nbsp; &nbsp;&nbsp;"fromDate":"14/12/2016 15:40:30",</br>&nbsp; &nbsp;&nbsp;"toDate":"20/12/2016 15:40:30",</br>&nbsp; &nbsp;&nbsp;"location":"UJW",</br>&nbsp; &nbsp;&nbsp;"filterBy":"1"</br>&nbsp;}</b><br/><br/><br/> </tbody></table>
+        schema:
+          type: object
+          required:
+          - inboundNo
+          properties:
+            inboundNo:
+              type: string
+              example: UJW000000173
+            asnNo:
+              type: string
+              example: '994'
+            grnNo:
+              type: string
+              example: UJW000010077
+            fromDate:
+              type: string
+              example: 14/12/2016 15:40:30
+            toDate:
+              type: string
+              example: 20/12/2016 15:40:30
+            location:
+              type: string
+              example: UJW
+            filterBy:
+              type: string
+              example: '1'
+      responses:
+        200:
+          description: <table border='1'width='672'>  <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></t><tr style="text-align:center;"><td style="vertical-align:middle;width:167;"><p>18</p></td><td style="vertical-align:middle;width:167;"><p>API module misconfigured</p></td></tr></tr><tr style="text-align:center;"><td style="vertical-align:middle;width:167;"><p>9003</p></td><td style="vertical-align:middle;width:167;"><p>Empty Request</p></td></tr></tr><tr style="text-align:center;"><td style="vertical-align:middle;width:167;"><p>807</p></td><td style="vertical-align:middle;width:167;"><p>No Filters Found for Fetching Orders</p></td></tr></tr><tr style="text-align:center;"><td style="vertical-align:middle;width:167;"><p>2026</p></td><td style="vertical-align:middle;width:167;"><p>Invalid filter value. Should be 1 or 2.</p></td></tr></tr><tr style="text-align:center;"><td style="vertical-align:middle;width:167;"><p>9006</p></td><td style="vertical-align:middle;width:167;"><p>Invalid Location</p></td></tr></tr><tr style="text-align:center;"><td style="vertical-align:middle;width:167;"><p>802</p></td><td style="vertical-align:middle;width:167;"><p>From Date Format Not Correct Should Be (dd/MM/yyyy HH:mm:ss) in IST timezone</p></td></tr></tr><tr style="text-align:center;"><td style="vertical-align:middle;width:167;"><p>803</p></td><td style="vertical-align:middle;width:167;"><p>To Date Format Not Correct Should Be (dd/MM/yyyy HH:mm:ss) in IST timezone</p></td></tr></tr><tr style="text-align:center;"><td style="vertical-align:middle;width:167;"><p>804</p></td><td style="vertical-align:middle;width:167;"><p>To Date Should be Greater Than From Date.</p></td></tr></tr><tr style="text-align:center;"><td style="vertical-align:middle;width:167;"><p>805</p></td><td style="vertical-align:middle;width:167;"><p>Order Pull Date Range Should not be more then 7 days.</p></td></tr></tr></tbody></table>
+          schema:
+            $ref: '#/definitions/inboundGRNdetail'
+  /RestWS/api/eretail/v3/inbound/qcdetail:
+    post:
+      tags:
+      - Inbounds
+      summary: API For Inbound QC Details
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: ApiOwner
+        required: true
+        type: string
+        description: API Owner.
+      - in: header
+        name: ApiKey
+        required: true
+        type: string
+        description: API Key.
+      - in: body
+        name: InboundDetailJSON
+        description: <table class="table-style-three"><tbody><tr><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">inboundNo</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">Either Inbound No/ GRN No/ or From Date is mandatory</td></tr><tr align="center"><td style="vertical-align:middle">grnNo</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">Either Inbound No/ GRN No/ or From Date is mandatory</td></tr><tr align="center"><td style="vertical-align:middle">fromDate</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">Either Inbound No/ GRN No/ or From Date is mandatory</td></tr><tr align="center"><td style="vertical-align:middle">toDate</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">Either Inbound No/ GRN No/ or From Date is mandatory</td></tr><tr align="center"><td style="vertical-align:middle">filterBy</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible values are 1 (update date),2(create date)</td></tr><td colspan=10> <b>Case 1-Request by inboundNo</b><br/> <b>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;"inboundNo":"CHE000000173",</br>&nbsp; &nbsp;&nbsp;"grnNo":"",</br>&nbsp;&nbsp;&nbsp;"fromDate":"",</br>&nbsp;&nbsp;&nbsp;"toDate":"",</br>&nbsp;&nbsp;&nbsp;"filterBy":"",</br>&nbsp;}</b><br/><br/><br/> </tbody></table>
+        schema:
+          type: object
+          required:
+          - inboundNo
+          properties:
+            inboundNo:
+              type: string
+              example: CHE000000173
+            grnNo:
+              type: string
+              example: ''
+            fromDate:
+              type: string
+              example: ''
+            toDate:
+              type: string
+              example: ''
+            filterBy:
+              type: string
+              example: ''
+      responses:
+        200:
+          description: <table border='1'width='672'>  <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></t> </tbody></table>
+          schema:
+            $ref: '#/definitions/inboundqcdetail'
+definitions:
+  inboundCreate4:
+    properties:
+      receiveType:
+        type: string
+        example: ASN
+      pocode:
+        type: string
+        example: ''
+      vendor_code:
+        type: string
+        example: ''
+      asnNo:
+        type: string
+        example: '2755'
+      returnNo:
+        type: string
+        example: ''
+      deliveryNo:
+        type: string
+        example: ''
+      stoNo:
+        type: string
+        example: ''
+      extInboundNo:
+        type: string
+        example: '2759'
+      status:
+        type: string
+        example: GRN In Process
+      delivery_loc:
+        type: string
+        example: UJW
+      invoiceno:
+        type: string
+        example: del-296-167964
+      invoicedate:
+        type: number
+        example: '2017-12-16 12:59:31.0'
+      invoice_amt:
+        type: integer
+        example: '684.000'
+      invoicetax:
+        type: integer
+        example: '759.240'
+      no_ofboxes:
+        type: integer
+        example: '1'
+      vehicleno:
+        type: integer
+        example: ''
+      challan_no:
+        type: integer
+        example: ''
+      challan_date:
+        type: integer
+        example: ''
+      remarks:
+        type: string
+        example: ''
+      weight:
+        type: integer
+        example: '0.000'
+      material_rcvddate:
+        type: number
+        example: 16/12/2017
+      udf1:
+        type: string
+        example: ''
+      udf2:
+        type: string
+        example: ''
+      udf3:
+        type: string
+        example: ''
+      udf4:
+        type: string
+        example: ''
+      validateShelfLife:
+        type: string
+        example: ''
+      ewayBill:
+        type: string
+        example: ''
+      transporterCode:
+        type: string
+        example: ''
+      items:
+        type: array
+        items:
+          $ref: '#/definitions/inboundCreateItem4'
+  responseinboundqcdetail:
+    properties:
+      totalInbound:
+        type: string
+        example: 1
+      totalPages:
+        type: string
+        example: 1
+      currentPage:
+        type: string
+        example: 1
+      inboundDetailList:
+        type: array
+        items:
+          $ref: '#/definitions/InboundQCList'
+  inboundcreatev4:
+    properties:
+      responseCode:
+        type: integer
+        example: 0
+      responseMessage:
+        type: string
+        example: Success
+      requestStatus:
+        $ref: '#/definitions/RequestStatusinboundcreatev4'
+  Itemsinbounddetail:
+    type: object
+    properties:
+      lineno:
+        type: integer
+        example: '1'
+      ext_lineno:
+        type: integer
+        example: ''
+      po_ext_lineno:
+        type: integer
+        example: ''
+      sku:
+        type: string
+        example: HA.HA.DR.1575000
+      receivedqty:
+        type: integer
+        example: '1.000'
+      rejectedQty:
+        type: string
+        example: '0.000'
+      putawayQty:
+        type: string
+        example: '0.000'
+      invoiceQty:
+        type: string
+        example: '0.000'
+      bin:
+        type: string
+        example: jit.batch1
+      cost:
+        type: integer
+        example: '380.00'
+      lotNo:
+        type: string
+        example: CHE987833434
+      imeino:
+        type: integer
+        example: ''
+      lottable01:
+        type: integer
+        example: ''
+      lottable02:
+        type: integer
+        example: ''
+      lottable03:
+        type: integer
+        example: ''
+      lottable04:
+        type: integer
+        example: ''
+      lottable05:
+        type: integer
+        example: ''
+      lottable06:
+        type: integer
+        example: ''
+      lottable07:
+        type: integer
+        example: ''
+      polineno:
+        type: string
+        example: '2'
+      serialNo1:
+        type: string
+        example:
+        - xxxx1
+      serialNo2:
+        type: string
+        example:
+        - xxxx2
+      serialNo3:
+        type: string
+        example:
+        - xxxx3
+      skuUSNs:
+        type: string
+        example:
+        - i01
+        - i03
+      usnDtls:
+        type: array
+        items:
+          $ref: '#/definitions/UD'
+      udf1:
+        type: string
+        example: ''
+      udf2:
+        type: string
+        example: ''
+      udf3:
+        type: string
+        example: ''
+      udf4:
+        type: string
+        example: ''
+      udf5:
+        type: string
+        example: ''
+      udf6:
+        type: string
+        example: ''
+      udf7:
+        type: string
+        example: ''
+      udf8:
+        type: string
+        example: ''
+      udf9:
+        type: string
+        example: ''
+      udf10:
+        type: string
+        example: ''
+      gstRt:
+        type: string
+        example: '5'
+      igstAmt:
+        type: string
+        example: ''
+      cgstAmt:
+        type: string
+        example: '967.00'
+      sgstAmt:
+        type: string
+        example: '967.00'
+      cesRt:
+        type: string
+        example: ''
+      cesAmt:
+        type: string
+        example: ''
+      cesNonAdvlAmt:
+        type: string
+        example: ''
+      stateCesRt:
+        type: string
+        example: ''
+      stateCesAmt:
+        type: string
+        example: ''
+      stateCesNonAdvlAmt:
+        type: string
+        example: ''
+      hsnCode:
+        type: string
+        example: '1101'
+      igstRt:
+        type: string
+        example: ''
+      cgstRt:
+        type: string
+        example: '3'
+      sgstRt:
+        type: string
+        example: '3'
+      ugstRt:
+        type: string
+        example: ''
+      ugstAmt:
+        type: string
+        example: ''
+      vendorskucode:
+        type: string
+        example: K01
+      size:
+        type: string
+        example: S
+      taxPercentage:
+        type: string
+        example: '0.00'
+      asn_lineno:
+        type: string
+        example: ''
+      status:
+        type: string
+        example: ''
+      uom:
+        type: string
+        example: ''
+      uomqty:
+        type: string
+        example: ''
+      conversion:
+        type: string
+        example: ''
+      currBaseCost:
+        type: string
+        example: ''
+      skubarcode:
+        type: string
+        example: ''
+      lpn:
+        type: string
+        example: ''
+      inboundLineChargeDetail:
+        type: array
+        items:
+          $ref: '#/definitions/InboundChargeDetailList'
+  inboundcancel2:
+    properties:
+      responseCode:
+        type: string
+        example: '0'
+      response:
+        type: string
+        example: Success
+      referenceKey:
+        type: string
+        example: IWH000033899
+      responseMessage:
+        type: string
+        example: Inbound Cancelled Successfully
+  responseinboundgrndetail:
+    properties:
+      inboundNo:
+        type: string
+        example: UJW000007745
+      grnNo:
+        type: string
+        example: '1074'
+      asnNo:
+        type: string
+        example: G23567776
+      fileName:
+        type: string
+        example: sample.pdf
+      labelStream:
+        type: string
+        example: /9j/4AAQSkZJRgABAQEAYABgAAD/4QBaRXhpZgAASUkqAAgAAAAFAAEDBQABAAAASgAAAAMDAQABAAAAAP/nABBRAQABAAAAAQHnABFRBAABAAAAww4AABJRBAABAAAAww4AAAAAAACghgEAj7EAAP/bAEMACAYGBwYFCAcHBwkJCAoMFA0MCwsMGRITDxQdGh8eHRocHCAkLicgIiwjHBwoNyH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUm
+  inboundGRNdetail:
+    properties:
+      responseCode:
+        type: integer
+        example: 0
+      responseMessage:
+        type: string
+        example: Success
+      GrnDetails:
+        type: array
+        items:
+          $ref: '#/definitions/responseinboundgrndetail'
+  inboundqcdetail:
+    properties:
+      responseCode:
+        type: integer
+        example: 0
+      responseMessage:
+        type: string
+        example: Success
+      response:
+        $ref: '#/definitions/responseinboundqcdetail'
+  InboundQCList:
+    properties:
+      inboundNo:
+        type: string
+        example: CHE000000173
+      grnNo:
+        type: string
+        example: CHE000010077
+      rejectBin:
+        type: string
+        example: CHE000010077
+      location:
+        type: string
+        example: CHE
+      items:
+        type: array
+        items:
+          $ref: '#/definitions/Itemsinboundqcdetail'
+  inboundcancel1:
+    properties:
+      responseCode:
+        type: integer
+        example: 0
+      responseMessage:
+        type: string
+        example: Success
+      requestStatus:
+        type: array
+        items:
+          $ref: '#/definitions/inboundcancel2'
+  Itemsinboundqcdetail:
+    type: object
+    properties:
+      sku:
+        type: string
+        example: V18995
+      bin:
+        type: string
+        example: WESHIN
+      lot:
+        type: string
+        example: CHE000001581
+      passQty:
+        type: string
+        example: '1.000'
+      rejectQty:
+        type: integer
+        example: '1.000'
+      usn:
+        type: integer
+        example: ''
+      reason:
+        type: string
+        example: '1.0'
+      remark:
+        type: string
+        example: ''
+      totalQty:
+        type: string
+        example: '2.000'
+      holdQty:
+        type: string
+        example: '2.000'
+  inbounddetail:
+    properties:
+      responseCode:
+        type: integer
+        example: 0
+      responseMessage:
+        type: string
+        example: Success
+      response:
+        $ref: '#/definitions/responseinbounddetail'
+  responseinbounddetail:
+    properties:
+      totalInbound:
+        type: integer
+        example: 1
+      totalPages:
+        type: integer
+        example: 1
+      currentPage:
+        type: integer
+        example: 1
+      inboundList:
+        type: array
+        items:
+          $ref: '#/definitions/InboundList'
+  InboundList:
+    properties:
+      pocode:
+        type: string
+        example: DEL000054203
+      gatepasscode:
+        type: string
+        example: DEL000054203
+      ext_pocode:
+        type: string
+        example: ''
+      asncode:
+        type: string
+        example: ''
+      inboundcode:
+        type: string
+        example: DEL000052119
+      externinboundcode:
+        type: string
+        example: ''
+      grnno:
+        type: string
+        example: DEL000054213
+      grndate:
+        type: integer
+        example: '2017-12-16 12:59:31.0'
+      vendor_code:
+        type: integer
+        example: '6259'
+      vendor_name:
+        type: string
+        example: ABC
+      grn_qty:
+        type: integer
+        example: '5.00'
+      grn_amount:
+        type: integer
+        example: '1355.00'
+      status:
+        type: string
+        example: Confirmed
+      pocreated_loc:
+        type: string
+        example: DEL
+      del_loc:
+        type: string
+        example: DEL
+      asn_delloc:
+        type: string
+        example: UJW
+      invoiceno:
+        type: string
+        example: del-296-167964
+      invoicedate:
+        type: number
+        example: '2017-12-16 12:59:31.0'
+      invoice_amt:
+        type: integer
+        example: '684.000'
+      invoicetax:
+        type: integer
+        example: '759.240'
+      no_ofboxes:
+        type: integer
+        example: '1'
+      vehicleno:
+        type: integer
+        example: ''
+      challan_no:
+        type: integer
+        example: ''
+      challan_date:
+        type: integer
+        example: ''
+      remarks:
+        type: string
+        example: ''
+      weight:
+        type: integer
+        example: '0.000'
+      material_rcvddate:
+        type: number
+        example: 16/12/2017
+      udf1:
+        type: string
+        example: ''
+      udf2:
+        type: string
+        example: ''
+      udf3:
+        type: string
+        example: ''
+      udf4:
+        type: string
+        example: ''
+      udf5:
+        type: string
+        example: ''
+      udf6:
+        type: string
+        example: ''
+      udf7:
+        type: string
+        example: ''
+      udf8:
+        type: string
+        example: ''
+      udf9:
+        type: string
+        example: ''
+      udf10:
+        type: string
+        example: ''
+      currency:
+        type: string
+        example: ''
+      returnCode:
+        type: string
+        example: ''
+      qcStatus:
+        type: string
+        example: inQC/QCdone/null
+      invoiceTaxAmt:
+        type: string
+        example: ''
+      del_locname:
+        type: string
+        example: ''
+      inbType:
+        type: string
+        example: ''
+      grn_BaseCurrAmount:
+        type: string
+        example: ''
+      conversionRate:
+        type: string
+        example: ''
+      extCustRetCode:
+        type: string
+        example: ''
+      printUrl:
+        type: string
+        example: ''
+      stoNo:
+        type: string
+        example: ''
+      extStoNo:
+        type: string
+        example: ''
+      tcs:
+        type: string
+        example: ''
+      transporterCharges:
+        type: string
+        example: '0.000'
+      inboundChargeDetail:
+        type: array
+        items:
+          $ref: '#/definitions/InboundChargeDetailList'
+      items:
+        type: array
+        items:
+          $ref: '#/definitions/Itemsinbounddetail'
+  InboundChargeDetailList:
+    type: object
+    properties:
+      chargeName:
+        type: string
+        example: ''
+      baseCurrencyCharges:
+        type: string
+        example: '0.000'
+      chargeValue:
+        type: string
+        example: '0.000'
+  RequestStatusinboundcreatev4:
+    properties:
+      outputKey:
+        type: string
+        example: UJW000009184
+      status:
+        type: string
+        example: Success
+      errorDesc:
+        type: string
+        example: 'null'
+  inboundCreateItem4:
+    properties:
+      lineno:
+        type: string
+        example: '1'
+      sku:
+        type: string
+        example: SKMRP
+      receivedqty:
+        type: string
+        example: '1'
+      bin:
+        type: string
+        example: ''
+      cost:
+        type: string
+        example: ''
+      lpn:
+        type: string
+        example: ''
+      uom:
+        type: string
+        example: ''
+      imeino:
+        type: string
+        example: ''
+      lottable01:
+        type: string
+        example: ''
+      lottable02:
+        type: string
+        example: '2019-07-20 00:00:00.0'
+      lottable03:
+        type: string
+        example: '2019-07-21 00:00:00.0'
+      lottable04:
+        type: string
+        example: '2019-07-23 00:00:00.0'
+      lottable05:
+        type: string
+        example: lot5
+      lottable06:
+        type: string
+        example: lot6
+      lottable07:
+        type: string
+        example: ''
+      udf2:
+        type: string
+        example: ''
+      udf3:
+        type: string
+        example: ''
+      udf6:
+        type: string
+        example: ''
+      udf7:
+        type: string
+        example: ''
+      udf8:
+        type: string
+        example: ''
+      udf9:
+        type: string
+        example: ''
+      udf10:
+        type: string
+        example: ''
+      invoiceQty:
+        type: string
+        example: ''
+      extlineno:
+        type: string
+        example: ''
+      lotNo:
+        type: string
+        example: ''
+  UD:
+    type: object
+    properties:
+      intUSN:
+        type: string
+        example: ''
+      extUSN:
+        type: string
+        example: ''
