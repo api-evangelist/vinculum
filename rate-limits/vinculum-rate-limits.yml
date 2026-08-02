@@ -1,0 +1,35 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/vinculum-eretail-openapi-original.yml
+docs: https://erp.vineretail.com/swagger/
+notes: >-
+  Vin eRetail publishes a per-operation call quota directly in each operation
+  summary (e.g. "Hit Quota 80/5 min"). Quotas are enforced per credential over a
+  rolling 5-minute window. Derived by parsing the "Quota N/5 min" annotations
+  across 105 of 108 documented operations.
+window: 5 minutes
+default_limit: 40
+tiers:
+  - name: standard-read-write
+    limit_count: 40
+    window: 5m
+    operations_count: 97
+    scope: per ApiOwner/ApiKey credential
+    example_operations:
+      - /RestWS/api/eretail/v1/order/orderPull
+      - /RestWS/api/eretail/v2/order/list
+      - /RestWS/api/eretail/v1/customer/custCreate
+  - name: order-mutations
+    limit_count: 80
+    window: 5m
+    operations_count: 6
+    scope: per ApiOwner/ApiKey credential
+    example_operations:
+      - /RestWS/api/eretail/v1/order/create
+      - /RestWS/api/eretail/v4/order/create
+      - /RestWS/api/eretail/v1/order/cancel
+  - name: high-throughput
+    limit_count: 120
+    window: 5m
+    operations_count: 2
+    scope: per ApiOwner/ApiKey credential

@@ -1,0 +1,14 @@
+generated: '2026-07-21'
+method: probed
+source: live probes of API + website hosts
+hosts:
+  - host: https://erp.vineretail.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+  - host: https://www.vinculumgroup.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+notes: No /.well-known/ discovery documents are published on the API or website hosts (all probes returned 404).

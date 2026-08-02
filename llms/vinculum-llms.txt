@@ -1,0 +1,26 @@
+# Vinculum (Vin eRetail)
+
+> Vinculum provides an AI-driven SaaS suite for omnichannel retail and ecommerce — order management (OMS), warehouse management (WMS), product information management (PIM), and endless-aisle omnichannel — unifying 150+ sales channels for 1,000+ brands. Its Vin eRetail platform exposes REST APIs for orders, inventory, catalog, purchasing, and fulfillment, plus a SellerPanel V3 marketplace API.
+
+## APIs
+- [Vin eRetail API (Swagger)](https://erp.vineretail.com/swagger/): Orders, Returns, Products/SKU, Inventory/Stock, Vendors, Purchase Orders, Inbounds, ASN, Transfers, RTV, Putaway, Manifest (108 operations). Base: https://erp.vineretail.com/RestWS/api/eretail
+- [SellerPanel V3 API (Swagger)](https://erp.vineretail.com/SellerPanelV3/): Marketplace listing, order, and courier-allocation operations (15 operations). Base: https://static.vineretail.com/RestWS/api/sellerPanel/v3
+
+## Specs
+- [Vin eRetail OpenAPI (Swagger 2.0)](openapi/vinculum-eretail-openapi-original.yml)
+- [SellerPanel V3 OpenAPI (Swagger 2.0)](openapi/vinculum-sellerpanel-openapi-original.yml)
+
+## Authentication
+- Vin eRetail: ApiOwner + ApiKey credential pair on every call (form-data, header, or query); DbId header selects tenant. See [authentication](authentication/vinculum-authentication.yml).
+- SellerPanel V3: username + password exchanged at GET /authToken for a session token.
+
+## Conventions
+- [Conventions](conventions/vinculum-conventions.yml): page-number pagination (pageNo; totalPages/currentPage), URI-path versioning (v1..v4), responseCode/responseMessage error envelope, per-operation 5-minute rate quotas.
+- [Rate limits](rate-limits/vinculum-rate-limits.yml): 40/80/120 calls per 5 minutes per credential, per operation.
+- [Error envelope](errors/vinculum-error-codes.yml)
+- [Data model](data-model/vinculum-data-model.yml)
+
+## Docs
+- [Vinculum Product Guide](https://docs.vineretail.com)
+- [Company site](https://www.vinculumgroup.com)
+- [Blog](https://www.vinculumgroup.com/blog/)

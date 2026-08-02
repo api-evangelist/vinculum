@@ -1,0 +1,43 @@
+generated: '2026-07-21'
+method: searched
+source: https://erp.vineretail.com/swagger/ + https://erp.vineretail.com/SellerPanelV3/
+docs: https://docs.vineretail.com
+summary:
+  types: [apiKey]
+  api_key_in: [formData, header, query]
+  oauth2_flows: []
+  notes: >-
+    Vin eRetail authenticates every request with a paired ApiOwner + ApiKey
+    credential (issued per client/warehouse). The credential is accepted in
+    form-data, HTTP header, or query string depending on the operation. A DbId /
+    DBID header selects the tenant database on some operations. The SellerPanel
+    V3 API instead exchanges a username + password at GET /authToken for a
+    session token used on subsequent calls. Neither API declares a formal
+    OpenAPI securityScheme; the credentials are modeled as operation parameters.
+schemes:
+  - name: ApiOwner
+    type: apiKey
+    in: [formData, header, query]
+    parameter: ApiOwner
+    description: Client/account identifier issued by Vinculum, paired with ApiKey.
+    sources: [openapi/vinculum-eretail-openapi-original.yml]
+  - name: ApiKey
+    type: apiKey
+    in: [formData, header, query]
+    parameter: ApiKey
+    description: Secret key issued by Vinculum, paired with ApiOwner on every eRetail call.
+    sources: [openapi/vinculum-eretail-openapi-original.yml]
+  - name: DbId
+    type: apiKey
+    in: [header]
+    parameter: DbId
+    description: Tenant database selector header used on multi-tenant deployments.
+    sources: [openapi/vinculum-eretail-openapi-original.yml]
+  - name: SellerPanelToken
+    type: token
+    flow: username-password
+    token_endpoint: GET /RestWS/api/sellerPanel/v3/authToken
+    description: >-
+      SellerPanel V3 exchanges username + password (query params) at /authToken
+      for a token presented on subsequent SellerPanel operations.
+    sources: [openapi/vinculum-sellerpanel-openapi-original.yml]

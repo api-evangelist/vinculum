@@ -1,0 +1,18 @@
+generated: '2026-07-21'
+method: generated
+source: openapi/vinculum-eretail-openapi-original.yml
+skills:
+  - file: vinculum-create-and-track-order.md
+    name: Create and track an order in Vin eRetail
+    api: openapi/vinculum-eretail-openapi-original.yml
+    operations:
+      - POST /RestWS/api/eretail/v4/order/create
+      - POST /RestWS/api/eretail/v1/common/checkRequestStatus
+      - POST /RestWS/api/eretail/v4/order/status
+  - file: vinculum-sync-catalog-and-inventory.md
+    name: Sync catalog and inventory in Vin eRetail
+    api: openapi/vinculum-eretail-openapi-original.yml
+    operations:
+      - POST /RestWS/api/eretail/v1/sku/create
+      - POST /RestWS/api/eretail/v1/sku/update
+      - POST /RestWS/api/eretail/v4/stock/updateInventory

@@ -1,0 +1,42 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/vinculum-eretail-openapi-original.yml + openapi/vinculum-sellerpanel-openapi-original.yml
+docs: https://docs.vineretail.com
+authentication:
+  style: api-key-pair
+  detail: ApiOwner + ApiKey on every eRetail call (form-data/header/query); SellerPanel uses /authToken token exchange.
+  ref: authentication/vinculum-authentication.yml
+idempotency:
+  supported: false
+  detail: >-
+    No Idempotency-Key header or idempotent-retry contract is documented. Order
+    creation exposes a checkRequestStatus/checkRequestStatus operation and a
+    request-status polling pattern instead of client-supplied idempotency keys.
+pagination:
+  style: page-number
+  request_params: [pageNo]
+  response_fields: [totalPages, currentPage, totalReturns]
+  detail: List operations return page-number pagination (pageNo request param; totalPages/currentPage in the response envelope).
+versioning:
+  style: uri-path
+  detail: Version is embedded in the path segment (v1..v4); multiple versions of the same operation coexist (e.g. v1/v2/v3/v4 order create/pull/status).
+  current: v4 (order create/status); most operations v1-v2
+error_envelope:
+  style: response-code-message
+  fields: [responseCode, responseMessage, requestStatus]
+  detail: >-
+    Responses wrap results in an envelope carrying an integer responseCode and a
+    human responseMessage; per-record status is returned in a nested
+    requestStatus/response object. Not RFC 9457 problem+json.
+  ref: errors/vinculum-error-codes.yml
+rate_limiting:
+  style: per-credential-quota
+  detail: Per-operation quota over a 5-minute window (40/80/120 per 5 min), documented in each operation summary.
+  ref: rate-limits/vinculum-rate-limits.yml
+content_types:
+  request: [application/x-www-form-urlencoded, application/json]
+  response: [application/json]
+  detail: Many eRetail write operations consume application/x-www-form-urlencoded with a RequestBody form field carrying the JSON payload.
+tenancy:
+  header: DbId
+  detail: A DbId/DBID header selects the tenant database on multi-tenant deployments.

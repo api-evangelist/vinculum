@@ -1,0 +1,52 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/vinculum-eretail-openapi-original.yml
+notes: >-
+  No official hosted/remote MCP server was found for Vin eRetail. This is a
+  candidate tool list derived from the Vin eRetail Swagger operations (108 ops
+  across 13 domains). Each tool maps to a real path+method; the full surface can
+  be generated one tool per operation. ApiOwner + ApiKey credentials would be
+  supplied as server configuration.
+server:
+  name: vinculum-eretail
+  transport: http
+  url: null
+  auth: ApiOwner + ApiKey (per-credential)
+tools:
+  - name: order_create
+    description: Create an order in Vin eRetail.
+    source_operation: openapi/vinculum-eretail-openapi-original.yml#POST /RestWS/api/eretail/v4/order/create
+  - name: order_pull
+    description: Pull orders (list with status/date filters).
+    source_operation: openapi/vinculum-eretail-openapi-original.yml#POST /RestWS/api/eretail/v3/order/orderPull
+  - name: order_status
+    description: Get current status for orders.
+    source_operation: openapi/vinculum-eretail-openapi-original.yml#POST /RestWS/api/eretail/v4/order/status
+  - name: order_cancel
+    description: Cancel an order or specific order lines.
+    source_operation: openapi/vinculum-eretail-openapi-original.yml#POST /RestWS/api/eretail/v1/order/cancel
+  - name: order_return
+    description: Create a return for a delivered order.
+    source_operation: openapi/vinculum-eretail-openapi-original.yml#POST /RestWS/api/eretail/v1/order/return
+  - name: customer_create
+    description: Create or update a customer record.
+    source_operation: openapi/vinculum-eretail-openapi-original.yml#POST /RestWS/api/eretail/v1/customer/custCreate
+  - name: sku_create
+    description: Create SKUs / products.
+    source_operation: openapi/vinculum-eretail-openapi-original.yml#POST /RestWS/api/eretail/v1/sku/create
+  - name: stock_update_inventory
+    description: Update on-hand inventory for SKUs at a location.
+    source_operation: openapi/vinculum-eretail-openapi-original.yml#POST /RestWS/api/eretail/v4/stock/updateInventory
+  - name: po_create
+    description: Create a purchase order.
+    source_operation: openapi/vinculum-eretail-openapi-original.yml#POST /RestWS/api/eretail/v4/po/create
+  - name: asn_create
+    description: Create an Advance Shipping Notice.
+    source_operation: openapi/vinculum-eretail-openapi-original.yml#POST /RestWS/api/eretail/v4/asn/create
+  - name: vendor_create
+    description: Create a vendor.
+    source_operation: openapi/vinculum-eretail-openapi-original.yml#POST /RestWS/api/eretail/v1/master/vendorCreate
+  - name: check_request_status
+    description: Poll processing status for an async request.
+    source_operation: openapi/vinculum-eretail-openapi-original.yml#POST /RestWS/api/eretail/v1/common/checkRequestStatus

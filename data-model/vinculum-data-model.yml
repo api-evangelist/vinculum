@@ -1,0 +1,93 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/vinculum-eretail-openapi-original.yml
+notes: >-
+  Entity-relationship graph derived from the Vin eRetail Swagger tag domains
+  (13 tags / 269 definitions) and the id-reference fields observed in the
+  response schemas (order_no, sku, channel_code, vendor, awbno). Relationships
+  are inferred from the operation surface, not from formal $ref foreign keys.
+entities:
+  - name: Order
+    tag: Orders
+    id_fields: [order_no, referenceno, channel_code]
+    operations: 40
+  - name: OrderReturn
+    tag: Order Returns
+    id_fields: [order_no, returnId]
+    operations: 4
+  - name: Customer
+    tag: Common
+    id_fields: [customerId]
+  - name: Product
+    aliases: [SKU, Item]
+    tag: Products
+    id_fields: [sku, skuCode]
+    operations: 10
+  - name: Vendor
+    tag: Vendors
+    id_fields: [vendorCode]
+    operations: 4
+  - name: PurchaseOrder
+    tag: Purchase Orders
+    id_fields: [poNo]
+    operations: 5
+  - name: Inbound
+    tag: Inbounds
+    operations: 8
+  - name: Stock
+    aliases: [Inventory]
+    tag: Stock
+    id_fields: [sku, orderLocation]
+    operations: 10
+  - name: AdvanceShippingNotice
+    tag: Advance Shipping Notice
+    id_fields: [asnNo]
+    operations: 4
+  - name: Transfer
+    tag: Transfers
+    operations: 4
+  - name: ReturnToVendor
+    tag: Return to Vendor
+    operations: 4
+  - name: Shipment
+    id_fields: [awbno, transportercode]
+  - name: Manifest
+    tag: Manifest
+    operations: 2
+relationships:
+  - from: Order
+    to: Customer
+    type: belongs_to
+    via: customerId
+  - from: Order
+    to: Product
+    type: has_many
+    via: sku
+  - from: Order
+    to: Shipment
+    type: has_many
+    via: awbno
+  - from: OrderReturn
+    to: Order
+    type: belongs_to
+    via: order_no
+  - from: PurchaseOrder
+    to: Vendor
+    type: belongs_to
+    via: vendorCode
+  - from: PurchaseOrder
+    to: Product
+    type: has_many
+    via: sku
+  - from: AdvanceShippingNotice
+    to: PurchaseOrder
+    type: belongs_to
+    via: poNo
+  - from: ReturnToVendor
+    to: Vendor
+    type: belongs_to
+    via: vendorCode
+  - from: Stock
+    to: Product
+    type: belongs_to
+    via: sku

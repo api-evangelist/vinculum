@@ -1,0 +1,22 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Vin eRetail
+  version: 1.0.0
+extends: openapi/vinculum-eretail-openapi-original.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-enriched: '2026-07-21'
+      x-auth-model: api-key-pair (ApiOwner + ApiKey)
+      x-rate-limit: per-operation quota over a 5-minute window (see rate-limits/vinculum-rate-limits.yml)
+      x-pagination: page-number (pageNo; totalPages/currentPage)
+      x-error-envelope: responseCode + responseMessage (HTTP 200 for handled errors; not RFC 9457)
+      x-versioning: uri-path (v1..v4 coexist)
+  - target: $
+    update:
+      x-apievangelist-artifacts:
+        authentication: authentication/vinculum-authentication.yml
+        conventions: conventions/vinculum-conventions.yml
+        errors: errors/vinculum-error-codes.yml
+        rate_limits: rate-limits/vinculum-rate-limits.yml
+        data_model: data-model/vinculum-data-model.yml

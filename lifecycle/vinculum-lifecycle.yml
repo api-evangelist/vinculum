@@ -1,0 +1,17 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/vinculum-eretail-openapi-original.yml
+docs: https://docs.vineretail.com
+versioning:
+  scheme: uri-path
+  detail: Version segment embedded in the path (v1..v4). Multiple versions of an operation coexist so older integrations keep working while newer versions add fields.
+  current: v4
+  observed_versions: [v1, v2, v3, v4]
+deprecation:
+  policy_url: null
+  sunset_header: false
+  detail: No published deprecation policy or RFC 8594 Sunset/Deprecation header support found; superseded operations remain available under their older version path.
+sla:
+  url: null
+status_page: null
+deprecated_operations: []

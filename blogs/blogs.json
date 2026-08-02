@@ -1,0 +1,21 @@
+{
+  "repo": "vinculum",
+  "feeds": [
+    {
+      "source": "https://docs.vineretail.com/feed/",
+      "feed_url": "https://docs.vineretail.com/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://docs.vineretail.com",
+      "feed_url": "https://docs.vineretail.com/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
+    }
+  ],
+  "post_count": 22,
+  "fetched": "2026-08-01T15:49:00Z"
+}

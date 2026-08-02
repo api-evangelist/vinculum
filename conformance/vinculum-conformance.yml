@@ -1,0 +1,29 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/vinculum-eretail-openapi-original.yml
+standards:
+  - id: rest
+    conforms: true
+    evidence: Resource-oriented HTTP JSON API over /RestWS/api/eretail with verbed operations.
+  - id: openapi-swagger-2.0
+    conforms: true
+    evidence: Both APIs publish Swagger 2.0 definitions (erp.vineretail.com/swagger, /SellerPanelV3).
+  - id: oauth2
+    conforms: false
+    evidence: No oauth2 securityScheme; authentication is ApiOwner/ApiKey pair.
+  - id: openid-connect
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors returned via responseCode/responseMessage envelope with HTTP 200, not application/problem+json.
+  - id: rfc8594-sunset-deprecation
+    conforms: false
+  - id: pagination
+    conforms: true
+    evidence: Page-number pagination (pageNo request param; totalPages/currentPage response fields).
+  - id: idempotency
+    conforms: false
+    evidence: No idempotency-key contract; request-status polling used instead.
+  - id: rate-limiting
+    conforms: true
+    evidence: Per-operation quota over a 5-minute window documented on each operation.

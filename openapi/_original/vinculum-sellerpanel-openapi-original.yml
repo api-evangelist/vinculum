@@ -1,0 +1,1182 @@
+swagger: '2.0'
+info:
+host: static.vineretail.com
+basePath: /RestWS/api/sellerPanel/v3
+
+tags: 
+- name: Authentication Process 
+  description: API to retrieve or manipulate Order related information.
+
+- name: Listing Managment
+  description: API to retrieve or manipulate Order related information.
+
+- name: Order Managment
+  description: API to retrieve or manipulate Order related information.
+
+- name: Courier Allocation Process
+  description: API to retrieve or manipulate Order related information.
+  
+paths:
+  /authToken :
+    get:
+      tags: 
+      - Authentication Process
+      summary: API For Generating APIKey and APIOwner
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters: [  
+               {  
+                  "name":"username",
+                  "in":"query",
+                  "description":"userId of logged in user",
+                  "required":true,
+                  "type":"string"
+               },
+               {  
+                  "name":"password",
+                  "in":"query",
+                  "description":"Unique credential of each user",
+                  "required":true,
+                  "type":"string"
+               }
+            ]
+          
+      responses:
+        200:
+          description: <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>11</p></td><td style="vertical-align:middle" width='167'><p>Invalid API credentials</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>2001</p></td><td style="vertical-align:middle" width='167'><p>UserName / Password are Mandatory.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>2002</p></td><td style="vertical-align:middle" width='167'><p>API Key Not Found / Configured in the system.</p></td></tr></tbody></table>
+          schema:
+            
+              $ref: '#/definitions/authToken'
+ 
+  /productFetch:
+    post:
+      tags: 
+      - Listing Managment
+      summary: API For Fetching product
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters: 
+        - in: header
+          name: ApiKey
+          required: true
+          type: string
+          description: API Key.
+        - in: formData
+          name: RequestBody
+          required: true
+          type: string
+          description:  <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle" >updatedDate</td><td style="vertical-align:middle" >DateTime</td><td style="vertical-align:middle" >Conditional</td><td style="vertical-align:middle" >Either the updatedDate  skuCode  needed</td></tr><tr align="center"><td style="vertical-align:middle" >skuCode</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Conditional</td><td style="veritcal-align:middle">Either the updatedDate  skuCode  needed</td></tr><tr align="center"><td style="vertical-align:middle" >pageNumber</td><td style="vertical-align:middle" >Integer</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle">Default 1. (Page Size 500 Orders)</td></tr><tr align="center"><td style="vertical-align:middle" >limit</td><td style="vertical-align:middle" >Integer</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle">Maximum 100 records process</td></tr><tr align="center"><tr><td style="vertical-align:middle" colspan=4> 
+            <b>Request Body =<br/>
+           {  <br/>&nbsp;&nbsp;&nbsp;"updatedDate":"01/01/2015 00:00:00",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skuCode":[  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"TEST_STORE_ABC_TESTING_001",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"TEST_STORE_ABC_TESTING-003"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"limit":10<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> </tbody> </table>
+       
+      responses:
+        200:
+          description:  <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td><tr align="center"><td style="vertical-align:middle" width='167'><p>0</p></td><td style="vertical-align:middle" width='167'><p>Success</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9</p></td><td style="vertical-align:middle" width='167'><p>Generic Error</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>11</p></td><td style="vertical-align:middle" width='167'><p>Invalid API credentials</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>14</p></td><td style="vertical-align:middle" width='167'><p>API credentials are no more active</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>15</p></td><td style="vertical-align:middle" width='167'><p>API credentials has been expired</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>2000</p></td><td style="vertical-align:middle" width='167'><p>authToken expired/Invalid authToken.</p></td></tbody></table>
+          schema:
+            items:
+              $ref: '#/definitions/ProductFetch1'
+  
+  /inventoryPriceUpdate:
+    post:
+      tags:
+      - Listing Managment
+      summary: API For Updating Inventory Price
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: ApiKey
+        required: true
+        type: string
+        description: API Key.
+      - in: formData
+        name: RequestBody
+        required: true
+        type: string
+        description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle" >sku </td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" ></td></tr><tr align="center"><td style="vertical-align:middle" >invQty </td><td style="vertical-align:middle" >Decimal(10,3)</td><td style="vertical-align:middle">Mandatory</td><td style="veritcal-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle" >salePrice  </td><td style="vertical-align:middle" >Decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle"  colspan=4><b>Process Maximum 100 records<br/></td></tr><tr align="center"><tr><td style="vertical-align:middle" colspan=4> 
+            <b>Request Body =<br/>
+           {  <br/>&nbsp;&nbsp;&nbsp;"invPriceList":[  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"sku":"TEST_STORE_ABC_TESTING-004-BUY-3-FREE-1",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"invQty":"11",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"salePrice":"1299.00" <br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></tbody></table>
+            
+      responses:
+        200:
+          description:  <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td><tr align="center"><td style="vertical-align:middle" width='167'><p>0</p></td><td style="vertical-align:middle" width='167'><p>success(when invQty value pass is null)</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>11</p></td><td style="vertical-align:middle" width='167'><p>Invalid API credentials</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>14</p></td><td style="vertical-align:middle" width='167'><p>API credentials are no more active</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>15</p></td><td style="vertical-align:middle" width='167'><p>API credentials has been expired</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>304</p></td><td style="vertical-align:middle" width='167'><p>[SKU & Seller] Code Combination not found in the System.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>2000</p></td><td style="vertical-align:middle" width='167'><p>authToken expired/Invalid authToken.</p></td></tr></tbody></table>
+          schema:
+            items:
+              $ref: '#/definitions/InventoryPricedetail1'
+          
+  /inventoryPriceStatus :
+    post:
+      tags: 
+      -  Listing Managment
+      summary: API For Inventory Price Status
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: ApiKey
+          required: true
+          type: string
+          description: API Key.
+        - in: formData
+          name: RequestBody
+          required: true
+          type: string
+          description:  <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">moderationIdsList </td><td style="vertical-align:middle">Integer(11)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Array of moderation Id needed. </td></tr><tr><td style="vertical-align:middle" colspan=4>
+            <b>Request Body<br/>
+            {<br/>
+            &nbsp;&nbsp;&nbsp;"moderationIdsList":[108,109]</br>&nbsp;&nbsp;&nbsp;}<br/></b><br/><br/></tbody></table>
+      
+            
+    
+      responses:
+        200:
+          description:  <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td><tr align="center"><td style="vertical-align:middle" width='167'><p>0</p></td><td style="vertical-align:middle" width='167'><p>Success</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>11</p></td><td style="vertical-align:middle" width='167'><p>Invalid API credentials</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>14</p></td><td style="vertical-align:middle" width='167'><p>API credentials are no more active</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>15</p></td><td style="vertical-align:middle" width='167'><p>API credentials has been expired</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>2000</p></td><td style="vertical-align:middle" width='167'><p>authToken expired/Invalid authToken.</p></td></tbody></table>
+          schema:
+            items:
+              $ref: '#/definitions/inventrypriceStatus1'
+  
+  /skuBackOrder:
+    post:
+      tags:
+      - Listing Managment
+      summary: API For fetching SKU Back Order Quantity for JIT Vendors
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: ApiKey
+        required: true
+        type: string
+        description: API Key.
+            
+      responses:
+        200:
+          description: <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>14</p></td><td style="vertical-align:middle" width='167'><p>API credentials are no more active</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>15</p></td><td style="vertical-align:middle" width='167'><p>API credentials has been expired</p></td></tr></tbody></table>
+          schema:
+              $ref: '#/definitions/SkuBackOrder'
+              
+  /orderList :
+      post:
+        tags: 
+        -  Order Managment
+        summary: API For getting  the orderList
+        consumes:
+          - application/x-www-form-urlencoded
+        produces:
+          - application/json
+        parameters:
+          - in: header
+            name: ApiKey
+            required: true
+            type: string
+            description: API Key.
+          - in: formData
+            name: RequestBody
+            required: true
+            type: string
+            description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">updateDate </td><td style="vertical-align:middle">DateTime </td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Either updatedDate filterStatusList needed. Get Orders from updateDate to current date</td></tr><tr align="center"><td style="vertical-align:middle">filterStatusList</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Comma Separated status, possible status are 1 for "Pending", 10 for "Ready for Ship", 12 for "AWB InProcess", 15 for "Shipped", 18 for "In Process", 20 for "Intransit", 25 for "Delivered", 30 for "Ready for Pickup", 35 for "Pickup Intransit", 40 for "Pickup Confirmed", 45 for "Disputed", 5 for "Confirmed", 50 for "Rejected", 55 for "Returned", 60 for "RTO", 65 for "RTO Delivered", 8 for "Cancelled", 9 for "Replaced" </td><td style="vertical-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle" >pageNumber</td><td style="vertical-align:middle" >Integer</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle">Default 1. (Page Size 500 Orders)</td></tr><tr align="center"><td style="vertical-align:middle" >limit</td><td style="vertical-align:middle" >Integer</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle">Maximum 100 records process</td></tr><tr><td style="vertical-align:middle" colspan=4>
+              <b>Request Body<br/> <br/>
+              {<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;"updateDate":"01/01/2015 00:00:00",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"filterStatusList":"1,5,10",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":2,<br/>&nbsp;&nbsp;&nbsp;&nbsp;"limit":2<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;</td></tr></tbody></table>
+       
+              
+      
+        responses:
+          200:
+            description:  <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td><tr align="center"><td style="vertical-align:middle" width='167'><p>0</p></td><td style="vertical-align:middle" width='167'><p>Success</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>11</p></td><td style="vertical-align:middle" width='167'><p>Invalid API credentials</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>14</p></td><td style="vertical-align:middle" width='167'><p>API credentials are no more active</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>15</p></td><td style="vertical-align:middle" width='167'><p>API credentials has been expired</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>2000</p></td><td style="vertical-align:middle" width='167'><p>authToken expired/Invalid authToken.</p></td></tbody></table>
+            schema:
+              items:
+                $ref: '#/definitions/OrderDetail1'
+  /orderListJIT :
+      post:
+        tags: 
+        -  Order Managment
+        summary: API For getting  the orderList
+        consumes:
+          - application/x-www-form-urlencoded
+        produces:
+          - application/json
+        parameters:
+          - in: header
+            name: ApiKey
+            required: true
+            type: string
+            description: API Key.
+          - in: formData
+            name: RequestBody
+            required: true
+            type: string
+            description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">updateDate </td><td style="vertical-align:middle">DateTime </td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Either updatedDate filterStatusList needed. Get Orders from updateDate to current date</td></tr><tr align="center"><td style="vertical-align:middle">filterStatusList</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Comma Separated status, possible status are 7 and 10 </td><td style="vertical-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle" >pageNumber</td><td style="vertical-align:middle" >Integer</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle">Default 1. (Page Size 500 Orders)</td></tr><tr align="center"><td style="vertical-align:middle" >limit</td><td style="vertical-align:middle" >Integer</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle">Maximum 100 records process</td></tr><tr><td style="vertical-align:middle" colspan=4>
+              <b>Request Body<br/> <br/>
+              {<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;"updateDate":"01/01/2015 00:00:00",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"filterStatusList":"1,5,10",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":2,<br/>&nbsp;&nbsp;&nbsp;&nbsp;"limit":2<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;</td></tr></tbody></table>
+       
+              
+      
+        responses:
+          200:
+            description:  <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td><tr align="center"><td style="vertical-align:middle" width='167'><p>0</p></td><td style="vertical-align:middle" width='167'><p>Success</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>11</p></td><td style="vertical-align:middle" width='167'><p>Invalid API credentials</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>14</p></td><td style="vertical-align:middle" width='167'><p>API credentials are no more active</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>15</p></td><td style="vertical-align:middle" width='167'><p>API credentials has been expired</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>2000</p></td><td style="vertical-align:middle" width='167'><p>authToken expired/Invalid authToken.</p></td></tr></tbody></table>
+            schema:
+              items:
+                $ref: '#/definitions/OrderDetail1'
+  /orderFetch:
+    post:
+      tags: 
+      - Order Managment
+      summary: API For Fetching Order 
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+       
+        - in: header
+          name: ApiKey
+          required: true
+          type: string
+          description: API Key.
+        - in: formData
+          name: RequestBody
+          required: true
+          type: string
+          description:  <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">orderNo </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">This is Master Order No. Array of Master Order no needed.</td></tr><tr align="center"><td style="vertical-align:middle" >pageNumber</td><td style="vertical-align:middle" >Integer</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle">Default 1. (Page Size 500 Orders)</td></tr><tr align="center"><td style="vertical-align:middle" >limit</td><td style="vertical-align:middle" >Integer</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle">Maximum 100 records process</td></tr><tr ><td style="vertical-align:middle" colspan=4>
+           <b>RequestBody <br/>
+            {</br>&nbsp;&nbsp;"orderNo":["100000019","100000020"],</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":1,</br>&nbsp;&nbsp;&nbsp;&nbsp;"limit":2</br>&nbsp;&nbsp;&nbsp;&nbsp;}</b><br/><br/></tbody></table>
+    
+    
+      responses:
+        200:
+          description: <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td><tr align="center"><td style="vertical-align:middle" width='167'><p>0</p></td><td style="vertical-align:middle" width='167'><p>Success</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>11</p></td><td style="vertical-align:middle" width='167'><p>Invalid API credentials</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>14</p></td><td style="vertical-align:middle" width='167'><p>API credentials are no more active</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>15</p></td><td style="vertical-align:middle" width='167'><p>API credentials has been expired</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>2000</p></td><td style="vertical-align:middle" width='167'><p>authToken expired/Invalid authToken.</p></td></tbody></table>
+          schema:
+              $ref: '#/definitions/OrderReturn1'
+  
+  /orderFetchJIT:
+    post:
+      tags: 
+      - Order Managment
+      summary: API For Fetching Order 
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+       
+        - in: header
+          name: ApiKey
+          required: true
+          type: string
+          description: API Key.
+        - in: formData
+          name: RequestBody
+          required: true
+          type: string
+          description:  <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">orderNo </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">This is Master Order No. Array of Master Order no needed.</td></tr><tr align="center"><td style="vertical-align:middle" >pageNumber</td><td style="vertical-align:middle" >Integer</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle">Default 1. (Page Size 500 Orders)</td></tr><tr align="center"><td style="vertical-align:middle" >limit</td><td style="vertical-align:middle" >Integer</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle">Maximum 100 records process</td></tr><tr ><td style="vertical-align:middle" colspan=4>
+           <b>RequestBody <br/>
+            {</br>&nbsp;&nbsp;"orderNo":["100000019","100000020"],</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":1,</br>&nbsp;&nbsp;&nbsp;&nbsp;"limit":2</br>&nbsp;&nbsp;&nbsp;&nbsp;}</b><br/><br/></tbody></table>
+    
+    
+      responses:
+        200:
+          description: <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td><tr align="center"><td style="vertical-align:middle" width='167'><p>0</p></td><td style="vertical-align:middle" width='167'><p>Success</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>11</p></td><td style="vertical-align:middle" width='167'><p>Invalid API credentials</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>14</p></td><td style="vertical-align:middle" width='167'><p>API credentials are no more active</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>15</p></td><td style="vertical-align:middle" width='167'><p>API credentials has been expired</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>2000</p></td><td style="vertical-align:middle" width='167'><p>authToken expired/Invalid authToken.</p></td></tr></tbody></table>
+          schema:
+              $ref: '#/definitions/OrderReturn1'
+  
+  /orderReturn:
+    post:
+      tags: 
+      - Order Managment
+      summary: API For Order Return
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+       
+        - in: header
+          name: ApiKey
+          required: true
+          type: string
+          description: API Key.
+        - in: formData
+          name: RequestBody
+          required: true
+          type: string
+          description:  <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">updatedFrom </td><td style="vertical-align:middle">DateTime</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">**Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle" >updatedTo</td><td style="vertical-align:middle" >DateTime</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle">**Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle" >filterStatusList</td><td style="vertical-align:middle" >Integer</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle">Comma Separated status, possible statuses are 10 for "Confirmed", 15 for "Reverse PickUp Delivered", 20 for "Disputed", 25 for "Cancelled", 30 for "Reverse PickUP Initiated", 35 for "Reverse PickUP Done", 40 for "Reverse PickUP Terminated", 5 for "Pending"</td></tr><tr align="center"><td style="vertical-align:middle">returnNo </td><td style="vertical-align:middle">string</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Order return number</td></tr><tr align="center"><td style="vertical-align:middle">sellerId </td><td style="vertical-align:middle">string</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Seller code</td></tr><tr align="center"><td style="vertical-align:middle">pageNumber </td><td style="vertical-align:middle">integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Default 1. (Page Size 500 Orders)</td></tr><tr align="center"><td style="vertical-align:middle">limit </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Maximum 100 records process</td></tr><tr ><td style="vertical-align:middle" colspan=4><b>RequestBody <br/>
+            {</br>&nbsp;&nbsp;""updatedFrom":"07/06/2021 01:24:38",</br>&nbsp;&nbsp;&nbsp;&nbsp;"updatedTo":"09/06/2021 23:59:59",</br>&nbsp;&nbsp;&nbsp;&nbsp;"filterStatusList":"10,15,20,25,30,35,40,5",</br>&nbsp;&nbsp;&nbsp;&nbsp;"returnNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"sellerId":"mwhc1",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;"limit":""</br>&nbsp;&nbsp;&nbsp;&nbsp;}</b><br/><br/></tbody></table>
+    
+    
+      responses:
+        200:
+          description: <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td><tr align="center"><td style="vertical-align:middle" width='167'><p>0</p></td><td style="vertical-align:middle" width='167'><p>Success</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>5</p></td><td style="vertical-align:middle" width='167'><p>Empty Request</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>11</p></td><td style="vertical-align:middle" width='167'><p>Invalid API credentials</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>13</p></td><td style="vertical-align:middle" width='167'><p>API Hit Quota Exceeded</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>804</p></td><td style="vertical-align:middle" width='167'><p>To Date Should be Greater Then From Date</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>913</p></td><td style="vertical-align:middle" width='167'><p>From and To Date Range Should not be more than 7 days</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>2000</p></td><td style="vertical-align:middle" width='167'><p>authToken expired/Invalid authToken.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>8060</p></td><td style="vertical-align:middle" width='167'><p>No Vendor found corresponding to the parentVendor AND/OR WarehouseID passed</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>10042</p></td><td style="vertical-align:middle" width='167'><p>Status is Mandatory with from date and to date</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>10043</p></td><td style="vertical-align:middle" width='167'><p>Return No or From Date is mandatory</p></td></tr></tbody></table>
+          schema:
+              $ref: '#/definitions/OrderReturn2'
+              
+  /generateInvoice :
+    post:
+      tags: 
+      - Courier Allocation Process
+      summary: API For Generating Invoice
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: ApiKey
+          required: true
+          type: string
+          description: API Key.
+        - in: formData
+          name: RequestBody
+          required: true
+          type: string
+          description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">orderNo </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">This is MasterOrderNo . </td></tr><tr align="center"><td style="vertical-align:middle">lineNo</td><td style="vertical-align:middle">Integer(11)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle">invoiceNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle">transporterName </td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Transport name like ECOM,BlueDart etc.</td></tr><tr align="center"><td style="vertical-align:middle">trackingNo </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle">imeiNos </td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle">length </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">length in cm</td><td style="vertical-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle">bredth </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">bredth in cm</td><td style="vertical-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle">height </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">height in cm</td><td style="vertical-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle">weight </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">weight in kg</td><td style="vertical-align:middle"></td></tr><tr><td style="vertical-align:middle" colspan=4> <b>Request Body=<br/>{  <br/>&nbsp;&nbsp;&nbsp;"orderItemsList":[<br/>&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;"orderNo":"AB123456",<br/>&nbsp;&nbsp;&nbsp;"lineNo":"2",<br/>&nbsp;&nbsp;&nbsp;"invoiceNo":"3231311432432324",<br/>&nbsp;&nbsp;&nbsp;"transporterName":"ECOM",<br/>&nbsp;&nbsp;&nbsp;"trackingNo":"123456",<br/>&nbsp;&nbsp;&nbsp;"imeiNos":"1323454,24350990,894092492",<br/>&nbsp;&nbsp;&nbsp;"length":"",<br/>&nbsp;&nbsp;&nbsp;"bredth":"",<br/>&nbsp;&nbsp;&nbsp;"height":"",<br/>&nbsp;&nbsp;&nbsp;"weight":""<br/>&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;</b><br/><br/> </tr></tbody></table>
+           
+         
+     
+
+      responses:
+        200:
+          description: <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td><tr align="center"><td style="vertical-align:middle" width='167'><p>0</p></td><td style="vertical-align:middle" width='167'><p>Success</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>5</p></td><td style="vertical-align:middle" width='167'><p>Empty Request</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9</p></td><td style="vertical-align:middle" width='167'><p>Generic Error</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>11</p></td><td style="vertical-align:middle" width='167'><p>Invalid API credentials</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>14</p></td><td style="vertical-align:middle" width='167'><p>API credentials are no more active</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>15</p></td><td style="vertical-align:middle" width='167'><p>API credentials has been expired</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>101</p></td><td style="vertical-align:middle" width='167'><p>OrderNo or LineNo not identified.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>102</p></td><td style="vertical-align:middle" width='167'><p>Cannot process multiple Orders.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>103</p></td><td style="vertical-align:middle" width='167'><p>OrderNo is mandatory.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>309</p></td><td style="vertical-align:middle" width='167'><p>The server encountered an internal error and was unable to complete your request. Please contact the server administrator.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>310</p></td><td style="vertical-align:middle" width='167'><p>Order does not belong to give SellerId.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>324</p></td><td style="vertical-align:middle" width='167'><p>Order-Invoice is not genearted for this Order</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>1012</p></td><td style="vertical-align:middle" width='167'><p>Tax Code not found in ERP.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>2000</p></td><td style="vertical-align:middle" width='167'><p>authToken expired/Invalid authToken.</p></td></tbody></table>
+          schema:
+              $ref: '#/definitions/GenerateInvoice1'
+  
+  /fetchInvoice:
+    post:
+      tags:
+      - Courier Allocation Process
+      summary: API For Fetching the Invoice Details
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: ApiKey
+        required: true
+        type: string
+        description: API Key.
+      - in: formData
+        name: RequestBody
+        required: true
+        type: string
+        description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">invoiceNo  </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle"> </td></tr><td style="vertical-align:middle" colspan=4> 
+            <b>Request Body=<br/>
+            {<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"invoiceNo":"AC0011617000001"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</b><br/><br/></tbody></table>
+     
+            
+      responses:
+          200:
+            description: <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td><tr align="center"><td style="vertical-align:middle" width='167'><p>0</p></td><td style="vertical-align:middle" width='167'><p>Success</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>5</p></td><td style="vertical-align:middle" width='167'><p>Empty Request</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>11</p></td><td style="vertical-align:middle" width='167'><p>Invalid API credentials</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>14</p></td><td style="vertical-align:middle" width='167'><p>API credentials are no more active</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>15</p></td><td style="vertical-align:middle" width='167'><p>API credentials has been expired</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>2000</p></td><td style="vertical-align:middle" width='167'><p>authToken expired/Invalid authToken.</p></td></tbody></table>
+            schema:
+              $ref: '#/definitions/fetchInvoiceResponse1'
+
+  /fetchDocuments :
+    post:
+      tags: 
+      - Courier Allocation Process
+      summary: API For Fetching documents
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: ApiKey
+          required: true
+          type: string
+          description: API Key.
+        - in: formData
+          name: RequestBody
+          required: true
+          type: string
+          description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">invoiceNo </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle">documentType </td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Document type like "shippingLable","Invoice" </td></tr><tr><td style="vertical-align:middle" colspan=4> 
+            <b>Request Body=<br/>
+            {<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"invoiceNo":"43549032482934345",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"documentType":"shippingLabel"<br/>&nbsp;}</b><br/><br/></tbody></table>
+        
+
+      responses:
+        200:
+          description:  <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td><tr align="center"><td style="vertical-align:middle" width='167'><p>0</p></td><td style="vertical-align:middle" width='167'><p>Success</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>5</p></td><td style="vertical-align:middle" width='167'><p>Empty Request</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>11</p></td><td style="vertical-align:middle" width='167'><p>Invalid API credentials</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>14</p></td><td style="vertical-align:middle" width='167'><p>API credentials are no more active</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>15</p></td><td style="vertical-align:middle" width='167'><p>API credentials has been expired</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>404</p></td><td style="vertical-align:middle" width='167'><p>Not Found</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>2000</p></td><td style="vertical-align:middle" width='167'><p>authToken expired/Invalid authToken.</p></td></tbody></table><br><h3 style="color:#FFFF00;">Output:</h3><b>Output will be a stream which contains the label file and the response contains the content-type, file-Type etc</b>
+          
+  
+  /orderShipping :
+    post:
+      tags: 
+      - Courier Allocation Process
+      summary: API For Order Shipping Details
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: ApiKey
+          required: true
+          type: string
+          description: API Key.
+        - in: formData
+          name: RequestBody
+          required: true
+          type: string
+          description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">orderNo </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle">invNo </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle"></td></tr><tr><td style="vertical-align:middle" colspan=4>
+            <b>Request Body=<br/>
+            {</br>&nbsp;&nbsp;&nbsp;"shipDetails":[</br>&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;"orderNo":"100000018",</br>&nbsp;&nbsp;&nbsp;"invNo":"AC0011617000001",</br>&nbsp;&nbsp;&nbsp;"transporter":"delivery",</br>&nbsp;&nbsp;&nbsp;"awbNo":"123123"</br>&nbsp;&nbsp;&nbsp;},</br>&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;"orderNo":"100000054",</br>&nbsp;&nbsp;&nbsp;"invNo":"AC0011617000002",</br>&nbsp;&nbsp;&nbsp;"transporter":"delivery",</br>&nbsp;&nbsp;&nbsp;"awbNo":"123123"</br>&nbsp;&nbsp;&nbsp;}</br>&nbsp;&nbsp;&nbsp;]</br>&nbsp;&nbsp;&nbsp;}</br>&nbsp;&nbsp;&nbsp;</tbody></table>
+       
+
+      responses:
+        200:
+          description:  <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>0</p></td><td style="vertical-align:middle" width='167'><p>Success</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>11</p></td><td style="vertical-align:middle" width='167'><p>Invalid API credentials</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>14</p></td><td style="vertical-align:middle" width='167'><p>API credentials are no more active</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>15</p></td><td style="vertical-align:middle" width='167'><p>API credentials has been expired</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>2000</p></td><td style="vertical-align:middle" width='167'><p>authToken expired/Invalid authToken.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9</p></td><td style="vertical-align:middle" width='167'><p>Generic Error</p></td></tr></tbody></table>
+          schema:
+            
+              $ref: '#/definitions/OrderShip1'
+  
+  /orderCancellation:
+    post:
+      tags: 
+      - Courier Allocation Process
+      summary: API For Cancel Order
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: ApiKey
+          required: true
+          type: string
+          description: API Key.
+        - in: formData
+          name: RequestBody
+          required: true
+          type: string
+          description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">orderNo </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle"></td></tr>
+            <tr><td style="vertical-align:middle" colspan=4><b>Request Body=<br/>
+            {<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"orderNo":"AB1883884"<br/>}</b><br/><br/></tbody></table>
+      responses:
+        200:
+          description: <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>0</p></td><td style="vertical-align:middle" width='167'><p>Success</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>11</p></td><td style="vertical-align:middle" width='167'><p>Invalid API credentials</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>14</p></td><td style="vertical-align:middle" width='167'><p>API credentials are no more active</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>15</p></td><td style="vertical-align:middle" width='167'><p>API credentials has been expired</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>2000</p></td><td style="vertical-align:middle" width='167'><p>authToken expired/Invalid authToken.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9</p></td><td style="vertical-align:middle" width='167'><p>Generic Error</p></td></tr></tbody></table>
+          schema:
+              $ref: '#/definitions/OrderShip1'
+            
+definitions:
+  SkuBackOrder:
+    properties:
+          data:
+            type: array
+            items:
+              $ref: '#/definitions/skuBack'
+  skuBack:
+    properties:
+          vendorCode:
+            type: string
+            example: "jit_15"
+          sku:
+            type: string
+            example: "SA2"
+          qty:
+            type: string
+            example: 3
+          price:
+            type: string
+            example: 3000
+          vendorSKUCode:
+            type: string
+            example: "abc123"
+  OrderReturn1:
+    properties:
+          responseCode:
+            type: integer
+            example: 0
+          responseMessage:
+            type: string
+            example: "Success"
+          orders:
+            items:
+              $ref: '#/definitions/orderlistforreturn1'
+
+  orderlistforreturn1:
+    properties:
+          orderNo:  
+            type: string
+            example: "501242014-33"
+          orderStatus:
+            type: string
+            example: "8"
+          orderDate:
+            type: string
+            example: "20/04/2017 16:06:00"
+          customerName:
+            type: string
+            example: "puneet Sharma"
+          paymentMethod:
+            type: string
+            example: "1"
+          orderAmount:
+            type: string
+            example: "630.00"
+          orderCurrency:
+            type: string
+            example: "INR"
+          orderTaxAmount:
+            type: string
+            example: "0.00"
+          onHold:
+            type: string
+            example: "1"
+          shippingCharge:
+            type: string
+            example: "0.00"
+          discountAmount:
+            type: string
+            example: null
+          discCouponCode:
+            type: string
+            example: null
+          storeCredit:
+            type: string
+            example: null
+          gvAmount:
+            type: string
+            example: null
+          codCharge:
+            type: string
+            example: null
+          address1:
+            type: string
+            example: "Flat 105, B2 , Blue Ridge Township, Hinjewadi Phase 1\nNear Symbiosis College"
+          address2:
+            type: string
+            example: null
+          address3:
+            type: string
+            example: null
+          phone:
+            type: string
+            example: "7756845606"
+          email:
+            type: string
+            example: "urvashiengineer@gmail.com"
+          countryCode:
+            type: string
+            example: "IND"
+          state:
+            type: string
+            example: "Maharashtra"
+          city:
+            type: string
+            example: "PUNE"
+          pinCode:
+            type: string
+            example: "411057"
+          billToName:
+            type: string
+            example: "puneet Sharma"
+          bill_Address1:
+            type: string
+            example: "Flat 105, B2 , Blue Ridge Township, Hinjewadi Phase 1,Near Symbiosis College"
+          bill_Address2:
+            type: string
+            example: null
+          bill_Address3:
+            type: string
+            example: null
+          bill_Phone:
+            type: string
+            example: "7756845606"
+          bill_Email:
+            type: string
+            example: "urvashiengineer@gmail.com"
+          bill_CountryCode:
+            type: string
+            example: "IND" 
+          bill_State:
+            type: string
+            example: "Maharashtra" 
+          bill_City:
+            type: string
+            example: "PUNE" 
+          bill_ZipCode:
+            type: string
+            example: "411057"
+          cancelRemark:
+            type: string
+            example: null
+          reasonForCancellation:
+            type: string
+            example: "1" 
+          priority:
+            type: string
+            example: null
+          orderLastUpdateDate:
+            type: string
+            example: "07/11/2017 11:55:14" 
+          masterOrderNo:
+            type: string
+            example: "NYKL00000042" 
+            
+            
+          orderItems:
+            type: array
+            items:
+              $ref: '#/definitions/itemlistforOrderreturn1'
+  itemlistforOrderreturn1:
+    properties:
+          lineno:
+            type: string
+            example: "1"
+          deliveryMode:
+            type: string
+            example: "2"
+          skuCode:
+            type: string
+            example: "NYJCH00000037"
+          skuName:
+            type: string
+            example: "Juicy Chemistry Coffee and Green Tea Eye "
+          orderQty:
+            type: string
+            example: "1"
+          rejectedQty:
+            type: string
+            example: null
+          cancelledQty:
+            type: string
+            example: "1"
+          shippedQty:
+            type: string
+            example: null
+          returnedQty:
+            type: string
+            example: null
+          deliveredQty:
+            type: string
+            example: null
+          lineAmount:
+            type: string
+            example: "330.00"
+          lineTaxAmount:
+            type: string
+            example: "0.00"  
+          unitPrice:
+            type: string
+            example: "350.00"
+          mrp:
+            type: string
+            example: "350.000"
+          discountAmount:
+            type: string
+            example: "20.00"
+          shippingCharge:
+            type: string
+            example: null
+          codCharge:
+            type: string
+            example: null
+          invoiceNo:
+            type: string
+            example: null
+          transCode:
+            type: string
+            example: null
+          transName:
+            type: string
+            example: null
+          awbNo:
+            type: string
+            example: null
+          imeiNos:
+            type: string
+            example: null
+          confirmDate:
+            type: string
+            example: "20/04/2017 18:14:25"
+          gvAmount:
+            type: string
+            example: null
+          storeCredit:
+            type: string
+            example: "0.00"
+          lineStatus:
+            type: string
+            example: "8"
+          cst:
+            type: string
+            example: null
+          vat:
+            type: string
+            example: null    
+            
+  
+
+  
+            
+  
+ 
+            
+  OrderReturn2:
+    properties:
+          responseCode:
+            type: integer
+            example: 0
+          responseMessage:
+            type: string
+            example: "Success"
+          returns:
+            items:
+              $ref: '#/definitions/returnlistforreturn2'
+  
+  returnlistforreturn2:
+    properties:
+         internalReturnNo: 
+            type: string 
+            example: "mwhc2353"
+         returnNo:
+            type: string
+            example: null
+         orderNo:
+            type: string
+            example: "NYKL00002637"
+         returnStatus:
+            type: string 
+            example: "10"
+         returnDate:
+            type: string 
+            example: "19/02/2021 12:06:00"
+         orderDate:
+            type: string 
+            example: "16/12/2020 11:40:30"
+         returnConfirmDate: 
+            type: string 
+            example: "19/02/2021 12:06:00"
+         returnCloseDate:
+            type: string 
+            example: null
+         orderStatus:
+            type: string 
+            example: "10"
+         sellerId:
+            type: string 
+            example: "mwhc2"
+         returnType:
+            type: string 
+            example: "Delivered Return"
+         paymentMethod:
+            type: string 
+            example: "1"
+         orderAmount:
+            type: string 
+            example: "1288.00"
+         returnAmount:
+            type: string 
+            example: "434.50"
+         orderCurrency:
+            type: string 
+            example: "GBP"
+         retTrackingNo:
+            type: string 
+            example: null
+         transporterName:
+            type: string 
+            example: null
+         trackingURL:
+            type: string 
+            example: ""
+         reasonForCancellation:
+            type: string 
+            example: ""
+         comments: 
+            type: string 
+            example: null
+         refundstoreCredit: 
+            type: string 
+            example: null
+         customerName:
+            type: string 
+            example: "Anuj Kaul"
+         address1: 
+            type: string 
+            example: "House number 50, First Floor"
+         address2:
+            type: string 
+            example: "ABC Road, Green Park"
+         address3:
+            type: string 
+            example: ""
+         phone:
+            type: string 
+            example: "9999112233"
+         email:
+            type: string 
+            example: "anujkaul86@gmail.com"
+         countryCode:
+            type: string 
+            example: "IND"
+         state: 
+            type: string 
+            example: "Maharashtra"
+         city:
+            type: string 
+            example: "Mumbai"
+         pinCode:
+            type: string 
+            example: "400001"
+         billToName: 
+            type: string 
+            example: "Anuj Kaul"
+         bill_Address1:
+            type: string 
+            example: "House number 50, First Floor"
+         bill_Address2:
+            type: string 
+            example: "ABC Road, Green Park"
+         bill_Address3:
+            type: string 
+            example: ""
+         bill_Phone:
+            type: string 
+            example: "9999112233"
+         bill_Email:
+            type: string 
+            example: "anujkaul86@gmail.com"
+         bill_CountryCode:
+            type: string 
+            example: "IND"
+         bill_State: 
+            type: string 
+            example: "Maharashtra"
+         bill_City:
+            type: string 
+            example: "Mumbai"
+         bill_PinCode:
+            type: string 
+            example: "400001"
+         returnLastUpdateDate: 
+            type: string 
+            example: "08/06/2021 17:11:37"
+         masterOrderNo:
+            type: string 
+            example: "KAAS1559"
+            
+            
+         orderItems:
+            type: array
+            items:
+              $ref: '#/definitions/orderitemsforreturn2'
+  orderitemsforreturn2:
+    properties:
+         lineNo: 
+            type: string 
+            example: "1"
+         skuCode:
+            type: string 
+            example: "CSKU2"
+         skuName:
+            type: string 
+            example: "ChildSKU2"
+         orderQty:
+            type: string 
+            example: "2.00"
+         cancelledQty:
+            type: string 
+            example: null
+         shippedQty:
+            type: string 
+            example: "2"
+         returnedQty:
+            type: string 
+            example: "1.00"
+         lineAmount:
+            type: string 
+            example: "434.50"
+         lineTaxAmount:
+            type: string 
+            example: "19.76"
+         unitPrice:
+            type: string 
+            example: "450.00"
+         codCharge:
+            type: string 
+            example: null
+         invoiceNo:
+            type: string 
+            example: "MWHP2021000005"
+         storeCredit:
+            type: string 
+            example: "50.00"
+         lineStatus:
+            type: string 
+            example: "10"
+  
+ 
+  authToken:
+    properties:
+          status:
+            type: string
+            example: "SUCCESS"
+          apiKey:
+            type: string
+            example: "NTfmU5MWY4MTI3Nzc3YzQ5YzYFmYjlmM2M0YTlhNGU3OGZmYzQwNDE1NmEzMGFi"
+          apiOwner:
+            type: string
+            example: "50JUCH"
+            
+  ProductFetch1:
+    properties:
+          responseCode:
+            type: integer
+            example: 0
+          responseMessage:
+            type: string
+            example: "Success"
+        
+          productList:
+            type: array
+            items:
+              $ref: '#/definitions/ProductList1'
+            
+  ProductList1:
+      type: object
+      properties:
+          sku:
+            type: string
+            example: NYJCH00000001
+          vendorSkuCode:
+            type: string
+            example: 100061_INTIMA
+          mfgSkuCode:
+            type: string
+            example: 100061_INTIMA
+          skuName:
+            type: string
+            example: NYJCH00000001
+          mrp: 
+            type: string
+            example: 1500.00
+          salePrice:
+            type: string
+            example: 1500.00
+          baseCost: 
+            type: string
+            example: 1000.00
+          status:
+            type: string
+            example: 1
+          lastUpdateDate:
+            type: string
+            example: 12/04/2017 16:11:38
+          brand:
+            type: string
+            example: Natrol
+          color:
+            type: string
+            example: null
+          size:
+            type: string
+            example: null
+          weight:
+            type: string
+            example: 0.00
+          length:
+            type: string
+            example: 0.00
+          width:
+            type: string
+            example: 0.00
+          height:
+            type: string
+            example: 0.00
+          serialTracking:
+            type: string
+            example: 0
+            
+  inventrypriceStatus1:
+    properties:
+          responseCode:
+            type: integer
+            example: 0
+          responseMessage:
+            type: string
+            example: "Success"
+        
+          skus:
+            type: array
+            items:
+              $ref: '#/definitions/inventoryPriceList1'
+            
+  inventoryPriceList1:
+      type: object
+      properties:
+          moderationId:
+            type: string
+            example: 108
+          sku:
+            type: string
+            example: 224808
+          requestedInvQty: 
+            type: string
+            example: 1.000
+          approvedInvQty:
+            type: string
+            example: null
+          status: 
+            type: string
+            example: Pending
+          requestedSalePrice:
+            type: string
+            example: 1299.000
+            
+  OrderDetail1:
+    properties:
+          responseCode:
+            type: integer
+            example: 0
+          responseMessage:
+            type: string
+            example: "Success"
+        
+          orderList:
+            type: array
+            items:
+              $ref: '#/definitions/orderDetailList1'
+            
+  orderDetailList1:
+      type: object
+      properties:
+          orderNo:
+            type: string
+            example: 100000019
+          orderStatus:
+            type: string
+            example: 5
+          orderDate: 
+            type: string
+            example: 13/04/2016 00:19:40
+          orderLastUpdateDate:
+            type: string
+            example: 13/04/2016 14:32:05
+          onHold: 
+            type: string
+            example: 1
+                
+  GenerateInvoice1:      
+    properties:
+          responseCode:
+            type: integer
+            example: 0
+          responseMessage:
+            type: string
+            example: "Success"      
+          invoiceNo:
+            type: string
+            example: "3457899883249"   
+            
+  fetchInvoiceResponse1:
+    properties:
+          responseCode:
+            type: integer
+            example: 0
+          responseMessage:
+            type: string
+            example: "Success"
+          invoiceItems:
+            type: array
+            items:
+              $ref: '#/definitions/InvoiceList1'
+            
+  InvoiceList1:
+      type: object
+      properties:
+          orderNo:
+            type: string
+            example: "100000018"
+          orderDate:
+            type: string
+            example: "11/04/2016 02:58:59"
+          orderLastUpdateDate: 
+            type: string
+            example: "06/06/2016 18:34:54"
+          orderStatus:
+            type: string
+            example: "25"
+          lineNo: 
+            type: string
+            example: "1"
+          lineInvoiceNo:
+            type: string
+            example: "AC0011617000001"
+          lineStatus:
+            type: string
+            example: "25"
+          lineTransporterCode:
+            type: string
+            example: "7"
+          lineTransporterName:
+            type: string
+            example: "By Hand delivery"
+          lineTrackingNo:
+            type: string
+            example: "123"
+          lineImeiNos:
+            type: string
+            example: null
+            
+  
+  OrderShip1:
+    properties:
+          responseCode:
+            type: integer
+            example: 0
+          responseMessage:
+            type: string
+            example: "Success"
+            
+  
+  InventoryPricedetail1:
+    properties:
+          responseCode:
+            type: integer
+            example: 0
+          responseMessage:
+            type: string
+            example: "Success"
+        
+          skus:
+            type: array
+            items:
+              $ref: '#/definitions/InventoryList1'
+            
+  InventoryList1:
+      type: object
+      properties:
+          moderationId:
+            type: string
+            example: 24
+          sku:
+            type: string
+            example: TEST_STORE_ABC_TESTING-004-BUY-3-FREE-1
+          requestedInvQty: 
+            type: string
+            example: 11
+          approvedInvQty:
+            type: string
+            example: null
+          status:
+            type: string
+            example: Pending
+          requestedSalePrice:
+            type: string
+            example: null

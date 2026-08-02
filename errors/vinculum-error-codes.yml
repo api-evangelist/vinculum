@@ -1,0 +1,27 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/vinculum-eretail-openapi-original.yml
+format: response-code-envelope
+notes: >-
+  Vin eRetail does not use RFC 9457 problem+json and documents only HTTP 200
+  responses in its Swagger; application-level success/failure is signaled inside
+  a response envelope via an integer responseCode and a responseMessage string,
+  with per-record outcomes in a nested requestStatus/response object. The
+  envelope shape below is derived from the response definitions in the spec
+  (VendorCreateResponse, ShipDetailResponse, ResponseList, RequestStatus, etc.).
+  Specific responseCode values are assigned per operation and are not enumerated
+  in the published spec.
+envelope:
+  fields:
+    - name: responseCode
+      type: integer
+      description: Application status code for the request (operation-specific; non-zero/negative typically indicates failure).
+    - name: responseMessage
+      type: string
+      description: Human-readable status or error message.
+    - name: requestStatus
+      type: object
+      description: Per-record processing status (e.g. per order line / per SKU) for bulk operations.
+transport:
+  http_status: 200
+  detail: The API returns HTTP 200 for both success and handled application errors; inspect responseCode/responseMessage to determine outcome.
