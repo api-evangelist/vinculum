@@ -286,6 +286,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/vinculum-eretail-overlay.yaml
 - type: Website
   url: http://www.vinculumgroup.com
 - type: Documentation
