@@ -6,7 +6,8 @@
       "feed_url": "https://docs.vineretail.com/feed/",
       "title": "",
       "saved": 0,
-      "method": "feed"
+      "method": "feed",
+      "error": "fetch_failed: HTTPError"
     },
     {
       "source": "https://docs.vineretail.com",
@@ -17,5 +18,5 @@
     }
   ],
   "post_count": 22,
-  "fetched": "2026-08-06T14:08:46Z"
+  "fetched": "2026-08-15T12:11:08Z"
 }
