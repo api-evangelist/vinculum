@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vinculum Advance Shipping Notice Courier Allocation Process API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Courier Allocation Process",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "API For Generating Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/generateInvoice",
+            "headers": [
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For Generating Invoice"
+        },
+        {
+          "info": {
+            "name": "API For Fetching the Invoice Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fetchInvoice",
+            "headers": [
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For Fetching the Invoice Details"
+        },
+        {
+          "info": {
+            "name": "API For Fetching documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/fetchDocuments",
+            "headers": [
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For Fetching documents"
+        },
+        {
+          "info": {
+            "name": "API For Order Shipping Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/orderShipping",
+            "headers": [
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For Order Shipping Details"
+        },
+        {
+          "info": {
+            "name": "API For Cancel Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/orderCancellation",
+            "headers": [
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For Cancel Order"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

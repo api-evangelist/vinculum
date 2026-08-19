@@ -1,0 +1,239 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vinculum Advance Shipping Notice Common API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Common",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "API For Checking Request Status(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/common/checkRequestStatus"
+          },
+          "docs": "API For Checking Request Status(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/hit:50 API For Customer Create/Update(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/customer/custCreate",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of Lines/hit:50 API For Customer Create/Update(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/Response:100. Max Allowed Phone Numbers/EmailId- 100. API For Customer Details(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/customer/detail"
+          },
+          "docs": "Max no. of Lines/Response:100. Max Allowed Phone Numbers/EmailId- 100. API For Customer Details(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max Allowed Date Range- 7 Days.API For Tally Details(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/tally/getDocumentAck"
+          },
+          "docs": "Max Allowed Date Range- 7 Days.API For Tally Details(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/Response:100 API For Get Sku Category Detail(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/common/skuCategoryDetail",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of Lines/Response:100 API For Get Sku Category Detail(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/hit:50 API For lpnUpdate(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/common/lpnUpdate",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of Lines/hit:50 API For lpnUpdate(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/Response:50 API For Get Locations Detail(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/master/locationFetch",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of Lines/Response:50 API For Get Locations Detail(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "API For Channel Create Update(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/channel/createEdit",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For Channel Create Update(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "API For Get channelinfo(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api//eretail/v1/common/channelInfo",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For Get channelinfo(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "API For Create Client(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/master/clientCreate",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For Create Client(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "API For Updating Packaging Dimensions(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/updatePackagingDimensions",
+            "headers": [
+              {
+                "name": "DBID",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For Updating Packaging Dimensions(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "API For NDR ProposedPayload(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/common/NDR",
+            "headers": [
+              {
+                "name": "DBID",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For NDR ProposedPayload(Hit Quota 40/5 min)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

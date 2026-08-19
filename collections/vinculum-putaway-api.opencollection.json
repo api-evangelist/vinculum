@@ -1,0 +1,38 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vinculum Advance Shipping Notice Putaway API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Putaway",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "API For Inventory Movement Process(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/putaway/create",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For Inventory Movement Process(Hit Quota 40/5 min)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

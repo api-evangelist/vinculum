@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vinculum Advance Shipping Notice Vendors API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Vendors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "API For Creating Vendor(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/master/vendorCreate"
+          },
+          "docs": "API For Creating Vendor(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/Response:100 API For Vendor Details(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/vendor/vendordetail"
+          },
+          "docs": "Max no. of Lines/Response:100 API For Vendor Details(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/hit:50 API For Vendor Location SKU Mapping(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/vendor/vendlocskumapping/create",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of Lines/hit:50 API For Vendor Location SKU Mapping(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/hit:50 API For Vendor SKU Mapping(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/vendor/vendorSkuMapping/create",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of Lines/hit:50 API For Vendor SKU Mapping(Hit Quota 40/5 min)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

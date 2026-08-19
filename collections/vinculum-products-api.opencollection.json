@@ -1,0 +1,163 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vinculum Advance Shipping Notice Products API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Max no. of lines/hit:100 API For Creating Sku(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/sku/create"
+          },
+          "docs": "Max no. of lines/hit:100 API For Creating Sku(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/Response:20 API For Order Invoice Pdf(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v3/sku/create",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of Lines/Response:20 API For Order Invoice Pdf(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of lines/hit:100 API For Update SKU's(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/sku/update",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of lines/hit:100 API For Update SKU's(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of lines/hit:100  API For Creating SkuBarCode(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/sku/createSkuBarcode"
+          },
+          "docs": "Max no. of lines/hit:100  API For Creating SkuBarCode(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of lines/hit:100 API For Creating SkuBarCode(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v4/sku/createSkuBarcode",
+            "headers": [
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of lines/hit:100 API For Creating SkuBarCode(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of lines/hit:100 API To Get Sku Details(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/sku/skuDetail"
+          },
+          "docs": "Max no. of lines/hit:100 API To Get Sku Details(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of lines/hit:100 API For Checking Inventory Status V3(Hit Quota 80/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v3/sku/inventoryStatus"
+          },
+          "docs": "Max no. of lines/hit:100 API For Checking Inventory Status V3(Hit Quota 80/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of lines/hit:20 API To getlotlevelinventory(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/sku/getlotlevelinventory"
+          },
+          "docs": "Max no. of lines/hit:20 API To getlotlevelinventory(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of lines/Responses-:500  API To Get Sku Details(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/sku/skuChannelMapping"
+          },
+          "docs": "Max no. of lines/Responses-:500  API To Get Sku Details(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of lines/hit:20 API To binLotLevelInventory(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/sku/binLotLevelInventory",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of lines/hit:20 API To binLotLevelInventory(Hit Quota 40/5 min)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

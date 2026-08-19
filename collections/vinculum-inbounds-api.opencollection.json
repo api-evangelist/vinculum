@@ -1,0 +1,165 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vinculum Advance Shipping Notice Inbounds API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inbounds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Max no. of lines/Response:100 API For Inbound Details(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/inbound/detail"
+          },
+          "docs": "Max no. of lines/Response:100 API For Inbound Details(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of lines/Response:100 API For Inbound Details(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v3/inbound/detail",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of lines/Response:100 API For Inbound Details(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "API For Inbound create(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v4/inbound/create",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For Inbound create(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "API For Inbound QC (API allows only rejection and qc is confirmed directly)(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/inbound/qc"
+          },
+          "docs": "API For Inbound QC (API allows only rejection and qc is confirmed directly)(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of lines/Hit:100  For Inbound Cancel(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/inbound/cancel",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of lines/Hit:100  For Inbound Cancel(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "API For Inbound QC Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/inbound/qcdetail",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For Inbound QC Details"
+        },
+        {
+          "info": {
+            "name": "Max no. of lines/Response:100 API For Inbound Grn Attachment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/inbound/getGrnAttachment",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of lines/Response:100 API For Inbound Grn Attachment"
+        },
+        {
+          "info": {
+            "name": "API For Inbound QC Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v3/inbound/qcdetail",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For Inbound QC Details"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vinculum Advance Shipping Notice Manifest API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manifest",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "API For Create Manifest(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/manifest/create",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For Create Manifest(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/Response:20 API For Order Invoice Pdf(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/manifest/createB2bManifest",
+            "headers": [
+              {
+                "name": "DbId",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of Lines/Response:20 API For Order Invoice Pdf(Hit Quota 40/5 min)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

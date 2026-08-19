@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vinculum Advance Shipping Notice Order Managment API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Order Managment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "API For getting  the orderList",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/orderList",
+            "headers": [
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For getting  the orderList"
+        },
+        {
+          "info": {
+            "name": "API For getting  the orderList",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/orderListJIT",
+            "headers": [
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For getting  the orderList"
+        },
+        {
+          "info": {
+            "name": "API For Fetching Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/orderFetch",
+            "headers": [
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For Fetching Order"
+        },
+        {
+          "info": {
+            "name": "API For Fetching Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/orderFetchJIT",
+            "headers": [
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For Fetching Order"
+        },
+        {
+          "info": {
+            "name": "API For Order Return",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/orderReturn",
+            "headers": [
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For Order Return"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

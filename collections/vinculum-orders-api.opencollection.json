@@ -1,0 +1,723 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vinculum Advance Shipping Notice Orders API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "API For Creating Order(Hit Quota 80/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/create"
+          },
+          "docs": "API For Creating Order(Hit Quota 80/5 min)"
+        },
+        {
+          "info": {
+            "name": "API For Creating Order(Hit Quota 80/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v4/order/create",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For Creating Order(Hit Quota 80/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/hit:100 API For Creating Bulk Order(Hit Quota 40/5 min).",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/createBulk"
+          },
+          "docs": "Max no. of Lines/hit:100 API For Creating Bulk Order(Hit Quota 40/5 min)."
+        },
+        {
+          "info": {
+            "name": "API For Cancelling Order(Hit Quota 80/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/cancel"
+          },
+          "docs": "API For Cancelling Order(Hit Quota 80/5 min)"
+        },
+        {
+          "info": {
+            "name": "API For Cancel Line Level order(Hit Quota 80/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/cancelLineLevel"
+          },
+          "docs": "API For Cancel Line Level order(Hit Quota 80/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/hit:1000 API for Updating order details(Hit Quota 80/5 min).",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v2/order/orderUpdate",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of Lines/hit:1000 API for Updating order details(Hit Quota 80/5 min)."
+        },
+        {
+          "info": {
+            "name": "Max no. Line/Response:100 API to fetch Order Details. (Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/orderPull"
+          },
+          "docs": "Max no. Line/Response:100 API to fetch Order Details. (Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. Line/Response:100 (Custom API) API to fetch Order Details. (Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v2/order/orderPullV2"
+          },
+          "docs": "Max no. Line/Response:100 (Custom API) API to fetch Order Details. (Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. Line/Response:100 (Custom API) API to fetch Order Details. (Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v3/order/orderPull",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. Line/Response:100 (Custom API) API to fetch Order Details. (Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/Response:100 API to fetch Order List.(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v2/order/list",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of Lines/Response:100 API to fetch Order List.(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/Response:50 API For Order Status(Hit Quota 120/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v2/order/status"
+          },
+          "docs": "Max no. of Lines/Response:50 API For Order Status(Hit Quota 120/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/Response:50 API For Order Status(Hit Quota 120/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v4/order/status",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of Lines/Response:50 API For Order Status(Hit Quota 120/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/Response:100 API For Customer Order(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/customerOrder"
+          },
+          "docs": "Max no. of Lines/Response:100 API For Customer Order(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "API For Ship Details Order(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/shipDetail"
+          },
+          "docs": "API For Ship Details Order(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/Response:50 API For Order Invoice(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v2/order/orderInvoice"
+          },
+          "docs": "Max no. of Lines/Response:50 API For Order Invoice(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/Response:50 API For Order Invoice(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v3/order/orderInvoice",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of Lines/Response:50 API For Order Invoice(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/Response:20 API For Order Invoice Pdf(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/orderinvoicepdf"
+          },
+          "docs": "Max no. of Lines/Response:20 API For Order Invoice Pdf(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/Response:20 API For Order Invoice Pdf(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v4/order/orderinvoicepdf",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of Lines/Response:20 API For Order Invoice Pdf(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/Response:20 API For Shipping Label PDF(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/getShippingLabelPdf"
+          },
+          "docs": "Max no. of Lines/Response:20 API For Shipping Label PDF(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/Response:20 API For Shipping Label PDF(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v2/order/getShippingLabelPdf",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of Lines/Response:20 API For Shipping Label PDF(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/Response:100 API For History of Customer Order(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v2/order/customerOrder"
+          },
+          "docs": "Max no. of Lines/Response:100 API For History of Customer Order(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "API to retrieve which warehouse can used to fulfill a product in the Cart(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/availableInventoryWH"
+          },
+          "docs": "API to retrieve which warehouse can used to fulfill a product in the Cart(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "API For order processing i.e. Pack and shipment create of orders having single delivery and allocated status(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/orderProcess"
+          },
+          "docs": "API For order processing i.e. Pack and shipment create of orders having single delivery and allocated status(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "API For order processing i.e. Pack and shipment create of orders having single delivery and allocated status(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v2/order/orderProcess",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For order processing i.e. Pack and shipment create of orders having single delivery and allocated status(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/hit:10 API For Update Order Details(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/updateOrderDetails",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of Lines/hit:10 API For Update Order Details(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/hit:1 API For Order Pick(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/orderPick",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of Lines/hit:1 API For Order Pick(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/hit:1 For Order Pack/Single Delivery Process(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/orderPack",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of Lines/hit:1 For Order Pack/Single Delivery Process(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/hit:1 API For Single Delivery Process(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/orderShip",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of Lines/hit:1 API For Single Delivery Process(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "API For Add To Manifest(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/addToManifest",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For Add To Manifest(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "API For Download Manifest Pdf(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/downloadManifest"
+          },
+          "docs": "API For Download Manifest Pdf(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. Line/Response:50 API For Get Failed Orders Detail(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/failedOrders",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. Line/Response:50 API For Get Failed Orders Detail(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/hit:10 API For Update Channel Sku Details(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/updateChannelSkuDetails",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of Lines/hit:10 API For Update Channel Sku Details(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/hit:50 API for Updating order details(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/statusUpdate",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of Lines/hit:50 API for Updating order details(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/hit:10 API For Creating Kit Order(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/kit",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of Lines/hit:10 API For Creating Kit Order(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/Response:1 API For OrderAllocation(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/orderAllocate"
+          },
+          "docs": "Max no. of Lines/Response:1 API For OrderAllocation(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/hit:1 API For OrderUnAllocate(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/orderUnAllocate",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of Lines/hit:1 API For OrderUnAllocate(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. Line/hit:1000 (Custom API) API For updateStatus(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/updateStatus"
+          },
+          "docs": "Max no. Line/hit:1000 (Custom API) API For updateStatus(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/Response:100 API For Get Kit Orders Detail(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/kitDetails",
+            "params": [
+              {
+                "name": "ApiOwner",
+                "value": "",
+                "type": "query",
+                "description": "API Owner"
+              },
+              {
+                "name": "ApiKey",
+                "value": "",
+                "type": "query",
+                "description": "ApiKey"
+              },
+              {
+                "name": "orderNo",
+                "value": "",
+                "type": "query",
+                "description": "Pass order No here"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Pass comma separated status Ex Pending,Confirmed"
+              },
+              {
+                "name": "fromDate",
+                "value": "",
+                "type": "query",
+                "description": "Only if details by filter (DD/MM/YYYY HH:mm:ss)"
+              },
+              {
+                "name": "toDate",
+                "value": "",
+                "type": "query",
+                "description": "Only if details by filter (DD/MM/YYYY HH:mm:ss)"
+              },
+              {
+                "name": "orderLocation",
+                "value": "",
+                "type": "query",
+                "description": "Order Location"
+              },
+              {
+                "name": "pageNo",
+                "value": "",
+                "type": "query",
+                "description": "Default 1. (Page Size 100 Orders)"
+              },
+              {
+                "name": "filterBy",
+                "value": "",
+                "type": "query",
+                "description": "It will get validated in case of Date Range filter. Get detail on the basis of updation or creation date Default:1, Possible values are 1(create date), 2(update date)"
+              }
+            ]
+          },
+          "docs": "Max no. of Lines/Response:100 API For Get Kit Orders Detail(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "API For Get Shipment Detail(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/shipmentDetail",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For Get Shipment Detail(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/Response:100 API For Order Unpack(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/orderUnpack",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of Lines/Response:100 API For Order Unpack(Hit Quota 40/5 min)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vinculum Advance Shipping Notice Order Returns API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Order Returns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Max no. of Lines/hit:100 API For Returning an Order(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/return"
+          },
+          "docs": "Max no. of Lines/hit:100 API For Returning an Order(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/Response:100 API To Get Returned Order(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/orderreturn"
+          },
+          "docs": "Max no. of Lines/Response:100 API To Get Returned Order(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/hit:50 API For CustomerReturnCancel(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/returncancel"
+          },
+          "docs": "Max no. of Lines/hit:50 API For CustomerReturnCancel(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no.of Lines/hit:50 API For Update Return(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/order/returnupdate"
+          },
+          "docs": "Max no.of Lines/hit:50 API For Update Return(Hit Quota 40/5 min)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

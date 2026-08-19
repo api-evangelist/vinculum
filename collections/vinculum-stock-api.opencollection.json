@@ -1,0 +1,197 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vinculum Advance Shipping Notice Stock API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stock",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Max no.of Lines/hit:100 API For Updating Inventory(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v2/stock/updateInventory"
+          },
+          "docs": "Max no.of Lines/hit:100 API For Updating Inventory(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no.of Lines/hit:100 API For Updating Inventory(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v3/stock/updateInventory",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no.of Lines/hit:100 API For Updating Inventory(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no.of Lines/hit:100 API For Updating Inventory(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v4/stock/updateInventory",
+            "headers": [
+              {
+                "name": "ApiKey",
+                "value": ""
+              },
+              {
+                "name": "DbId",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no.of Lines/hit:100 API For Updating Inventory(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no.of Lines/hit:100  API For Inventory Move Task(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/stock/inventoryMovement",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no.of Lines/hit:100  API For Inventory Move Task(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no.of Lines/hit:50 API to Hold/Unhold Inventory(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/stock/inventoryHoldUnhold",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no.of Lines/hit:50 API to Hold/Unhold Inventory(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "No.of Lines/Response:100  API for Stock Adjustment Detail(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/stock/adjustmentDetail"
+          },
+          "docs": "No.of Lines/Response:100  API for Stock Adjustment Detail(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "No.of Lines/Response:100 API for Stock Adjustment Detail(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v3/stock/adjustmentDetail",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "No.of Lines/Response:100 API for Stock Adjustment Detail(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no.of Lines/hit:50 API For Inventory Movement Process(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/stock/invMove"
+          },
+          "docs": "Max no.of Lines/hit:50 API For Inventory Movement Process(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "No.of Lines/Response:100 API For Checking WH Inventory Detail(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v4/stock/getWhInventory",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "No.of Lines/Response:100 API For Checking WH Inventory Detail(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no.of Lines/hit:100. API For Checking Inventory move history(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/stock/movementHistory",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no.of Lines/hit:100. API For Checking Inventory move history(Hit Quota 40/5 min)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

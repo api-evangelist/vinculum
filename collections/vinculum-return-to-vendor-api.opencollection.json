@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vinculum Advance Shipping Notice Return to Vendor API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Return to Vendor",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Max no. of Lines/hit:100 API For Creating RTV(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/rtv/create"
+          },
+          "docs": "Max no. of Lines/hit:100 API For Creating RTV(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/hit:100 API For Creating RTV(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v2/rtv/create"
+          },
+          "docs": "Max no. of Lines/hit:100 API For Creating RTV(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/Response:100 API For Geting RTV detail(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/rtv/detail"
+          },
+          "docs": "Max no. of Lines/Response:100 API For Geting RTV detail(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of Lines/Response:100 API For Rtv Detail(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v3/rtv/detail",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of Lines/Response:100 API For Rtv Detail(Hit Quota 40/5 min)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

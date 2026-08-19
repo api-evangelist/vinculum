@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vinculum Advance Shipping Notice Authentication Process API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication Process",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "API For Generating APIKey and APIOwner",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/authToken",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "query",
+                "description": "userId of logged in user"
+              },
+              {
+                "name": "password",
+                "value": "",
+                "type": "query",
+                "description": "Unique credential of each user"
+              }
+            ]
+          },
+          "docs": "API For Generating APIKey and APIOwner"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

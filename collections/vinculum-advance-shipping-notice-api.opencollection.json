@@ -1,0 +1,91 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vinculum Advance Shipping Notice API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Advance Shipping Notice",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "API For creating ASN(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/asn/create"
+          },
+          "docs": "API For creating ASN(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "API For creating ASN(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v4/asn/create",
+            "headers": [
+              {
+                "name": "ApiKey",
+                "value": ""
+              },
+              {
+                "name": "DbId",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For creating ASN(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "API For Cancel ASN(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/asn/cancel",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For Cancel ASN(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "No.of Lines/Response:100 API For Get ASN Detail(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/asn/detail",
+            "headers": [
+              {
+                "name": "ApiOwner",
+                "value": ""
+              },
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "No.of Lines/Response:100 API For Get ASN Detail(Hit Quota 40/5 min)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

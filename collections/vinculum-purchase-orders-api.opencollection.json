@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vinculum Advance Shipping Notice Purchase Orders API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Purchase Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Max no. of lines/Hit:10 API For Creating PO(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/po/create"
+          },
+          "docs": "Max no. of lines/Hit:10 API For Creating PO(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of lines/Hit:10 API For Creating PO(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v4/po/create",
+            "headers": [
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Max no. of lines/Hit:10 API For Creating PO(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of lines/Response:100 API For PO Details(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/po/popull"
+          },
+          "docs": "Max no. of lines/Response:100 API For PO Details(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "Max no. of lines/Response:100 API For GatePass Details(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/po/gatepassdetail"
+          },
+          "docs": "Max no. of lines/Response:100 API For GatePass Details(Hit Quota 40/5 min)"
+        },
+        {
+          "info": {
+            "name": "API For Update PO Status(Hit Quota 40/5 min)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/RestWS/api/eretail/v1/po/poStatusUpdate",
+            "headers": [
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For Update PO Status(Hit Quota 40/5 min)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

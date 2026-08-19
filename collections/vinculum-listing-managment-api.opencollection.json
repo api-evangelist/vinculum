@@ -1,0 +1,85 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Vinculum Advance Shipping Notice Listing Managment API"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Listing Managment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "API For Fetching product",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/productFetch",
+            "headers": [
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For Fetching product"
+        },
+        {
+          "info": {
+            "name": "API For Updating Inventory Price",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/inventoryPriceUpdate",
+            "headers": [
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For Updating Inventory Price"
+        },
+        {
+          "info": {
+            "name": "API For Inventory Price Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/inventoryPriceStatus",
+            "headers": [
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For Inventory Price Status"
+        },
+        {
+          "info": {
+            "name": "API For fetching SKU Back Order Quantity for JIT Vendors",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/skuBackOrder",
+            "headers": [
+              {
+                "name": "ApiKey",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "API For fetching SKU Back Order Quantity for JIT Vendors"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
