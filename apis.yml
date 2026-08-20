@@ -34,6 +34,15 @@ modified: '2026-07-21'
 image: https://erp.vineretail.com/swagger/Vinculum-logo.svg
 tags:
 - Company
+- E-Commerce
+- Omnichannel
+- Order Management
+- Warehouse Management
+- Inventory
+- Retail
+- Marketplaces
+tags_raw:
+- Company
 - Ecommerce
 - Omnichannel
 - Order Management
@@ -132,6 +141,8 @@ apis:
   humanURL: https://erp.vineretail.com/swagger/
   baseURL: https://erp.vineretail.com/RestWS/api/eretail
   tags:
+  - Manifests
+  tags_raw:
   - Manifest
   properties:
   - type: OpenAPI
@@ -174,6 +185,8 @@ apis:
   humanURL: https://erp.vineretail.com/swagger/
   baseURL: https://erp.vineretail.com/RestWS/api/eretail
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -188,6 +201,8 @@ apis:
   humanURL: https://erp.vineretail.com/swagger/
   baseURL: https://erp.vineretail.com/RestWS/api/eretail
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
