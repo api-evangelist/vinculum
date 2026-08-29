@@ -1,0 +1,77 @@
+slug: vinculum
+provider: Vinculum
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 6
+edges:
+- tag: Inbounds
+  spec_file: vinculum-inbounds-api-openapi.yml
+  capability_id: BC-2460.10
+  capability_id_l1: BC-2460
+  capability_name: Inbound Operations Management
+  confidence: 0.85
+  evidence: POST /RestWS/api/eretail/v4/inbound/create; POST /RestWS/api/eretail/v1/inbound/qc    API
+    For Inbound QC; POST /RestWS/api/eretail/v1/inbound/getGrnAttachment
+  reason: Warehouse inbound receipt lifecycle — inbound creation, QC of received goods, GRN attachments
+    and cancellation. This is receipt and inspection of goods entering the warehouse in Vinculum's WMS.
+- tag: Purchase Orders
+  spec_file: vinculum-purchase-orders-api-openapi.yml
+  capability_id: BC-500.30
+  capability_id_l1: BC-500
+  capability_name: Purchase Order Management
+  confidence: 0.85
+  evidence: POST /RestWS/api/eretail/v1/po/create    API For Creating PO; POST /RestWS/api/eretail/v1/po/poStatusUpdate    API
+    For Update PO Status; POST /RestWS/api/eretail/v1/po/popull
+  reason: Explicit purchase-order creation, retrieval and status update (plus gate-pass detail), which
+    is PO lifecycle management within procurement.
+- tag: Stock
+  spec_file: vinculum-stock-api-openapi.yml
+  capability_id: BC-530
+  capability_id_l1: BC-530
+  capability_name: Inventory Management
+  confidence: 0.8
+  evidence: '"API For Updating Inventory", "API to Hold/Unhold Inventory", "API for Stock Adjustment Detail",
+    "API For Checking WH Inventory Detail"'
+  reason: Operations update stock quantities, hold/release inventory, record adjustments and movements,
+    and read warehouse on-hand — this is inventory management. The mix of adjustment, movement and hold
+    operations spans several L2s (accuracy, allocation, stock levels), so only the L1 is asserted.
+- tag: Orders
+  spec_file: vinculum-orders-api-openapi.yml
+  capability_id: BC-520.40
+  capability_id_l1: BC-520
+  capability_name: Order Fulfilment Management
+  confidence: 0.75
+  evidence: POST /RestWS/api/eretail/v1/order/create    API For Creating Order; POST /RestWS/api/eretail/v1/order/cancel;
+    POST /RestWS/api/eretail/v2/order/status; schema Orderallocation02
+  reason: Core sales-order lifecycle for an OMS — create, bulk create, line-level cancel, update, pull,
+    status, allocation. This is order fulfilment orchestration; some operations also touch invoicing/shipment
+    documents, so not fully unambiguous.
+- tag: Putaway
+  spec_file: vinculum-putaway-api-openapi.yml
+  capability_id: BC-2460.10
+  capability_id_l1: BC-2460
+  capability_name: Inbound Operations Management
+  confidence: 0.75
+  evidence: POST /RestWS/api/eretail/v1/putaway/create    API For Inventory Movement Process
+  reason: Putaway creation is the warehouse step of moving received stock into storage locations, i.e.
+    inbound receipt/putaway operations. Only one operation, so confidence is capped.
+- tag: Transfers
+  spec_file: vinculum-transfers-api-openapi.yml
+  capability_id: BC-530
+  capability_id_l1: BC-530
+  capability_name: Inventory Management
+  confidence: 0.7
+  evidence: '"API to create Stock Transfer Order in Eretail"; operations "API For STO Create", "API For
+    STO Cancel", "API For Get STO Details"'
+  reason: Stock transfer orders move inventory between locations in the retail network — an inventory
+    redistribution/replenishment function. Evidence supports the inventory L1 but does not clearly distinguish
+    replenishment from allocation, so no L2 is asserted.

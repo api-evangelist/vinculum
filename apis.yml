@@ -312,6 +312,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/vinculum-capability-edges.yml
+  name: Vinculum Business Capability Map
 - type: Overlay
   url: overlays/vinculum-eretail-overlay.yaml
 - type: Website
