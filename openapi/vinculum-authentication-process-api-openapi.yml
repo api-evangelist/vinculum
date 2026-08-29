@@ -1,8 +1,9 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
-  title: Vinculum Advance Shipping Notice Authentication Process API
-  description: API to retrieve or manipulate ASN related information.
-host: erp.vineretail.com
+  title: Vinculum Authentication Process API
+  description: API to retrieve or manipulate Order related information.
+servers:
+- url: https://static.vineretail.com/RestWS/api/sellerPanel/v3
 tags:
 - name: Authentication Process
   description: API to retrieve or manipulate Order related information.
@@ -12,35 +13,36 @@ paths:
       tags:
       - Authentication Process
       summary: API For Generating APIKey and APIOwner
-      consumes:
-      - application/x-www-form-urlencoded
-      produces:
-      - application/json
       parameters:
       - name: username
         in: query
         description: userId of logged in user
         required: true
-        type: string
+        schema:
+          type: string
       - name: password
         in: query
         description: Unique credential of each user
         required: true
-        type: string
+        schema:
+          type: string
       responses:
         200:
           description: <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>11</p></td><td style="vertical-align:middle" width='167'><p>Invalid API credentials</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>2001</p></td><td style="vertical-align:middle" width='167'><p>UserName / Password are Mandatory.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>2002</p></td><td style="vertical-align:middle" width='167'><p>API Key Not Found / Configured in the system.</p></td></tr></tbody></table>
-          schema:
-            $ref: '#/definitions/authToken'
-definitions:
-  authToken:
-    properties:
-      status:
-        type: string
-        example: SUCCESS
-      apiKey:
-        type: string
-        example: NTfmU5MWY4MTI3Nzc3YzQ5YzYFmYjlmM2M0YTlhNGU3OGZmYzQwNDE1NmEzMGFi
-      apiOwner:
-        type: string
-        example: 50JUCH
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/authToken'
+components:
+  schemas:
+    authToken:
+      properties:
+        status:
+          type: string
+          example: SUCCESS
+        apiKey:
+          type: string
+          example: NTfmU5MWY4MTI3Nzc3YzQ5YzYFmYjlmM2M0YTlhNGU3OGZmYzQwNDE1NmEzMGFi
+        apiOwner:
+          type: string
+          example: 50JUCH

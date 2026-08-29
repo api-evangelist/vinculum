@@ -1,33 +1,14 @@
 {
   "provider": "vinculum",
   "sources": [
-    "vinculum-advance-shipping-notice-api-openapi.yml",
-    "vinculum-authentication-process-api-openapi.yml",
-    "vinculum-common-api-openapi.yml",
-    "vinculum-courier-allocation-process-api-openapi.yml",
-    "vinculum-inbounds-api-openapi.yml",
-    "vinculum-listing-managment-api-openapi.yml",
-    "vinculum-manifest-api-openapi.yml",
-    "vinculum-order-managment-api-openapi.yml",
-    "vinculum-order-returns-api-openapi.yml",
-    "vinculum-orders-api-openapi.yml",
-    "vinculum-products-api-openapi.yml",
-    "vinculum-purchase-orders-api-openapi.yml",
-    "vinculum-putaway-api-openapi.yml",
-    "vinculum-return-to-vendor-api-openapi.yml",
-    "vinculum-stock-api-openapi.yml",
-    "vinculum-transfers-api-openapi.yml",
-    "vinculum-vendors-api-openapi.yml"
+    "_original/vinculum-eretail-openapi-original.yml",
+    "_original/vinculum-sellerpanel-openapi-original.yml"
   ],
   "outputs": [
     "vinculum-advance-shipping-notice-api-openapi.yml",
-    "vinculum-authentication-process-api-openapi.yml",
     "vinculum-common-api-openapi.yml",
-    "vinculum-courier-allocation-process-api-openapi.yml",
     "vinculum-inbounds-api-openapi.yml",
-    "vinculum-listing-managment-api-openapi.yml",
     "vinculum-manifest-api-openapi.yml",
-    "vinculum-order-managment-api-openapi.yml",
     "vinculum-order-returns-api-openapi.yml",
     "vinculum-orders-api-openapi.yml",
     "vinculum-products-api-openapi.yml",
@@ -36,29 +17,40 @@
     "vinculum-return-to-vendor-api-openapi.yml",
     "vinculum-stock-api-openapi.yml",
     "vinculum-transfers-api-openapi.yml",
-    "vinculum-vendors-api-openapi.yml"
+    "vinculum-vendors-api-openapi.yml",
+    "vinculum-authentication-process-api-openapi.yml",
+    "vinculum-courier-allocation-process-api-openapi.yml",
+    "vinculum-listing-managment-api-openapi.yml",
+    "vinculum-order-managment-api-openapi.yml"
   ],
   "archived": [],
-  "errors": [],
-  "warnings": [
-    "vinculum-advance-shipping-notice-api-openapi.yml: info.version missing",
-    "vinculum-authentication-process-api-openapi.yml: info.version missing",
-    "vinculum-common-api-openapi.yml: info.version missing",
-    "vinculum-courier-allocation-process-api-openapi.yml: info.version missing",
-    "vinculum-inbounds-api-openapi.yml: info.version missing",
-    "vinculum-listing-managment-api-openapi.yml: info.version missing",
-    "vinculum-manifest-api-openapi.yml: info.version missing",
-    "vinculum-order-managment-api-openapi.yml: info.version missing",
-    "vinculum-order-returns-api-openapi.yml: info.version missing",
-    "vinculum-orders-api-openapi.yml: info.version missing",
-    "vinculum-products-api-openapi.yml: info.version missing",
-    "vinculum-purchase-orders-api-openapi.yml: info.version missing",
-    "vinculum-putaway-api-openapi.yml: info.version missing",
-    "vinculum-return-to-vendor-api-openapi.yml: info.version missing",
-    "vinculum-stock-api-openapi.yml: info.version missing",
-    "vinculum-transfers-api-openapi.yml: info.version missing",
-    "vinculum-vendors-api-openapi.yml: info.version missing"
+  "errors": [
+    "vinculum-eretail-openapi-original.yml: missing info object",
+    "vinculum-sellerpanel-openapi-original.yml: missing info object"
   ],
-  "notes": [],
-  "skipped": []
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "vinculum-eretail-openapi-original.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "vinculum-sellerpanel-openapi-original.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0"
+  ],
+  "skipped": [
+    "vinculum-advance-shipping-notice-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vinculum-authentication-process-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vinculum-common-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vinculum-courier-allocation-process-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vinculum-inbounds-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vinculum-listing-managment-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vinculum-manifest-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vinculum-order-managment-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vinculum-order-returns-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vinculum-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vinculum-products-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vinculum-purchase-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vinculum-putaway-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vinculum-return-to-vendor-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vinculum-stock-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vinculum-transfers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vinculum-vendors-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

@@ -1,8 +1,9 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
   title: Vinculum Advance Shipping Notice API
   description: API to retrieve or manipulate ASN related information.
-host: erp.vineretail.com
+servers:
+- url: https://erp.vineretail.com
 tags:
 - name: Advance Shipping Notice
   description: API to retrieve or manipulate ASN related information.
@@ -12,535 +13,540 @@ paths:
       tags:
       - Advance Shipping Notice
       summary: API For creating ASN(Hit Quota 40/5 min)
-      consumes:
-      - application/x-www-form-urlencoded
-      produces:
-      - application/json
-      parameters:
-      - in: formData
-        name: RequestBody
-        type: string
-        description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">asnType</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Possible Values are- PO, Vendor, Customer, Other</td></tr><tr align="center"><td style="vertical-align:middle">po_no</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">po_no will be Mandatory if asnType is PO</td></tr><tr align="center"><td style="vertical-align:middle">ext_asnno</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Asnno from external system</td></tr><tr align="center"><td style="vertical-align:middle">vendor_code</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Can create ASN with vendor code  or external vendor code</td></tr><tr align="center"><td style="vertical-align:middle">customer_code</td><td style="vertical-align:middle">Int(11)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Either customer code or external customer code is mandatory when asntype is Customer, Priority to customer code</td></tr><tr align="center"><td style="vertical-align:middle">extCustomerCode</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Either customer code or external customer code is mandatory when asntype is Customer</td></tr><tr align="center"><td style="vertical-align:middle">status</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Valid status - Pending Confirmation, Confirmed, Cancelled, Closed</td></tr><tr align="center"><td style="vertical-align:middle">created_loc</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Location or external Location code</td></tr><tr align="center"><td style="vertical-align:middle">del_loc</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Location or external Location code</td></tr><tr align="center"><td style="vertical-align:middle">expdeldate</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Expected Delivery Date(DD/MM/YYYY)</td></tr><tr align="center"><td style="vertical-align:middle">grossweight</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Weight of the shipment</td></tr><tr align="center"><td style="vertical-align:middle">remarks</td><td style="vertical-align:middle">Varchar(500)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Remarks against ASN</td></tr><tr align="center"><td style="vertical-align:middle">tracking_no</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Tracking No</td></tr><tr align="center"><td style="vertical-align:middle">challanno</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Unique challan number for the shipment</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">invoiceNo</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Invoice No</td></tr><tr align="center"><td style="vertical-align:middle">invoiceAmount</td><td style="vertical-align:middle">Decimal(10,3))</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Invoice Amount</td></tr><tr align="center"><td style="vertical-align:middle">validateShelfLife</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible value Yes or No</td></tr><tr align="center"><td style="vertical-align:middle">asnTag</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">List of tags or identifiers associated with the ASN</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4><b>Items fields</b></td></tr><tr align="center"><td style="vertical-align:middle">sku</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Sku code as per masters</td></tr><tr align="center"><td style="vertical-align:middle">qty</td><td style="vertical-align:middle">Decimal(15,3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">UOM Qty</td></tr><tr align="center"><td style="vertical-align:middle">ext_lineno</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lineno from external system</td></tr><tr align="center"><td style="vertical-align:middle">referenceno</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Reference ASN code if any</td></tr><tr align="center"><td style="vertical-align:middle">polineNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Po Line No</td></tr><tr align="center"><td style="vertical-align:middle">extPolineNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Po ExtLine No</td></tr><tr align="center"><td style="vertical-align:middle">unitCost</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Po ExtLine No</td></tr><tr align="center"><td style="vertical-align:middle">boxid</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">box id</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td>User Defined Field<td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">usns</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Array of unique sequence number (eg. ["9999","8888"])</td></tr><tr align="center"><td style="vertical-align:middle">asnSerialNos</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Array of objects (eg. {"serialNo":"123456","serialNo2":"123457","serialNo3":"2323"})</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4><b><br/>Lottables fields</b></td></tr><tr align="center"><td style="vertical-align:middle">extLotno</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">External Lot Number</td></tr><tr align="center"><td style="vertical-align:middle">lottable01</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr><tr align="center"><td style="vertical-align:middle">lottable02</td><td style="vertical-align:middle">DateTime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields (YYYY-MM-DD)</td></tr><tr align="center"><td style="vertical-align:middle">lottable03</td><td style="vertical-align:middle">DateTime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields (YYYY-MM-DD)</td></tr><tr align="center"><td style="vertical-align:middle">lottable04</td><td style="vertical-align:middle">DateTime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields (YYYY-MM-DD)</td></tr><tr align="center"><td style="vertical-align:middle">lottable05</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr><tr align="center"><td style="vertical-align:middle">lottable06</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr><tr align="center"><td style="vertical-align:middle">lottable07</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr><tr><td  colspan=5><b>JSON FORMAT:</br>{</br>&nbsp;&nbsp;"asn":{</br>&nbsp;&nbsp;"asnType":"PO/Vendor/Customer/Other",</br>&nbsp;&nbsp;"po_no":"NWB968",</br>&nbsp;&nbsp;"ext_asnno":"AA001",</br>&nbsp;&nbsp;"vendor_code":"",</br>&nbsp;&nbsp;"customer_code":"",</br>&nbsp;&nbsp;"extCustomerCode":"",</br>&nbsp;&nbsp;"status":"Confirmed",</br>&nbsp;&nbsp;"created_loc":"NWB",</br>&nbsp;&nbsp;"del_loc":"NWH",</br>&nbsp;&nbsp;"expdeldate":"14/12/2016 15:40:30",</br>&nbsp;&nbsp;"grossweight":"",</br>&nbsp;&nbsp;"remarks":"",</br>&nbsp;&nbsp;"tracking_no":"",</br>&nbsp;&nbsp;"challanno":"",</br>&nbsp;&nbsp;"invoiceNo":"",</br>&nbsp;&nbsp;"invoiceAmount":"",</br>&nbsp;&nbsp;"validateShelfLife":"",</br>&nbsp;&nbsp;"udf1":"",</br>&nbsp;&nbsp;"udf2":"",</br>&nbsp;&nbsp;"udf3":"",</br>&nbsp;&nbsp;"udf4":"",</br>&nbsp;&nbsp;"udf5":"",</br>&nbsp;&nbsp;"asnTag":[],</br>&nbsp;&nbsp;"items":[</br>&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;"sku":"SSSKU011",</br>&nbsp;&nbsp;&nbsp;&nbsp;"qty":"2",</br>&nbsp;&nbsp;&nbsp;&nbsp;"ext_lineno":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;"referenceno":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"polineNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"extPolineNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"boxid":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"udf5":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"usns":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;"unitCost":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"asnSerialNos":[{"serialNo":"123456",&nbsp;"serialNo2":"11212",&nbsp;"serialNo3":"898989"}],</br>&nbsp;&nbsp;&nbsp;&nbsp;"asnLottables":&nbsp;</br>&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"extLotno":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable01":"122",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable02":"2018-04-23",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable03":"2018-04-23",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable04":"2018-04-23",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable05":"44.44",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable06":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable07":""</br>&nbsp;&nbsp;&nbsp;&nbsp;}</br>&nbsp;&nbsp;}</br>&nbsp;&nbsp;&nbsp;&nbsp;]</br>&nbsp;&nbsp;}</br>}</b></td></tr></tbody></table><p>&nbsp;</p><br/>
-      - in: formData
-        name: ApiOwner
-        type: string
-        description: This Field Will Be Used To Send API Owner
-        required: true
-      - in: formData
-        name: ApiKey
-        type: string
-        description: This is the API Key
-        required: true
       responses:
         200:
           description: <table border='1'width='672'><h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>904</p></td><td style="vertical-align:middle" width='167'><p>Vendor Code is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>923</p></td><td style="vertical-align:middle" width='167'><p>Invalid delivery_loc Location</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9001</p></td><td style="vertical-align:middle" width='167'><p>ASN cant be created with status [**] directly</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9001</p></td><td style="vertical-align:middle" width='167'><p>ASN Type not found in ERP</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9002</p></td><td style="vertical-align:middle" width='167'><p>Status not found in ERP</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9019</p></td><td style="vertical-align:middle" width='167'><p>All validation related error messages Ex:- ASN Type is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9039</p></td><td style="vertical-align:middle" width='167'><p>ASN Type is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9040</p></td><td style="vertical-align:middle" width='167'><p>Location is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9041</p></td><td style="vertical-align:middle" width='167'><p>Customer is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9042</p></td><td style="vertical-align:middle" width='167'><p>ASN Date is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9043</p></td><td style="vertical-align:middle" width='167'><p>ASN Create Location Invalid</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9045</p></td><td style="vertical-align:middle" width='167'><p>Please Enter a Valid Asn Number</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9047</p></td><td style="vertical-align:middle" width='167'><p>PO Code is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9061</p></td><td style="vertical-align:middle" width='167'><p>Ext_AsnNo is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>14000</p></td><td style="vertical-align:middle" width='167'><p>ASN can not  be updated from confirmed to pending confirmation Status</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>14000</p></td><td style="vertical-align:middle" width='167'><p>ASN No. [**] already Exists in confirmed Status</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>14010</p></td><td style="vertical-align:middle" width='167'><p>ASN Type can't be changed for ASN No. [**]</p></td></tr></tbody></table>
-          schema:
-            $ref: '#/definitions/asnCreate'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/asnCreate'
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                RequestBody:
+                  type: string
+                  description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">asnType</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Possible Values are- PO, Vendor, Customer, Other</td></tr><tr align="center"><td style="vertical-align:middle">po_no</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">po_no will be Mandatory if asnType is PO</td></tr><tr align="center"><td style="vertical-align:middle">ext_asnno</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Asnno from external system</td></tr><tr align="center"><td style="vertical-align:middle">vendor_code</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Can create ASN with vendor code  or external vendor code</td></tr><tr align="center"><td style="vertical-align:middle">customer_code</td><td style="vertical-align:middle">Int(11)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Either customer code or external customer code is mandatory when asntype is Customer, Priority to customer code</td></tr><tr align="center"><td style="vertical-align:middle">extCustomerCode</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Either customer code or external customer code is mandatory when asntype is Customer</td></tr><tr align="center"><td style="vertical-align:middle">status</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Valid status - Pending Confirmation, Confirmed, Cancelled, Closed</td></tr><tr align="center"><td style="vertical-align:middle">created_loc</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Location or external Location code</td></tr><tr align="center"><td style="vertical-align:middle">del_loc</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Location or external Location code</td></tr><tr align="center"><td style="vertical-align:middle">expdeldate</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Expected Delivery Date(DD/MM/YYYY)</td></tr><tr align="center"><td style="vertical-align:middle">grossweight</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Weight of the shipment</td></tr><tr align="center"><td style="vertical-align:middle">remarks</td><td style="vertical-align:middle">Varchar(500)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Remarks against ASN</td></tr><tr align="center"><td style="vertical-align:middle">tracking_no</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Tracking No</td></tr><tr align="center"><td style="vertical-align:middle">challanno</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Unique challan number for the shipment</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">invoiceNo</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Invoice No</td></tr><tr align="center"><td style="vertical-align:middle">invoiceAmount</td><td style="vertical-align:middle">Decimal(10,3))</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Invoice Amount</td></tr><tr align="center"><td style="vertical-align:middle">validateShelfLife</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible value Yes or No</td></tr><tr align="center"><td style="vertical-align:middle">asnTag</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">List of tags or identifiers associated with the ASN</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4><b>Items fields</b></td></tr><tr align="center"><td style="vertical-align:middle">sku</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Sku code as per masters</td></tr><tr align="center"><td style="vertical-align:middle">qty</td><td style="vertical-align:middle">Decimal(15,3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">UOM Qty</td></tr><tr align="center"><td style="vertical-align:middle">ext_lineno</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lineno from external system</td></tr><tr align="center"><td style="vertical-align:middle">referenceno</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Reference ASN code if any</td></tr><tr align="center"><td style="vertical-align:middle">polineNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Po Line No</td></tr><tr align="center"><td style="vertical-align:middle">extPolineNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Po ExtLine No</td></tr><tr align="center"><td style="vertical-align:middle">unitCost</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Po ExtLine No</td></tr><tr align="center"><td style="vertical-align:middle">boxid</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">box id</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td>User Defined Field<td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">usns</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Array of unique sequence number (eg. ["9999","8888"])</td></tr><tr align="center"><td style="vertical-align:middle">asnSerialNos</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Array of objects (eg. {"serialNo":"123456","serialNo2":"123457","serialNo3":"2323"})</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4><b><br/>Lottables fields</b></td></tr><tr align="center"><td style="vertical-align:middle">extLotno</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">External Lot Number</td></tr><tr align="center"><td style="vertical-align:middle">lottable01</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr><tr align="center"><td style="vertical-align:middle">lottable02</td><td style="vertical-align:middle">DateTime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields (YYYY-MM-DD)</td></tr><tr align="center"><td style="vertical-align:middle">lottable03</td><td style="vertical-align:middle">DateTime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields (YYYY-MM-DD)</td></tr><tr align="center"><td style="vertical-align:middle">lottable04</td><td style="vertical-align:middle">DateTime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields (YYYY-MM-DD)</td></tr><tr align="center"><td style="vertical-align:middle">lottable05</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr><tr align="center"><td style="vertical-align:middle">lottable06</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr><tr align="center"><td style="vertical-align:middle">lottable07</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr><tr><td  colspan=5><b>JSON FORMAT:</br>{</br>&nbsp;&nbsp;"asn":{</br>&nbsp;&nbsp;"asnType":"PO/Vendor/Customer/Other",</br>&nbsp;&nbsp;"po_no":"NWB968",</br>&nbsp;&nbsp;"ext_asnno":"AA001",</br>&nbsp;&nbsp;"vendor_code":"",</br>&nbsp;&nbsp;"customer_code":"",</br>&nbsp;&nbsp;"extCustomerCode":"",</br>&nbsp;&nbsp;"status":"Confirmed",</br>&nbsp;&nbsp;"created_loc":"NWB",</br>&nbsp;&nbsp;"del_loc":"NWH",</br>&nbsp;&nbsp;"expdeldate":"14/12/2016 15:40:30",</br>&nbsp;&nbsp;"grossweight":"",</br>&nbsp;&nbsp;"remarks":"",</br>&nbsp;&nbsp;"tracking_no":"",</br>&nbsp;&nbsp;"challanno":"",</br>&nbsp;&nbsp;"invoiceNo":"",</br>&nbsp;&nbsp;"invoiceAmount":"",</br>&nbsp;&nbsp;"validateShelfLife":"",</br>&nbsp;&nbsp;"udf1":"",</br>&nbsp;&nbsp;"udf2":"",</br>&nbsp;&nbsp;"udf3":"",</br>&nbsp;&nbsp;"udf4":"",</br>&nbsp;&nbsp;"udf5":"",</br>&nbsp;&nbsp;"asnTag":[],</br>&nbsp;&nbsp;"items":[</br>&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;"sku":"SSSKU011",</br>&nbsp;&nbsp;&nbsp;&nbsp;"qty":"2",</br>&nbsp;&nbsp;&nbsp;&nbsp;"ext_lineno":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;"referenceno":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"polineNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"extPolineNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"boxid":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"udf5":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"usns":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;"unitCost":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"asnSerialNos":[{"serialNo":"123456",&nbsp;"serialNo2":"11212",&nbsp;"serialNo3":"898989"}],</br>&nbsp;&nbsp;&nbsp;&nbsp;"asnLottables":&nbsp;</br>&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"extLotno":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable01":"122",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable02":"2018-04-23",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable03":"2018-04-23",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable04":"2018-04-23",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable05":"44.44",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable06":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lottable07":""</br>&nbsp;&nbsp;&nbsp;&nbsp;}</br>&nbsp;&nbsp;}</br>&nbsp;&nbsp;&nbsp;&nbsp;]</br>&nbsp;&nbsp;}</br>}</b></td></tr></tbody></table><p>&nbsp;</p><br/>
+                ApiOwner:
+                  type: string
+                  description: This Field Will Be Used To Send API Owner
+                ApiKey:
+                  type: string
+                  description: This is the API Key
+              required:
+              - ApiOwner
+              - ApiKey
   /RestWS/api/eretail/v4/asn/create:
     post:
       tags:
       - Advance Shipping Notice
       summary: API For creating ASN(Hit Quota 40/5 min)
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - in: header
         name: ApiKey
         required: true
-        type: string
         description: API Key.
+        schema:
+          type: string
       - in: header
         name: DbId
         required: true
-        type: string
         description: DB Identifier.
-      - in: body
-        name: ASNCreateJSON
-        description: <table><tr align="center" ><td width="100" style="color:#ec0c0c !important;font-size:16px !important;"><strong>Beta Version (Case Pack Compatible)</strong></td></tr></table><table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">asntype</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Possible Values are- PO, Vendor, Customer, Other</td></tr><tr align="center"><td style="vertical-align:middle">poNo</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">po_no will be Mandatory if asnType is PO</td></tr><tr align="center"><td style="vertical-align:middle">extAsnNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Asnno from external system</td></tr><tr align="center"><td style="vertical-align:middle">vendorCode</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Can create ASN with vendor code or external vendor code, Mandatory when asntype is vendor</td></tr><tr align="center"><td style="vertical-align:middle">customer_code</td><td style="vertical-align:middle">Int(11)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Either customer code or external customer code is mandatory when asntype is Customer, Priority to customer code</td></tr><tr align="center"><td style="vertical-align:middle">extCustomerCode</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Either customer code or external customer code is mandatory when asntype is Customer</td></tr><tr align="center"><td style="vertical-align:middle">status</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Valid status - Pending Confirmation, Confirmed, Cancelled, Closed</td></tr><tr align="center"><td style="vertical-align:middle">createdLoc</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Location or external Location code where shipment is created</td></tr><tr align="center"><td style="vertical-align:middle">delLoc</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Location or external Location code where shipment is being delivered</td></tr><tr align="center"><td style="vertical-align:middle">expDelDate</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Expected Delivery Date(DD/MM/YYYY)</td></tr><tr align="center"><td style="vertical-align:middle">grossWeight</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Weight of the shipment</td></tr><tr align="center"><td style="vertical-align:middle">remarks</td><td style="vertical-align:middle">Varchar(500)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Remarks against ASN</td></tr><tr align="center"><td style="vertical-align:middle">trackingNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Tracking No</td></tr><tr align="center"><td style="vertical-align:middle">challanNo</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Unique challan number for the shipment</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">asnTag</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">List of tags or identifiers associated with the ASN</td></tr><tr align="center"><td style="vertical-align:middle">invoiceNo</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Invoice No</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4><b>Items fields</b></td></tr><tr align="center"><td style="vertical-align:middle">sku</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Sku code as per masters</td></tr><tr align="center"><td style="vertical-align:middle">qty</td><td style="vertical-align:middle">Decimal(15,3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">UOM Qty</td></tr><tr align="center"><td style="vertical-align:middle">extLineNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lineno from external system</td></tr><tr align="center"><td style="vertical-align:middle">referenceNo</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Reference no if any</td></tr><tr align="center"><td style="vertical-align:middle">polineNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Po Line No</td></tr><tr align="center"><td style="vertical-align:middle">extPolineNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Po ExtLine No</td></tr><tr align="center"><td style="vertical-align:middle">boxid</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">box id</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">uomName</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">UOM name as per masters</td></tr><tr align="center"><td style="vertical-align:middle">unitCost</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Unit cost</td></tr><tr align="center"><td style="vertical-align:middle">usns</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Array of unique sequence number (eg. ["9999","8888"])</td></tr><tr align="center"><td style="vertical-align:middle">asnSerialNos</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Array of objects (eg. {"serialNo":"123456","serialNo2":"123457","serialNo3":"2323"})</td></tr><tr align="center"><td style="vertical-align:middle">asnLottables</td><td style="vertical-align:middle">Object</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">asnLottables</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4><b><br/>Lottables fields</b></td></tr><tr align="center"><td style="vertical-align:middle">extLotno</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">External Lot Number</td></tr><tr align="center"><td style="vertical-align:middle">lottable01</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr><tr align="center"><td style="vertical-align:middle">lottable02</td><td style="vertical-align:middle">DateTime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields (YYYY-MM-DD)</td></tr><tr align="center"><td style="vertical-align:middle">lottable03</td><td style="vertical-align:middle">DateTime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields (YYYY-MM-DD)</td></tr><tr align="center"><td style="vertical-align:middle">lottable04</td><td style="vertical-align:middle">DateTime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields (YYYY-MM-DD)</td></tr><tr align="center"><td style="vertical-align:middle">lottable05</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr><tr align="center"><td style="vertical-align:middle">lottable06</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr><tr align="center"><td style="vertical-align:middle">Lottable07</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr></tbody></table>
         schema:
-          properties:
-            asn:
-              $ref: '#/definitions/asnCreate1'
+          type: string
       responses:
         200:
           description: <table border='1'width='672'><h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>904</p></td><td style="vertical-align:middle" width='167'><p>Vendor Code is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>923</p></td><td style="vertical-align:middle" width='167'><p>Invalid delivery_loc Location</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9001</p></td><td style="vertical-align:middle" width='167'><p>ASN cant be created with status [**] directly</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9001</p></td><td style="vertical-align:middle" width='167'><p>ASN Type not found in ERP</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9002</p></td><td style="vertical-align:middle" width='167'><p>Status not found in ERP</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9019</p></td><td style="vertical-align:middle" width='167'><p>All validation related error messages Ex:- ASN Type is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9039</p></td><td style="vertical-align:middle" width='167'><p>ASN Type is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9040</p></td><td style="vertical-align:middle" width='167'><p>Location is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9041</p></td><td style="vertical-align:middle" width='167'><p>Customer is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9042</p></td><td style="vertical-align:middle" width='167'><p>ASN Date is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9043</p></td><td style="vertical-align:middle" width='167'><p>ASN Create Location Invalid</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9045</p></td><td style="vertical-align:middle" width='167'><p>Please Enter a Valid Asn Number</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9047</p></td><td style="vertical-align:middle" width='167'><p>PO Code is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9061</p></td><td style="vertical-align:middle" width='167'><p>Ext_AsnNo is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>14000</p></td><td style="vertical-align:middle" width='167'><p>ASN can not  be updated from confirmed to pending confirmation Status</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>14000</p></td><td style="vertical-align:middle" width='167'><p>ASN No. [**] already Exists in confirmed Status</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>14010</p></td><td style="vertical-align:middle" width='167'><p>ASN Type can't be changed for ASN No. [**]</p></td></tr></tbody></table>
-          schema:
-            $ref: '#/definitions/asnCreate4'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/asnCreate4'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                asn:
+                  $ref: '#/components/schemas/asnCreate1'
+        description: <table><tr align="center" ><td width="100" style="color:#ec0c0c !important;font-size:16px !important;"><strong>Beta Version (Case Pack Compatible)</strong></td></tr></table><table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">asntype</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Possible Values are- PO, Vendor, Customer, Other</td></tr><tr align="center"><td style="vertical-align:middle">poNo</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">po_no will be Mandatory if asnType is PO</td></tr><tr align="center"><td style="vertical-align:middle">extAsnNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Asnno from external system</td></tr><tr align="center"><td style="vertical-align:middle">vendorCode</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Can create ASN with vendor code or external vendor code, Mandatory when asntype is vendor</td></tr><tr align="center"><td style="vertical-align:middle">customer_code</td><td style="vertical-align:middle">Int(11)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Either customer code or external customer code is mandatory when asntype is Customer, Priority to customer code</td></tr><tr align="center"><td style="vertical-align:middle">extCustomerCode</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Conditional*</td><td style="vertical-align:middle">Either customer code or external customer code is mandatory when asntype is Customer</td></tr><tr align="center"><td style="vertical-align:middle">status</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Valid status - Pending Confirmation, Confirmed, Cancelled, Closed</td></tr><tr align="center"><td style="vertical-align:middle">createdLoc</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Location or external Location code where shipment is created</td></tr><tr align="center"><td style="vertical-align:middle">delLoc</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Location or external Location code where shipment is being delivered</td></tr><tr align="center"><td style="vertical-align:middle">expDelDate</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Expected Delivery Date(DD/MM/YYYY)</td></tr><tr align="center"><td style="vertical-align:middle">grossWeight</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Weight of the shipment</td></tr><tr align="center"><td style="vertical-align:middle">remarks</td><td style="vertical-align:middle">Varchar(500)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Remarks against ASN</td></tr><tr align="center"><td style="vertical-align:middle">trackingNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Tracking No</td></tr><tr align="center"><td style="vertical-align:middle">challanNo</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Unique challan number for the shipment</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">asnTag</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">List of tags or identifiers associated with the ASN</td></tr><tr align="center"><td style="vertical-align:middle">invoiceNo</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Invoice No</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4><b>Items fields</b></td></tr><tr align="center"><td style="vertical-align:middle">sku</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Sku code as per masters</td></tr><tr align="center"><td style="vertical-align:middle">qty</td><td style="vertical-align:middle">Decimal(15,3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">UOM Qty</td></tr><tr align="center"><td style="vertical-align:middle">extLineNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lineno from external system</td></tr><tr align="center"><td style="vertical-align:middle">referenceNo</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Reference no if any</td></tr><tr align="center"><td style="vertical-align:middle">polineNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Po Line No</td></tr><tr align="center"><td style="vertical-align:middle">extPolineNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Po ExtLine No</td></tr><tr align="center"><td style="vertical-align:middle">boxid</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">box id</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">uomName</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">UOM name as per masters</td></tr><tr align="center"><td style="vertical-align:middle">unitCost</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Unit cost</td></tr><tr align="center"><td style="vertical-align:middle">usns</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Array of unique sequence number (eg. ["9999","8888"])</td></tr><tr align="center"><td style="vertical-align:middle">asnSerialNos</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Array of objects (eg. {"serialNo":"123456","serialNo2":"123457","serialNo3":"2323"})</td></tr><tr align="center"><td style="vertical-align:middle">asnLottables</td><td style="vertical-align:middle">Object</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">asnLottables</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4><b><br/>Lottables fields</b></td></tr><tr align="center"><td style="vertical-align:middle">extLotno</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">External Lot Number</td></tr><tr align="center"><td style="vertical-align:middle">lottable01</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr><tr align="center"><td style="vertical-align:middle">lottable02</td><td style="vertical-align:middle">DateTime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields (YYYY-MM-DD)</td></tr><tr align="center"><td style="vertical-align:middle">lottable03</td><td style="vertical-align:middle">DateTime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields (YYYY-MM-DD)</td></tr><tr align="center"><td style="vertical-align:middle">lottable04</td><td style="vertical-align:middle">DateTime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields (YYYY-MM-DD)</td></tr><tr align="center"><td style="vertical-align:middle">lottable05</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr><tr align="center"><td style="vertical-align:middle">lottable06</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr><tr align="center"><td style="vertical-align:middle">Lottable07</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr></tbody></table>
   /RestWS/api/eretail/v1/asn/cancel:
     post:
       tags:
       - Advance Shipping Notice
       summary: API For Cancel ASN(Hit Quota 40/5 min)
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - in: header
         name: ApiOwner
         required: true
-        type: string
         description: API Owner.
+        schema:
+          type: string
       - in: header
         name: ApiKey
         required: true
-        type: string
         description: API Key.
-      - in: body
-        name: ASNCancelSON
-        description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">asnno</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">ASN Number Or ExtASN No</td></tr><tr align="center"><td style="vertical-align:middle">asnType</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">ASN type- PO/Vendor/Customer/Other/Marketplace</td></tr><tr align="center"><td style="vertical-align:middle">remarks</td><td style="vertical-align:middle">Varchar(500)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">It's a remarks as description</td></tr><tr><td style="vertical-align:middle" colspan=4> <b></br>&nbsp;Case 1:&nbsp;Cancel Multiple ASN by ASN Number</br>&nbsp;{<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"request":[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"asnno":"YYY",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"asnType":"Vendor",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"remarks":"Cancel this ASN"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"asnno":"PPP",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"asnType":"Vendor",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"remarks":"Cancel this ASN"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>}</br></br>&nbsp;</tbody></table>
         schema:
-          type: object
-          required:
-          - asnno
-          properties:
-            request:
-              type: array
-              items:
-                $ref: '#/definitions/asncancel0'
+          type: string
       responses:
         200:
           description: <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>0</p></td><td style="vertical-align:middle" width='167'><p>ASN cancelled Successfully</p></td></tr></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>1101</p></td><td style="vertical-align:middle" width='167'><p>ASN status is in Confirmed state it cant be cancelled</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>1102</p></td><td style="vertical-align:middle" width='167'><p>ASN XXX doesnot belong to Client or AsnType</p></td><tr align="center"><td style="vertical-align:middle" width='167'><p>9001</p></td><td style="vertical-align:middle" width='167'><p>ASN Type not found in ERP</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9008</p></td><td style="vertical-align:middle" width='167'><p>ASN Type is Mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9202</p></td><td style="vertical-align:middle" width='167'><p>ASN Number is mandatory.</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9204</p></td><td style="vertical-align:middle" width='167'><p>ASNNo is mandatory</p></td></tr></tbody></table>
-          schema:
-            $ref: '#/definitions/asncancel1'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/asncancel1'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - asnno
+              properties:
+                request:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/asncancel0'
+        description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">asnno</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">ASN Number Or ExtASN No</td></tr><tr align="center"><td style="vertical-align:middle">asnType</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">ASN type- PO/Vendor/Customer/Other/Marketplace</td></tr><tr align="center"><td style="vertical-align:middle">remarks</td><td style="vertical-align:middle">Varchar(500)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">It's a remarks as description</td></tr><tr><td style="vertical-align:middle" colspan=4> <b></br>&nbsp;Case 1:&nbsp;Cancel Multiple ASN by ASN Number</br>&nbsp;{<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"request":[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"asnno":"YYY",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"asnType":"Vendor",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"remarks":"Cancel this ASN"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"asnno":"PPP",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"asnType":"Vendor",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"remarks":"Cancel this ASN"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>}</br></br>&nbsp;</tbody></table>
   /RestWS/api/eretail/v1/asn/detail:
     post:
       tags:
       - Advance Shipping Notice
       summary: No.of Lines/Response:100 API For Get ASN Detail(Hit Quota 40/5 min)
-      consumes:
-      - application/json
-      produces:
-      - application/json
       parameters:
       - in: header
         name: ApiOwner
         required: true
-        type: string
         description: API Owner.
+        schema:
+          type: string
       - in: header
         name: ApiKey
         required: true
-        type: string
         description: API Key.
-      - in: body
-        name: ASNDetail JSON
-        description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">poNo</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">poNumber or external po number, define as comma separated(Max limit 100)</td></tr><tr align="center"><td style="vertical-align:middle">asnNo</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">asnNo or external asn number,  define as comma separated(Max limit 100)</td></tr><tr align="center"><td style="vertical-align:middle">asnType</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible Values are- PO, Vendor, Customer,Marketplace, Other(Define in Codelkup with lkupcode 'ASNTYPE')</td></tr><tr align="center"><td style="vertical-align:middle">vendorCode</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Search ASN by Vendor Code</td></tr><tr align="center"><td style="vertical-align:middle">customerCode</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Search ASN by Customer Code</td></tr><tr align="center"><td style="vertical-align:middle">deliveryLocation</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">ASN Creation Location</td></tr><tr align="center"><td style="vertical-align:middle">fromDate</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">**Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle">toDate</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">**Only if details by filter (DD/MM/YYYY HH:mm:ss)</td><tr align="center"><td style="vertical-align:middle">pageNumber</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Default 1. (Page Size 100 Orders)</td></tr></tr><tr align="center"><td style="vertical-align:middle">filterBy</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">&nbsp;Possible values are asnDate,crtDate,updDate. default will be updDate</td></tr><tr><td style="vertical-align:middle" colspan=4> <b>Case 1:&nbsp;Get ASN Detail by asnNo()s</br>&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"poNo":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"asnNo":[322,357,358,359,373],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"asnType":"Other",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vendorCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"customerCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"deliveryLocation":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":""</br>&nbsp;}</br></br>&nbsp;Case 2:&nbsp;Get ASN Detail by Date Range</br>&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"poNo":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"asnNo":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"asnType":"Other",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vendorCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"customerCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"deliveryLocation":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"25/12/2020 00:00:00",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"29/12/2020 00:00:00",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":"default"</br>&nbsp;}</br></br>&nbsp;</tbody></table>
         schema:
-          type: object
-          required:
-          - poNo
-          properties:
-            poNo:
-              type: array
-              items:
-                type: string
-              example: []
-            asnNo:
-              type: array
-              items:
-                type: integer
-              example:
-              - 322
-              - 357
-            asnType:
-              type: string
-              example: Other
-            vendorCode:
-              type: string
-              example: ''
-            customerCode:
-              type: string
-              example: ''
-            deliveryLocation:
-              type: string
-              example: ''
-            fromDate:
-              type: string
-              example: ''
-            toDate:
-              type: string
-              example: '1'
-            pageNumber:
-              type: string
-              example: '1'
-            filterBy:
-              type: string
-              example: ''
+          type: string
       responses:
         200:
           description: <table border='1'width='672'> <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>9185</p></td><td style="vertical-align:middle" width='167'><p>At Least One Filter is Mandatory</p></td></tr></tbody></table>
-          schema:
-            $ref: '#/definitions/asnDetail1'
-definitions:
-  asncancel2:
-    properties:
-      referenceKey:
-        type: string
-        example: xx
-      responseCode:
-        type: string
-        example: '0'
-      responseMessage:
-        type: string
-        example: ASN cancelled Successfully
-  serialNo:
-    properties:
-      serialNo:
-        type: string
-        example: ASN_Serial3
-      serialNo2:
-        type: string
-        example: ''
-      serialNo3:
-        type: string
-        example: ''
-  asnDetail1:
-    properties:
-      responseCode:
-        type: integer
-        example: 0
-      responseMessage:
-        type: string
-        example: Success
-      hasMore:
-        type: boolean
-        example: false
-      response:
-        type: array
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/asnDetail1'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - poNo
+              properties:
+                poNo:
+                  type: array
+                  items:
+                    type: string
+                  example: []
+                asnNo:
+                  type: array
+                  items:
+                    type: integer
+                  example:
+                  - 322
+                  - 357
+                asnType:
+                  type: string
+                  example: Other
+                vendorCode:
+                  type: string
+                  example: ''
+                customerCode:
+                  type: string
+                  example: ''
+                deliveryLocation:
+                  type: string
+                  example: ''
+                fromDate:
+                  type: string
+                  example: ''
+                toDate:
+                  type: string
+                  example: '1'
+                pageNumber:
+                  type: string
+                  example: '1'
+                filterBy:
+                  type: string
+                  example: ''
+        description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">poNo</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">poNumber or external po number, define as comma separated(Max limit 100)</td></tr><tr align="center"><td style="vertical-align:middle">asnNo</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">asnNo or external asn number,  define as comma separated(Max limit 100)</td></tr><tr align="center"><td style="vertical-align:middle">asnType</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible Values are- PO, Vendor, Customer,Marketplace, Other(Define in Codelkup with lkupcode 'ASNTYPE')</td></tr><tr align="center"><td style="vertical-align:middle">vendorCode</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Search ASN by Vendor Code</td></tr><tr align="center"><td style="vertical-align:middle">customerCode</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Search ASN by Customer Code</td></tr><tr align="center"><td style="vertical-align:middle">deliveryLocation</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">ASN Creation Location</td></tr><tr align="center"><td style="vertical-align:middle">fromDate</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">**Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle">toDate</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">**Only if details by filter (DD/MM/YYYY HH:mm:ss)</td><tr align="center"><td style="vertical-align:middle">pageNumber</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Default 1. (Page Size 100 Orders)</td></tr></tr><tr align="center"><td style="vertical-align:middle">filterBy</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">&nbsp;Possible values are asnDate,crtDate,updDate. default will be updDate</td></tr><tr><td style="vertical-align:middle" colspan=4> <b>Case 1:&nbsp;Get ASN Detail by asnNo()s</br>&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"poNo":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"asnNo":[322,357,358,359,373],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"asnType":"Other",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vendorCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"customerCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"deliveryLocation":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":""</br>&nbsp;}</br></br>&nbsp;Case 2:&nbsp;Get ASN Detail by Date Range</br>&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"poNo":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"asnNo":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"asnType":"Other",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vendorCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"customerCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"deliveryLocation":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"25/12/2020 00:00:00",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"29/12/2020 00:00:00",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":"default"</br>&nbsp;}</br></br>&nbsp;</tbody></table>
+components:
+  schemas:
+    asncancel2:
+      properties:
+        referenceKey:
+          type: string
+          example: xx
+        responseCode:
+          type: string
+          example: '0'
+        responseMessage:
+          type: string
+          example: ASN cancelled Successfully
+    asncancel0:
+      properties:
+        asnno:
+          type: string
+          example: XXXX
+        asnType:
+          type: string
+          example: Vendor
+        remarks:
+          type: string
+          example: Cancel this ASN
+    asnCreate3:
+      properties:
+        extLotno:
+          type: string
+          example: ''
+        lottable01:
+          type: string
+          example: '34'
+        lottable02:
+          type: string
+          example: ''
+        lottable03:
+          type: string
+          example: '2018-04-24'
+        lottable04:
+          type: string
+          example: ''
+        lottable05:
+          type: string
+          example: '34'
+        lottable06:
+          type: string
+          example: ''
+        lottable07:
+          type: string
+          example: ''
+    asnDetail2:
+      properties:
+        asnNo:
+          type: string
+          example: '322'
+        extAsnNo:
+          type: string
+          example: '322'
+        asnType:
+          type: string
+          example: Other
+        poNo:
+          type: string
+          example: ''
+        extPoNo:
+          type: string
+          example: ''
+        vendorCode:
+          type: string
+          example: ''
+        customerCode:
+          type: string
+          example: ''
+        status:
+          type: string
+          example: Cancelled
+        createdLoc:
+          type: string
+          example: CHE
+        delLoc:
+          type: string
+          example: IWH
+        expdeldate:
+          type: string
+          example: ''
+        grossweight:
+          type: string
+          example: '0.000'
+        remarks:
+          type: string
+          example: ''
+        trackingNo:
+          type: string
+          example: ''
+        challanNo:
+          type: string
+          example: ''
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        invoiceNo:
+          type: string
+          example: ''
+        asnDate:
+          type: string
+          example: 07/03/2023 10:15:00
+        asnTag:
+          type: string
+          example: []
         items:
-          $ref: '#/definitions/asnDetail2'
-  asnCreate1:
-    properties:
-      asnType:
-        type: string
-        example: vendor
-      poNo:
-        type: string
-        example: ''
-      extAsnNo:
-        type: string
-        example: ASN-123
-      vendorCode:
-        type: string
-        example: globus
-      customerCode:
-        type: string
-        example: ''
-      extCustomerCode:
-        type: string
-        example: ''
-      status:
-        type: string
-        example: Confirmed
-      createdLoc:
-        type: string
-        example: IWH
-      delLoc:
-        type: string
-        example: IWH
-      expDelDate:
-        type: string
-        example: 25/05/2021 15:40:30
-      grossWeight:
-        type: string
-        example: ''
-      remarks:
-        type: string
-        example: ''
-      trackingNo:
-        type: string
-        example: ''
-      challanNo:
-        type: string
-        example: ''
-      udf1:
-        type: string
-        example: ''
-      udf2:
-        type: string
-        example: ''
-      udf3:
-        type: string
-        example: ''
-      udf4:
-        type: string
-        example: ''
-      udf5:
-        type: string
-        example: ''
-      asnTag:
-        type: string
-        example: []
-      invoiceNo:
-        type: string
-        example: ''
-      items:
-        type: array
+          type: array
+          items:
+            $ref: '#/components/schemas/asnDetail3'
+    asnCre:
+      properties:
+        extasnno:
+          type: string
+          example: '8286'
+        outputKey:
+          type: string
+          example: NWB968
+        status:
+          type: string
+          example: Success
+        errorDesc:
+          type: string
+          example: ''
+    asnDetail3:
+      properties:
+        sku:
+          type: string
+          example: ANKSKU10
+        lineno:
+          type: string
+          example: '1'
+        extlineno:
+          type: string
+          example: ''
+        qty:
+          type: string
+          example: '2.000'
+        recQty:
+          type: string
+          example: '0.000'
+        referenceno:
+          type: string
+          example: ''
+        boxid:
+          type: string
+          example: ''
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+    asnCreate5:
+      properties:
+        extasnno:
+          type: string
+          example: ASN-123
+        outputKey:
+          type: string
+          example: '486'
+        status:
+          type: string
+          example: Success
+        errorDesc:
+          type: string
+          example: ''
+    asnCreate4:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        requestStatus:
+          $ref: '#/components/schemas/asnCreate5'
+    asnCreate:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        requestStatus:
+          $ref: '#/components/schemas/asnCre'
+    asnDetail1:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        hasMore:
+          type: boolean
+          example: false
+        response:
+          type: array
+          items:
+            $ref: '#/components/schemas/asnDetail2'
+    asncancel1:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        requestStatus:
+          type: array
+          items:
+            $ref: '#/components/schemas/asncancel2'
+    asnCreate1:
+      properties:
+        asnType:
+          type: string
+          example: vendor
+        poNo:
+          type: string
+          example: ''
+        extAsnNo:
+          type: string
+          example: ASN-123
+        vendorCode:
+          type: string
+          example: globus
+        customerCode:
+          type: string
+          example: ''
+        extCustomerCode:
+          type: string
+          example: ''
+        status:
+          type: string
+          example: Confirmed
+        createdLoc:
+          type: string
+          example: IWH
+        delLoc:
+          type: string
+          example: IWH
+        expDelDate:
+          type: string
+          example: 25/05/2021 15:40:30
+        grossWeight:
+          type: string
+          example: ''
+        remarks:
+          type: string
+          example: ''
+        trackingNo:
+          type: string
+          example: ''
+        challanNo:
+          type: string
+          example: ''
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        asnTag:
+          type: string
+          example: []
+        invoiceNo:
+          type: string
+          example: ''
         items:
-          $ref: '#/definitions/asnCreate2'
-  asnDetail2:
-    properties:
-      asnNo:
-        type: string
-        example: '322'
-      extAsnNo:
-        type: string
-        example: '322'
-      asnType:
-        type: string
-        example: Other
-      poNo:
-        type: string
-        example: ''
-      extPoNo:
-        type: string
-        example: ''
-      vendorCode:
-        type: string
-        example: ''
-      customerCode:
-        type: string
-        example: ''
-      status:
-        type: string
-        example: Cancelled
-      createdLoc:
-        type: string
-        example: CHE
-      delLoc:
-        type: string
-        example: IWH
-      expdeldate:
-        type: string
-        example: ''
-      grossweight:
-        type: string
-        example: '0.000'
-      remarks:
-        type: string
-        example: ''
-      trackingNo:
-        type: string
-        example: ''
-      challanNo:
-        type: string
-        example: ''
-      udf1:
-        type: string
-        example: ''
-      udf2:
-        type: string
-        example: ''
-      udf3:
-        type: string
-        example: ''
-      udf4:
-        type: string
-        example: ''
-      udf5:
-        type: string
-        example: ''
-      invoiceNo:
-        type: string
-        example: ''
-      asnDate:
-        type: string
-        example: 07/03/2023 10:15:00
-      asnTag:
-        type: string
-        example: []
-      items:
-        type: array
-        items:
-          $ref: '#/definitions/asnDetail3'
-  asnCreate2:
-    properties:
-      sku:
-        type: string
-        example: ASN-111
-      qty:
-        type: string
-        example: '1'
-      extLineNo:
-        type: string
-        example: '1'
-      referenceNo:
-        type: string
-        example: ''
-      polineNo:
-        type: string
-        example: ''
-      extPolineNo:
-        type: string
-        example: ''
-      boxId:
-        type: string
-        example: ''
-      udf1:
-        type: string
-        example: ''
-      udf2:
-        type: string
-        example: ''
-      udf3:
-        type: string
-        example: ''
-      udf4:
-        type: string
-        example: ''
-      udf5:
-        type: string
-        example: ''
-      uomName:
-        type: string
-        example: ''
-      unitCost:
-        type: string
-        example: ''
-      usns:
-        type: array
-        example: []
-      asnSerialNos:
-        type: array
-        items:
-          $ref: '#/definitions/serialNo'
-      asnLottables:
-        $ref: '#/definitions/asnCreate3'
-  asnCre:
-    properties:
-      extasnno:
-        type: string
-        example: '8286'
-      outputKey:
-        type: string
-        example: NWB968
-      status:
-        type: string
-        example: Success
-      errorDesc:
-        type: string
-        example: ''
-  asnCreate5:
-    properties:
-      extasnno:
-        type: string
-        example: ASN-123
-      outputKey:
-        type: string
-        example: '486'
-      status:
-        type: string
-        example: Success
-      errorDesc:
-        type: string
-        example: ''
-  asnCreate:
-    properties:
-      responseCode:
-        type: integer
-        example: 0
-      responseMessage:
-        type: string
-        example: Success
-      requestStatus:
-        $ref: '#/definitions/asnCre'
-  asncancel0:
-    properties:
-      asnno:
-        type: string
-        example: XXXX
-      asnType:
-        type: string
-        example: Vendor
-      remarks:
-        type: string
-        example: Cancel this ASN
-  asnCreate3:
-    properties:
-      extLotno:
-        type: string
-        example: ''
-      lottable01:
-        type: string
-        example: '34'
-      lottable02:
-        type: string
-        example: ''
-      lottable03:
-        type: string
-        example: '2018-04-24'
-      lottable04:
-        type: string
-        example: ''
-      lottable05:
-        type: string
-        example: '34'
-      lottable06:
-        type: string
-        example: ''
-      lottable07:
-        type: string
-        example: ''
-  asncancel1:
-    properties:
-      responseCode:
-        type: integer
-        example: 0
-      responseMessage:
-        type: string
-        example: Success
-      requestStatus:
-        type: array
-        items:
-          $ref: '#/definitions/asncancel2'
-  asnCreate4:
-    properties:
-      responseCode:
-        type: integer
-        example: 0
-      responseMessage:
-        type: string
-        example: Success
-      requestStatus:
-        $ref: '#/definitions/asnCreate5'
-  asnDetail3:
-    properties:
-      sku:
-        type: string
-        example: ANKSKU10
-      lineno:
-        type: string
-        example: '1'
-      extlineno:
-        type: string
-        example: ''
-      qty:
-        type: string
-        example: '2.000'
-      recQty:
-        type: string
-        example: '0.000'
-      referenceno:
-        type: string
-        example: ''
-      boxid:
-        type: string
-        example: ''
-      udf1:
-        type: string
-        example: ''
-      udf2:
-        type: string
-        example: ''
-      udf3:
-        type: string
-        example: ''
-      udf4:
-        type: string
-        example: ''
-      udf5:
-        type: string
-        example: ''
+          type: array
+          items:
+            $ref: '#/components/schemas/asnCreate2'
+    asnCreate2:
+      properties:
+        sku:
+          type: string
+          example: ASN-111
+        qty:
+          type: string
+          example: '1'
+        extLineNo:
+          type: string
+          example: '1'
+        referenceNo:
+          type: string
+          example: ''
+        polineNo:
+          type: string
+          example: ''
+        extPolineNo:
+          type: string
+          example: ''
+        boxId:
+          type: string
+          example: ''
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        uomName:
+          type: string
+          example: ''
+        unitCost:
+          type: string
+          example: ''
+        usns:
+          type: array
+          example: []
+        asnSerialNos:
+          type: array
+          items:
+            $ref: '#/components/schemas/serialNo'
+        asnLottables:
+          $ref: '#/components/schemas/asnCreate3'
+    serialNo:
+      properties:
+        serialNo:
+          type: string
+          example: ASN_Serial3
+        serialNo2:
+          type: string
+          example: ''
+        serialNo3:
+          type: string
+          example: ''
