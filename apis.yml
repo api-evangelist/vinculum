@@ -152,7 +152,7 @@ apis:
   humanURL: https://erp.vineretail.com/swagger/
   baseURL: https://erp.vineretail.com/RestWS/api/eretail
   tags:
-  - Manifest
+  - Manifests
   tags_raw:
   - Manifest
   properties:
