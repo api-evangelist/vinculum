@@ -52,7 +52,7 @@ tags:
 - Warehouse Management
 - Inventory
 - Retail
-- Marketplaces
+- Marketplace
 tags_raw:
 - Company
 - Ecommerce
@@ -271,6 +271,8 @@ apis:
   humanURL: https://erp.vineretail.com/swagger/
   baseURL: https://erp.vineretail.com/RestWS/api/eretail
   tags:
+  - Stocks
+  tags_raw:
   - Stock
   properties:
   - type: OpenAPI
