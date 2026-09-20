@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 6
+edge_count: 9
 edges:
 - tag: Inbounds
   spec_file: vinculum-inbounds-api-openapi.yml
@@ -55,6 +55,17 @@ edges:
   reason: Core sales-order lifecycle for an OMS — create, bulk create, line-level cancel, update, pull,
     status, allocation. This is order fulfilment orchestration; some operations also touch invoicing/shipment
     documents, so not fully unambiguous.
+- tag: Products
+  spec_file: vinculum-products-api-openapi.yml
+  capability_id: BC-2370.10
+  capability_id_l1: BC-2370
+  capability_name: Item Master Data Management
+  confidence: 0.75
+  evidence: '"API For Creating Sku", "API For Update SKU''s", "API For Creating SkuBarCode", "API To Get
+    Sku Details"; description "API to retrieve or manipulate SKU related information"'
+  reason: Creation and maintenance of SKU master records, barcodes and channel mappings is item master
+    data management within the vendor's PIM; some inventory-status reads are secondary.
+  recovered_from: vertical-retail-consumer-goods-edges.json
 - tag: Putaway
   spec_file: vinculum-putaway-api-openapi.yml
   capability_id: BC-2460.10
@@ -64,6 +75,28 @@ edges:
   evidence: POST /RestWS/api/eretail/v1/putaway/create    API For Inventory Movement Process
   reason: Putaway creation is the warehouse step of moving received stock into storage locations, i.e.
     inbound receipt/putaway operations. Only one operation, so confidence is capped.
+- tag: Manifest
+  spec_file: vinculum-manifest-api-openapi.yml
+  capability_id: BC-520.50
+  capability_id_l1: BC-520
+  capability_name: Logistics Operations Management
+  confidence: 0.72
+  evidence: POST /manifest/create API For Create Manifest; POST /manifest/createB2bManifest
+  reason: Shipping manifest creation for handover of consignments to carriers is transport/logistics execution
+    documentation.
+  recovered_from: vertical-retail-consumer-goods-edges.json
+- tag: Order Managment
+  spec_file: vinculum-order-managment-api-openapi.yml
+  capability_id: BC-2330
+  capability_id_l1: BC-2330
+  capability_name: Omnichannel Order & Fulfilment Management
+  confidence: 0.7
+  evidence: '"API For getting the orderList", "API For Fetching Order", "API For Order Return" — omnichannel
+    OMS across 150+ sales channels'
+  reason: Operations retrieve and act on consumer sales orders (list, fetch, return) in an omnichannel
+    order management platform, so the edge sits under Omnichannel Order & Fulfilment Management; the thin
+    operation set does not pin a single sub-capability.
+  recovered_from: vertical-retail-consumer-goods-edges.json
 - tag: Transfers
   spec_file: vinculum-transfers-api-openapi.yml
   capability_id: BC-530
