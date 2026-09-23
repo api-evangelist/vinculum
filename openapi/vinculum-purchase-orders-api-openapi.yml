@@ -41,6 +41,8 @@ paths:
               - RequestBody
               - ApiOwner
               - ApiKey
+      operationId: postRestWSApiEretailV1PoCreate
+      x-operation-id-source: derived
   /RestWS/api/eretail/v4/po/create:
     post:
       tags:
@@ -72,6 +74,8 @@ paths:
                 po:
                   $ref: '#/components/schemas/pocreate1'
         description: <table><tr align="center" ><td width="100" style="color:#ec0c0c !important;font-size:16px !important;"><strong>Beta Version (Case Pack Compatible)</strong></td></tr></table><table class="table-style-three"><tbody><tr><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">vendorCode</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">Can create PO with vendor code or external vendor  code</td></tr><tr align="center"><td style="vertical-align:middle">deliveryDate</td><td style="vertical-align:middle">datetime</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">Expected delivery date of PO, date format(DD/MM/YYYY HH:MM:SS)</td></tr><tr align="center"><td style="vertical-align:middle">buyer</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">IF not passed system will pick default Buyer</td></tr><tr align="center"><td style="vertical-align:middle">externalPoCode</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">PoCode from External system</td></tr><tr align="center"><td style="vertical-align:middle">status</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Valid status - Confirmed, Released, Cancelled, Closed or Short Closed</td></tr><tr align="center"><td style="vertical-align:middle">pocreatedLoc</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Location or external Location code</td></tr><tr align="center"><td style="vertical-align:middle">delLoc</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Location or external Location code</td></tr><tr align="center"><td style="vertical-align:middle">formCApplicable</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible values are Yes/No</td></tr><tr align="center"><td style="vertical-align:middle">terms</td><td style="vertical-align:middle">Text</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Po Terms and condition if any</td></tr><tr align="center"><td style="vertical-align:middle">poType</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Outright, Consignment</td></tr><tr align="center"><td style="vertical-align:middle">remarks</td><td style="vertical-align:middle">Varchar(5000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">PO Remarks if any</td></tr><tr align="center"><td style="vertical-align:middle">referenceNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Reference PO code if any</td></tr><tr align="center"><td style="vertical-align:middle">recvValidCode</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Pass recvValidCode otherwise pick default recvValidCode</td></tr><tr align="center"><td style="vertical-align:middle">poMethod</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible vallues are drop ship and cross doc</td></tr><tr align="center"><td style="vertical-align:middle">expiryDate</td><td style="vertical-align:middle">DateTime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Expiry date of PO, date format(DD/MM/YYYY HH:MM:SS)</td></tr><tr align="center"><td style="vertical-align:middle" >udf1</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">user defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf2</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">user defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf3</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">user defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf4</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">user defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf5</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">user defined field</td></tr><tr align="center"><td style="vertical-align:middle">mailTo</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">1 or more than 1 mail can be saved comma seprated</td></tr><tr align="center"><td style="vertical-align:middle">mailCc</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">1 or more than 1 mail can be saved comma seprated</td></tr><tr align="center"><td style="vertical-align:middle">autoEmail</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">should be "yes or "no"</td></tr><tr align="center"><td style="vertical-align:middle" >potag</td><td style="vertical-align:middle" >Varchar</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">max 10 potags are allowed</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Items Details</b></td></tr><tr align="center"><td style="vertical-align:middle">skuCode</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Sku code as per masters</td></tr><tr align="center"><td style="vertical-align:middle">uomQty</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">UOM Qty</td></tr><tr align="center"><td style="vertical-align:middle">unitCost</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">If not passed system will pick from masters</td></tr><tr align="center"><td style="vertical-align:middle">extLineNo</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lineno from external system</td></tr><tr align="center"><td style="vertical-align:middle">mrp</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">MRP</td></tr><tr align="center"><td style="vertical-align:middle">expDelDate</td><td style="vertical-align:middle">DateTime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">If not passed header date will be copied</td></tr><tr align="center"><td style="vertical-align:middle">uomName</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Name of the Unit of Measurement</td></tr><tr align="center"><td style="vertical-align:middle">caseSize</td><td style="vertical-align:middle">int(11)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">This is only for case pack and user will provide the case pack size lime 10,20 etc</td></tr><tr align="center"><td style="vertical-align:middle" >udf1</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Line level user defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf2</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Line level user defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf3</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Line level user defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf4</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Line level user defined field</td></tr><tr align="center"><td style="vertical-align:middle" >udf5</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Line level user defined field</tr></td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>additional Charges</b></td></tr><tr align="center"><td style="vertical-align:middle">chargeName</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">pass charge name</td></td></tr><tr align="center"><td style="vertical-align:middle">chargeValue</td><td style="vertical-align:middle">decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">value should not less than or equal to 0</td></td></tr></table>
+      operationId: postRestWSApiEretailV4PoCreate
+      x-operation-id-source: derived
   /RestWS/api/eretail/v1/po/popull:
     post:
       tags:
@@ -103,6 +107,8 @@ paths:
               - RequestBody
               - ApiOwner
               - ApiKey
+      operationId: postRestWSApiEretailV1PoPopull
+      x-operation-id-source: derived
   /RestWS/api/eretail/v1/po/gatepassdetail:
     post:
       tags:
@@ -134,6 +140,8 @@ paths:
               - RequestBody
               - ApiOwner
               - ApiKey
+      operationId: postRestWSApiEretailV1PoGatepassdetail
+      x-operation-id-source: derived
   /RestWS/api/eretail/v1/po/poStatusUpdate:
     post:
       tags:
@@ -167,8 +175,240 @@ paths:
                   items:
                     $ref: '#/components/schemas/poStatusUpdate1'
         description: <table class="table-style-three"><tbody><tr><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">poCode</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">Either poCode or extPoCode is mandatory</td></tr><tr align="center"><td style="vertical-align:middle">extPoCode</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">PoCode from External system</td></tr><tr align="center"><td style="vertical-align:middle">status</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">Valid status - Pending Confirmation,Confirmed, Released, ReOpen,ReConfirmed,Closed,Cancelled,etc., Defined in Codelkup with lkupcode POSTS.</td></tr></table>
+      operationId: postRestWSApiEretailV1PoPoStatusUpdate
+      x-operation-id-source: derived
 components:
   schemas:
+    poStatusUpdate2:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        response:
+          type: array
+          items:
+            $ref: '#/components/schemas/poStatusUpdate3'
+        requestId:
+          type: string
+          example: ''
+    responseGatePassdetail:
+      properties:
+        totalGatepass:
+          type: integer
+          example: 1
+        totalPages:
+          type: integer
+          example: 1
+        currentPage:
+          type: integer
+          example: 1
+        gatePassList:
+          type: array
+          items:
+            $ref: '#/components/schemas/gatePassList'
+    pocreate1:
+      properties:
+        vendorCode:
+          type: string
+          example: cutril
+        deliveryDate:
+          type: string
+          example: 04/02/2021 15:40:30
+        buyer:
+          type: string
+          example: test
+        externalPoCode:
+          type: string
+          example: user001
+        status:
+          type: string
+          example: confirmed
+        pocreatedLoc:
+          type: string
+          example: che
+        delLoc:
+          type: string
+          example: che
+        formCApplicable:
+          type: string
+          example: ''
+        terms:
+          type: string
+          example: ''
+        poType:
+          type: string
+          example: Consignment
+        remarks:
+          type: string
+          example: ''
+        recvValidCode:
+          type: string
+          example: ''
+        poMethod:
+          type: string
+          example: ''
+        expiryDate:
+          type: string
+          example: 20/04/2021 15:40:30
+        referenceNo:
+          type: string
+          example: ''
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        mailTo:
+          type: string
+          example: ''
+        mailCc:
+          type: string
+          example: ''
+        autoEmail:
+          type: string
+          example: ''
+        potag:
+          type: string
+          example: abc,edf
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/pocreate2'
+        additionalCharges:
+          type: array
+          items:
+            $ref: '#/components/schemas/pocreate3'
+    pocreate:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        requestStatus:
+          $ref: '#/components/schemas/RequestStatus3'
+    Items3:
+      type: object
+      properties:
+        skucode:
+          type: string
+          example: SSSKU011
+        skuname:
+          type: string
+          example: simple sku
+        poqty:
+          type: string
+          example: '2'
+        receivedqty:
+          type: string
+          example: '2'
+        unitcost:
+          type: string
+          example: '10.000'
+        taxamount:
+          type: string
+          example: '1.00'
+        excise:
+          type: string
+          example: ''
+        externallinenumber:
+          type: string
+          example: '1'
+        expdeldate:
+          type: number
+          example: 25/11/2016 15:40:30
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        udf6:
+          type: string
+          example: ''
+        udf7:
+          type: string
+          example: ''
+        udf8:
+          type: string
+          example: ''
+        udf9:
+          type: string
+          example: ''
+        udf10:
+          type: string
+          example: ''
+        polineno:
+          type: string
+          example: '1'
+        mrp:
+          type: string
+          example: '3099.00'
+        vendorskucode:
+          type: string
+          example: ABC1000
+        cgstAmt:
+          type: string
+          example: '123.00'
+        sgstAmt:
+          type: string
+          example: '156.08250'
+        igstAmt:
+          type: string
+          example: '0.00000'
+        cgstRt:
+          type: string
+          example: '9.0'
+        sgstRt:
+          type: string
+          example: '9.0'
+        igstRt:
+          type: string
+          example: '0.0'
+        gstRT:
+          type: string
+          example: '18.000'
+        closedQty:
+          type: string
+          example: '10'
+        asnQty:
+          type: string
+          example: '10'
+        openQty:
+          type: string
+          example: '10'
+        conversion:
+          type: string
+          example: '1.00000'
+        uom:
+          type: string
+          example: Each
+        eaqty:
+          type: string
+          example: '10.000'
     gatePassList:
       properties:
         gatepassno:
@@ -225,45 +465,21 @@ components:
         igpdate:
           type: string
           example: ''
-    pocreate2:
+    poStatusUpdate3:
       properties:
-        skuCode:
+        responseCode:
+          type: integer
+          example: '0'
+        responseMessage:
           type: string
-          example: Test1
-        uomQty:
+          example: Success
+        poCode:
           type: string
-          example: '10.000'
-        unitCost:
-          type: string
-          example: '100.550'
-        extLineNo:
-          type: string
-          example: '1'
-        expDelDate:
-          type: string
-          example: 04/02/2021 15:40:30
-        mrp:
-          type: string
-          example: '100'
-        uomName:
+          example: CHE251833
+        extPoCode:
           type: string
           example: ''
-        caseSize:
-          type: string
-          example: ''
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
+        errorDescription:
           type: string
           example: ''
     PoList:
@@ -399,47 +615,42 @@ components:
           example: ''
           items:
             $ref: '#/components/schemas/Items4'
-    poStatusUpdate1:
+    gatePassDetail:
       properties:
-        poCode:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
           type: string
-          example: CHE251833
-        extPoCode:
-          type: string
-          example: ''
-        status:
-          type: string
-          example: Closed
-    Items3:
-      type: object
+          example: Success
+        response:
+          $ref: '#/components/schemas/responseGatePassdetail'
+    pocreate2:
       properties:
-        skucode:
+        skuCode:
           type: string
-          example: SSSKU011
-        skuname:
-          type: string
-          example: simple sku
-        poqty:
-          type: string
-          example: '2'
-        receivedqty:
-          type: string
-          example: '2'
-        unitcost:
+          example: Test1
+        uomQty:
           type: string
           example: '10.000'
-        taxamount:
+        unitCost:
           type: string
-          example: '1.00'
-        excise:
-          type: string
-          example: ''
-        externallinenumber:
+          example: '100.550'
+        extLineNo:
           type: string
           example: '1'
-        expdeldate:
-          type: number
-          example: 25/11/2016 15:40:30
+        expDelDate:
+          type: string
+          example: 04/02/2021 15:40:30
+        mrp:
+          type: string
+          example: '100'
+        uomName:
+          type: string
+          example: ''
+        caseSize:
+          type: string
+          example: ''
         udf1:
           type: string
           example: ''
@@ -455,69 +666,6 @@ components:
         udf5:
           type: string
           example: ''
-        udf6:
-          type: string
-          example: ''
-        udf7:
-          type: string
-          example: ''
-        udf8:
-          type: string
-          example: ''
-        udf9:
-          type: string
-          example: ''
-        udf10:
-          type: string
-          example: ''
-        polineno:
-          type: string
-          example: '1'
-        mrp:
-          type: string
-          example: '3099.00'
-        vendorskucode:
-          type: string
-          example: ABC1000
-        cgstAmt:
-          type: string
-          example: '123.00'
-        sgstAmt:
-          type: string
-          example: '156.08250'
-        igstAmt:
-          type: string
-          example: '0.00000'
-        cgstRt:
-          type: string
-          example: '9.0'
-        sgstRt:
-          type: string
-          example: '9.0'
-        igstRt:
-          type: string
-          example: '0.0'
-        gstRT:
-          type: string
-          example: '18.000'
-        closedQty:
-          type: string
-          example: '10'
-        asnQty:
-          type: string
-          example: '10'
-        openQty:
-          type: string
-          example: '10'
-        conversion:
-          type: string
-          example: '1.00000'
-        uom:
-          type: string
-          example: Each
-        eaqty:
-          type: string
-          example: '10.000'
     popull:
       properties:
         responseCode:
@@ -537,6 +685,17 @@ components:
           example: 1
         requestStatus:
           $ref: '#/components/schemas/RequestStatus2'
+    poStatusUpdate1:
+      properties:
+        poCode:
+          type: string
+          example: CHE251833
+        extPoCode:
+          type: string
+          example: ''
+        status:
+          type: string
+          example: Closed
     pocreate3:
       properties:
         chargeName:
@@ -545,21 +704,27 @@ components:
         chargeValue:
           type: string
           example: ''
-    responseGatePassdetail:
+    Items4:
+      type: object
       properties:
-        totalGatepass:
-          type: integer
-          example: 1
-        totalPages:
-          type: integer
-          example: 1
-        currentPage:
-          type: integer
-          example: 1
-        gatePassList:
+        chargeName:
+          type: string
+          example: deep
+        chargeType:
+          type: string
+          example: Absolute
+        chargeValue:
+          type: string
+          example: '30.000'
+        chargeAmount:
+          type: string
+          example: '30.000'
+    RequestStatus2:
+      properties:
+        poList:
           type: array
           items:
-            $ref: '#/components/schemas/gatePassList'
+            $ref: '#/components/schemas/PoList'
     RequestStatus3:
       properties:
         externalpocode:
@@ -577,158 +742,3 @@ components:
         errorDesc:
           type: integer
           example: 'null'
-    RequestStatus2:
-      properties:
-        poList:
-          type: array
-          items:
-            $ref: '#/components/schemas/PoList'
-    pocreate:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        requestStatus:
-          $ref: '#/components/schemas/RequestStatus3'
-    Items4:
-      type: object
-      properties:
-        chargeName:
-          type: string
-          example: deep
-        chargeType:
-          type: string
-          example: Absolute
-        chargeValue:
-          type: string
-          example: '30.000'
-        chargeAmount:
-          type: string
-          example: '30.000'
-    poStatusUpdate2:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        response:
-          type: array
-          items:
-            $ref: '#/components/schemas/poStatusUpdate3'
-        requestId:
-          type: string
-          example: ''
-    poStatusUpdate3:
-      properties:
-        responseCode:
-          type: integer
-          example: '0'
-        responseMessage:
-          type: string
-          example: Success
-        poCode:
-          type: string
-          example: CHE251833
-        extPoCode:
-          type: string
-          example: ''
-        errorDescription:
-          type: string
-          example: ''
-    gatePassDetail:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        response:
-          $ref: '#/components/schemas/responseGatePassdetail'
-    pocreate1:
-      properties:
-        vendorCode:
-          type: string
-          example: cutril
-        deliveryDate:
-          type: string
-          example: 04/02/2021 15:40:30
-        buyer:
-          type: string
-          example: test
-        externalPoCode:
-          type: string
-          example: user001
-        status:
-          type: string
-          example: confirmed
-        pocreatedLoc:
-          type: string
-          example: che
-        delLoc:
-          type: string
-          example: che
-        formCApplicable:
-          type: string
-          example: ''
-        terms:
-          type: string
-          example: ''
-        poType:
-          type: string
-          example: Consignment
-        remarks:
-          type: string
-          example: ''
-        recvValidCode:
-          type: string
-          example: ''
-        poMethod:
-          type: string
-          example: ''
-        expiryDate:
-          type: string
-          example: 20/04/2021 15:40:30
-        referenceNo:
-          type: string
-          example: ''
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        mailTo:
-          type: string
-          example: ''
-        mailCc:
-          type: string
-          example: ''
-        autoEmail:
-          type: string
-          example: ''
-        potag:
-          type: string
-          example: abc,edf
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/pocreate2'
-        additionalCharges:
-          type: array
-          items:
-            $ref: '#/components/schemas/pocreate3'

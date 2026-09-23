@@ -39,6 +39,8 @@ paths:
               - RequestBody
               - ApiOwner
               - ApiKey
+      operationId: postRestWSApiEretailV1MasterVendorCreate
+      x-operation-id-source: derived
   /RestWS/api/eretail/v1/vendor/vendordetail:
     post:
       tags:
@@ -70,6 +72,8 @@ paths:
               - RequestBody
               - ApiOwner
               - ApiKey
+      operationId: postRestWSApiEretailV1VendorVendordetail
+      x-operation-id-source: derived
   /RestWS/api/eretail/v1/vendor/vendlocskumapping/create:
     post:
       tags:
@@ -108,6 +112,8 @@ paths:
                   items:
                     $ref: '#/components/schemas/vendlocskumapping0'
         description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">skuCode</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Sku code as per masters</td></tr><tr align="center"><td style="vertical-align:middle">vendorSkuCode</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Seller SKU code if any</td></tr><tr align="center"><td style="vertical-align:middle">vendorCode</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Vendor code as per masters</td></tr><tr align="center"><td style="vertical-align:middle">skuCost</td><td style="vertical-align:middle">decimal(20,5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">It should be numeric value</td></tr><tr align="center"><td style="vertical-align:middle">leadTime</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Numeric values in Days</td></tr><tr align="center"><td style="vertical-align:middle">minOrderQty</td><td style="vertical-align:middle">decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">It should be numeric value</td></tr><tr align="center"><td style="vertical-align:middle">maxOrderQty</td><td style="vertical-align:middle">decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">It should be numeric value</td></tr><tr align="center"><td style="vertical-align:middle">locCode</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Location Code</td></tr><tr align="center"><td style="vertical-align:middle">purchaseUnitFactor</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">It should be numeric value</td></tr><tr align="center"><td style="vertical-align:middle">isPrimary</td><td style="vertical-align:middle">Integer(1)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible values are 1 or 0</td></tr><tr align="center"><td style="vertical-align:middle">isActive</td><td style="vertical-align:middle">Integer(1)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible values are 1 or 0</td></tr><tr align="center"><td style="vertical-align:middle">returnFlag</td><td style="vertical-align:middle">Integer(1)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible values are 1 or 0</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">skuMRP</td><td style="vertical-align:middle">decimal(50,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Sku MRP</td></tr><tr align="center"><td style="vertical-align:middle">marginPrec</td><td style="vertical-align:middle">decimal(20,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Margin Percentage</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Additional Information</b></td></tr><tr align="left"><td style="vertical-align:middle" colspan=4 >Max Allowance - 50 itemList at a time</td></tr><tr><td style="vertical-align:middle" colspan=4> <b>JSON Format</br>&nbsp;{</br>&nbsp;"itemList":[</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skuCode":"BookX",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vendorSkuCode":"BookY",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vendorCode":"12345",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skuCost":"100.000",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"leadTime":"15",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"minOrderQty":"10",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"maxOrderQty":"500",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"locCode":"NWB",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"purchaseUnitFactor":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"isPrimary":"0",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"isActive":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"returnFlag":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf5":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skuMRP":"120.0",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"marginPrec":"10.0"</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]</br>&nbsp;}</b></br></br></tbody></table>
+      operationId: postRestWSApiEretailV1VendorVendlocskumappingCreate
+      x-operation-id-source: derived
   /RestWS/api/eretail/v1/vendor/vendorSkuMapping/create:
     post:
       tags:
@@ -145,6 +151,8 @@ paths:
                   items:
                     $ref: '#/components/schemas/vendorSkuMapping0'
         description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"> <td style="vertical-align:middle">skuCode</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">SKU Code as per masters.</td></tr><tr align="center"><td style="vertical-align:middle">vendorSkuCode</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Seller SKU code if any</td></tr><tr align="center"><td style="vertical-align:middle">vendorCode</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Vendor code as per masters</td></tr><tr align="center"><td style="vertical-align:middle">skuCost</td><td style="vertical-align:middle">decimal(50,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">It should be numeric value</td></tr><tr align="center"><td style="vertical-align:middle">leadTime</td><td style="vertical-align:middle">int(11)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Numeric values in Days</td></tr><tr align="center"><td style="vertical-align:middle">minOrderQty</td><td style="vertical-align:middle">decimal(7,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">It should be numeric value</td></tr><tr align="center"><td style="vertical-align:middle">maxOrderQty</td><td style="vertical-align:middle">decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">It should be numeric value</td></tr><tr align="center"><td style="vertical-align:middle">purchaseUnitFactor</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">It should be numeric value</td></tr><tr align="center"><td style="vertical-align:middle">isPrimary</td><td style="vertical-align:middle">Boolean</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Possible values are true or false</td></tr><tr align="center"><td style="vertical-align:middle">isActive</td><td style="vertical-align:middle">Boolean</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Possible values are true or false</td></tr><tr align="center"><td style="vertical-align:middle">returnFlag</td><td style="vertical-align:middle">Boolean</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Possible values are true or false</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optaional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optaional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">stdMargin</td><td style="vertical-align:middle">Decimal(20,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Margin%</td></tr><tr align="center"><td style="vertical-align:middle">mrp</td><td style="vertical-align:middle">Decimal(50,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Sku Mrp</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Additional Information</b></td></tr><tr align="left"><td style="vertical-align:middle" colspan=4 >Max Allowance - 50 itemList at a time</td></tr><tr><td style="vertical-align:middle" colspan=4><b>JSON Format</br>&nbsp;{</br>&nbsp;"itemList":[</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skuCode":"DS_SKU_005",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vendorSkuCode":"Test",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vendorCode":"RHVET",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skuCost":"100.000",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"leadTime":"15",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"minOrderQty":"10",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"maxOrderQty":"500",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"purchaseUnitFactor":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"isPrimary":"true",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"isActive":"false",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"returnFlag":"false",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf5":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"stdMargin":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"mrp":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]</br>&nbsp;}</b></br></br></tbody></table>
+      operationId: postRestWSApiEretailV1VendorVendorSkuMappingCreate
+      x-operation-id-source: derived
 components:
   schemas:
     VendorCreateResponse:
@@ -157,65 +165,6 @@ components:
           example: Success
         requestStatus:
           $ref: '#/components/schemas/vendorCre'
-    vendlocskumapping0:
-      properties:
-        skuCode:
-          type: string
-          example: BookX
-        vendorSkuCode:
-          type: string
-          example: BookY
-        vendorCode:
-          type: string
-          example: '12345'
-        skuCost:
-          type: string
-          example: '100.000'
-        leadTime:
-          type: string
-          example: '15'
-        minOrderQty:
-          type: string
-          example: '10'
-        maxOrderQty:
-          type: string
-          example: '500'
-        locCode:
-          type: string
-          example: NWB
-        purchaseUnitFactor:
-          type: string
-          example: '1'
-        isPrimary:
-          type: string
-          example: '0'
-        isActive:
-          type: string
-          example: '1'
-        returnFlag:
-          type: string
-          example: '1'
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        skuMRP:
-          type: string
-          example: '120.0'
-        marginPrec:
-          type: string
-          example: '10.0'
     vendorSkuMapping0:
       properties:
         skuCode:
@@ -464,20 +413,6 @@ components:
         vendorCcEmail:
           type: string
           example: []
-    vendorCre:
-      properties:
-        ext_vendor_code:
-          type: string
-          example: VEND001
-        outputKey:
-          type: string
-          example: VEND001
-        status:
-          type: string
-          example: Success
-        errorDesc:
-          type: string
-          example: ''
     vendordetail:
       properties:
         responseCode:
@@ -499,3 +434,76 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/VendorList'
+    vendlocskumapping0:
+      properties:
+        skuCode:
+          type: string
+          example: BookX
+        vendorSkuCode:
+          type: string
+          example: BookY
+        vendorCode:
+          type: string
+          example: '12345'
+        skuCost:
+          type: string
+          example: '100.000'
+        leadTime:
+          type: string
+          example: '15'
+        minOrderQty:
+          type: string
+          example: '10'
+        maxOrderQty:
+          type: string
+          example: '500'
+        locCode:
+          type: string
+          example: NWB
+        purchaseUnitFactor:
+          type: string
+          example: '1'
+        isPrimary:
+          type: string
+          example: '0'
+        isActive:
+          type: string
+          example: '1'
+        returnFlag:
+          type: string
+          example: '1'
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        skuMRP:
+          type: string
+          example: '120.0'
+        marginPrec:
+          type: string
+          example: '10.0'
+    vendorCre:
+      properties:
+        ext_vendor_code:
+          type: string
+          example: VEND001
+        outputKey:
+          type: string
+          example: VEND001
+        status:
+          type: string
+          example: Success
+        errorDesc:
+          type: string
+          example: ''

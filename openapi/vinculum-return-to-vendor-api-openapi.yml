@@ -35,6 +35,8 @@ paths:
               - RequestBody
               - ApiOwner
               - ApiKey
+      operationId: postRestWSApiEretailV1RtvCreate
+      x-operation-id-source: derived
   /RestWS/api/eretail/v2/rtv/create:
     post:
       tags:
@@ -62,6 +64,8 @@ paths:
               - RequestBody
               - ApiOwner
               - ApiKey
+      operationId: postRestWSApiEretailV2RtvCreate
+      x-operation-id-source: derived
   /RestWS/api/eretail/v1/rtv/detail:
     post:
       tags:
@@ -93,6 +97,8 @@ paths:
               - RequestBody
               - ApiOwner
               - ApiKey
+      operationId: postRestWSApiEretailV1RtvDetail
+      x-operation-id-source: derived
   /RestWS/api/eretail/v3/rtv/detail:
     post:
       tags:
@@ -164,85 +170,10 @@ paths:
                   type: string
                   example: 1
         description: <table class="table-style-three"><tbody><tr><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">rtvNo</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">*Only if details by rtvNo, Maximum 100 RTV allowed at a time</td></tr><tr align="center"><td style="vertical-align:middle" >status</td><td style="vertical-align:middle" >Array</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >&nbsp;e. g. Pending, Confirmed&nbsp;,Allocated etc.</td></tr><tr align="center"><td style="vertical-align:middle">po_code</td><td style="vertical-align:middle">Varchar</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">*Only if details by po_code</td></tr><tr align="center"><td style="vertical-align:middle">vendor_code</td><td style="vertical-align:middle">Varchar</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">*Date range filter is mandatory if passed</td></tr><tr align="center"><td style="vertical-align:middle">created_loc</td><td style="vertical-align:middle">Varchar</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">*Date range filter is mandatory if passed</td></tr><tr align="center"><td style="vertical-align:middle">date_from</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">*Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle">date_to</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">*Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle">onHold</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Hold status of RTV, Possible values are Yes or No</td></tr><tr align="center"><td style="vertical-align:middle">filterBy</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">get rtvs on the basis of updation or creation date Default:1, Possible values are 2 (update date),1(create date)</td></tr><tr align="center"><td style="vertical-align:middle">pageNumber</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Default 1. (Page Size 100 Orders)</td></tr><tr><td  colspan=5> <b>Case 1-Request by poCode</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"rtvNo":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;"status":["Confirmed"],</br>&nbsp;&nbsp;&nbsp;&nbsp;"po_code":"NHO14523",</br>&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"created_loc":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_from":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_to":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"onHold":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1"</br>&nbsp;}</b><br/><br/><br/> <b>Case 2-Request by rtvNumber</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"rtvNo":["NWB12804","ND22657"],</br>&nbsp;&nbsp;&nbsp;&nbsp;"status":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;"po_code":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"created_loc":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_from":"",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_to":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"onHold":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1"</br>&nbsp;}</b><br/><br/><br/> <b>Case 3-Request by date range filter</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"rtvNo":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;"po_code":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"vendor_code":"Kn001",</br>&nbsp;&nbsp;&nbsp;&nbsp;"created_loc":"NWB",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_from":"20/9/2019 00:00:00",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_to":"24/09/2019 00:00:00",</br>&nbsp;&nbsp;&nbsp;&nbsp;"onHold":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1"</br>&nbsp;}</b><br/><br/><br/> </b><br/><br/><br/> </tr></tbody></table><p>&nbsp;</p><br/>
+      operationId: postRestWSApiEretailV3RtvDetail
+      x-operation-id-source: derived
 components:
   schemas:
-    rtvdetail:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        response:
-          $ref: '#/components/schemas/responsertvdetail'
-    rtvList:
-      properties:
-        rtvNo:
-          type: string
-          example: NWB12804
-        poNo:
-          type: string
-          example: NHO123082
-        extPoNo:
-          type: string
-          example: NHO123082
-        vendor:
-          type: string
-          example: CKPLM
-        vendor_name:
-          type: string
-          example: ABC
-        externalVendorCode:
-          type: string
-          example: cip-2020
-        rtvDate:
-          type: string
-          example: 04/12/2018 12:34:31
-        rtvType:
-          type: string
-          example: Normal Return
-        rtvSource:
-          type: string
-          example: With PO
-        status:
-          type: string
-          example: Allocated
-        rtvAmt:
-          type: string
-          example: '78.977'
-        rtvQty:
-          type: string
-          example: '4.00'
-        taxAmt:
-          type: string
-          example: '22.909'
-        onHold:
-          type: string
-          example: '0'
-        created_loc:
-          type: string
-          example: NWH
-        updateDate:
-          type: string
-          example: 04/12/2018 12:34:31
-        remarks:
-          type: string
-          example: ''
-        userDefinedField:
-          type: array
-          items:
-            $ref: '#/components/schemas/userdefineddetail'
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Itemsrtvdetail'
-        del_locname:
-          type: string
-          example: FABINDIA SURFACE
-        printUrl:
-          type: string
-          example: ''
     Itemsrtvdetail:
       type: object
       properties:
@@ -408,6 +339,21 @@ components:
         extLineNo:
           type: string
           example: ''
+    responsertvdetail:
+      properties:
+        totalRtvs:
+          type: integer
+          example: 1
+        totalPages:
+          type: integer
+          example: 1
+        currentPage:
+          type: integer
+          example: 1
+        rtvList:
+          type: array
+          items:
+            $ref: '#/components/schemas/rtvList'
     userdefineddetail:
       type: object
       properties:
@@ -441,18 +387,80 @@ components:
         udf10:
           type: string
           example: ''
-    responsertvdetail:
+    rtvList:
       properties:
-        totalRtvs:
-          type: integer
-          example: 1
-        totalPages:
-          type: integer
-          example: 1
-        currentPage:
-          type: integer
-          example: 1
-        rtvList:
+        rtvNo:
+          type: string
+          example: NWB12804
+        poNo:
+          type: string
+          example: NHO123082
+        extPoNo:
+          type: string
+          example: NHO123082
+        vendor:
+          type: string
+          example: CKPLM
+        vendor_name:
+          type: string
+          example: ABC
+        externalVendorCode:
+          type: string
+          example: cip-2020
+        rtvDate:
+          type: string
+          example: 04/12/2018 12:34:31
+        rtvType:
+          type: string
+          example: Normal Return
+        rtvSource:
+          type: string
+          example: With PO
+        status:
+          type: string
+          example: Allocated
+        rtvAmt:
+          type: string
+          example: '78.977'
+        rtvQty:
+          type: string
+          example: '4.00'
+        taxAmt:
+          type: string
+          example: '22.909'
+        onHold:
+          type: string
+          example: '0'
+        created_loc:
+          type: string
+          example: NWH
+        updateDate:
+          type: string
+          example: 04/12/2018 12:34:31
+        remarks:
+          type: string
+          example: ''
+        userDefinedField:
           type: array
           items:
-            $ref: '#/components/schemas/rtvList'
+            $ref: '#/components/schemas/userdefineddetail'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Itemsrtvdetail'
+        del_locname:
+          type: string
+          example: FABINDIA SURFACE
+        printUrl:
+          type: string
+          example: ''
+    rtvdetail:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        response:
+          $ref: '#/components/schemas/responsertvdetail'

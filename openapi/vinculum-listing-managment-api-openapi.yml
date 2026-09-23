@@ -39,6 +39,8 @@ paths:
                   description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle" >updatedDate</td><td style="vertical-align:middle" >DateTime</td><td style="vertical-align:middle" >Conditional</td><td style="vertical-align:middle" >Either the updatedDate  skuCode  needed</td></tr><tr align="center"><td style="vertical-align:middle" >skuCode</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle">Conditional</td><td style="veritcal-align:middle">Either the updatedDate  skuCode  needed</td></tr><tr align="center"><td style="vertical-align:middle" >pageNumber</td><td style="vertical-align:middle" >Integer</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle">Default 1. (Page Size 500 Orders)</td></tr><tr align="center"><td style="vertical-align:middle" >limit</td><td style="vertical-align:middle" >Integer</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle">Maximum 100 records process</td></tr><tr align="center"><tr><td style="vertical-align:middle" colspan=4> <b>Request Body =<br/> {  <br/>&nbsp;&nbsp;&nbsp;"updatedDate":"01/01/2015 00:00:00",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skuCode":[  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"TEST_STORE_ABC_TESTING_001",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"TEST_STORE_ABC_TESTING-003"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":1,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"limit":10<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> </tbody> </table>
               required:
               - RequestBody
+      operationId: postProductFetch
+      x-operation-id-source: derived
   /inventoryPriceUpdate:
     post:
       tags:
@@ -70,6 +72,8 @@ paths:
                   description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle" >sku </td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Mandatory</td><td style="vertical-align:middle" ></td></tr><tr align="center"><td style="vertical-align:middle" >invQty </td><td style="vertical-align:middle" >Decimal(10,3)</td><td style="vertical-align:middle">Mandatory</td><td style="veritcal-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle" >salePrice  </td><td style="vertical-align:middle" >Decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle"  colspan=4><b>Process Maximum 100 records<br/></td></tr><tr align="center"><tr><td style="vertical-align:middle" colspan=4> <b>Request Body =<br/> {  <br/>&nbsp;&nbsp;&nbsp;"invPriceList":[  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"sku":"TEST_STORE_ABC_TESTING-004-BUY-3-FREE-1",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"invQty":"11",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"salePrice":"1299.00" <br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></tbody></table>
               required:
               - RequestBody
+      operationId: postInventoryPriceUpdate
+      x-operation-id-source: derived
   /inventoryPriceStatus:
     post:
       tags:
@@ -101,6 +105,8 @@ paths:
                   description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">moderationIdsList </td><td style="vertical-align:middle">Integer(11)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Array of moderation Id needed. </td></tr><tr><td style="vertical-align:middle" colspan=4> <b>Request Body<br/> {<br/> &nbsp;&nbsp;&nbsp;"moderationIdsList":[108,109]</br>&nbsp;&nbsp;&nbsp;}<br/></b><br/><br/></tbody></table>
               required:
               - RequestBody
+      operationId: postInventoryPriceStatus
+      x-operation-id-source: derived
   /skuBackOrder:
     post:
       tags:
@@ -120,31 +126,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SkuBackOrder'
+      operationId: postSkuBackOrder
+      x-operation-id-source: derived
 components:
   schemas:
-    skuBack:
+    inventrypriceStatus1:
       properties:
-        vendorCode:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
           type: string
-          example: jit_15
-        sku:
-          type: string
-          example: SA2
-        qty:
-          type: string
-          example: 3
-        price:
-          type: string
-          example: 3000
-        vendorSKUCode:
-          type: string
-          example: abc123
-    SkuBackOrder:
-      properties:
-        data:
+          example: Success
+        skus:
           type: array
           items:
-            $ref: '#/components/schemas/skuBack'
+            $ref: '#/components/schemas/inventoryPriceList1'
     InventoryList1:
       type: object
       properties:
@@ -166,39 +163,23 @@ components:
         requestedSalePrice:
           type: string
           example: null
-    ProductFetch1:
+    skuBack:
       properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
+        vendorCode:
           type: string
-          example: Success
-        productList:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductList1'
-    inventoryPriceList1:
-      type: object
-      properties:
-        moderationId:
-          type: string
-          example: 108
+          example: jit_15
         sku:
           type: string
-          example: 224808
-        requestedInvQty:
+          example: SA2
+        qty:
           type: string
-          example: 1.0
-        approvedInvQty:
+          example: 3
+        price:
           type: string
-          example: null
-        status:
+          example: 3000
+        vendorSKUCode:
           type: string
-          example: Pending
-        requestedSalePrice:
-          type: string
-          example: 1299.0
+          example: abc123
     InventoryPricedetail1:
       properties:
         responseCode:
@@ -211,6 +192,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/InventoryList1'
+    ProductFetch1:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        productList:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductList1'
     ProductList1:
       type: object
       properties:
@@ -265,15 +258,30 @@ components:
         serialTracking:
           type: string
           example: 0
-    inventrypriceStatus1:
+    SkuBackOrder:
       properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        skus:
+        data:
           type: array
           items:
-            $ref: '#/components/schemas/inventoryPriceList1'
+            $ref: '#/components/schemas/skuBack'
+    inventoryPriceList1:
+      type: object
+      properties:
+        moderationId:
+          type: string
+          example: 108
+        sku:
+          type: string
+          example: 224808
+        requestedInvQty:
+          type: string
+          example: 1.0
+        approvedInvQty:
+          type: string
+          example: null
+        status:
+          type: string
+          example: Pending
+        requestedSalePrice:
+          type: string
+          example: 1299.0

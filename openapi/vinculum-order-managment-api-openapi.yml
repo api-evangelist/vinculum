@@ -12,7 +12,7 @@ paths:
     post:
       tags:
       - Order Managment
-      summary: API For getting  the orderList
+      summary: API For getting the orderList
       parameters:
       - in: header
         name: ApiKey
@@ -39,11 +39,13 @@ paths:
                   description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">updateDate </td><td style="vertical-align:middle">DateTime </td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Either updatedDate filterStatusList needed. Get Orders from updateDate to current date</td></tr><tr align="center"><td style="vertical-align:middle">filterStatusList</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Comma Separated status, possible status are 1 for "Pending", 10 for "Ready for Ship", 12 for "AWB InProcess", 15 for "Shipped", 18 for "In Process", 20 for "Intransit", 25 for "Delivered", 30 for "Ready for Pickup", 35 for "Pickup Intransit", 40 for "Pickup Confirmed", 45 for "Disputed", 5 for "Confirmed", 50 for "Rejected", 55 for "Returned", 60 for "RTO", 65 for "RTO Delivered", 8 for "Cancelled", 9 for "Replaced" </td><td style="vertical-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle" >pageNumber</td><td style="vertical-align:middle" >Integer</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle">Default 1. (Page Size 500 Orders)</td></tr><tr align="center"><td style="vertical-align:middle" >limit</td><td style="vertical-align:middle" >Integer</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle">Maximum 100 records process</td></tr><tr><td style="vertical-align:middle" colspan=4> <b>Request Body<br/> <br/> {<br/> &nbsp;&nbsp;&nbsp;&nbsp;"updateDate":"01/01/2015 00:00:00",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"filterStatusList":"1,5,10",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":2,<br/>&nbsp;&nbsp;&nbsp;&nbsp;"limit":2<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;</td></tr></tbody></table>
               required:
               - RequestBody
+      operationId: postOrderList
+      x-operation-id-source: derived
   /orderListJIT:
     post:
       tags:
       - Order Managment
-      summary: API For getting  the orderList
+      summary: API For getting the orderList
       parameters:
       - in: header
         name: ApiKey
@@ -70,6 +72,8 @@ paths:
                   description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">updateDate </td><td style="vertical-align:middle">DateTime </td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Either updatedDate filterStatusList needed. Get Orders from updateDate to current date</td></tr><tr align="center"><td style="vertical-align:middle">filterStatusList</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Comma Separated status, possible status are 7 and 10 </td><td style="vertical-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle" >pageNumber</td><td style="vertical-align:middle" >Integer</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle">Default 1. (Page Size 500 Orders)</td></tr><tr align="center"><td style="vertical-align:middle" >limit</td><td style="vertical-align:middle" >Integer</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle">Maximum 100 records process</td></tr><tr><td style="vertical-align:middle" colspan=4> <b>Request Body<br/> <br/> {<br/> &nbsp;&nbsp;&nbsp;&nbsp;"updateDate":"01/01/2015 00:00:00",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"filterStatusList":"1,5,10",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":2,<br/>&nbsp;&nbsp;&nbsp;&nbsp;"limit":2<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;</td></tr></tbody></table>
               required:
               - RequestBody
+      operationId: postOrderListJIT
+      x-operation-id-source: derived
   /orderFetch:
     post:
       tags:
@@ -100,6 +104,8 @@ paths:
                   description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">orderNo </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">This is Master Order No. Array of Master Order no needed.</td></tr><tr align="center"><td style="vertical-align:middle" >pageNumber</td><td style="vertical-align:middle" >Integer</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle">Default 1. (Page Size 500 Orders)</td></tr><tr align="center"><td style="vertical-align:middle" >limit</td><td style="vertical-align:middle" >Integer</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle">Maximum 100 records process</td></tr><tr ><td style="vertical-align:middle" colspan=4> <b>RequestBody <br/> {</br>&nbsp;&nbsp;"orderNo":["100000019","100000020"],</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":1,</br>&nbsp;&nbsp;&nbsp;&nbsp;"limit":2</br>&nbsp;&nbsp;&nbsp;&nbsp;}</b><br/><br/></tbody></table>
               required:
               - RequestBody
+      operationId: postOrderFetch
+      x-operation-id-source: derived
   /orderFetchJIT:
     post:
       tags:
@@ -130,6 +136,8 @@ paths:
                   description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">orderNo </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">This is Master Order No. Array of Master Order no needed.</td></tr><tr align="center"><td style="vertical-align:middle" >pageNumber</td><td style="vertical-align:middle" >Integer</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle">Default 1. (Page Size 500 Orders)</td></tr><tr align="center"><td style="vertical-align:middle" >limit</td><td style="vertical-align:middle" >Integer</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle">Maximum 100 records process</td></tr><tr ><td style="vertical-align:middle" colspan=4> <b>RequestBody <br/> {</br>&nbsp;&nbsp;"orderNo":["100000019","100000020"],</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":1,</br>&nbsp;&nbsp;&nbsp;&nbsp;"limit":2</br>&nbsp;&nbsp;&nbsp;&nbsp;}</b><br/><br/></tbody></table>
               required:
               - RequestBody
+      operationId: postOrderFetchJIT
+      x-operation-id-source: derived
   /orderReturn:
     post:
       tags:
@@ -160,37 +168,54 @@ paths:
                   description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">updatedFrom </td><td style="vertical-align:middle">DateTime</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">**Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle" >updatedTo</td><td style="vertical-align:middle" >DateTime</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle">**Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle" >filterStatusList</td><td style="vertical-align:middle" >Integer</td><td style="vertical-align:middle">Optional</td><td style="veritcal-align:middle">Comma Separated status, possible statuses are 10 for "Confirmed", 15 for "Reverse PickUp Delivered", 20 for "Disputed", 25 for "Cancelled", 30 for "Reverse PickUP Initiated", 35 for "Reverse PickUP Done", 40 for "Reverse PickUP Terminated", 5 for "Pending"</td></tr><tr align="center"><td style="vertical-align:middle">returnNo </td><td style="vertical-align:middle">string</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Order return number</td></tr><tr align="center"><td style="vertical-align:middle">sellerId </td><td style="vertical-align:middle">string</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Seller code</td></tr><tr align="center"><td style="vertical-align:middle">pageNumber </td><td style="vertical-align:middle">integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Default 1. (Page Size 500 Orders)</td></tr><tr align="center"><td style="vertical-align:middle">limit </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Maximum 100 records process</td></tr><tr ><td style="vertical-align:middle" colspan=4><b>RequestBody <br/> {</br>&nbsp;&nbsp;""updatedFrom":"07/06/2021 01:24:38",</br>&nbsp;&nbsp;&nbsp;&nbsp;"updatedTo":"09/06/2021 23:59:59",</br>&nbsp;&nbsp;&nbsp;&nbsp;"filterStatusList":"10,15,20,25,30,35,40,5",</br>&nbsp;&nbsp;&nbsp;&nbsp;"returnNo":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"sellerId":"mwhc1",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;"limit":""</br>&nbsp;&nbsp;&nbsp;&nbsp;}</b><br/><br/></tbody></table>
               required:
               - RequestBody
+      operationId: postOrderReturn
+      x-operation-id-source: derived
 components:
   schemas:
-    orderDetailList1:
-      type: object
+    orderitemsforreturn2:
       properties:
-        orderNo:
+        lineNo:
           type: string
-          example: 100000019
-        orderStatus:
+          example: '1'
+        skuCode:
           type: string
-          example: 5
-        orderDate:
+          example: CSKU2
+        skuName:
           type: string
-          example: 13/04/2016 00:19:40
-        orderLastUpdateDate:
+          example: ChildSKU2
+        orderQty:
           type: string
-          example: 13/04/2016 14:32:05
-        onHold:
+          example: '2.00'
+        cancelledQty:
           type: string
-          example: 1
-    OrderReturn2:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
+          example: null
+        shippedQty:
           type: string
-          example: Success
-        returns:
-          items:
-            $ref: '#/components/schemas/returnlistforreturn2'
+          example: '2'
+        returnedQty:
+          type: string
+          example: '1.00'
+        lineAmount:
+          type: string
+          example: '434.50'
+        lineTaxAmount:
+          type: string
+          example: '19.76'
+        unitPrice:
+          type: string
+          example: '450.00'
+        codCharge:
+          type: string
+          example: null
+        invoiceNo:
+          type: string
+          example: MWHP2021000005
+        storeCredit:
+          type: string
+          example: '50.00'
+        lineStatus:
+          type: string
+          example: '10'
     OrderReturn1:
       properties:
         responseCode:
@@ -202,18 +227,6 @@ components:
         orders:
           items:
             $ref: '#/components/schemas/orderlistforreturn1'
-    OrderDetail1:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        orderList:
-          type: array
-          items:
-            $ref: '#/components/schemas/orderDetailList1'
     returnlistforreturn2:
       properties:
         internalReturnNo:
@@ -349,50 +362,36 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/orderitemsforreturn2'
-    orderitemsforreturn2:
+    OrderDetail1:
       properties:
-        lineNo:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
           type: string
-          example: '1'
-        skuCode:
+          example: Success
+        orderList:
+          type: array
+          items:
+            $ref: '#/components/schemas/orderDetailList1'
+    orderDetailList1:
+      type: object
+      properties:
+        orderNo:
           type: string
-          example: CSKU2
-        skuName:
+          example: 100000019
+        orderStatus:
           type: string
-          example: ChildSKU2
-        orderQty:
+          example: 5
+        orderDate:
           type: string
-          example: '2.00'
-        cancelledQty:
+          example: 13/04/2016 00:19:40
+        orderLastUpdateDate:
           type: string
-          example: null
-        shippedQty:
+          example: 13/04/2016 14:32:05
+        onHold:
           type: string
-          example: '2'
-        returnedQty:
-          type: string
-          example: '1.00'
-        lineAmount:
-          type: string
-          example: '434.50'
-        lineTaxAmount:
-          type: string
-          example: '19.76'
-        unitPrice:
-          type: string
-          example: '450.00'
-        codCharge:
-          type: string
-          example: null
-        invoiceNo:
-          type: string
-          example: MWHP2021000005
-        storeCredit:
-          type: string
-          example: '50.00'
-        lineStatus:
-          type: string
-          example: '10'
+          example: 1
     orderlistforreturn1:
       properties:
         orderNo:
@@ -518,6 +517,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/itemlistforOrderreturn1'
+    OrderReturn2:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        returns:
+          items:
+            $ref: '#/components/schemas/returnlistforreturn2'
     itemlistforOrderreturn1:
       properties:
         lineno:

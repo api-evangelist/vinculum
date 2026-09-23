@@ -35,6 +35,8 @@ paths:
               - RequestBody
               - ApiOwner
               - ApiKey
+      operationId: postRestWSApiEretailV1CommonCheckRequestStatus
+      x-operation-id-source: derived
   /RestWS/api/eretail/v1/customer/custCreate:
     post:
       tags:
@@ -73,11 +75,13 @@ paths:
                   items:
                     $ref: '#/components/schemas/custCreate0'
         description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">customerCode</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">Mandatory for Customer Update Request. On creation of a Customer, Customer Code is not to be passed.</td></tr><tr align="center"><td style="vertical-align:middle">extCustomerCode</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Customer code in external system</td></tr><tr align="center"><td style="vertical-align:middle">customerName</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Name of the Customer</td></tr><tr align="center"><td style="vertical-align:middle">isActive</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Default Yes, Possible values are Yes or No</td></tr><tr align="center"><td style="vertical-align:middle">customerType</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Customer type as defined in other Master's</td></tr><tr align="center"><td style="vertical-align:middle">address1</td><td style="vertical-align:middle">Varchar(1000)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Address1 of Customer</td></tr><tr align="center"><td style="vertical-align:middle">address2</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Address2 of Customer</td></tr><tr align="center"><td style="vertical-align:middle">address3</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Address3 of Customer</td></tr><tr align="center"><td style="vertical-align:middle">address4</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Address4 of Customer</td></tr><tr align="center"><td style="vertical-align:middle">phone</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Phone No. of Customer</td></tr><tr align="center"><td style="vertical-align:middle">altPhone</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Alternate phone No. of Customerter</td></tr><tr align="center"><td style="vertical-align:middle">fax</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Fax No. of Customer</td></tr><tr align="center"><td style="vertical-align:middle">email1</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Email id 1 of Customer</td></tr><tr align="center"><td style="vertical-align:middle">email2</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Email id 2 of Customer</td></tr><tr align="center"><td style="vertical-align:middle">country</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">It should exist in country table. If it is not present in country table, it doesnt allow to create the customer</td></tr><tr align="center"><td style="vertical-align:middle">state</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">It should exist in state table. If it is not present in state table,  it doesnt allow to create the customer</td></tr><tr align="center"><td style="vertical-align:middle">city</td><td style="vertical-align:middle">Varchar(40)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">City of Customer</td></tr><tr align="center"><td style="vertical-align:middle">pinCode</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Pincode of Customer</td></tr><tr align="center"><td style="vertical-align:middle">billAddress1</td><td style="vertical-align:middle">Varchar(1000)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Billing Address 1 of Customer</td></tr><tr align="center"><td style="vertical-align:middle">billAddress2</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Billing Address 2 of Customer</td></tr><tr align="center"><td style="vertical-align:middle">billAddress3</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Billing Address 3 of Customer</td></tr><tr align="center"><td style="vertical-align:middle">billAddress4</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Billing Address 4 of Customer</td></tr><tr align="center"><td style="vertical-align:middle">billPhone</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Billing phone No. of Customer</td></tr><tr align="center"><td style="vertical-align:middle">billAltPhone</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Alternate billing phone No. of Customer</td></tr><tr align="center"><td style="vertical-align:middle">billFax</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Billing Fax No. of Customer</td></tr><tr align="center"><td style="vertical-align:middle">billEmail1</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Billing email id 1 of Customer</td></tr><tr align="center"><td style="vertical-align:middle">billEmail2</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Billing email id 2 of Customer</td></tr><tr align="center"><td style="vertical-align:middle">billCountry</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">It should exist in country table. If it is not present in country table,  it doesnt allow to create the customer</td></tr><tr align="center"><td style="vertical-align:middle">billState</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">It should exist in state table. If it is not present in state table,  it doesnt allow to create the customer</td></tr><tr align="center"><td style="vertical-align:middle">billCity</td><td style="vertical-align:middle">Varchar(150)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Bill City of Customer</td></tr><tr align="center"><td style="vertical-align:middle">billPinCode</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Bill Pincode of Customer</td></tr><tr align="center"><td style="vertical-align:middle">paymentTerms</td><td style="vertical-align:middle">Integer(6)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Should exist in CODELKUP  where lookup code is "PMTTERM"</td></tr><tr align="center"><td style="vertical-align:middle">tinNo</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">It refers to the GSTIN/TIN no of the Customer</td></tr><tr align="center"><td style="vertical-align:middle">taxZone</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">It should exist in taxzone table. If it is not present in the table,  it doesnt allow to create the customer</td></tr><tr align="center"><td style="vertical-align:middle">priceZone</td><td style="vertical-align:middle">Integer(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">It should exist in pricezonemaster table. If it is not present in the table,  it doesnt allow to create the customer. gives an error.</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(2000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf6</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf7</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf8</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf9</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf10</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">isformC</td><td style="vertical-align:middle">Varchar(1)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible values are Yes/No</td></tr><tr align="center"><td style="vertical-align:middle">panNo</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Pan No. of Customer</td></tr><tr align="center"><td style="vertical-align:middle">gstNo</td><td style="vertical-align:middle">Varchar(25)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">It refers to the Tax Ref No of the Customer</td></tr><tr align="center"><td style="vertical-align:middle">shelflifeonPicking</td><td style="vertical-align:middle">Integer(6)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">No. of days of Shelf Life on Picking for SKU(s) as agreed by the user and the customer</td></tr><tr align="center"><td style="vertical-align:middle">totalShelfLife</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">No. of days of Total shelf like for SKU(s) as agreed by the user and the customer.</td></tr><tr align="center"><td style="vertical-align:middle">isTaxExempt</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible values are yes/no</td></tr><tr align="center"><td style="vertical-align:middle">economiczone</td><td style="vertical-align:middle">varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible value is SEZ</td></tr><tr align="center"><td style="vertical-align:middle">creditDays</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle"> Number of credit days applicable for customer</td></tr><tr align="center"><td style="vertical-align:middle">isTCSApplicable</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Possible values are yes/no</td></tr><tr align="center"><td style="vertical-align:middle">tcsPercentage</td><td style="vertical-align:middle">decimal(10,3)</td><td style="vertical-align:middle">Conditional**</td><td style="vertical-align:middle">Mandatory when isTCSApplicable is "yes", Possible values are 0.075/0.75/0.1/1</td></tr><tr align="center"><td style="vertical-align:middle" >latitude</td><td style="vertical-align:middle" >Varchar(100)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >Latitudes range from -90 to 90, e. g. 17.572375290155</td></tr><tr align="center"><td style="vertical-align:middle" >longitude</td><td style="vertical-align:middle" >Varchar(100)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >Longitudes range from -180 to 80, e. g. -179.572375290155</td></tr><tr align="center"><td style="vertical-align:middle" >geoType</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" > Geocode system type (eg. What3Words).</td></tr><tr align="center"><td style="vertical-align:middle" >geoAddress</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >Customer's ship to geocode address</td></tr><tr align="center"><td style="vertical-align:middle" >geoLatitude</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >Geocode latitude</td></tr><tr align="center"><td style="vertical-align:middle" >geoLongitude</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" > Geocode longitude</td></tr><tr align="center"><td style="vertical-align:middle" >identificationId </td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >Identification Id of customer</td></tr><tr align="center"><td style="vertical-align:middle" >identificationCode</td><td style="vertical-align:middle" >Varchar(50)</td><td style="vertical-align:middle" >Conditional</td><td style="vertical-align:middle" > if identificationId is not null then identificationCode is mandatory</td></tr><tr align="center"><td style="vertical-align:middle" >pickingInstructions</td><td style="vertical-align:middle" >Array</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" > Maximum allowded are 10</td></tr><tr align="center"><td style="vertical-align:middle" >shippingInstructions</td><td style="vertical-align:middle" >Array</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" > Maximum allowded are 10</td></tr><tr align="center"><td style="vertical-align:middle" >landmark</td><td style="vertical-align:middle" >Varchar(100)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >Nearby reference location of shipping address</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>addresses Fields</b></td></tr><tr align="center"><td style="vertical-align:middle">address1</td><td style="vertical-align:middle">Varchar(1000)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Address1 of Customer</td></tr><tr align="center"><td style="vertical-align:middle">address2</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Address2 of Customer</td></tr><tr align="center"><td style="vertical-align:middle">address3</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Address3 of Customer</td></tr><tr align="center"><td style="vertical-align:middle">phone</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Phone No. of Customer</td></tr><tr align="center"><td style="vertical-align:middle">altPhone</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Alternate Phone No. of Customer</td></tr><tr align="center"><td style="vertical-align:middle">fax</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Fax No. of Customer</td></tr><tr align="center"><td style="vertical-align:middle">email1</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Email Id 1 of Customer</td></tr><tr align="center"><td style="vertical-align:middle">email2</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Email Id 2 of Customer</td></tr><tr align="center"><td style="vertical-align:middle">country</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">It should exist in country table.If it is not present in country table,  it doesnt allow to create the customer</td></tr><tr align="center"><td style="vertical-align:middle">state</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">It should exist in state table.If it is not present in state table,  it doesnt allow to create the customer</td></tr><tr align="center"><td style="vertical-align:middle">city</td><td style="vertical-align:middle">Varchar(40)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">City Name of Customer</td></tr><tr align="center"><td style="vertical-align:middle">pinCode</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">pincode of Customer</td></tr><tr align="center"><td style="vertical-align:middle">remarks</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Remarks</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(2000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(2000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle" >latitude</td><td style="vertical-align:middle" >Varchar(100)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >Latitudes range from -90 to 90, e. g. 17.572375290155</td></tr><tr align="center"><td style="vertical-align:middle" >longitude</td><td style="vertical-align:middle" >Varchar(100)</td><td style="vertical-align:middle" >Optional</td><td style="vertical-align:middle" >Longitudes range from -180 to 80, e. g. -179.572375290155</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Additional Information</b></td></tr><tr align="left"><td style="vertical-align:middle" colspan=4 >Maximum limit for Customers create at a time is 50.  </td></tr></tbody></table>
+      operationId: postRestWSApiEretailV1CustomerCustCreate
+      x-operation-id-source: derived
   /RestWS/api/eretail/v1/customer/detail:
     post:
       tags:
       - Common
-      summary: Max no. of Lines/Response:100. Max Allowed Phone Numbers/EmailId- 100. API For Customer Details(Hit Quota 40/5 min)
+      summary: Max no.
       responses:
         200:
           description: <table border='1'width='672'>  <h1  style="color:#FFFF00;">API Generic Error Codes</h1><tbody><tr align="center"><td style="vertical-align:middle" width='167'><p><strong>Response Code </strong></p></td><td style="vertical-align:middle" colspan='2' width='171'><p><strong> Response Message </strong></p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>913</p></td><td style="vertical-align:middle" width='167'><p>From and To Date Range Should not be more than 7 days</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>919</p></td><td style="vertical-align:middle" width='167'><p>BillPhone OR BillEmail OR date is mandatory</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>920</p></td><td style="vertical-align:middle" width='167'><p>Customer. Not Found</p></td></tr><tr align="center"><td style="vertical-align:middle" width='167'><p>921</p></td><td style="vertical-align:middle" width='167'><p>BillPhone OR BillEmail length should not be greater than 100</p></td></tr></tbody></table>
@@ -104,6 +108,8 @@ paths:
               - RequestBody
               - ApiOwner
               - ApiKey
+      operationId: postRestWSApiEretailV1CustomerDetail
+      x-operation-id-source: derived
   /RestWS/api/tally/getDocumentAck:
     post:
       tags:
@@ -131,11 +137,13 @@ paths:
               - RequestBody
               - ApiOwner
               - ApiKey
+      operationId: postRestWSApiTallyGetDocumentAck
+      x-operation-id-source: derived
   /RestWS/api/eretail/v1/common/skuCategoryDetail:
     post:
       tags:
       - Common
-      summary: Max no. of Lines/Response:100 API For Get Sku Category Detail(Hit Quota 40/5 min)
+      summary: Max no.
       parameters:
       - in: header
         name: ApiOwner
@@ -194,6 +202,8 @@ paths:
                   type: string
                   example: ''
         description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">merchId</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Mandatory if Date Range filter are not given.</td></tr><tr align="center"><td style="vertical-align:middle">extMerchCode</td><td style="vertical-align:middle">varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">External merchhierarchy code.</td></tr><tr align="center"><td style="vertical-align:middle">merchName</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Merchhierarchy names.</td></tr><tr align="center"><td style="vertical-align:middle">parentMerchCode</td><td style="vertical-align:middle">varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Parent Merchhierarchy code.</td></tr><tr align="center"><td style="vertical-align:middle">fromDate</td><td style="vertical-align:middle">datetime</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">**Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle">toDate</td><td style="vertical-align:middle">datetime</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">**Only if details by filter (DD/MM/YYYY HH:mm:ss)</td><tr align="center"><td style="vertical-align:middle">pageNumber</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Default 1. (Page Size 100 Orders)</td></tr></tr><tr align="center"><td style="vertical-align:middle">filterBy</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">&nbsp;It will get validated in case of Date Range filter. Get detail on the basis of updation or creation date Default:1, Possible values are 1(create date), 2(update date),</td></tr><tr><td style="vertical-align:middle" colspan=4> <b>Case 1:&nbsp;Get Sku Category Detail by merchId(s)</br>&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"merchId":["1131"],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"extMerchCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"merchName":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"parentMerchCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":""</br>&nbsp;}</br></br>&nbsp;Case 2:&nbsp;Get Sku Category Detail by Date Range</br>&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"merchId":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"extMerchCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"merchName":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"parentMerchCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"07/07/2018 00:00:00",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"10/07/2018 00:00:00",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":"2"</br>&nbsp;}</br></br>&nbsp;</tbody></table>
+      operationId: postRestWSApiEretailV1CommonSkuCategoryDetail
+      x-operation-id-source: derived
   /RestWS/api/eretail/v1/common/lpnUpdate:
     post:
       tags:
@@ -232,6 +242,8 @@ paths:
                   items:
                     $ref: '#/components/schemas/lpnsG'
         description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">lpnNos</td><td style="vertical-align:middle">varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">LPN No.</td></tr><tr align="center"><td style="vertical-align:middle">status</td><td style="vertical-align:middle">varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">New, Open, Reopen, closed, etc., Defined in Codelkup with lkupcode 'LPNSTS'.</td></tr><tr align="center"><td style="vertical-align:middle">length</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">length in box</td></tr><tr align="center"><td style="vertical-align:middle">breadth</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">breadth in box</td></tr><tr align="center"><td style="vertical-align:middle">height</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">height in box </td></tr><tr align="center"><td style="vertical-align:middle">weight</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">weight in box</td></tr><tr><td style="vertical-align:middle" colspan=4> <b>&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "lpns" :[</br>&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lpnNos" :"EWH000000465",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"status" :"REOPEN",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"length" :"50",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"breadth" :"10",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"height" :"12",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"weight" :"50"</br>&nbsp;}</br>&nbsp;]</br>&nbsp;}</br></br></br>&nbsp;</tbody></table>
+      operationId: postRestWSApiEretailV1CommonLpnUpdate
+      x-operation-id-source: derived
   /RestWS/api/eretail/v1/master/locationFetch:
     post:
       tags:
@@ -281,6 +293,8 @@ paths:
                   type: string
                   example: '1'
         description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">locCodes</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">eRetail Location Code or loccode of external system</td></tr><tr align="center"><td style="vertical-align:middle">fromDate</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">**Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle">toDate</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">**Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle">pageNumber</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Default 1. (Page size 100 records)</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Additional Information</b></td></tr><tr align="left"><td style="vertical-align:middle" colspan=4 >Max Allowance - 50 locCodes at a time.</td></tr><tr><td style="vertical-align:middle" colspan=4> <b>Case 1:&nbsp;If the request has no filter(All locations are fetched)</br>&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"locCodes":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fetchChildLocation":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1"</br>&nbsp;}</br></br>&nbsp;Case 2:&nbsp;Get Locations Detail by Date Range</br>&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"locCodes":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"08/08/2018 00:00:00",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"08/08/2019 00:00:00",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fetchChildLocation":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1"</br>&nbsp;}</br></br>&nbsp;</tbody></table>
+      operationId: postRestWSApiEretailV1MasterLocationFetch
+      x-operation-id-source: derived
   /RestWS/api/eretail/v1/channel/createEdit:
     post:
       tags:
@@ -317,6 +331,8 @@ paths:
                   items:
                     $ref: '#/components/schemas/ChannelCreateUpdateJSON0'
         description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">channelName</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Name of channel for identification</td></tr><tr align="center"><td style="vertical-align:middle">channelCode</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">System Auto generated Channel Code i.e. M01, N01, N99 etc</td></tr><tr align="center"><td style="vertical-align:middle">status</td><td style="vertical-align:middle">char(1)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">1 for Active and 0 for In-active channel</td></tr><tr align="center"><td style="vertical-align:middle">orderSourceWH</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Should be a valid location code created in ERP</td></tr><tr align="center"><td style="vertical-align:middle">linkSkuStoAllLocation</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Enable Link to Location for the channel, Possible values are Yes/No</td></tr><tr align="center"><td style="vertical-align:middle">channelTypeName</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Name of the Marketplace Name created in System</td></tr><tr align="center"><td style="vertical-align:middle">orderSyncEnabled</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Used to enable the order Pull interface of the channel, Possible values are Yes/No</td></tr><tr align="center"><td style="vertical-align:middle">shippingBy</td><td style="vertical-align:middle">tinyint(6)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">1 is for Marketplace and 2 is for Self Ship</td></tr><tr align="center"><td style="vertical-align:middle">useShippingLabel</td><td style="vertical-align:middle">smallint(6)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Use Marketplace Shipping label or Not, Possible values are Yes/No</td></tr><tr align="center"><td style="vertical-align:middle">useInvoice</td><td style="vertical-align:middle">smallint(6)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Use Marketplace Invoice label or Not</td></tr><tr align="center"><td style="vertical-align:middle">skuPullEnabled</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Pull the SKUs from Marketplace or Not</td></tr><tr align="center"><td style="vertical-align:middle">invPerc</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Always Numeric, define the percentage of inventory to be synced to Marketplace/We bshop</td></tr><tr align="center"><td style="vertical-align:middle">invSyncEnabled</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Enable the Inventory Sync of that channel to sync the inventory to Marketplace/We bshop, Possible values are Yes/No</td></tr><tr align="center"><td style="vertical-align:middle">returnPullEnabled</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Enable the return Sync of that channel to sync, Possible values are Yes/No</td></tr><tr align="center"><td style="vertical-align:middle">prePackEnabled</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Enable the Prefetch Label Feature of that channel to pull the ship label after picklist generation automatically, Possible values are Yes/No</td></tr><tr align="center"><td style="vertical-align:middle">vendorPullEnabled</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Enable the Vendor Pull Feature, Not applicable to Marketplaces, Possible values are Yes/No</td></tr><tr align="center"><td style="vertical-align:middle">invSyncMethod</td><td style="vertical-align:middle">Varchar(1)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">1 is for all locations, and 2 is for custom locations defined in designatedWH</td></tr><tr align="center"><td style="vertical-align:middle">merchantId</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Channel Specific credentials</td></tr><tr align="center"><td style="vertical-align:middle">apiUrl</td><td style="vertical-align:middle">Varchar(400)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Channel Specific credentials</td></tr><tr align="center"><td style="vertical-align:middle">apiKey</td><td style="vertical-align:middle">Varchar(1000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Channel Specific credentials</td></tr><tr align="center"><td style="vertical-align:middle">apiPassword</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Channel Specific credentials</td></tr><tr align="center"><td style="vertical-align:middle">userName</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Channel Specific credentials</td></tr><tr align="center"><td style="vertical-align:middle">password</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Channel Specific credentials</td></tr><tr align="center"><td style="vertical-align:middle">authToken</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Channel Specific credentials</td></tr><tr align="center"><td style="vertical-align:middle">storeId</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Channel Specific credentials</td></tr><tr align="center"><td style="vertical-align:middle">isConfigured</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Channel Specific credentials, Possible values are Yes/No</td></tr><tr align="center"><td style="vertical-align:middle">channelSkuPrefix</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Prefix to to added to SKU Code pulled from Marketplace</td></tr><tr align="center"><td style="vertical-align:middle">channelSkuSuffix</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Suffix to to added to SKU Code pulled from Marketplace</td></tr><tr align="center"><td style="vertical-align:middle">vendorId</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">VendorId to be linked to the channel</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">jitVendorEnabled</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">To enable the order routing on the basis of JIT vendor, Possible values are Yes/No</td></tr><tr align="center"><td style="vertical-align:middle">invSyncMinBuffer</td><td style="vertical-align:middle">Varchar(11)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Inventory Sync Buffer for that channel</td></tr><tr align="center"><td style="vertical-align:middle">enableBackOrder</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Enable the Back Order inventory, Applicable for JIT channels only, Possible values are Yes/No</td></tr><tr align="center"><td style="vertical-align:middle">enableInventoryRecon</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">To Enable the inventory Reconciliation</td></tr><tr align="center"><td style="vertical-align:middle">channelSLA</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Channel SLA to be Set</td></tr><tr align="center"><td style="vertical-align:middle">rtsMode</td><td style="vertical-align:middle">Varchar(1)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">1 is for Marking ready to Ship to Marketplaces at Manifest and 2 is for Marking Ready to Ship on Pack (Applicable to specific MPs)</td></tr><tr align="center"><td style="vertical-align:middle">designatedWHforInventory</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Valid Location code created in ERP for inventory sync and applicable if invsyncmethod= 2</td></tr><tr align="center"><td style="vertical-align:middle">maxAllowedInv</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Max Allowed inventory push for the SKUs on that channel</td></tr><tr align="center"><td style="vertical-align:middle">customerCode</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Customer Code to be linked to channel</td></tr><tr align="center"><td style="vertical-align:middle">skuCreateMode</td><td style="vertical-align:middle">Varchar(1)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">C is for creating the SKU pulled from Marketplace and M is for Moderate i.e. Linking the MP Sku to Vin- eRetail SKU</td></tr><tr align="center"><td style="vertical-align:middle">eachQtyPerLine</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Spilit the orderline quantity to 1 quantity per line of that SKU, Possible values are Yes/No</td></tr><tr align="center"><td style="vertical-align:middle">internationalInvoice</td><td style="vertical-align:middle">Varchar(25)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Name of the international Invoice Report Name to be configure to Channel</td></tr><tr align="center"><td style="vertical-align:middle">domasticlInvoice</td><td style="vertical-align:middle">Varchar(25)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Name of the domestic Invoice Report Name to be configure to Channel</td></tr><tr align="center"><td style="vertical-align:middle">orderPullFromDate</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">DateTime from which the order needs to be pulled</td></tr><tr align="center"><td style="vertical-align:middle">taxExclusive</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Always No, Should be used as Yes If the orders pushed to the channel have Unit Price exclusive of Tax</td></tr><tr align="center"><td style="vertical-align:middle">priceSyncEnabled</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Enable the Price Sync(Applicableto specific Channels only), Possible values are Yes/No</td></tr><tr align="center"><td style="vertical-align:middle">sendLocWiseInv</td><td style="vertical-align:middle">tinyint(6)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Default is No and this is applicable to Webshops supporting multi location inventory Push</td></tr><tr align="center"><td style="vertical-align:middle">shippingLabel</td><td style="vertical-align:middle">Varchar(25)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Name of the Shipping label report to be set on channel Orders</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>billToParty</b></td></tr><tr align="center"><td style="vertical-align:middle">billPartyCode</td><td style="vertical-align:middle">Varchar(11)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">AutoGenerated BilltoPartyCode</td></tr><tr align="center"><td style="vertical-align:middle">address1</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Address 1 of the party</td></tr><tr align="center"><td style="vertical-align:middle">address2</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Address 2 of the party</td></tr><tr align="center"><td style="vertical-align:middle">billPartyName</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Name of the Bill to Party</td></tr><tr align="center"><td style="vertical-align:middle">status</td><td style="vertical-align:middle">Varchar(1)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">1 is for active and 2 for In- active</td></tr><tr align="center"><td style="vertical-align:middle">city</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">City Name</td></tr><tr align="center"><td style="vertical-align:middle">country</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Country Name</td></tr><tr align="center"><td style="vertical-align:middle">cstNo</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">CST No.</td></tr><tr align="center"><td style="vertical-align:middle">email</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Email Address</td></tr><tr align="center"><td style="vertical-align:middle">iecCode</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">IEC code</td></tr><tr align="center"><td style="vertical-align:middle">phoneNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Phone No</td></tr><tr align="center"><td style="vertical-align:middle">state</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">State Name</td></tr><tr align="center"><td style="vertical-align:middle">tinNo</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">TIN No</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User Defined Field</td></tr><tr align="center"><td style="vertical-align:middle">vatNo</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">GSTNo. Of the Bill to Party</td></tr><tr align="center"><td style="vertical-align:middle">zipcode</td><td style="vertical-align:middle">Varchar(255)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">PinCode/Zipcode</td></tr><tr align="center"><td style="vertical-align:middle">signImageURL</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Opional</td><td style="vertical-align:middle">Signature Image URL</td></tr><tr align="center"><td style="vertical-align:middle">channelDescription</td><td style="vertical-align:middle">Varchar(70)</td><td style="vertical-align:middle">Opional</td><td style="vertical-align:middle">Description of Channel </td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Additional Information</b></td></tr><tr align="left"><td style="vertical-align:middle" colspan=4 >Max Allowance - 50 locCodes at a time.</td></tr><tr><td style="vertical-align:middle" colspan=4> <b>Case 1:&nbsp;Request for Channel Create</br>{</br>&nbsp;&nbsp;&nbsp;"channels":[</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"channelName":"MR009",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"channelCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"status":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"orderSourceWH":"iwh",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"linkSkuStoAllLocation":"Yes",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"channelTypeName":"Myntra",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"orderSyncEnabled":"No",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shippingBy":"2",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"billToParty":{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"billPartyCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"address1":"Test&nbsp;address&nbsp;1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"adress2":"Test&nbsp;Address&nbsp;2",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"billPartyName":"BillParty3",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"status":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"city":"107",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"country":"india",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"cstNo":"w5swfx",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"email":"test@test.com",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"iecCode":"12345678765432123456765432",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"phoneNo":"9999999999",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"state":"delhi",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"tinNo":"123",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"34R34TV45T54",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"GHN5664",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"S758347BV5T854",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"VET54T54",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf5":"B873C4Y34",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vatNo":"V4T45T65",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"zipcode":"VT54T546",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"signImageURL":"https://www.digitalsingatureimageurl/234567/1234.jpg"</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"useShippingLabel":"Yes",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"useInvoice":"Yes",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skuPullEnabled":"Yes",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"invPerc":"75",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"invSyncEnabled":"Yes",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"returnPullEnabled":"Yes",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"prePackEnabled":"Yes",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vendorPullEnabled":"yes",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"invSyncMethod":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"merchantId":"testmerchantid",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"apiUrl":"https://www.test.com/api",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"apiKey":"fsdcfcxvvzcxvcvcvvcvdfgghhgd",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"apiPassword":"fgfgvscaxdfvgb",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"userName":"test@test.com",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"password":"testpassword",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"authToken":"ddfdfsdfcxvvvvvfggghbvccc",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"storeId":"45dfnd",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"isConfigured":"Yes",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"channelSkuPrefix":"AB",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"channelSkuSuffix":"PQ",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vendorId":"XYZ",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"245f",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"1345",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"1234",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"2345f",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf5":"12345tfd",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"jitVendorEnabled":"Yes",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"invSyncMinBuffer":"5",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"enableBackOrder":"Yes",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"enableInventoryRecon":"Yes",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"channelSLA":"48",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"rtsMode":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"designatedWHforInventory":null,</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"maxAllowedInv":"2000",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"customerCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skuCreateMode":"M",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"eachQtyPerLine":"Yes",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"internationalInvoice":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"domasticlInvoice":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"orderPullFromDate":"28-08-2020&nbsp;06:00:00",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"taxExclusive":"No",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"channelDescription":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"priceSyncEnabled":"No",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"sendLocWiseInv":"No",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shippingLabel":""</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</br>&nbsp;&nbsp;&nbsp;]</br>}</br></br>&nbsp;<b>Case 2:&nbsp;Request for Channel Update</br></b>{</br>&nbsp;&nbsp;&nbsp;"channels":[</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"channelName":"MRUK",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"channelCode":"O23",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"status":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"orderSourceWH":"iwh",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"linkSkuStoAllLocation":"Yes",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"channelTypeName":"Myntra",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"orderSyncEnabled":"No",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shippingBy":"2",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"billToParty":{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"billPartyCode":"177",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"address1":"Test&nbsp;address&nbsp;1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"adress2":"Test&nbsp;Address&nbsp;2",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"billPartyName":"BillParty3",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"status":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"city":"107",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"country":"india",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"cstNo":"w5swfx",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"email":"test@test.com",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"iecCode":"12345678765432123456765432",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"phoneNo":"9999999999",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"state":"delhi",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"tinNo":"123",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"34R34TV45T54",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"GHN5664",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"S758347BV5T854",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"VET54T54",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf5":"B873C4Y34",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vatNo":"V4T45T65",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"zipcode":"VT54T546",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"signImageURL":"https://www.digitalsingatureimageurl/234567/1234.jpg"</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"useShippingLabel":"Yes",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"useInvoice":"Yes",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skuPullEnabled":"Yes",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"invPerc":"75",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"invSyncEnabled":"Yes",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"returnPullEnabled":"Yes",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"prePackEnabled":"Yes",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vendorPullEnabled":"yes",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"invSyncMethod":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"merchantId":"testmerchantid",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"apiUrl":"https://www.test.com/api",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"apiKey":"fsdcfcxvvzcxvcvcvvcvdfgghhgd",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"apiPassword":"fgfgvscaxdfvgb",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"userName":"test@test.com",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"password":"testpassword",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"authToken":"ddfdfsdfcxvvvvvfggghbvccc",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"storeId":"45dfnd",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"isConfigured":"Yes",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"channelSkuPrefix":"AB",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"channelSkuSuffix":"PQ",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vendorId":"XYZ",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"245f",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"1345",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"1234",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"2345f",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf5":"12345tfd",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"jitVendorEnabled":"Yes",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"invSyncMinBuffer":"5",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"enableBackOrder":"Yes",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"enableInventoryRecon":"Yes",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"channelSLA":"48",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"rtsMode":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"designatedWHforInventory":null,</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"maxAllowedInv":"2000",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"customerCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skuCreateMode":"M",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"eachQtyPerLine":"Yes",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"internationalInvoice":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"domasticlInvoice":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"orderPullFromDate":"28-08-2020&nbsp;06:00:00",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"taxExclusive":"No",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"channelDescription":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"priceSyncEnabled":"No",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"sendLocWiseInv":"No",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"shippingLabel":""</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</br>&nbsp;&nbsp;&nbsp;]</br>}</br></tbody></table>
+      operationId: postRestWSApiEretailV1ChannelCreateEdit
+      x-operation-id-source: derived
   /RestWS/api//eretail/v1/common/channelInfo:
     post:
       tags:
@@ -352,6 +368,8 @@ paths:
                   type: string
                   example: ''
         description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">status</td><td style="vertical-align:middle">varchar(10)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Status of the channel(active or inactive)</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Additional Information</b></td></tr><tr align="left"><tr><td style="vertical-align:middle" colspan=4> <b>Case 1:&nbsp;If no status is given(the feild is blank)</br>&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"status":"",</br>}</br></br>&nbsp;Case 2:&nbsp;If status is given</br>&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"status":"active",</br>}</br></br>&nbsp;</tbody></table>
+      operationId: postRestWSApiEretailV1CommonChannelInfo
+      x-operation-id-source: derived
   /RestWS/api/eretail/v1/master/clientCreate:
     post:
       tags:
@@ -388,6 +406,8 @@ paths:
                   items:
                     $ref: '#/components/schemas/clientCreate0'
         description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">clientName</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Name of the client.</td></tr><tr align="center"><td style="vertical-align:middle">clientID</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Unique client identifier.</td></tr><tr align="center"><td style="vertical-align:middle">extClientID</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">External client ID.</td></tr><tr align="center"><td style="vertical-align:middle">clientShortName</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Short name for the client.</td></tr><tr align="center"><td style="vertical-align:middle">status</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Status of the channel(active or inactive).</td></tr><tr align="center"><td style="vertical-align:middle">clientCurrency</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Currency code like INR, USD etc..</td></tr><tr align="center"><td style="vertical-align:middle">billingRequired</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Whether billing is required (Yes/No).</td></tr><tr align="center"><td style="vertical-align:middle">address1</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Primary address line.</td></tr><tr align="center"><td style="vertical-align:middle">address2</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Secondary address line.</td></tr><tr align="center"><td style="vertical-align:middle">contactPerson</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Name or contact of person</td></tr><tr align="center"><td style="vertical-align:middle">phone</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Phone Number.</td></tr><tr align="center"><td style="vertical-align:middle">email</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Email Address.</td></tr><tr align="center"><td style="vertical-align:middle">country</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Country Name.</td></tr><tr align="center"><td style="vertical-align:middle">state</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">State name.</td></tr><tr align="center"><td style="vertical-align:middle">city</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">City name.</td></tr><tr align="center"><td style="vertical-align:middle">pincode</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Postal Code.</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User-defined field.</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User-defined field. </td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User-defined field. </td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User-defined field. </td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User-defined field.</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Additional Information</b></td></tr><tr align="left"><td style="vertical-align:middle" colspan=4 >Maximum limit for CLient create at a time is 10.  </td></tr></tbody></table>
+      operationId: postRestWSApiEretailV1MasterClientCreate
+      x-operation-id-source: derived
   /RestWS/api/eretail/v1/order/updatePackagingDimensions:
     post:
       tags:
@@ -419,6 +439,8 @@ paths:
             schema:
               $ref: '#/components/schemas/updatePackagingDimensionsRequest'
         description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">awb</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Unique tracking number associated with the shipment.</td></tr><tr align="center"><td style="vertical-align:middle">length</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Length of the Packet.</td></tr><tr align="center"><td style="vertical-align:middle">height</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Height of the Packet.</td></tr><tr align="center"><td style="vertical-align:middle">width</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Width of the Packet.</td></tr><tr align="center"><td style="vertical-align:middle">weight</td><td style="vertical-align:middle">Decimal(10,3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Weight of the Packet.</td></tr><tr align="center"><td style="vertical-align:middle">deviceId</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Unique identifier of the weighing machine used for capturing measurements.</td></tr><tr align="center"><td style="vertical-align:middle">image</td><td style="vertical-align:middle">Varchar(500)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Image in Base64 file format.</td></tr></tbody></table>
+      operationId: postRestWSApiEretailV1OrderUpdatePackagingDimensions
+      x-operation-id-source: derived
   /RestWS/api/eretail/v1/common/NDR:
     post:
       tags:
@@ -455,302 +477,30 @@ paths:
                   items:
                     $ref: '#/components/schemas/NDRRequest'
         description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">mode</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Possible Values are:- InitiateRTO, UpdateandReattempt.</td></tr><tr align="center"><td style="vertical-align:middle">deliveryNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">Either DeliveryNo or trackingNo is mandatory.</td></tr>><tr align="center"><td style="vertical-align:middle">trackingNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">Either DeliveryNo or trackingNo is mandatory.</td></tr><tr align="center"><td style="vertical-align:middle">updateAddress1</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">At least one of:- address1to4, contact, paymentType, deliveryDate, or deliverySlot must be provided if mode is UpdateandReattempt.</td></tr><tr align="center"><td style="vertical-align:middle">updateAddress2</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">At least one of:- address1to4, contact, paymentType, deliveryDate, or deliverySlot must be provided if mode is UpdateandReattempt.</td></tr><tr align="center"><td style="vertical-align:middle">updateAddress3</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">At least one of:- address1to4, contact, paymentType, deliveryDate, or deliverySlot must be provided if mode is UpdateandReattempt.</td></tr><tr align="center"><td style="vertical-align:middle">updateAddress4</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">At least one of:- address1to4, contact, paymentType, deliveryDate, or deliverySlot must be provided if mode is UpdateandReattempt.</td></tr><tr align="center"><td style="vertical-align:middle">updateContactNo</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">At least one of:- address1to4, contact, paymentType, deliveryDate, or deliverySlot must be provided if mode is UpdateandReattempt.</td></tr><tr align="center"><td style="vertical-align:middle">paymentType</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible value:-  Prepaid.</td></tr><tr align="center"><td style="vertical-align:middle">deliveryDate</td><td style="vertical-align:middle">datetime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Date Format would be like DD/MM/YYYY HH:MM:SS.</td></tr><tr align="center"><td style="vertical-align:middle">remarks</td><td style="vertical-align:middle">Varchar(1000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Remarks if any</td></tr></tbody></table>
+      operationId: postRestWSApiEretailV1CommonNDR
+      x-operation-id-source: derived
 components:
   schemas:
-    updatePackagingDimensionsRequest:
+    lpnsG:
       properties:
-        awb:
+        lpnNos:
+          type: string
+          example: ''
+        status:
           type: string
           example: ''
         length:
           type: string
           example: ''
-        height:
+        breadth:
           type: string
           example: ''
-        width:
+        height:
           type: string
           example: ''
         weight:
           type: string
           example: ''
-        deviceId:
-          type: string
-          example: ''
-        image:
-          type: string
-          example: ''
-    clientCreate2:
-      properties:
-        responseCode:
-          type: string
-          example: '0'
-        responseMessage:
-          type: string
-          example: Success
-        clientID:
-          type: string
-          example: '13022'
-        extClientId:
-          type: string
-          example: VS13022
-    ChannelCreateUpdateJSON1:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        response:
-          type: array
-          items:
-            $ref: '#/components/schemas/ChannelCreateUpdateJSON2'
-    custCreate0:
-      properties:
-        customerCode:
-          type: string
-          example: 1302248
-        extCustomerCode:
-          type: string
-          example: EXTCUSTCODE
-        customerName:
-          type: string
-          example: VIKRANT SHARMA
-        isActive:
-          type: string
-          example: 'Yes'
-        customerType:
-          type: string
-          example: B2C
-        address1:
-          type: string
-          example: AB-0980 LONG ISLAND
-        address2:
-          type: string
-          example: BLOCK S
-        address3:
-          type: string
-          example: STREET -090
-        address4:
-          type: string
-          example: NEW YORK
-        phone:
-          type: string
-          example: 09148998700
-        altPhone:
-          type: string
-          example: 088855803
-        fax:
-          type: string
-          example: 2-309
-        email1:
-          type: string
-          example: sk14b56@gmail.com
-        email2:
-          type: string
-          example: skbv4in@gmail.com
-        country:
-          type: string
-          example: INDIA
-        state:
-          type: string
-          example: DELHI
-        city:
-          type: string
-          example: NEW DELHI
-        pinCode:
-          type: string
-          example: '123300'
-        billAddress1:
-          type: string
-          example: DEFENCE STREET VALLEY STREAM
-        billAddress2:
-          type: string
-          example: 090-23-A COLONY
-        billAddress3:
-          type: string
-          example: VALLEY ISLE
-        billAddress4:
-          type: string
-          example: NEW YORK
-        billPhone:
-          type: string
-          example: '9148225064435'
-        billAltPhone:
-          type: string
-          example: 0988665693
-        billFax:
-          type: string
-          example: 1A-08
-        billEmail1:
-          type: string
-          example: s14sb09@gmail.com
-        billEmail2:
-          type: string
-          example: ssb@e&y.com
-        billCountry:
-          type: string
-          example: INDIA
-        billState:
-          type: string
-          example: DELHI
-        billCity:
-          type: string
-          example: NEW DELHI
-        billPinCode:
-          type: string
-          example: 094403
-        paymentTerms:
-          type: string
-          example: 7 DAYS
-        tinNo:
-          type: string
-          example: '22009933'
-        taxZone:
-          type: string
-          example: DELHI
-        priceZone:
-          type: string
-          example: PriceZone One
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        udf6:
-          type: string
-          example: ''
-        udf7:
-          type: string
-          example: ''
-        udf8:
-          type: string
-          example: ''
-        udf9:
-          type: string
-          example: ''
-        udf10:
-          type: string
-          example: ''
-        panNo:
-          type: string
-          example: 0294828482
-        gstNo:
-          type: string
-          example: '3889832'
-        shelflifeonPicking:
-          type: integer
-          example: 1
-        totalShelfLife:
-          type: integer
-          example: 1
-        isTaxExempt:
-          type: string
-          example: 'YES'
-        economiczone:
-          type: string
-          example: SEZ
-        creditDays:
-          type: integer
-          example: 5
-        isTCSApplicable:
-          type: string
-          example: 'YES'
-        tcsPercentage:
-          type: string
-          example: '0.075'
-        latitude:
-          type: string
-          example: '54.1123'
-        longitude:
-          type: string
-          example: '120.2224'
-        geoType:
-          type: string
-          example: What3WorDS
-        geoAddress:
-          type: string
-          example: 101 add
-        geoLatitude:
-          type: string
-          example: 101 latitude
-        geoLongitude:
-          type: string
-          example: 101 longitude
-        identificationId:
-          type: string
-          example: ''
-        isformC:
-          type: string
-          example: ''
-        identificationCode:
-          type: string
-          example: ''
-        landmark:
-          type: string
-          example: ''
-        pickingInstructions:
-          type: array
-          items:
-            type: string
-          example: []
-        shippingInstructions:
-          type: array
-          items:
-            type: string
-          example: []
-        addresses:
-          type: array
-          items:
-            $ref: '#/components/schemas/custCreate1'
-    ChannelInfo2:
-      properties:
-        shippingBy:
-          type: string
-          example: '2'
-        status:
-          type: string
-          example: '5'
-        channelType:
-          type: string
-          example: '518'
-        channelCode:
-          type: string
-          example: E47
-        channelName:
-          type: string
-          example: Mugalsarai_POS
-    lpnUpdate:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        requestStatus:
-          type: array
-          items:
-            $ref: '#/components/schemas/lpnUpdate1'
-    updatePackagingDimensionsResponse:
-      properties:
-        responseCode:
-          type: integer
-          example: 1
-        responseMessage:
-          type: string
-          example: Success
     customerList:
       type: object
       properties:
@@ -913,7 +663,7 @@ components:
           items:
             type: string
           example: []
-    channelInfo:
+    skuCategoryDetail1:
       properties:
         responseCode:
           type: integer
@@ -921,218 +671,49 @@ components:
         responseMessage:
           type: string
           example: Success
-        channellist:
+        currentPage:
+          type: integer
+          example: 1
+        skuCategoryList:
           type: array
           items:
-            $ref: '#/components/schemas/ChannelInfo2'
-    locationFetch2:
+            $ref: '#/components/schemas/skuCategoryDetail2'
+    lpnUpdate:
       properties:
-        locCode:
-          type: string
-          example: M20
-        locationType:
-          type: string
-          example: '5'
-        locTypeDescription:
-          type: string
-          example: Marketplaces
-        status:
-          type: string
-          example: ''
-        vendorName:
-          type: string
-          example: ''
-        customerName:
-          type: string
-          example: ''
-        createPoEnabled:
-          type: string
-          example: ''
-        hierarchyType:
-          type: string
-          example: ''
-        hierarchyDescription:
-          type: string
-          example: ''
-        vatNo:
-          type: string
-          example: ''
-        cstNo:
-          type: string
-          example: ''
-        tinNo:
-          type: string
-          example: ''
-        gstTinNo:
-          type: string
-          example: ''
-        taxZone:
-          type: string
-          example: ''
-        skuLinkToLocation:
-          type: string
-          example: ''
-        isARSReq:
-          type: string
-          example: ''
-        lastHierarchyCode:
-          type: string
-          example: ''
-        arsRunLoc:
-          type: string
-          example: ''
-        locLiveDate:
-          type: string
-          example: ''
-        priceZone:
-          type: string
-          example: ''
-        invoiceReport:
-          type: string
-          example: ''
-        brandCode:
-          type: string
-          example: ''
-        panNo:
-          type: string
-          example: ''
-        backOrderEnabled:
-          type: string
-          example: ''
-        storePlanningEnabled:
-          type: string
-          example: ''
-        sellToEcommerce:
-          type: string
-          example: ''
-        locationTags:
-          type: array
-          example:
-          - ''
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        udf6:
-          type: string
-          example: ''
-        udf7:
-          type: string
-          example: ''
-        udf8:
-          type: string
-          example: ''
-        udf9:
-          type: string
-          example: ''
-        udf10:
-          type: string
-          example: ''
-        locationDescription:
-          type: string
-          example: Snapdeal
-        shortname:
-          type: string
-          example: SNPD
-        address1:
-          type: string
-          example: GLOBUS STORES PRIVATE LIMITED / ARAMEX
-        address2:
-          type: string
-          example: Saidhara Logistics Park, Borivali Kukasa Village
-        address3:
-          type: string
-          example: Mum-Nasik Rd, Landmark R.K, Petrol Pump
-        address4:
-          type: string
-          example: Nr. Sangrilla Resort, Bhiwandi
-        city:
-          type: string
-          example: Thane
-        state:
-          type: string
-          example: Maharashtra
-        country:
-          type: string
-          example: INDIA
-        pinCode:
-          type: string
-          example: '421302'
-        phone1:
-          type: string
-          example: '02261705701'
-        phone2:
-          type: string
-          example: ''
-        email1:
-          type: string
-          example: esupport@iksulafootwear.com
-        email2:
-          type: string
-          example: ''
-        extLocCode:
-          type: string
-          example: L06
-        licenseNo:
-          type: string
-          example: L06
-        childLocation:
-          type: array
-          items:
-            $ref: '#/components/schemas/childLocationDto'
-    childLocationDto:
-      properties:
-        locCode:
-          type: string
-          example: ''
-        extlocCode:
-          type: string
-          example: ''
-        locName:
-          type: string
-          example: ''
-    lpnUpdate1:
-      properties:
-        lpnNo:
-          type: string
-          example: EWH000000465
-        status:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
           type: string
           example: Success
-        errorDesc:
-          type: string
-          example: ''
-    lpnsG:
+        requestStatus:
+          type: array
+          items:
+            $ref: '#/components/schemas/lpnUpdate1'
+    NDRResponse2:
       properties:
-        lpnNos:
+        deliveryNo:
+          type: string
+          example: TESTAM0018
+        awbNo:
           type: string
           example: ''
         status:
           type: string
-          example: ''
-        length:
+          example: ”Success”
+        errordesc:
           type: string
           example: ''
-        breadth:
+    customerdetail:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
           type: string
-          example: ''
-        height:
-          type: string
-          example: ''
-        weight:
-          type: string
-          example: ''
+          example: Success
+        response:
+          $ref: '#/components/schemas/responsecustomerdetail'
     ChannelCreateUpdateJSON2:
       properties:
         channelCode:
@@ -1153,150 +734,6 @@ components:
         errorDesc:
           type: string
           example: ''
-    custCreate1:
-      properties:
-        address1:
-          type: string
-          example: ABC
-        address2:
-          type: string
-          example: XYZ
-        address3:
-          type: string
-          example: PQR
-        phone:
-          type: string
-          example: 058484828
-        altPhone:
-          type: string
-          example: 028896294
-        fax:
-          type: string
-          example: '39492'
-        email1:
-          type: string
-          example: abc@gmail.com
-        email2:
-          type: string
-          example: xyz@gmail.com
-        country:
-          type: string
-          example: INDIA
-        state:
-          type: string
-          example: DELHI
-        city:
-          type: string
-          example: NEW DELHI
-        pinCode:
-          type: string
-          example: '209723'
-        remarks:
-          type: string
-          example: NaN
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        latitude:
-          type: string
-          example: '54.1123'
-        longitude:
-          type: string
-          example: '120.2224'
-    clientCreate0:
-      properties:
-        clientName:
-          type: string
-          example: VIKRANT SHARMA
-        clientID:
-          type: string
-          example: '13022'
-        extClientID:
-          type: string
-          example: VS13022
-        clientShortName:
-          type: string
-          example: VIKRANT
-        status:
-          type: string
-          example: Active
-          description: Status of the channel (Active or InActive)
-        clientCurrency:
-          type: string
-          example: INR
-        billingRequired:
-          type: string
-          example: 'Yes'
-          description: Whether billing is required (Yes/No)
-        address1:
-          type: string
-          example: AB-0980 LONG ISLAND
-        address2:
-          type: string
-          example: BLOCK S
-        contactPerson:
-          type: string
-          example: 09148998700
-        phone:
-          type: string
-          example: 088855803
-        email:
-          type: string
-          example: example@email.com
-        country:
-          type: string
-          example: INDIA
-        state:
-          type: string
-          example: DELHI
-        city:
-          type: string
-          example: NEW DELHI
-        pincode:
-          type: string
-          example: '123300'
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-    skuCategoryDetail1:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        currentPage:
-          type: integer
-          example: 1
-        skuCategoryList:
-          type: array
-          items:
-            $ref: '#/components/schemas/skuCategoryDetail2'
     locationFetch0:
       properties:
         responseCode:
@@ -1312,54 +749,22 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/locationFetch2'
-    NDRResponse1:
+    responsecustomerdetail:
       properties:
-        responseCode:
+        totalCustomers:
           type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        response:
+          example: 1
+        totalPages:
+          type: integer
+          example: 1
+        currentPage:
+          type: integer
+          example: 1
+        customerList:
           type: array
           items:
-            $ref: '#/components/schemas/NDRResponse2'
-    NDRRequest:
-      properties:
-        mode:
-          type: string
-          example: UpdateandReattempt
-        deliveryNo:
-          type: string
-          example: TESTAM0018
-        trackingNo:
-          type: string
-          example: ''
-        updateAddress1:
-          type: string
-          example: TWH
-        updateAddress2:
-          type: string
-          example: TWH
-        updateAddress3:
-          type: string
-          example: TWH
-        updateAddress4:
-          type: string
-          example: TWH
-        updatedContactNo:
-          type: string
-          example: '22222222'
-        paymentType:
-          type: string
-          example: Prepaid
-        deliveryDate:
-          type: string
-          example: 21/01/2027 22:40:30
-        remarks:
-          type: string
-          example: remarks if any
-    customerdetail:
+            $ref: '#/components/schemas/customerList'
+    custCreate3:
       properties:
         responseCode:
           type: integer
@@ -1367,8 +772,64 @@ components:
         responseMessage:
           type: string
           example: Success
-        response:
-          $ref: '#/components/schemas/responsecustomerdetail'
+        extCustomerCode:
+          type: string
+          example: EXTCUSTCODE
+        customerCode:
+          type: string
+          example: '1302248'
+    updatePackagingDimensionsRequest:
+      properties:
+        awb:
+          type: string
+          example: ''
+        length:
+          type: string
+          example: ''
+        height:
+          type: string
+          example: ''
+        width:
+          type: string
+          example: ''
+        weight:
+          type: string
+          example: ''
+        deviceId:
+          type: string
+          example: ''
+        image:
+          type: string
+          example: ''
+    ChannelInfo2:
+      properties:
+        shippingBy:
+          type: string
+          example: '2'
+        status:
+          type: string
+          example: '5'
+        channelType:
+          type: string
+          example: '518'
+        channelCode:
+          type: string
+          example: E47
+        channelName:
+          type: string
+          example: Mugalsarai_POS
+    custCreate2:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/custCreate3'
     ChannelCreateUpdateJSON0:
       properties:
         channelName:
@@ -1596,6 +1057,37 @@ components:
         channelDescription:
           type: string
           example: ''
+    childLocationDto:
+      properties:
+        locCode:
+          type: string
+          example: ''
+        extlocCode:
+          type: string
+          example: ''
+        locName:
+          type: string
+          example: ''
+    ChannelCreateUpdateJSON1:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        response:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChannelCreateUpdateJSON2'
+    updatePackagingDimensionsResponse:
+      properties:
+        responseCode:
+          type: integer
+          example: 1
+        responseMessage:
+          type: string
+          example: Success
     skuCategoryDetail2:
       properties:
         merchId:
@@ -1634,35 +1126,264 @@ components:
         udf5:
           type: string
           example: ''
-    custCreate3:
+    custCreate0:
       properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
+        customerCode:
           type: string
-          example: Success
+          example: 1302248
         extCustomerCode:
           type: string
           example: EXTCUSTCODE
-        customerCode:
+        customerName:
           type: string
-          example: '1302248'
-    NDRResponse2:
+          example: VIKRANT SHARMA
+        isActive:
+          type: string
+          example: 'Yes'
+        customerType:
+          type: string
+          example: B2C
+        address1:
+          type: string
+          example: AB-0980 LONG ISLAND
+        address2:
+          type: string
+          example: BLOCK S
+        address3:
+          type: string
+          example: STREET -090
+        address4:
+          type: string
+          example: NEW YORK
+        phone:
+          type: string
+          example: 09148998700
+        altPhone:
+          type: string
+          example: 088855803
+        fax:
+          type: string
+          example: 2-309
+        email1:
+          type: string
+          example: sk14b56@gmail.com
+        email2:
+          type: string
+          example: skbv4in@gmail.com
+        country:
+          type: string
+          example: INDIA
+        state:
+          type: string
+          example: DELHI
+        city:
+          type: string
+          example: NEW DELHI
+        pinCode:
+          type: string
+          example: '123300'
+        billAddress1:
+          type: string
+          example: DEFENCE STREET VALLEY STREAM
+        billAddress2:
+          type: string
+          example: 090-23-A COLONY
+        billAddress3:
+          type: string
+          example: VALLEY ISLE
+        billAddress4:
+          type: string
+          example: NEW YORK
+        billPhone:
+          type: string
+          example: '9148225064435'
+        billAltPhone:
+          type: string
+          example: 0988665693
+        billFax:
+          type: string
+          example: 1A-08
+        billEmail1:
+          type: string
+          example: s14sb09@gmail.com
+        billEmail2:
+          type: string
+          example: ssb@e&y.com
+        billCountry:
+          type: string
+          example: INDIA
+        billState:
+          type: string
+          example: DELHI
+        billCity:
+          type: string
+          example: NEW DELHI
+        billPinCode:
+          type: string
+          example: 094403
+        paymentTerms:
+          type: string
+          example: 7 DAYS
+        tinNo:
+          type: string
+          example: '22009933'
+        taxZone:
+          type: string
+          example: DELHI
+        priceZone:
+          type: string
+          example: PriceZone One
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        udf6:
+          type: string
+          example: ''
+        udf7:
+          type: string
+          example: ''
+        udf8:
+          type: string
+          example: ''
+        udf9:
+          type: string
+          example: ''
+        udf10:
+          type: string
+          example: ''
+        panNo:
+          type: string
+          example: 0294828482
+        gstNo:
+          type: string
+          example: '3889832'
+        shelflifeonPicking:
+          type: integer
+          example: 1
+        totalShelfLife:
+          type: integer
+          example: 1
+        isTaxExempt:
+          type: string
+          example: 'YES'
+        economiczone:
+          type: string
+          example: SEZ
+        creditDays:
+          type: integer
+          example: 5
+        isTCSApplicable:
+          type: string
+          example: 'YES'
+        tcsPercentage:
+          type: string
+          example: '0.075'
+        latitude:
+          type: string
+          example: '54.1123'
+        longitude:
+          type: string
+          example: '120.2224'
+        geoType:
+          type: string
+          example: What3WorDS
+        geoAddress:
+          type: string
+          example: 101 add
+        geoLatitude:
+          type: string
+          example: 101 latitude
+        geoLongitude:
+          type: string
+          example: 101 longitude
+        identificationId:
+          type: string
+          example: ''
+        isformC:
+          type: string
+          example: ''
+        identificationCode:
+          type: string
+          example: ''
+        landmark:
+          type: string
+          example: ''
+        pickingInstructions:
+          type: array
+          items:
+            type: string
+          example: []
+        shippingInstructions:
+          type: array
+          items:
+            type: string
+          example: []
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/custCreate1'
+    NDRRequest:
       properties:
+        mode:
+          type: string
+          example: UpdateandReattempt
         deliveryNo:
           type: string
           example: TESTAM0018
-        awbNo:
+        trackingNo:
           type: string
           example: ''
-        status:
+        updateAddress1:
           type: string
-          example: ”Success”
-        errordesc:
+          example: TWH
+        updateAddress2:
           type: string
-          example: ''
-    custCreate2:
+          example: TWH
+        updateAddress3:
+          type: string
+          example: TWH
+        updateAddress4:
+          type: string
+          example: TWH
+        updatedContactNo:
+          type: string
+          example: '22222222'
+        paymentType:
+          type: string
+          example: Prepaid
+        deliveryDate:
+          type: string
+          example: 21/01/2027 22:40:30
+        remarks:
+          type: string
+          example: remarks if any
+    clientCreate2:
+      properties:
+        responseCode:
+          type: string
+          example: '0'
+        responseMessage:
+          type: string
+          example: Success
+        clientID:
+          type: string
+          example: '13022'
+        extClientId:
+          type: string
+          example: VS13022
+    NDRResponse1:
       properties:
         responseCode:
           type: integer
@@ -1670,25 +1391,328 @@ components:
         responseMessage:
           type: string
           example: Success
-        orders:
+        response:
           type: array
           items:
-            $ref: '#/components/schemas/custCreate3'
-    responsecustomerdetail:
+            $ref: '#/components/schemas/NDRResponse2'
+    locationFetch2:
       properties:
-        totalCustomers:
-          type: integer
-          example: 1
-        totalPages:
-          type: integer
-          example: 1
-        currentPage:
-          type: integer
-          example: 1
-        customerList:
+        locCode:
+          type: string
+          example: M20
+        locationType:
+          type: string
+          example: '5'
+        locTypeDescription:
+          type: string
+          example: Marketplaces
+        status:
+          type: string
+          example: ''
+        vendorName:
+          type: string
+          example: ''
+        customerName:
+          type: string
+          example: ''
+        createPoEnabled:
+          type: string
+          example: ''
+        hierarchyType:
+          type: string
+          example: ''
+        hierarchyDescription:
+          type: string
+          example: ''
+        vatNo:
+          type: string
+          example: ''
+        cstNo:
+          type: string
+          example: ''
+        tinNo:
+          type: string
+          example: ''
+        gstTinNo:
+          type: string
+          example: ''
+        taxZone:
+          type: string
+          example: ''
+        skuLinkToLocation:
+          type: string
+          example: ''
+        isARSReq:
+          type: string
+          example: ''
+        lastHierarchyCode:
+          type: string
+          example: ''
+        arsRunLoc:
+          type: string
+          example: ''
+        locLiveDate:
+          type: string
+          example: ''
+        priceZone:
+          type: string
+          example: ''
+        invoiceReport:
+          type: string
+          example: ''
+        brandCode:
+          type: string
+          example: ''
+        panNo:
+          type: string
+          example: ''
+        backOrderEnabled:
+          type: string
+          example: ''
+        storePlanningEnabled:
+          type: string
+          example: ''
+        sellToEcommerce:
+          type: string
+          example: ''
+        locationTags:
+          type: array
+          example:
+          - ''
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        udf6:
+          type: string
+          example: ''
+        udf7:
+          type: string
+          example: ''
+        udf8:
+          type: string
+          example: ''
+        udf9:
+          type: string
+          example: ''
+        udf10:
+          type: string
+          example: ''
+        locationDescription:
+          type: string
+          example: Snapdeal
+        shortname:
+          type: string
+          example: SNPD
+        address1:
+          type: string
+          example: GLOBUS STORES PRIVATE LIMITED / ARAMEX
+        address2:
+          type: string
+          example: Saidhara Logistics Park, Borivali Kukasa Village
+        address3:
+          type: string
+          example: Mum-Nasik Rd, Landmark R.K, Petrol Pump
+        address4:
+          type: string
+          example: Nr. Sangrilla Resort, Bhiwandi
+        city:
+          type: string
+          example: Thane
+        state:
+          type: string
+          example: Maharashtra
+        country:
+          type: string
+          example: INDIA
+        pinCode:
+          type: string
+          example: '421302'
+        phone1:
+          type: string
+          example: '02261705701'
+        phone2:
+          type: string
+          example: ''
+        email1:
+          type: string
+          example: esupport@iksulafootwear.com
+        email2:
+          type: string
+          example: ''
+        extLocCode:
+          type: string
+          example: L06
+        licenseNo:
+          type: string
+          example: L06
+        childLocation:
           type: array
           items:
-            $ref: '#/components/schemas/customerList'
+            $ref: '#/components/schemas/childLocationDto'
+    lpnUpdate1:
+      properties:
+        lpnNo:
+          type: string
+          example: EWH000000465
+        status:
+          type: string
+          example: Success
+        errorDesc:
+          type: string
+          example: ''
+    custCreate1:
+      properties:
+        address1:
+          type: string
+          example: ABC
+        address2:
+          type: string
+          example: XYZ
+        address3:
+          type: string
+          example: PQR
+        phone:
+          type: string
+          example: 058484828
+        altPhone:
+          type: string
+          example: 028896294
+        fax:
+          type: string
+          example: '39492'
+        email1:
+          type: string
+          example: abc@gmail.com
+        email2:
+          type: string
+          example: xyz@gmail.com
+        country:
+          type: string
+          example: INDIA
+        state:
+          type: string
+          example: DELHI
+        city:
+          type: string
+          example: NEW DELHI
+        pinCode:
+          type: string
+          example: '209723'
+        remarks:
+          type: string
+          example: NaN
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        latitude:
+          type: string
+          example: '54.1123'
+        longitude:
+          type: string
+          example: '120.2224'
+    channelInfo:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        channellist:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChannelInfo2'
+    clientCreate0:
+      properties:
+        clientName:
+          type: string
+          example: VIKRANT SHARMA
+        clientID:
+          type: string
+          example: '13022'
+        extClientID:
+          type: string
+          example: VS13022
+        clientShortName:
+          type: string
+          example: VIKRANT
+        status:
+          type: string
+          example: Active
+          description: Status of the channel (Active or InActive)
+        clientCurrency:
+          type: string
+          example: INR
+        billingRequired:
+          type: string
+          example: 'Yes'
+          description: Whether billing is required (Yes/No)
+        address1:
+          type: string
+          example: AB-0980 LONG ISLAND
+        address2:
+          type: string
+          example: BLOCK S
+        contactPerson:
+          type: string
+          example: 09148998700
+        phone:
+          type: string
+          example: 088855803
+        email:
+          type: string
+          example: example@email.com
+        country:
+          type: string
+          example: INDIA
+        state:
+          type: string
+          example: DELHI
+        city:
+          type: string
+          example: NEW DELHI
+        pincode:
+          type: string
+          example: '123300'
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
     clientCreate1:
       properties:
         responseCode:

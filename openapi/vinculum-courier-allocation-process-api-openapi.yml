@@ -38,6 +38,8 @@ paths:
                   description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">orderNo </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">This is MasterOrderNo . </td></tr><tr align="center"><td style="vertical-align:middle">lineNo</td><td style="vertical-align:middle">Integer(11)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle">invoiceNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle">transporterName </td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Transport name like ECOM,BlueDart etc.</td></tr><tr align="center"><td style="vertical-align:middle">trackingNo </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle">imeiNos </td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle">length </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">length in cm</td><td style="vertical-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle">bredth </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">bredth in cm</td><td style="vertical-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle">height </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">height in cm</td><td style="vertical-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle">weight </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">weight in kg</td><td style="vertical-align:middle"></td></tr><tr><td style="vertical-align:middle" colspan=4> <b>Request Body=<br/>{  <br/>&nbsp;&nbsp;&nbsp;"orderItemsList":[<br/>&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;"orderNo":"AB123456",<br/>&nbsp;&nbsp;&nbsp;"lineNo":"2",<br/>&nbsp;&nbsp;&nbsp;"invoiceNo":"3231311432432324",<br/>&nbsp;&nbsp;&nbsp;"transporterName":"ECOM",<br/>&nbsp;&nbsp;&nbsp;"trackingNo":"123456",<br/>&nbsp;&nbsp;&nbsp;"imeiNos":"1323454,24350990,894092492",<br/>&nbsp;&nbsp;&nbsp;"length":"",<br/>&nbsp;&nbsp;&nbsp;"bredth":"",<br/>&nbsp;&nbsp;&nbsp;"height":"",<br/>&nbsp;&nbsp;&nbsp;"weight":""<br/>&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;</b><br/><br/> </tr></tbody></table>
               required:
               - RequestBody
+      operationId: postGenerateInvoice
+      x-operation-id-source: derived
   /fetchInvoice:
     post:
       tags:
@@ -68,6 +70,8 @@ paths:
                   description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">invoiceNo  </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle"> </td></tr><td style="vertical-align:middle" colspan=4> <b>Request Body=<br/> {<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"invoiceNo":"AC0011617000001"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</b><br/><br/></tbody></table>
               required:
               - RequestBody
+      operationId: postFetchInvoice
+      x-operation-id-source: derived
   /fetchDocuments:
     post:
       tags:
@@ -94,6 +98,8 @@ paths:
                   description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">invoiceNo </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle">documentType </td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Document type like "shippingLable","Invoice" </td></tr><tr><td style="vertical-align:middle" colspan=4> <b>Request Body=<br/> {<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"invoiceNo":"43549032482934345",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"documentType":"shippingLabel"<br/>&nbsp;}</b><br/><br/></tbody></table>
               required:
               - RequestBody
+      operationId: postFetchDocuments
+      x-operation-id-source: derived
   /orderShipping:
     post:
       tags:
@@ -124,6 +130,8 @@ paths:
                   description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">orderNo </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle"></td></tr><tr align="center"><td style="vertical-align:middle">invNo </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle"></td></tr><tr><td style="vertical-align:middle" colspan=4> <b>Request Body=<br/> {</br>&nbsp;&nbsp;&nbsp;"shipDetails":[</br>&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;"orderNo":"100000018",</br>&nbsp;&nbsp;&nbsp;"invNo":"AC0011617000001",</br>&nbsp;&nbsp;&nbsp;"transporter":"delivery",</br>&nbsp;&nbsp;&nbsp;"awbNo":"123123"</br>&nbsp;&nbsp;&nbsp;},</br>&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;"orderNo":"100000054",</br>&nbsp;&nbsp;&nbsp;"invNo":"AC0011617000002",</br>&nbsp;&nbsp;&nbsp;"transporter":"delivery",</br>&nbsp;&nbsp;&nbsp;"awbNo":"123123"</br>&nbsp;&nbsp;&nbsp;}</br>&nbsp;&nbsp;&nbsp;]</br>&nbsp;&nbsp;&nbsp;}</br>&nbsp;&nbsp;&nbsp;</tbody></table>
               required:
               - RequestBody
+      operationId: postOrderShipping
+      x-operation-id-source: derived
   /orderCancellation:
     post:
       tags:
@@ -154,27 +162,10 @@ paths:
                   description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">orderNo </td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle"></td></tr> <tr><td style="vertical-align:middle" colspan=4><b>Request Body=<br/> {<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"orderNo":"AB1883884"<br/>}</b><br/><br/></tbody></table>
               required:
               - RequestBody
+      operationId: postOrderCancellation
+      x-operation-id-source: derived
 components:
   schemas:
-    GenerateInvoice1:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        invoiceNo:
-          type: string
-          example: '3457899883249'
-    OrderShip1:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
     InvoiceList1:
       type: object
       properties:
@@ -211,6 +202,25 @@ components:
         lineImeiNos:
           type: string
           example: null
+    GenerateInvoice1:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        invoiceNo:
+          type: string
+          example: '3457899883249'
+    OrderShip1:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
     fetchInvoiceResponse1:
       properties:
         responseCode:

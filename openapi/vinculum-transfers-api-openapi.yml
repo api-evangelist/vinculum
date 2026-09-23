@@ -46,6 +46,8 @@ paths:
                   items:
                     $ref: '#/components/schemas/STOCreate0'
         description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">stoNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">Mandatory when mode is Update</td></tr><tr align="center"><td style="vertical-align:middle">mode</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Possible values are Create and Update</td></tr><tr align="center"><td style="vertical-align:middle">stoType</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible values are Normal and Return, Define in Codelkup with lkupcode 'ODRTYPE'(Default Normal)</td></tr><tr align="center"><td style="vertical-align:middle">fromLocCode</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">eRetail valid loccode or loccode of external system</td></tr><tr align="center"><td style="vertical-align:middle">toLocCode</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">eRetail valid loccode or loccode of external system</td></tr><tr align="center"><td style="vertical-align:middle">reasonCode</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Define in Codelkup with lkupcode 'STRSN'(Default Misc)</td></tr><tr align="center"><td style="vertical-align:middle">priority</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Define in Codelkup with lkupcode 'ORDPRT'(Default Normal)</td></tr><tr align="center"><td style="vertical-align:middle">remarks</td><td style="vertical-align:middle">Varchar(5000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Remarks against STO</td></tr><tr align="center"><td style="vertical-align:middle">status</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Define in Codelkup with lkupcode 'STRSTS'.</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">orderDate</td><td style="vertical-align:middle">datetime</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Date format (dd/MM/yyyy HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle" colspan="4"><b>ItemDetails Fields</b><h4>For Create Mode Only</h4></td></tr><tr align="center"><td style="vertical-align:middle">extLineNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Enter Line Number</td></tr><tr align="center"><td style="vertical-align:middle">skuCode</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Valid SKU linked with from & to location</td></tr><tr align="center"><td style="vertical-align:middle">qty</td><td style="vertical-align:middle">decimal(10,3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">INTEGER/FLOAT (Depends on hasDecimal Flag)</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(2000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(2000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">User defined field</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Additional Information</b></td></tr><tr align="left"><td style="vertical-align:middle" colspan=4 >Max Allowance - 100 orderList items at a time.</td></tr><tr><td style="vertical-align:middle" colspan=4> <b>JSON Format:&nbsp;</br>&nbsp;{</br>"orderList":[</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"stoNo":"XYZ123",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"mode":"Create",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"stoType":"Normal",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fromLocCode":"NWB",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"toLocCode":"NBS",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"reasonCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "priority":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"remarks":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"status":"Confirm",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "udf2":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf5":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "orderDate":"13/1/2020 12:30:00",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"itemDetails":[</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"extLineNo":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skuCode":"STEST001",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"qty":"5",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf1":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf2":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf3":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf4":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"udf5":""</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</br>&nbsp;&nbsp;&nbsp;&nbsp;]</br>}</br></br></tbody></table>
+      operationId: postRestWSApiEretailV1OrderStoCreate
+      x-operation-id-source: derived
   /RestWS/api/eretail/v1/order/stoCancel:
     post:
       tags:
@@ -84,6 +86,8 @@ paths:
                   items:
                     $ref: '#/components/schemas/cancelSTO0'
         description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">stoNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">STO number, STO No can be Internal/External</td></tr><tr align="center"><td style="vertical-align:middle">reasonCode</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Define in Codelkup with lkupcode 'ODRCNCLRSN'(Default Misc)</td></tr><tr align="center"><td style="vertical-align:middle">destSiteCode</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Location code of destination location</td></tr><tr align="center"><td style="vertical-align:middle">remarks</td><td style="vertical-align:middle">Varchar(100)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">remarks for STO cancellation if any</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Additional Information</b></td></tr><tr align="left"><td style="vertical-align:middle" colspan=4 >Max Allowance - 100 orderList items at a time.</td></tr><tr><td style="vertical-align:middle" colspan=4> <b>JSON Format:&nbsp;</br>&nbsp;{</br>"orderList":[</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"stoNo":"XYZ123",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"reasonCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"destSiteCode":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"remarks":""</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</br>&nbsp;&nbsp;&nbsp;&nbsp;]</br>}</br></br></tbody></table>
+      operationId: postRestWSApiEretailV1OrderStoCancel
+      x-operation-id-source: derived
   /RestWS/api/eretail/v1/order/stoDetails:
     post:
       tags:
@@ -145,6 +149,8 @@ paths:
                   type: string
                   example: '1'
         description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">stoNos</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">List of stoNos, Mandatory if Date Range filter are not given.</td></tr><tr align="center"><td style="vertical-align:middle">stoFromDate</td><td style="vertical-align:middle">datetime</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">**Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle">stoToDate</td><td style="vertical-align:middle">datetime</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">**Only if details by filter (DD/MM/YYYY HH:mm:ss)</td><tr align="center"><td style="vertical-align:middle">srcLocation</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Location code of source location (It will be passed only with date filter)</td></tr><tr align="center"><td style="vertical-align:middle">stoType</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">List of stoType, Possible values are Normal and Return, Define in Codelkup with lkupcode 'ODRTYPE'(Default Normal).</td></tr><tr align="center"><td style="vertical-align:middle">status</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Defined in codelkup where lkupcode like 'ODRSTS'</td></tr><tr align="center"><td style="vertical-align:middle">destLocation</td><td style="vertical-align:middle">Varchar(5)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Location code of destination location</td></tr><tr align="center"><td style="vertical-align:middle">pageNumber</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Default 1. (Page Size 100 Orders)</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Additional Information</b></td></tr><tr align="left"><td style="vertical-align:middle" colspan=4 >Maximum Orders allowed - 20 Orders. </td></tr></tr><tr><td style="vertical-align:middle" colspan=4> <b>Case 1:&nbsp;Get STO Detail by stoNos</br>&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"stoNos":["NWB110437"],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"stoFromDate":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"stoToDate":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"srcLocation":"TWH",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"stoType":["Normal"],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"status":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"destLocation":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1"</br>&nbsp;&nbsp;}</br></br>&nbsp;Case 2:&nbsp;Get STO Detail by Date Range</br>&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"stoNos":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"stoFromDate":"20/01/2020 00:00:00",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"stoToDate":"23/01/2020 00:00:00",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"srcLocation":"TWH",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"stoType":["Normal"],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"status":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"destLocation":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1"</br>&nbsp;&nbsp;}</br></br>&nbsp;</tbody></table>
+      operationId: postRestWSApiEretailV1OrderStoDetails
+      x-operation-id-source: derived
   /RestWS/api/eretail/v2/order/stoDetails:
     post:
       tags:
@@ -208,61 +214,24 @@ paths:
                   type: string
                   example: ''
         description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">stoNos</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">List of stoNos, Mandatory if Date Range filter are not given.</td></tr><tr align="center"><td style="vertical-align:middle">fromDate</td><td style="vertical-align:middle">datetime</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">**Only if details by filter (DD/MM/YYYY HH:mm:ss), Date range should be in between 7 days</td></tr><tr align="center"><td style="vertical-align:middle">toDate</td><td style="vertical-align:middle">datetime</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">**Only if details by filter (DD/MM/YYYY HH:mm:ss)</td><tr align="center"><td style="vertical-align:middle">srcLocation</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Location code for which case is created</td></tr><tr align="center"><td style="vertical-align:middle">stoType</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">List of stoType, Possible values are Normal and Return, Define in Codelkup with lkupcode 'ODRTYPE'(Default Normal).</td></tr><tr align="center"><td style="vertical-align:middle">status</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Define in Codelkup with lkupcode 'ODRSTS'</td></tr><tr align="center"><td style="vertical-align:middle">pageNumber</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Default 1. (Page Size 100 Orders)</td></tr><tr align="center"><td style="vertical-align:middle">filterBy</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle"> (Possible values will be 1, 2, 3)    1- orderdate, 2- crtdate, 3- upddate  [if paramater is not passed or left blank then take the deafult value as 1]</td></tr></tr><tr><td style="vertical-align:middle" colspan=4> <b>Case 1:&nbsp;Get STO Detail by stoNos</br>&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"stoNos":["NWB110437"],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"srcLocation":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"stoType":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"status":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":"1"</br>&nbsp;&nbsp;}</br></br>&nbsp;Case 2:&nbsp;Get STO Detail by Date Range</br>&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"stoNos":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"09/10/2022 00:00:00",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"23/01/2020 00:00:00",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"srcLocation":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"stoType":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"status":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":""</br>&nbsp;&nbsp;}</br></br>&nbsp;Case 3:&nbsp;Get STO Detail by filterBy</br>&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"stoNos":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"09/10/2022 00:00:00",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"23/01/2020 00:00:00",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"srcLocation":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"stoType":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"status":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"filterBy":"1"</br>&nbsp;&nbsp;}</br>&nbsp;</tbody></table>
+      operationId: postRestWSApiEretailV2OrderStoDetails
+      x-operation-id-source: derived
 components:
   schemas:
-    STOCreate2:
+    cancelSTO0:
       properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
+        stoNo:
           type: string
-          example: Success
-        response:
-          type: array
-          items:
-            $ref: '#/components/schemas/STOCreate3'
-    dimensionStoDetailV1:
-      properties:
-        length:
+          example: XYZ123
+        reasonCode:
           type: string
-          example: '10.00'
-        breadth:
+          example: Misc
+        destSiteCode:
           type: string
-          example: '20.00'
-        height:
+          example: ''
+        remarks:
           type: string
-          example: '30.00'
-        weight:
-          type: string
-          example: '19.00'
-        weightUnit:
-          type: string
-          example: '19'
-        dimensionUnit:
-          type: string
-          example: '800.00000'
-        noofboxes:
-          type: string
-          example: '1'
-    stoDetailsv21:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        currentPage:
-          type: integer
-          example: 1
-        totalPage:
-          type: integer
-          example: 1
-        stoList:
-          type: array
-          items:
-            $ref: '#/components/schemas/stoDetailsv22'
+          example: Normal
     STOCreate1:
       properties:
         extLineNo:
@@ -289,162 +258,49 @@ components:
         udf5:
           type: string
           example: ''
-    stoDetails2:
-      properties:
-        extOrderNo:
-          type: string
-          example: NWB110437
-        orderNo:
-          type: string
-          example: NWB110437
-        status:
-          type: string
-          example: Pending
-        stoType:
-          type: string
-          example: Normal
-        remarks:
-          type: string
-          example: ''
-        orderQty:
-          type: string
-          example: '8.0'
-        orderAmount:
-          type: string
-          example: '800.00000'
-        orderLines:
-          type: string
-          example: '1'
-        ordertaxAmount:
-          type: string
-          example: '0.00000'
-        orderDate:
-          type: string
-          example: 18/12/2019 05:49:50
-        createdDate:
-          type: string
-          example: 18/12/2019 05:49:50
-        updatedDate:
-          type: string
-          example: 18/12/2019 05:49:50
-        fromSiteCode:
-          type: string
-          example: NWB
-        fromSiteName:
-          type: string
-          example: Warehouse Mumbai
-        toSiteCode:
-          type: string
-          example: NWB
-        toSiteName:
-          type: string
-          example: Warehouse Mumbai
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        udf6:
-          type: string
-          example: ''
-        udf7:
-          type: string
-          example: ''
-        udf8:
-          type: string
-          example: ''
-        udf9:
-          type: string
-          example: ''
-        udf10:
-          type: string
-          example: ''
-        shipmentDetail:
-          type: array
-          items:
-            $ref: '#/components/schemas/stoDetails3'
-    stoDetails1:
+    cancelSTO2:
       properties:
         responseCode:
           type: integer
           example: 0
         responseMessage:
           type: string
-          example: Success
-        currentPage:
-          type: integer
-          example: 1
-        stoList:
-          type: array
-          items:
-            $ref: '#/components/schemas/stoDetails2'
-    stoDetails3:
-      properties:
-        deliveryNumber:
+          example: SUCCESS
+        externalSTONo:
           type: string
-          example: CHEB0D005350
+          example: NWB110497
+        STONo:
+          type: string
+          example: NWB110497
+    STOCreate0:
+      properties:
+        stoNo:
+          type: string
+          example: XYZ123
+        mode:
+          type: string
+          example: Create
+        stoType:
+          type: string
+          example: Normal
+        fromLocCode:
+          type: string
+          example: NWB
+        toLocCode:
+          type: string
+          example: NBS
+        reasonCode:
+          type: string
+          example: ''
+        priority:
+          type: string
+          example: ''
+        remarks:
+          type: string
+          example: ''
         status:
           type: string
-          example: delivered
-        qty:
-          type: string
-          example: '10.00'
-        transporter:
-          type: string
-          example: Delhivary Barcode
-        transporterRemark:
-          type: string
-          example: ''
-        inBoundCodes:
-          type: string
-          example: []
-        dimensions:
-          type: array
-          items:
-            $ref: '#/components/schemas/dimensionStoDetailV1'
-        transporterStatus:
-          type: string
-          example: ''
-        extTransCode:
-          type: string
-          example: ''
-        extTransporterName:
-          type: string
-          example: ''
-        trackingNumber:
-          type: string
-          example: ''
-        ewayBillNo:
-          type: string
-          example: ''
-        irnNo:
-          type: string
-          example: ''
-        qrCode:
-          type: string
-          example: ''
-        pickDate:
-          type: string
-          example: ''
-        packDate:
-          type: string
-          example: ''
-        shipDate:
-          type: string
-          example: ''
-        manifestNo:
-          type: string
-          example: ''
+          example: Confirm
         udf1:
           type: string
           example: ''
@@ -460,10 +316,13 @@ components:
         udf5:
           type: string
           example: ''
-        items:
+        orderDate:
+          type: string
+          example: 13/1/2020 12:30:00
+        itemDetails:
           type: array
           items:
-            $ref: '#/components/schemas/stoDetails4'
+            $ref: '#/components/schemas/STOCreate1'
     stoDetails4:
       properties:
         lineno:
@@ -625,105 +484,7 @@ components:
         unitPrice:
           type: string
           example: '643.8'
-    cancelSTO0:
-      properties:
-        stoNo:
-          type: string
-          example: XYZ123
-        reasonCode:
-          type: string
-          example: Misc
-        destSiteCode:
-          type: string
-          example: ''
-        remarks:
-          type: string
-          example: Normal
-    stoDetailsv22:
-      properties:
-        extOrderNo:
-          type: string
-          example: UJW21550
-        orderNo:
-          type: string
-          example: UJW21550
-        status:
-          type: string
-          example: Confirmed
-        stoType:
-          type: string
-          example: Normal
-        remarks:
-          type: string
-          example: THIS IS REMA
-        orderQty:
-          type: string
-          example: '1.0'
-        orderAmount:
-          type: string
-          example: '88.990'
-        orderLines:
-          type: string
-          example: '1'
-        ordertaxAmount:
-          type: string
-          example: '0.000'
-        orderDate:
-          type: string
-          example: 14/10/2022 20:53:26
-        createdDate:
-          type: string
-          example: 14/10/2022 20:53:26
-        updatedDate:
-          type: string
-          example: 14/10/2022 20:53:26
-        fromSiteCode:
-          type: string
-          example: CHE
-        fromSiteName:
-          type: string
-          example: Urjakart Warehouse
-        toSiteCode:
-          type: string
-          example: LLW
-        toSiteName:
-          type: string
-          example: Lakshya Lucknow
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        udf6:
-          type: string
-          example: ''
-        udf7:
-          type: string
-          example: ''
-        udf8:
-          type: string
-          example: ''
-        udf9:
-          type: string
-          example: CALLEDFRMSCREEN
-        udf10:
-          type: string
-          example: ''
-        shipmentDetail:
-          type: array
-          items:
-            $ref: '#/components/schemas/stoDetailsv23'
-    cancelSTO1:
+    STOCreate2:
       properties:
         responseCode:
           type: integer
@@ -734,7 +495,7 @@ components:
         response:
           type: array
           items:
-            $ref: '#/components/schemas/cancelSTO2'
+            $ref: '#/components/schemas/STOCreate3'
     stoDetailsv23:
       properties:
         deliveryNumber:
@@ -811,6 +572,82 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/stoDetailsv24'
+    stoDetails3:
+      properties:
+        deliveryNumber:
+          type: string
+          example: CHEB0D005350
+        status:
+          type: string
+          example: delivered
+        qty:
+          type: string
+          example: '10.00'
+        transporter:
+          type: string
+          example: Delhivary Barcode
+        transporterRemark:
+          type: string
+          example: ''
+        inBoundCodes:
+          type: string
+          example: []
+        dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/dimensionStoDetailV1'
+        transporterStatus:
+          type: string
+          example: ''
+        extTransCode:
+          type: string
+          example: ''
+        extTransporterName:
+          type: string
+          example: ''
+        trackingNumber:
+          type: string
+          example: ''
+        ewayBillNo:
+          type: string
+          example: ''
+        irnNo:
+          type: string
+          example: ''
+        qrCode:
+          type: string
+          example: ''
+        pickDate:
+          type: string
+          example: ''
+        packDate:
+          type: string
+          example: ''
+        shipDate:
+          type: string
+          example: ''
+        manifestNo:
+          type: string
+          example: ''
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/stoDetails4'
     stoDetailsv24:
       properties:
         lineno:
@@ -972,63 +809,56 @@ components:
         unitPrice:
           type: string
           example: '88.990'
-    STOCreate3:
+    stoDetailsv22:
       properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
+        extOrderNo:
           type: string
-          example: SUCCESS
-        externalSTONo:
+          example: UJW21550
+        orderNo:
           type: string
-          example: NWB110497
-        STONo:
+          example: UJW21550
+        status:
           type: string
-          example: NWB110497
-    cancelSTO2:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: SUCCESS
-        externalSTONo:
-          type: string
-          example: NWB110497
-        STONo:
-          type: string
-          example: NWB110497
-    STOCreate0:
-      properties:
-        stoNo:
-          type: string
-          example: XYZ123
-        mode:
-          type: string
-          example: Create
+          example: Confirmed
         stoType:
           type: string
           example: Normal
-        fromLocCode:
-          type: string
-          example: NWB
-        toLocCode:
-          type: string
-          example: NBS
-        reasonCode:
-          type: string
-          example: ''
-        priority:
-          type: string
-          example: ''
         remarks:
           type: string
-          example: ''
-        status:
+          example: THIS IS REMA
+        orderQty:
           type: string
-          example: Confirm
+          example: '1.0'
+        orderAmount:
+          type: string
+          example: '88.990'
+        orderLines:
+          type: string
+          example: '1'
+        ordertaxAmount:
+          type: string
+          example: '0.000'
+        orderDate:
+          type: string
+          example: 14/10/2022 20:53:26
+        createdDate:
+          type: string
+          example: 14/10/2022 20:53:26
+        updatedDate:
+          type: string
+          example: 14/10/2022 20:53:26
+        fromSiteCode:
+          type: string
+          example: CHE
+        fromSiteName:
+          type: string
+          example: Urjakart Warehouse
+        toSiteCode:
+          type: string
+          example: LLW
+        toSiteName:
+          type: string
+          example: Lakshya Lucknow
         udf1:
           type: string
           example: ''
@@ -1044,13 +874,107 @@ components:
         udf5:
           type: string
           example: ''
-        orderDate:
+        udf6:
           type: string
-          example: 13/1/2020 12:30:00
-        itemDetails:
+          example: ''
+        udf7:
+          type: string
+          example: ''
+        udf8:
+          type: string
+          example: ''
+        udf9:
+          type: string
+          example: CALLEDFRMSCREEN
+        udf10:
+          type: string
+          example: ''
+        shipmentDetail:
           type: array
           items:
-            $ref: '#/components/schemas/STOCreate1'
+            $ref: '#/components/schemas/stoDetailsv23'
+    dimensionStoDetailV1:
+      properties:
+        length:
+          type: string
+          example: '10.00'
+        breadth:
+          type: string
+          example: '20.00'
+        height:
+          type: string
+          example: '30.00'
+        weight:
+          type: string
+          example: '19.00'
+        weightUnit:
+          type: string
+          example: '19'
+        dimensionUnit:
+          type: string
+          example: '800.00000'
+        noofboxes:
+          type: string
+          example: '1'
+    cancelSTO1:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        response:
+          type: array
+          items:
+            $ref: '#/components/schemas/cancelSTO2'
+    STOCreate3:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: SUCCESS
+        externalSTONo:
+          type: string
+          example: NWB110497
+        STONo:
+          type: string
+          example: NWB110497
+    stoDetails1:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        currentPage:
+          type: integer
+          example: 1
+        stoList:
+          type: array
+          items:
+            $ref: '#/components/schemas/stoDetails2'
+    stoDetailsv21:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        currentPage:
+          type: integer
+          example: 1
+        totalPage:
+          type: integer
+          example: 1
+        stoList:
+          type: array
+          items:
+            $ref: '#/components/schemas/stoDetailsv22'
     dimensionStoDetailV2:
       properties:
         length:
@@ -1074,3 +998,87 @@ components:
         noofboxes:
           type: string
           example: '1'
+    stoDetails2:
+      properties:
+        extOrderNo:
+          type: string
+          example: NWB110437
+        orderNo:
+          type: string
+          example: NWB110437
+        status:
+          type: string
+          example: Pending
+        stoType:
+          type: string
+          example: Normal
+        remarks:
+          type: string
+          example: ''
+        orderQty:
+          type: string
+          example: '8.0'
+        orderAmount:
+          type: string
+          example: '800.00000'
+        orderLines:
+          type: string
+          example: '1'
+        ordertaxAmount:
+          type: string
+          example: '0.00000'
+        orderDate:
+          type: string
+          example: 18/12/2019 05:49:50
+        createdDate:
+          type: string
+          example: 18/12/2019 05:49:50
+        updatedDate:
+          type: string
+          example: 18/12/2019 05:49:50
+        fromSiteCode:
+          type: string
+          example: NWB
+        fromSiteName:
+          type: string
+          example: Warehouse Mumbai
+        toSiteCode:
+          type: string
+          example: NWB
+        toSiteName:
+          type: string
+          example: Warehouse Mumbai
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        udf6:
+          type: string
+          example: ''
+        udf7:
+          type: string
+          example: ''
+        udf8:
+          type: string
+          example: ''
+        udf9:
+          type: string
+          example: ''
+        udf10:
+          type: string
+          example: ''
+        shipmentDetail:
+          type: array
+          items:
+            $ref: '#/components/schemas/stoDetails3'

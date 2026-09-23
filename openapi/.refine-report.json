@@ -32,7 +32,8 @@
   "notes": [
     "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "vinculum-eretail-openapi-original.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
-    "vinculum-sellerpanel-openapi-original.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0"
+    "vinculum-sellerpanel-openapi-original.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "vinculum-advance-shipping-notice-api-openapi.yml: previously refined output, superseded by openapi/_original/",

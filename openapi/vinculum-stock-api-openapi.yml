@@ -35,6 +35,8 @@ paths:
               - RequestBody
               - ApiOwner
               - ApiKey
+      operationId: postRestWSApiEretailV2StockUpdateInventory
+      x-operation-id-source: derived
   /RestWS/api/eretail/v3/stock/updateInventory:
     post:
       tags:
@@ -62,6 +64,8 @@ paths:
             schema:
               $ref: '#/components/schemas/updateInventoryModelV3'
         description: <table class="table-style-three"><tbody><tr><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">skuCode</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Skucode</td></tr><tr align="center"><td style="vertical-align:middle">qty</td><td style="vertical-align:middle">Decimal(20,3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Quantity</td></tr><tr align="center"><td style="vertical-align:middle">bin</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Inventory bin(Possible Value for bin is GOOD.)</td></tr><tr align="center"><td style="vertical-align:middle">lottable_01</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr><tr align="center"><td style="vertical-align:middle">lottable_02</td><td style="vertical-align:middle">Date</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields (DD/MM/YYYY)</td></tr><tr align="center"><td style="vertical-align:middle">lottable_03</td><td style="vertical-align:middle">Date</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields (DD/MM/YYYY)</td></tr><tr align="center"><td style="vertical-align:middle">lottable_04</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields </td></tr><tr align="center"><td style="vertical-align:middle">lottable_05</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr><tr align="center"><td style="vertical-align:middle">lottable_06</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr><tr align="center"><td style="vertical-align:middle">lottable_07</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr><tr align="center"><td style="vertical-align:middle">reason</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Possible Value for reason is Misc.</td></tr><tr align="center"><td style="vertical-align:middle">mode</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Possible Value for mode is Increase or Decrease or New.</td></tr><tr align="center"><td style="vertical-align:middle">location</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">locCode</td></tr><tr align="center"><td style="vertical-align:middle">operationOn</td><td style="vertical-align:middle">Varchar</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Can be Free Qty and by default SOH.</td></tr><tr align="center"><td style="vertical-align:middle">remarks</td><td style="vertical-align:middle">Varchar(1000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible Value for remarks is Misc</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">user defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">user defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">user defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">user defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">user defined field</td></tr><tr align="center"><td style="vertical-align:middle">lpn</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">LPN</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Additional Information</b></td></tr><tr align="left"><td style="vertical-align:middle" colspan=4 >Max Allowance - 100 inventoryList at a time.</td></tr><tr><td  colspan=5> <b>Case- </b><br/>
+      operationId: postRestWSApiEretailV3StockUpdateInventory
+      x-operation-id-source: derived
   /RestWS/api/eretail/v4/stock/updateInventory:
     post:
       tags:
@@ -93,11 +97,13 @@ paths:
                   items:
                     $ref: '#/components/schemas/updateInventory'
         description: <table><tr align="center" ><td width="100" style="color:#ec0c0c !important;font-size:16px !important;"><strong>Beta Version (Case Pack Compatible)</strong></td></tr></table><table class="table-style-three"><tbody><tr><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">skuCode</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Skucode</td></tr><tr align="center"><td style="vertical-align:middle">uomQty</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">UOM Quantity</td></tr><tr align="center"><td style="vertical-align:middle">uom</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">UOM</td></tr><tr align="center"><td style="vertical-align:middle">conversion</td><td style="vertical-align:middle">Int(11)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">CaseSize</td></tr><tr align="center"><td style="vertical-align:middle">bin</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Inventory bin</td></tr><tr align="center"><td style="vertical-align:middle">lpn</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">LPN</td></tr><tr align="center"><td style="vertical-align:middle">lottable_01</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr><tr align="center"><td style="vertical-align:middle">lottable_02</td><td style="vertical-align:middle">Date</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields (DD/MM/YYYY)</td></tr><tr align="center"><td style="vertical-align:middle">lottable_03</td><td style="vertical-align:middle">Date</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields (DD/MM/YYYY)</td></tr><tr align="center"><td style="vertical-align:middle">lottable_04</td><td style="vertical-align:middle">Date</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields (DD/MM/YYYY)</td></tr><tr align="center"><td style="vertical-align:middle">lottable_05</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr><tr align="center"><td style="vertical-align:middle">lottable_06</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr><tr align="center"><td style="vertical-align:middle">lottable_07</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot attribute fields</td></tr><tr align="center"><td style="vertical-align:middle">reason</td><td style="vertical-align:middle">Varchar(200)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Possible Value for reason is Misc.</td></tr><tr align="center"><td style="vertical-align:middle">mode</td><td style="vertical-align:middle">Varchar(10)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Possible Value for mode is Increase or Decrease or New.</td></tr><tr align="center"><td style="vertical-align:middle">location</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">locCode</td></tr><tr align="center"><td style="vertical-align:middle">operationOn</td><td style="vertical-align:middle">Varchar</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Can be Free Qty and by default SOH.</td></tr><tr align="center"><td style="vertical-align:middle">remarks</td><td style="vertical-align:middle">Varchar(1000)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible Value for remarks is Misc</td></tr><tr align="center"><td style="vertical-align:middle">udf1</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">user defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf2</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">user defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf3</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">user defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf4</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">user defined field</td></tr><tr align="center"><td style="vertical-align:middle">udf5</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">user defined field</td></tr><tr align="center"><td style="vertical-align:middle">lotNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Lot No</td></tr></tbody></table>
+      operationId: postRestWSApiEretailV4StockUpdateInventory
+      x-operation-id-source: derived
   /RestWS/api/eretail/v1/stock/inventoryMovement:
     post:
       tags:
       - Stock
-      summary: Max no.of Lines/hit:100  API For Inventory Move Task(Hit Quota 40/5 min)
+      summary: Max no.of Lines/hit:100 API For Inventory Move Task(Hit Quota 40/5 min)
       parameters:
       - in: header
         name: ApiOwner
@@ -127,6 +133,8 @@ paths:
                   items:
                     $ref: '#/components/schemas/inventoryMovement'
         description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">RefID</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Reference ID of external system for the movement transaction</td></tr><tr align="center"><td style="vertical-align:middle">location</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">loccode can be Internal/external</td></tr><tr align="center"><td style="vertical-align:middle">skucode</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Must be valid SKU Code.</td></tr><tr align="center"><td style="vertical-align:middle">qty</td><td style="vertical-align:middle">decimal(10,3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Quantity to be moved</td></tr><tr align="center"><td style="vertical-align:middle">tobin</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">Bin to which inventory is to be moved</td></tr><tr align="center"><td style="vertical-align:middle">LOT</td><td style="vertical-align:middle">Varchar(12)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">A valid Lot No</td></tr><tr align="center"><td style="vertical-align:middle">FromLPN</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">A valid From Box ID</td></tr><tr align="center"><td style="vertical-align:middle">ToLPN</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">A valid To Box ID</td></tr><tr align="center"><td style="vertical-align:middle">UDF1</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">user defined field</td></tr><tr align="center"><td style="vertical-align:middle">UDF2</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">user defined field</td></tr><tr align="center"><td style="vertical-align:middle">UDF3</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">user defined field</td></tr><tr align="center"><td style="vertical-align:middle">UDF4</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">user defined field</td></tr><tr align="center"><td style="vertical-align:middle">UDF5</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">user defined field</td></tr><tr align="center"><td style="vertical-align:middle">fromBin</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">The bin from which the inventory is to be moved(If Inventory exists in multiple bins and no value is provided, the entire inventory will be moved except for what is already in the  tobin).</td></tr><tr align="center"><td style="vertical-align:middle" colspan=4 ><b>Additional Information</b></td></tr><tr align="left"><td style="vertical-align:middle" colspan=4 >Maximum allowance to inventory movement is 100</td></tr><tr><td style="vertical-align:middle" colspan=4> <b>JSON Format</br>&nbsp;{</br>"list":[</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"RefID":"00-110-010011",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"location":"NWB",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skucode":"051821679",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"qty":"2",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"tobin":"Zara",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"LOT":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"FromLPN":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"ToLPN":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"UDF1":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"UDF2":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"UDF3":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"UDF4":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"UDF5":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fromBin":""</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</br>&nbsp;&nbsp;&nbsp;&nbsp;]</br>}</b></br></br></tbody></table>
+      operationId: postRestWSApiEretailV1StockInventoryMovement
+      x-operation-id-source: derived
   /RestWS/api/eretail/v1/stock/inventoryHoldUnhold:
     post:
       tags:
@@ -161,11 +169,13 @@ paths:
                   items:
                     $ref: '#/components/schemas/inventoryHoldUnhold'
         description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">uniqueKey</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">Field uniqueKey is unique identifier to identify the particular request.</td></tr><tr align="center"><td style="vertical-align:middle">locCode</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle"> eRetail location code.</td></tr><tr align="center"><td style="vertical-align:middle">skuCode</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">eRetail sku code.</td></tr><tr align="center"><td style="vertical-align:middle">status</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle"> Hold or Unhold (lkupcode - INVHOLDSTS)</td></tr><tr align="center"><td style="vertical-align:middle">bin</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Mandatory*</td><td style="vertical-align:middle">bincode</td></tr><tr align="center"><td style="vertical-align:middle">lot</td><td style="vertical-align:middle">Varchar(20)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">lot No.</td></tr><tr align="center"><td style="vertical-align:middle">lpnNo</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">A valid Box ID</td></tr><tr><td style="vertical-align:middle" colspan=4> </tbody></table>
+      operationId: postRestWSApiEretailV1StockInventoryHoldUnhold
+      x-operation-id-source: derived
   /RestWS/api/eretail/v1/stock/adjustmentDetail:
     post:
       tags:
       - Stock
-      summary: No.of Lines/Response:100  API for Stock Adjustment Detail(Hit Quota 40/5 min)
+      summary: No.of Lines/Response:100 API for Stock Adjustment Detail(Hit Quota 40/5 min)
       responses:
         200:
           description: OK
@@ -192,6 +202,8 @@ paths:
               - RequestBody
               - ApiOwner
               - ApiKey
+      operationId: postRestWSApiEretailV1StockAdjustmentDetail
+      x-operation-id-source: derived
   /RestWS/api/eretail/v3/stock/adjustmentDetail:
     post:
       tags:
@@ -243,6 +255,8 @@ paths:
                   type: string
                   example: '1'
         description: <table class="table-style-three"><tbody><tr><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">skuCode</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Maximum 100 Sku's</td></tr><tr align="center"><td style="vertical-align:middle">location</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">eRetail Location Code or Location code of external system. If API is mapped with multiple locations, it is mandatory to provide the field in request.</td></tr><tr align="center"><td style="vertical-align:middle">date_from</td><td style="vertical-align:middle">datetime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">*Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle">date_to</td><td style="vertical-align:middle">datetime</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">*Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle">pageNumber</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Default 1. (Page Size 100 Orders)</td></tr><tr><td  colspan=5> <b>Case 1- When Sku is passed</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"skuCode":["12345","3456"],</br>&nbsp;&nbsp;&nbsp;&nbsp;"location":"IWH",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_from":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"date_to":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1"<br/>&nbsp;}</b><br/><br/><br/> <b>Case 2- With Date Range Filter</b><br/> <b>{<br/> &nbsp;&nbsp;&nbsp;&nbsp;"skuCode":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;"location":"IWH",</br>&nbsp;&nbsp;&nbsp;&nbsp;"date_from":"03/08/2017 00:00:00",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"date_to":"09/08/2017 00:00:00",</br>&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1"<br/>&nbsp;}</b></td></tr></tbody></table><p>&nbsp;</p><br/>
+      operationId: postRestWSApiEretailV3StockAdjustmentDetail
+      x-operation-id-source: derived
   /RestWS/api/eretail/v1/stock/invMove:
     post:
       tags:
@@ -270,11 +284,13 @@ paths:
               - ApiOwner
               - ApiKey
               - RequestBody
+      operationId: postRestWSApiEretailV1StockInvMove
+      x-operation-id-source: derived
   /RestWS/api/eretail/v4/stock/getWhInventory:
     post:
       tags:
       - Stock
-      summary: No.of Lines/Response:100 API For Checking WH Inventory Detail(Hit Quota 40/5 min)
+      summary: No.of Lines/Response:100 API For Checking WH Inventory Detail(Hit Quota 40/5…
       parameters:
       - in: header
         name: ApiOwner
@@ -329,11 +345,13 @@ paths:
                   type: string
                   example: ''
         description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">skuCodes</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">Pass list of sku codes(Either SkuCode or FromDate & Todate filters are mandatory)</td></tr><tr align="center"><td style="vertical-align:middle">buckets</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Possible value:- "Good", "Bad", "Hold", "In process"</td></tr><tr align="center"><td style="vertical-align:middle">fromDate</td><td style="vertical-align:middle">datetime</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">**Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle">toDate</td><td style="vertical-align:middle">datetime</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">**Only if details by filter (DD/MM/YYYY HH:mm:ss)</td><tr align="center"><td style="vertical-align:middle">pageNumber</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Default 1. (Page Size 100 Orders)</td></tr></tr><tr align="center"><td style="vertical-align:middle">locCode</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">eRetail Location Code or loccode of external system</td></tr><tr align="center"><td style="vertical-align:middle">reqType</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">if reqType value is 1  can  pull without inventory sku</td></tr><tr><td style="vertical-align:middle" colspan=4> <b>Case 1:&nbsp;Get WhInventory Detail by skuCodes(s)</br>&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skuCodes":["PICK01"],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"buckets":["good","Bad","Hold","In process"],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"reqType":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"locCode":""</br>&nbsp;}</br></br>&nbsp;Case 2:&nbsp;Get WhInventory Detail by Date Range</br>&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skuCodes":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"buckets":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"13/04/2021 07:20:01",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"13/04/2021 08:20:01",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"reqType":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"locCode":"UWH"</br>&nbsp;}</br></br>&nbsp;</tbody></table>
+      operationId: postRestWSApiEretailV4StockGetWhInventory
+      x-operation-id-source: derived
   /RestWS/api/eretail/v1/stock/movementHistory:
     post:
       tags:
       - Stock
-      summary: Max no.of Lines/hit:100. API For Checking Inventory move history(Hit Quota 40/5 min)
+      summary: Max no.of Lines/hit:100.
       parameters:
       - in: header
         name: ApiOwner
@@ -386,32 +404,10 @@ paths:
                   type: string
                   example: '1'
         description: <table class="table-style-three"><tbody><tr align="center"><td style="vertical-align:middle" width='100'><strong>Field Name </strong></td><td style="vertical-align:middle" width='100'><strong>Data Type </strong></td><td style="vertical-align:middle" width='100'><strong>Mandatory </strong></td><td style="vertical-align:middle" width='300'><strong>Description </strong></td></tr><tr align="center"><td style="vertical-align:middle">skuCode</td><td style="vertical-align:middle">Array</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">Pass list of sku codes(Max limit 100)</td></tr><tr align="center"><td style="vertical-align:middle">location</td><td style="vertical-align:middle">Varchar(3)</td><td style="vertical-align:middle">Mandatory</td><td style="vertical-align:middle">loccode can be Internal/external</td></tr><tr align="center"><td style="vertical-align:middle">fromDate</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">**Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle">toDate</td><td style="vertical-align:middle">Datetime</td><td style="vertical-align:middle">Conditional</td><td style="vertical-align:middle">**Only if details by filter (DD/MM/YYYY HH:mm:ss)</td></tr><tr align="center"><td style="vertical-align:middle">fromBin</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Must be a valid BIN</td></tr><tr align="center"><td style="vertical-align:middle">toBin</td><td style="vertical-align:middle">Varchar(50)</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Must be a valid BIN</td></tr><tr align="center"><td style="vertical-align:middle">pageNumber</td><td style="vertical-align:middle">Integer</td><td style="vertical-align:middle">Optional</td><td style="vertical-align:middle">Default 1. (Page Size 100 Orders)</td></tr><tr><td style="vertical-align:middle" colspan=4> <b>Case 1:&nbsp;Get movementHistory Detail by skuCodes(s)</br>&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skuCode":["PICK01"],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"location":"CHE",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fromBin":""</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"toBin":""</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1"</br>&nbsp;}</br></br>&nbsp;Case 2:&nbsp;Get movementHistory Detail by Date Range</br>&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"skuCode":[],</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"location":"CHE",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fromDate":"13/04/2021 07:20:01",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"toDate":"13/04/2021 08:20:01",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fromBin":""</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"toBin":"",</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pageNumber":"1"</br>&nbsp;}</br></br>&nbsp;</tbody></table>
+      operationId: postRestWSApiEretailV1StockMovementHistory
+      x-operation-id-source: derived
 components:
   schemas:
-    movementHistory1:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        hasMore:
-          type: boolean
-          example: false
-        currentPage:
-          type: integer
-          example: 1
-        skuList:
-          type: array
-          items:
-            $ref: '#/components/schemas/movementHistory2'
-    updateInventoryModelV3:
-      properties:
-        inventoryList:
-          type: array
-          items:
-            $ref: '#/components/schemas/updateInventoryV3'
     updateInventory:
       properties:
         skuCode:
@@ -484,6 +480,177 @@ components:
           type: string
           example: ''
         lotNo:
+          type: string
+          example: ''
+    inventoryHoldUnhold:
+      properties:
+        uniqueKey:
+          type: string
+          example: '1'
+        locCode:
+          type: string
+          example: UJW
+        skuCode:
+          type: string
+          example: hold
+        status:
+          type: string
+          example: rkbc001
+        bin:
+          type: string
+          example: UJW
+        lot:
+          type: string
+          example: ''
+        lpnNo:
+          type: string
+          example: ''
+    updateInventoryModelV3:
+      properties:
+        inventoryList:
+          type: array
+          items:
+            $ref: '#/components/schemas/updateInventoryV3'
+    getWhInventory1:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        hasMore:
+          type: boolean
+          example: false
+        response:
+          type: array
+          items:
+            $ref: '#/components/schemas/getWhInventory2'
+    movementHistory1:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        hasMore:
+          type: boolean
+          example: false
+        currentPage:
+          type: integer
+          example: 1
+        skuList:
+          type: array
+          items:
+            $ref: '#/components/schemas/movementHistory2'
+    updateInventoryV3:
+      properties:
+        skuCode:
+          type: string
+          example: UPDINV-1
+        qty:
+          type: string
+          example: '100'
+        bin:
+          type: string
+          example: Saleable
+        lottable_01:
+          type: string
+          example: '11'
+        lottable_02:
+          type: string
+          example: 11/08/2018
+        lottable_03:
+          type: string
+          example: 10/08/2018
+        lottable_04:
+          type: string
+          example: 12/08/2018
+        lottable_05:
+          type: string
+          example: '544'
+        lottable_06:
+          type: string
+          example: '256'
+        lottable_07:
+          type: string
+          example: '256'
+        lpn:
+          type: string
+          example: ''
+        reason:
+          type: string
+          example: MISC
+        mode:
+          type: string
+          example: Increase
+        location:
+          type: string
+          example: UJW
+        operationOn:
+          type: string
+          example: ''
+        remarks:
+          type: string
+          example: adjusted qty
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+    inventoryMovement:
+      properties:
+        RefID:
+          type: string
+          example: 00-110-010011
+        location:
+          type: string
+          example: NWB
+        skucode:
+          type: string
+          example: 051821679
+        qty:
+          type: string
+          example: '2'
+        tobin:
+          type: string
+          example: Zara
+        LOT:
+          type: string
+          example: ''
+        FromLPN:
+          type: string
+          example: ''
+        ToLPN:
+          type: string
+          example: ''
+        UDF1:
+          type: string
+          example: ''
+        UDF2:
+          type: string
+          example: ''
+        UDF3:
+          type: string
+          example: ''
+        UDF4:
+          type: string
+          example: ''
+        UDF5:
+          type: string
+          example: ''
+        fromBin:
           type: string
           example: ''
     adjustmentdetail:
@@ -679,150 +846,3 @@ components:
         committedQty:
           type: string
           example: '15'
-    updateInventoryV3:
-      properties:
-        skuCode:
-          type: string
-          example: UPDINV-1
-        qty:
-          type: string
-          example: '100'
-        bin:
-          type: string
-          example: Saleable
-        lottable_01:
-          type: string
-          example: '11'
-        lottable_02:
-          type: string
-          example: 11/08/2018
-        lottable_03:
-          type: string
-          example: 10/08/2018
-        lottable_04:
-          type: string
-          example: 12/08/2018
-        lottable_05:
-          type: string
-          example: '544'
-        lottable_06:
-          type: string
-          example: '256'
-        lottable_07:
-          type: string
-          example: '256'
-        lpn:
-          type: string
-          example: ''
-        reason:
-          type: string
-          example: MISC
-        mode:
-          type: string
-          example: Increase
-        location:
-          type: string
-          example: UJW
-        operationOn:
-          type: string
-          example: ''
-        remarks:
-          type: string
-          example: adjusted qty
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-    getWhInventory1:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        hasMore:
-          type: boolean
-          example: false
-        response:
-          type: array
-          items:
-            $ref: '#/components/schemas/getWhInventory2'
-    inventoryHoldUnhold:
-      properties:
-        uniqueKey:
-          type: string
-          example: '1'
-        locCode:
-          type: string
-          example: UJW
-        skuCode:
-          type: string
-          example: hold
-        status:
-          type: string
-          example: rkbc001
-        bin:
-          type: string
-          example: UJW
-        lot:
-          type: string
-          example: ''
-        lpnNo:
-          type: string
-          example: ''
-    inventoryMovement:
-      properties:
-        RefID:
-          type: string
-          example: 00-110-010011
-        location:
-          type: string
-          example: NWB
-        skucode:
-          type: string
-          example: 051821679
-        qty:
-          type: string
-          example: '2'
-        tobin:
-          type: string
-          example: Zara
-        LOT:
-          type: string
-          example: ''
-        FromLPN:
-          type: string
-          example: ''
-        ToLPN:
-          type: string
-          example: ''
-        UDF1:
-          type: string
-          example: ''
-        UDF2:
-          type: string
-          example: ''
-        UDF3:
-          type: string
-          example: ''
-        UDF4:
-          type: string
-          example: ''
-        UDF5:
-          type: string
-          example: ''
-        fromBin:
-          type: string
-          example: ''

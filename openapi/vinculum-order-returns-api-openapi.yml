@@ -35,6 +35,8 @@ paths:
               - RequestBody
               - ApiOwner
               - ApiKey
+      operationId: postRestWSApiEretailV1OrderReturn
+      x-operation-id-source: derived
   /RestWS/api/eretail/v1/order/orderreturn:
     post:
       tags:
@@ -66,6 +68,8 @@ paths:
               - RequestBody
               - ApiOwner
               - ApiKey
+      operationId: postRestWSApiEretailV1OrderOrderreturn
+      x-operation-id-source: derived
   /RestWS/api/eretail/v1/order/returncancel:
     post:
       tags:
@@ -95,6 +99,8 @@ paths:
               - RequestBody
               - ApiOwner
               - ApiKey
+      operationId: postRestWSApiEretailV1OrderReturncancel
+      x-operation-id-source: derived
   /RestWS/api/eretail/v1/order/returnupdate:
     post:
       tags:
@@ -122,8 +128,300 @@ paths:
               - RequestBody
               - ApiOwner
               - ApiKey
+      operationId: postRestWSApiEretailV1OrderReturnupdate
+      x-operation-id-source: derived
 components:
   schemas:
+    orderlistforreturn:
+      properties:
+        return_no:
+          type: string
+          example: NWBR000146XX
+        return_location:
+          type: string
+          example: NWB
+        returnLocationName:
+          type: string
+          example: ''
+        channelName:
+          type: string
+          example: ''
+        return_amount:
+          type: string
+          example: '100.00'
+        return_confirmdate:
+          type: string
+          example: 17/11/2016 18:14:22
+        return_closedate:
+          type: string
+          example: ''
+        order_no:
+          type: string
+          example: POS477
+        order_type:
+          type: string
+          example: Prepaid
+        eretailorder_no:
+          type: string
+          example: POS477
+        return_date:
+          type: string
+          example: 17/11/2016 18:14:22
+        invoice_no:
+          type: string
+          example: NYK000674840
+        delivery_no:
+          type: string
+          example: POSS47700322
+        tracking_no:
+          type: string
+          example: ''
+        return_tracking_no:
+          type: string
+          example: ''
+        transporter_error_desc:
+          type: string
+          example: ''
+        status:
+          type: string
+          example: Closed
+        return_type:
+          type: string
+          example: Delivered Return
+        return_category:
+          type: string
+          example: Refund
+        remarks:
+          type: string
+          example: ''
+        refund_remarks:
+          type: string
+          example: ''
+        ext_return_location:
+          type: string
+          example: VIN20
+        customerCode:
+          type: string
+          example: '167033'
+        extCustomerCode:
+          type: string
+          example: '78899'
+        ext_del_loc:
+          type: string
+          example: CHE
+        return_transporter_name:
+          type: string
+          example: ''
+        refund_status:
+          type: string
+          example: '0'
+        refund_date:
+          type: string
+          example: ''
+        creditNoteNo:
+          type: string
+          example: ''
+        customer_name:
+          type: string
+          example: ''
+        customer_address1:
+          type: string
+          example: ''
+        customer_address2:
+          type: string
+          example: ''
+        customer_address3:
+          type: string
+          example: ''
+        customer_address4:
+          type: string
+          example: ''
+        customer_country:
+          type: string
+          example: ''
+        customer_state:
+          type: string
+          example: ''
+        customer_state_code:
+          type: string
+          example: ''
+        customer_city:
+          type: string
+          example: ''
+        customer_pincode:
+          type: string
+          example: ''
+        customer_email:
+          type: string
+          example: ''
+        customer_altEmail:
+          type: string
+          example: ''
+        customer_phoneNo:
+          type: string
+          example: ''
+        customer_altPhoneNo:
+          type: string
+          example: ''
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        udf6:
+          type: string
+          example: ''
+        udf7:
+          type: string
+          example: ''
+        udf8:
+          type: string
+          example: ''
+        udf9:
+          type: string
+          example: ''
+        udf10:
+          type: string
+          example: ''
+        orderCurrency:
+          type: string
+          example: INR
+        conversionRate:
+          type: string
+          example: '1.000'
+        extReturnNo:
+          type: string
+          example: CHE2210
+        extInvoiceNo:
+          type: string
+          example: errhwiu
+        customer_Phone_No:
+          type: string
+          example: '9876543219'
+        updatedPrice:
+          type: string
+          example: '498.29'
+        trackingURL:
+          type: string
+          example: null
+        externOrderNo:
+          type: string
+          example: U446
+        einvoicePosted:
+          type: string
+          example: ''
+        irn:
+          type: string
+          example: ''
+        qrCode:
+          type: string
+          example: ''
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/itemlistforOrderreturn'
+        taxDtls:
+          $ref: '#/components/schemas/onn'
+        shippingTaxDtls:
+          $ref: '#/components/schemas/STD1'
+        refundPaymentItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/RefundPaymentInfo'
+    OrderReturn:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        response:
+          items:
+            $ref: '#/components/schemas/responselistforreturn'
+    STD1:
+      properties:
+        shipping_charges:
+          type: string
+          example: '0.000'
+        shipping_tax_amt:
+          type: string
+          example: '0.000'
+        shippingChargeUnitPrice:
+          type: string
+          example: '3.819'
+        shippingCgstVal:
+          type: string
+          example: '0.000'
+        shippingSgstVal:
+          type: string
+          example: '0.000'
+        shippingIgstVal:
+          type: string
+          example: '0.000'
+        shippingUgstVal:
+          type: string
+          example: '0.000'
+    STD:
+      properties:
+        shipping_charges:
+          type: string
+          example: '0.000'
+        shipping_tax_amt:
+          type: string
+          example: '0.000'
+        shippingChargeUnitPrice:
+          type: string
+          example: '3.819'
+        shippingCgstRate:
+          type: string
+          example: '0.000'
+        shippingCgstVal:
+          type: string
+          example: '0.000'
+        shippingSgstRate:
+          type: string
+          example: '0.000'
+        shippingSgstVal:
+          type: string
+          example: '0.000'
+        shippingIgstRate:
+          type: string
+          example: '0.000'
+        shippingIgstVal:
+          type: string
+          example: '0.000'
+        shippingUgstRate:
+          type: string
+          example: '0.000'
+        shippingUgstVal:
+          type: string
+          example: '0.000'
+    responselistforreturn:
+      properties:
+        totalReturns:
+          type: integer
+          example: 2
+        totalPages:
+          type: integer
+          example: 1
+        currentPage:
+          type: integer
+          example: 1
+        order:
+          type: array
+          items:
+            $ref: '#/components/schemas/orderlistforreturn'
     RefundPaymentInfo:
       properties:
         paymentMode:
@@ -186,109 +484,6 @@ components:
         udf10:
           type: string
           example: ''
-    STD:
-      properties:
-        shipping_charges:
-          type: string
-          example: '0.000'
-        shipping_tax_amt:
-          type: string
-          example: '0.000'
-        shippingChargeUnitPrice:
-          type: string
-          example: '3.819'
-        shippingCgstRate:
-          type: string
-          example: '0.000'
-        shippingCgstVal:
-          type: string
-          example: '0.000'
-        shippingSgstRate:
-          type: string
-          example: '0.000'
-        shippingSgstVal:
-          type: string
-          example: '0.000'
-        shippingIgstRate:
-          type: string
-          example: '0.000'
-        shippingIgstVal:
-          type: string
-          example: '0.000'
-        shippingUgstRate:
-          type: string
-          example: '0.000'
-        shippingUgstVal:
-          type: string
-          example: '0.000'
-    onn:
-      properties:
-        cgstVal:
-          type: string
-          example: '0.000'
-        sgstVal:
-          type: string
-          example: '0.000'
-        igstVal:
-          type: string
-          example: '3.819'
-        cesVal:
-          type: string
-        stCesVal:
-          type: string
-          example: '0.000'
-        ugstVal:
-          type: string
-          example: '0.000'
-    STD1:
-      properties:
-        shipping_charges:
-          type: string
-          example: '0.000'
-        shipping_tax_amt:
-          type: string
-          example: '0.000'
-        shippingChargeUnitPrice:
-          type: string
-          example: '3.819'
-        shippingCgstVal:
-          type: string
-          example: '0.000'
-        shippingSgstVal:
-          type: string
-          example: '0.000'
-        shippingIgstVal:
-          type: string
-          example: '0.000'
-        shippingUgstVal:
-          type: string
-          example: '0.000'
-    OrderReturn:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        response:
-          items:
-            $ref: '#/components/schemas/responselistforreturn'
-    responselistforreturn:
-      properties:
-        totalReturns:
-          type: integer
-          example: 2
-        totalPages:
-          type: integer
-          example: 1
-        currentPage:
-          type: integer
-          example: 1
-        order:
-          type: array
-          items:
-            $ref: '#/components/schemas/orderlistforreturn'
     itemlistforOrderreturn:
       properties:
         lineno:
@@ -512,209 +707,22 @@ components:
         orderLineNo:
           type: string
           example: '1'
-    orderlistforreturn:
+    onn:
       properties:
-        return_no:
+        cgstVal:
           type: string
-          example: NWBR000146XX
-        return_location:
+          example: '0.000'
+        sgstVal:
           type: string
-          example: NWB
-        returnLocationName:
+          example: '0.000'
+        igstVal:
           type: string
-          example: ''
-        channelName:
+          example: '3.819'
+        cesVal:
           type: string
-          example: ''
-        return_amount:
+        stCesVal:
           type: string
-          example: '100.00'
-        return_confirmdate:
+          example: '0.000'
+        ugstVal:
           type: string
-          example: 17/11/2016 18:14:22
-        return_closedate:
-          type: string
-          example: ''
-        order_no:
-          type: string
-          example: POS477
-        order_type:
-          type: string
-          example: Prepaid
-        eretailorder_no:
-          type: string
-          example: POS477
-        return_date:
-          type: string
-          example: 17/11/2016 18:14:22
-        invoice_no:
-          type: string
-          example: NYK000674840
-        delivery_no:
-          type: string
-          example: POSS47700322
-        tracking_no:
-          type: string
-          example: ''
-        return_tracking_no:
-          type: string
-          example: ''
-        transporter_error_desc:
-          type: string
-          example: ''
-        status:
-          type: string
-          example: Closed
-        return_type:
-          type: string
-          example: Delivered Return
-        return_category:
-          type: string
-          example: Refund
-        remarks:
-          type: string
-          example: ''
-        refund_remarks:
-          type: string
-          example: ''
-        ext_return_location:
-          type: string
-          example: VIN20
-        customerCode:
-          type: string
-          example: '167033'
-        extCustomerCode:
-          type: string
-          example: '78899'
-        ext_del_loc:
-          type: string
-          example: CHE
-        return_transporter_name:
-          type: string
-          example: ''
-        refund_status:
-          type: string
-          example: '0'
-        refund_date:
-          type: string
-          example: ''
-        creditNoteNo:
-          type: string
-          example: ''
-        customer_name:
-          type: string
-          example: ''
-        customer_address1:
-          type: string
-          example: ''
-        customer_address2:
-          type: string
-          example: ''
-        customer_address3:
-          type: string
-          example: ''
-        customer_address4:
-          type: string
-          example: ''
-        customer_country:
-          type: string
-          example: ''
-        customer_state:
-          type: string
-          example: ''
-        customer_state_code:
-          type: string
-          example: ''
-        customer_city:
-          type: string
-          example: ''
-        customer_pincode:
-          type: string
-          example: ''
-        customer_email:
-          type: string
-          example: ''
-        customer_altEmail:
-          type: string
-          example: ''
-        customer_phoneNo:
-          type: string
-          example: ''
-        customer_altPhoneNo:
-          type: string
-          example: ''
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        udf6:
-          type: string
-          example: ''
-        udf7:
-          type: string
-          example: ''
-        udf8:
-          type: string
-          example: ''
-        udf9:
-          type: string
-          example: ''
-        udf10:
-          type: string
-          example: ''
-        orderCurrency:
-          type: string
-          example: INR
-        conversionRate:
-          type: string
-          example: '1.000'
-        extReturnNo:
-          type: string
-          example: CHE2210
-        extInvoiceNo:
-          type: string
-          example: errhwiu
-        customer_Phone_No:
-          type: string
-          example: '9876543219'
-        updatedPrice:
-          type: string
-          example: '498.29'
-        trackingURL:
-          type: string
-          example: null
-        externOrderNo:
-          type: string
-          example: U446
-        einvoicePosted:
-          type: string
-          example: ''
-        irn:
-          type: string
-          example: ''
-        qrCode:
-          type: string
-          example: ''
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/itemlistforOrderreturn'
-        taxDtls:
-          $ref: '#/components/schemas/onn'
-        shippingTaxDtls:
-          $ref: '#/components/schemas/STD1'
-        refundPaymentItems:
-          type: array
-          items:
-            $ref: '#/components/schemas/RefundPaymentInfo'
+          example: '0.000'
