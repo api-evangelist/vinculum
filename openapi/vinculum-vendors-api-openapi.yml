@@ -155,16 +155,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    VendorCreateResponse:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        requestStatus:
-          $ref: '#/components/schemas/vendorCre'
     vendorSkuMapping0:
       properties:
         skuCode:
@@ -221,6 +211,89 @@ components:
         mrp:
           type: string
           example: ''
+    vendorCre:
+      properties:
+        ext_vendor_code:
+          type: string
+          example: VEND001
+        outputKey:
+          type: string
+          example: VEND001
+        status:
+          type: string
+          example: Success
+        errorDesc:
+          type: string
+          example: ''
+    vendlocskumapping0:
+      properties:
+        skuCode:
+          type: string
+          example: BookX
+        vendorSkuCode:
+          type: string
+          example: BookY
+        vendorCode:
+          type: string
+          example: '12345'
+        skuCost:
+          type: string
+          example: '100.000'
+        leadTime:
+          type: string
+          example: '15'
+        minOrderQty:
+          type: string
+          example: '10'
+        maxOrderQty:
+          type: string
+          example: '500'
+        locCode:
+          type: string
+          example: NWB
+        purchaseUnitFactor:
+          type: string
+          example: '1'
+        isPrimary:
+          type: string
+          example: '0'
+        isActive:
+          type: string
+          example: '1'
+        returnFlag:
+          type: string
+          example: '1'
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        skuMRP:
+          type: string
+          example: '120.0'
+        marginPrec:
+          type: string
+          example: '10.0'
+    VendorCreateResponse:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        requestStatus:
+          $ref: '#/components/schemas/vendorCre'
     VendorList:
       type: object
       properties:
@@ -434,76 +507,3 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/VendorList'
-    vendlocskumapping0:
-      properties:
-        skuCode:
-          type: string
-          example: BookX
-        vendorSkuCode:
-          type: string
-          example: BookY
-        vendorCode:
-          type: string
-          example: '12345'
-        skuCost:
-          type: string
-          example: '100.000'
-        leadTime:
-          type: string
-          example: '15'
-        minOrderQty:
-          type: string
-          example: '10'
-        maxOrderQty:
-          type: string
-          example: '500'
-        locCode:
-          type: string
-          example: NWB
-        purchaseUnitFactor:
-          type: string
-          example: '1'
-        isPrimary:
-          type: string
-          example: '0'
-        isActive:
-          type: string
-          example: '1'
-        returnFlag:
-          type: string
-          example: '1'
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        skuMRP:
-          type: string
-          example: '120.0'
-        marginPrec:
-          type: string
-          example: '10.0'
-    vendorCre:
-      properties:
-        ext_vendor_code:
-          type: string
-          example: VEND001
-        outputKey:
-          type: string
-          example: VEND001
-        status:
-          type: string
-          example: Success
-        errorDesc:
-          type: string
-          example: ''

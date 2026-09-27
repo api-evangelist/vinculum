@@ -481,116 +481,179 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    lpnsG:
+    clientCreate0:
       properties:
-        lpnNos:
+        clientName:
+          type: string
+          example: VIKRANT SHARMA
+        clientID:
+          type: string
+          example: '13022'
+        extClientID:
+          type: string
+          example: VS13022
+        clientShortName:
+          type: string
+          example: VIKRANT
+        status:
+          type: string
+          example: Active
+          description: Status of the channel (Active or InActive)
+        clientCurrency:
+          type: string
+          example: INR
+        billingRequired:
+          type: string
+          example: 'Yes'
+          description: Whether billing is required (Yes/No)
+        address1:
+          type: string
+          example: AB-0980 LONG ISLAND
+        address2:
+          type: string
+          example: BLOCK S
+        contactPerson:
+          type: string
+          example: 09148998700
+        phone:
+          type: string
+          example: 088855803
+        email:
+          type: string
+          example: example@email.com
+        country:
+          type: string
+          example: INDIA
+        state:
+          type: string
+          example: DELHI
+        city:
+          type: string
+          example: NEW DELHI
+        pincode:
+          type: string
+          example: '123300'
+        udf1:
           type: string
           example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+    channelInfo:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        channellist:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChannelInfo2'
+    customerdetail:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        response:
+          $ref: '#/components/schemas/responsecustomerdetail'
+    locationFetch2:
+      properties:
+        locCode:
+          type: string
+          example: M20
+        locationType:
+          type: string
+          example: '5'
+        locTypeDescription:
+          type: string
+          example: Marketplaces
         status:
           type: string
           example: ''
-        length:
+        vendorName:
           type: string
           example: ''
-        breadth:
-          type: string
-          example: ''
-        height:
-          type: string
-          example: ''
-        weight:
-          type: string
-          example: ''
-    customerList:
-      type: object
-      properties:
-        customerType:
-          type: string
-          example: Walkin
         customerName:
           type: string
-          example: Guest
-        shipAddress1:
-          type: string
-          example: balijana road
-        shipAddress2:
-          type: string
-          example: agia
-        shipAddress3:
+          example: ''
+        createPoEnabled:
           type: string
           example: ''
-        shipCity:
-          type: string
-          example: BALIJANA
-        shipState:
-          type: string
-          example: Assam
-        shipCountry:
-          type: string
-          example: INDIA
-        shipPincode:
-          type: string
-          example: '783120'
-        shipPhone1:
-          type: string
-          example: xxxx2252xx
-        shipEmail1:
-          type: string
-          example: abc@gmail.com
-        shipEmail2:
+        hierarchyType:
           type: string
           example: ''
-        billName:
-          type: string
-          example: Guest
-        billAddress1:
-          type: string
-          example: balijana road
-        billAddress2:
-          type: string
-          example: agia
-        billAddress3:
+        hierarchyDescription:
           type: string
           example: ''
-        billCity:
-          type: string
-          example: BALIJANA
-        billState:
-          type: string
-          example: Assam
-        billCountry:
+        vatNo:
           type: string
           example: ''
-        billPincode:
-          type: string
-          example: '783120'
-        billPhone1:
-          type: string
-          example: xxxx2252xx
-        billEmail1:
-          type: string
-          example: abc@gmail.com
-        billEmail2:
+        cstNo:
           type: string
           example: ''
-        rewardpoints:
+        tinNo:
           type: string
-          example: '0'
-        customerCode:
+          example: ''
+        gstTinNo:
           type: string
-          example: '1000674'
-        extCustomerCode:
+          example: ''
+        taxZone:
           type: string
-          example: '00002'
-        creditDays:
+          example: ''
+        skuLinkToLocation:
           type: string
-          example: '5'
+          example: ''
+        isARSReq:
+          type: string
+          example: ''
+        lastHierarchyCode:
+          type: string
+          example: ''
+        arsRunLoc:
+          type: string
+          example: ''
+        locLiveDate:
+          type: string
+          example: ''
+        priceZone:
+          type: string
+          example: ''
+        invoiceReport:
+          type: string
+          example: ''
+        brandCode:
+          type: string
+          example: ''
         panNo:
           type: string
-          example: abcd1234f
-        gstNo:
+          example: ''
+        backOrderEnabled:
           type: string
-          example: wef
+          example: ''
+        storePlanningEnabled:
+          type: string
+          example: ''
+        sellToEcommerce:
+          type: string
+          example: ''
+        locationTags:
+          type: array
+          example:
+          - ''
         udf1:
           type: string
           example: ''
@@ -621,134 +684,92 @@ components:
         udf10:
           type: string
           example: ''
-        isTaxExempt:
+        locationDescription:
           type: string
-          example: 'YES'
-        economiczone:
+          example: Snapdeal
+        shortname:
           type: string
-          example: SEZ
-        customerGroup:
+          example: SNPD
+        address1:
           type: string
-          example:
-          - Test001
-          - Test002
-        identificationId:
+          example: GLOBUS STORES PRIVATE LIMITED / ARAMEX
+        address2:
+          type: string
+          example: Saidhara Logistics Park, Borivali Kukasa Village
+        address3:
+          type: string
+          example: Mum-Nasik Rd, Landmark R.K, Petrol Pump
+        address4:
+          type: string
+          example: Nr. Sangrilla Resort, Bhiwandi
+        city:
+          type: string
+          example: Thane
+        state:
+          type: string
+          example: Maharashtra
+        country:
+          type: string
+          example: INDIA
+        pinCode:
+          type: string
+          example: '421302'
+        phone1:
+          type: string
+          example: '02261705701'
+        phone2:
           type: string
           example: ''
-        identificationCode:
+        email1:
+          type: string
+          example: esupport@iksulafootwear.com
+        email2:
           type: string
           example: ''
-        geoType:
+        extLocCode:
           type: string
-          example: ''
-        geoAddress:
+          example: L06
+        licenseNo:
           type: string
-          example: ''
-        geoLatitude:
-          type: string
-          example: ''
-        geoLongitude:
-          type: string
-          example: ''
-        landmark:
-          type: string
-          example: ''
-        pickingInstruction:
+          example: L06
+        childLocation:
           type: array
           items:
-            type: string
-          example: []
-        shipingInstruction:
-          type: array
-          items:
-            type: string
-          example: []
-    skuCategoryDetail1:
+            $ref: '#/components/schemas/childLocationDto'
+    lpnUpdate1:
       properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
+        lpnNo:
           type: string
-          example: Success
-        currentPage:
-          type: integer
-          example: 1
-        skuCategoryList:
-          type: array
-          items:
-            $ref: '#/components/schemas/skuCategoryDetail2'
-    lpnUpdate:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        requestStatus:
-          type: array
-          items:
-            $ref: '#/components/schemas/lpnUpdate1'
-    NDRResponse2:
-      properties:
-        deliveryNo:
-          type: string
-          example: TESTAM0018
-        awbNo:
-          type: string
-          example: ''
-        status:
-          type: string
-          example: ”Success”
-        errordesc:
-          type: string
-          example: ''
-    customerdetail:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        response:
-          $ref: '#/components/schemas/responsecustomerdetail'
-    ChannelCreateUpdateJSON2:
-      properties:
-        channelCode:
-          type: string
-          example: O23
-        billtoPartyCode:
-          type: string
-          example: '117'
-        channelName:
-          type: string
-          example: MRUK
-        billtoPartyName:
-          type: string
-          example: BillParty3
+          example: EWH000000465
         status:
           type: string
           example: Success
         errorDesc:
           type: string
           example: ''
-    locationFetch0:
+    updatePackagingDimensionsRequest:
       properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
+        awb:
           type: string
-          example: Success
-        currentPage:
-          type: integer
-          example: 1
-        locations:
-          type: array
-          items:
-            $ref: '#/components/schemas/locationFetch2'
+          example: ''
+        length:
+          type: string
+          example: ''
+        height:
+          type: string
+          example: ''
+        width:
+          type: string
+          example: ''
+        weight:
+          type: string
+          example: ''
+        deviceId:
+          type: string
+          example: ''
+        image:
+          type: string
+          example: ''
     responsecustomerdetail:
       properties:
         totalCustomers:
@@ -778,308 +799,6 @@ components:
         customerCode:
           type: string
           example: '1302248'
-    updatePackagingDimensionsRequest:
-      properties:
-        awb:
-          type: string
-          example: ''
-        length:
-          type: string
-          example: ''
-        height:
-          type: string
-          example: ''
-        width:
-          type: string
-          example: ''
-        weight:
-          type: string
-          example: ''
-        deviceId:
-          type: string
-          example: ''
-        image:
-          type: string
-          example: ''
-    ChannelInfo2:
-      properties:
-        shippingBy:
-          type: string
-          example: '2'
-        status:
-          type: string
-          example: '5'
-        channelType:
-          type: string
-          example: '518'
-        channelCode:
-          type: string
-          example: E47
-        channelName:
-          type: string
-          example: Mugalsarai_POS
-    custCreate2:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        orders:
-          type: array
-          items:
-            $ref: '#/components/schemas/custCreate3'
-    ChannelCreateUpdateJSON0:
-      properties:
-        channelName:
-          type: string
-          example: MR009
-        channelCode:
-          type: string
-          example: ''
-        status:
-          type: string
-          example: '1'
-        orderSourceWH:
-          type: string
-          example: IWH
-        linkSkuStoAllLocation:
-          type: string
-          example: 'Yes'
-        channelTypeName:
-          type: string
-          example: Myntra
-        orderSyncEnabled:
-          type: string
-          example: 'No'
-        shippingBy:
-          type: string
-          example: '2'
-        billToParty:
-          type: object
-          properties:
-            billPartyCode:
-              type: string
-              example: ''
-            address1:
-              type: string
-              example: Test address 1
-            address2:
-              type: string
-              example: Test address 2
-            billPartyName:
-              type: string
-              example: BillParty3
-            status:
-              type: string
-              example: '1'
-            city:
-              type: string
-              example: '107'
-            country:
-              type: string
-              example: India
-            cstNo:
-              type: string
-              example: w5swfx
-            email:
-              type: string
-              example: test@test.com
-            iecCode:
-              type: string
-              example: '12345678765432123456765432'
-            phoneNo:
-              type: string
-              example: '9999999999'
-            state:
-              type: string
-              example: delhi
-            tinNo:
-              type: string
-              example: '123'
-            udf1:
-              type: string
-              example: ''
-            udf2:
-              type: string
-              example: ''
-            udf3:
-              type: string
-              example: ''
-            udf4:
-              type: string
-              example: ''
-            udf5:
-              type: string
-              example: ''
-            vatNo:
-              type: string
-              example: V4T45T65
-            zipcode:
-              type: string
-              example: VT54T546
-            signImageURL:
-              type: string
-              example: https://www.digitalsingatureimageurl/234567/1234.jpg
-        useShippingLabel:
-          type: string
-          example: 'Yes'
-        useInvoice:
-          type: string
-          example: 'Yes'
-        skuPullEnabled:
-          type: string
-          example: 'Yes'
-        invPerc:
-          type: string
-          example: '75'
-        invSyncEnabled:
-          type: string
-          example: 'Yes'
-        returnPullEnabled:
-          type: string
-          example: 'Yes'
-        prePackEnabled:
-          type: string
-          example: 'Yes'
-        vendorPullEnabled:
-          type: string
-          example: 'Yes'
-        invSyncMethod:
-          type: string
-          example: '1'
-        merchantId:
-          type: string
-          example: testmerchantid
-        apiUrl:
-          type: string
-          example: https://www.test.com/api
-        apiKey:
-          type: string
-          example: fsdcfcxvvzcxvcvcvvcvdfgghhgd
-        apiPassword:
-          type: string
-          example: fgfgvscaxdfvgb
-        userName:
-          type: string
-          example: test@test.com
-        password:
-          type: string
-          example: testpassword
-        authToken:
-          type: string
-          example: ddfdfsdfcxvvvvvfggghbvccc
-        storeId:
-          type: string
-          example: 45dfnd
-        isConfigured:
-          type: string
-          example: 'Yes'
-        channelSkuPrefix:
-          type: string
-          example: AB
-        channelSkuSuffix:
-          type: string
-          example: PQ
-        vendorId:
-          type: string
-          example: XYZ
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        jitVendorEnabled:
-          type: string
-          example: 'Yes'
-        invSyncMinBuffer:
-          type: string
-          example: '5'
-        enableBackOrder:
-          type: string
-          example: 'Yes'
-        enableInventoryRecon:
-          type: string
-          example: 'Yes'
-        channelSLA:
-          type: string
-          example: '48'
-        rtsMode:
-          type: string
-          example: '1'
-        designatedWHforInventory:
-          type: string
-          example: null
-        maxAllowedInv:
-          type: string
-          example: '2000'
-        customerCode:
-          type: string
-          example: ''
-        skuCreateMode:
-          type: string
-          example: M
-        eachQtyPerLine:
-          type: string
-          example: 'Yes'
-        internationalInvoice:
-          type: string
-          example: ''
-        domasticlInvoice:
-          type: string
-          example: ''
-        orderPullFromDate:
-          type: string
-          example: 28-10-2020 06:00:00
-        taxExclusive:
-          type: string
-          example: 'No'
-        priceSyncEnabled:
-          type: string
-          example: 'No'
-        sendLocWiseInv:
-          type: string
-          example: 'No'
-        shippingLabel:
-          type: string
-          example: ''
-        channelDescription:
-          type: string
-          example: ''
-    childLocationDto:
-      properties:
-        locCode:
-          type: string
-          example: ''
-        extlocCode:
-          type: string
-          example: ''
-        locName:
-          type: string
-          example: ''
-    ChannelCreateUpdateJSON1:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        response:
-          type: array
-          items:
-            $ref: '#/components/schemas/ChannelCreateUpdateJSON2'
     updatePackagingDimensionsResponse:
       properties:
         responseCode:
@@ -1088,6 +807,88 @@ components:
         responseMessage:
           type: string
           example: Success
+    NDRRequest:
+      properties:
+        mode:
+          type: string
+          example: UpdateandReattempt
+        deliveryNo:
+          type: string
+          example: TESTAM0018
+        trackingNo:
+          type: string
+          example: ''
+        updateAddress1:
+          type: string
+          example: TWH
+        updateAddress2:
+          type: string
+          example: TWH
+        updateAddress3:
+          type: string
+          example: TWH
+        updateAddress4:
+          type: string
+          example: TWH
+        updatedContactNo:
+          type: string
+          example: '22222222'
+        paymentType:
+          type: string
+          example: Prepaid
+        deliveryDate:
+          type: string
+          example: 21/01/2027 22:40:30
+        remarks:
+          type: string
+          example: remarks if any
+    clientCreate1:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        client:
+          type: array
+          items:
+            $ref: '#/components/schemas/clientCreate2'
+    lpnsG:
+      properties:
+        lpnNos:
+          type: string
+          example: ''
+        status:
+          type: string
+          example: ''
+        length:
+          type: string
+          example: ''
+        breadth:
+          type: string
+          example: ''
+        height:
+          type: string
+          example: ''
+        weight:
+          type: string
+          example: ''
+    skuCategoryDetail1:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        currentPage:
+          type: integer
+          example: 1
+        skuCategoryList:
+          type: array
+          items:
+            $ref: '#/components/schemas/skuCategoryDetail2'
     skuCategoryDetail2:
       properties:
         merchId:
@@ -1334,56 +1135,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/custCreate1'
-    NDRRequest:
-      properties:
-        mode:
-          type: string
-          example: UpdateandReattempt
-        deliveryNo:
-          type: string
-          example: TESTAM0018
-        trackingNo:
-          type: string
-          example: ''
-        updateAddress1:
-          type: string
-          example: TWH
-        updateAddress2:
-          type: string
-          example: TWH
-        updateAddress3:
-          type: string
-          example: TWH
-        updateAddress4:
-          type: string
-          example: TWH
-        updatedContactNo:
-          type: string
-          example: '22222222'
-        paymentType:
-          type: string
-          example: Prepaid
-        deliveryDate:
-          type: string
-          example: 21/01/2027 22:40:30
-        remarks:
-          type: string
-          example: remarks if any
-    clientCreate2:
-      properties:
-        responseCode:
-          type: string
-          example: '0'
-        responseMessage:
-          type: string
-          example: Success
-        clientID:
-          type: string
-          example: '13022'
-        extClientId:
-          type: string
-          example: VS13022
-    NDRResponse1:
+    ChannelCreateUpdateJSON1:
       properties:
         responseCode:
           type: integer
@@ -1394,178 +1146,21 @@ components:
         response:
           type: array
           items:
-            $ref: '#/components/schemas/NDRResponse2'
-    locationFetch2:
+            $ref: '#/components/schemas/ChannelCreateUpdateJSON2'
+    ChannelCreateUpdateJSON2:
       properties:
-        locCode:
+        channelCode:
           type: string
-          example: M20
-        locationType:
+          example: O23
+        billtoPartyCode:
           type: string
-          example: '5'
-        locTypeDescription:
+          example: '117'
+        channelName:
           type: string
-          example: Marketplaces
-        status:
+          example: MRUK
+        billtoPartyName:
           type: string
-          example: ''
-        vendorName:
-          type: string
-          example: ''
-        customerName:
-          type: string
-          example: ''
-        createPoEnabled:
-          type: string
-          example: ''
-        hierarchyType:
-          type: string
-          example: ''
-        hierarchyDescription:
-          type: string
-          example: ''
-        vatNo:
-          type: string
-          example: ''
-        cstNo:
-          type: string
-          example: ''
-        tinNo:
-          type: string
-          example: ''
-        gstTinNo:
-          type: string
-          example: ''
-        taxZone:
-          type: string
-          example: ''
-        skuLinkToLocation:
-          type: string
-          example: ''
-        isARSReq:
-          type: string
-          example: ''
-        lastHierarchyCode:
-          type: string
-          example: ''
-        arsRunLoc:
-          type: string
-          example: ''
-        locLiveDate:
-          type: string
-          example: ''
-        priceZone:
-          type: string
-          example: ''
-        invoiceReport:
-          type: string
-          example: ''
-        brandCode:
-          type: string
-          example: ''
-        panNo:
-          type: string
-          example: ''
-        backOrderEnabled:
-          type: string
-          example: ''
-        storePlanningEnabled:
-          type: string
-          example: ''
-        sellToEcommerce:
-          type: string
-          example: ''
-        locationTags:
-          type: array
-          example:
-          - ''
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        udf6:
-          type: string
-          example: ''
-        udf7:
-          type: string
-          example: ''
-        udf8:
-          type: string
-          example: ''
-        udf9:
-          type: string
-          example: ''
-        udf10:
-          type: string
-          example: ''
-        locationDescription:
-          type: string
-          example: Snapdeal
-        shortname:
-          type: string
-          example: SNPD
-        address1:
-          type: string
-          example: GLOBUS STORES PRIVATE LIMITED / ARAMEX
-        address2:
-          type: string
-          example: Saidhara Logistics Park, Borivali Kukasa Village
-        address3:
-          type: string
-          example: Mum-Nasik Rd, Landmark R.K, Petrol Pump
-        address4:
-          type: string
-          example: Nr. Sangrilla Resort, Bhiwandi
-        city:
-          type: string
-          example: Thane
-        state:
-          type: string
-          example: Maharashtra
-        country:
-          type: string
-          example: INDIA
-        pinCode:
-          type: string
-          example: '421302'
-        phone1:
-          type: string
-          example: '02261705701'
-        phone2:
-          type: string
-          example: ''
-        email1:
-          type: string
-          example: esupport@iksulafootwear.com
-        email2:
-          type: string
-          example: ''
-        extLocCode:
-          type: string
-          example: L06
-        licenseNo:
-          type: string
-          example: L06
-        childLocation:
-          type: array
-          items:
-            $ref: '#/components/schemas/childLocationDto'
-    lpnUpdate1:
-      properties:
-        lpnNo:
-          type: string
-          example: EWH000000465
+          example: BillParty3
         status:
           type: string
           example: Success
@@ -1634,70 +1229,96 @@ components:
         longitude:
           type: string
           example: '120.2224'
-    channelInfo:
+    customerList:
+      type: object
       properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
+        customerType:
           type: string
-          example: Success
-        channellist:
-          type: array
-          items:
-            $ref: '#/components/schemas/ChannelInfo2'
-    clientCreate0:
-      properties:
-        clientName:
+          example: Walkin
+        customerName:
           type: string
-          example: VIKRANT SHARMA
-        clientID:
+          example: Guest
+        shipAddress1:
           type: string
-          example: '13022'
-        extClientID:
+          example: balijana road
+        shipAddress2:
           type: string
-          example: VS13022
-        clientShortName:
+          example: agia
+        shipAddress3:
           type: string
-          example: VIKRANT
-        status:
+          example: ''
+        shipCity:
           type: string
-          example: Active
-          description: Status of the channel (Active or InActive)
-        clientCurrency:
+          example: BALIJANA
+        shipState:
           type: string
-          example: INR
-        billingRequired:
-          type: string
-          example: 'Yes'
-          description: Whether billing is required (Yes/No)
-        address1:
-          type: string
-          example: AB-0980 LONG ISLAND
-        address2:
-          type: string
-          example: BLOCK S
-        contactPerson:
-          type: string
-          example: 09148998700
-        phone:
-          type: string
-          example: 088855803
-        email:
-          type: string
-          example: example@email.com
-        country:
+          example: Assam
+        shipCountry:
           type: string
           example: INDIA
-        state:
+        shipPincode:
           type: string
-          example: DELHI
-        city:
+          example: '783120'
+        shipPhone1:
           type: string
-          example: NEW DELHI
-        pincode:
+          example: xxxx2252xx
+        shipEmail1:
           type: string
-          example: '123300'
+          example: abc@gmail.com
+        shipEmail2:
+          type: string
+          example: ''
+        billName:
+          type: string
+          example: Guest
+        billAddress1:
+          type: string
+          example: balijana road
+        billAddress2:
+          type: string
+          example: agia
+        billAddress3:
+          type: string
+          example: ''
+        billCity:
+          type: string
+          example: BALIJANA
+        billState:
+          type: string
+          example: Assam
+        billCountry:
+          type: string
+          example: ''
+        billPincode:
+          type: string
+          example: '783120'
+        billPhone1:
+          type: string
+          example: xxxx2252xx
+        billEmail1:
+          type: string
+          example: abc@gmail.com
+        billEmail2:
+          type: string
+          example: ''
+        rewardpoints:
+          type: string
+          example: '0'
+        customerCode:
+          type: string
+          example: '1000674'
+        extCustomerCode:
+          type: string
+          example: '00002'
+        creditDays:
+          type: string
+          example: '5'
+        panNo:
+          type: string
+          example: abcd1234f
+        gstNo:
+          type: string
+          example: wef
         udf1:
           type: string
           example: ''
@@ -1713,7 +1334,308 @@ components:
         udf5:
           type: string
           example: ''
-    clientCreate1:
+        udf6:
+          type: string
+          example: ''
+        udf7:
+          type: string
+          example: ''
+        udf8:
+          type: string
+          example: ''
+        udf9:
+          type: string
+          example: ''
+        udf10:
+          type: string
+          example: ''
+        isTaxExempt:
+          type: string
+          example: 'YES'
+        economiczone:
+          type: string
+          example: SEZ
+        customerGroup:
+          type: string
+          example:
+          - Test001
+          - Test002
+        identificationId:
+          type: string
+          example: ''
+        identificationCode:
+          type: string
+          example: ''
+        geoType:
+          type: string
+          example: ''
+        geoAddress:
+          type: string
+          example: ''
+        geoLatitude:
+          type: string
+          example: ''
+        geoLongitude:
+          type: string
+          example: ''
+        landmark:
+          type: string
+          example: ''
+        pickingInstruction:
+          type: array
+          items:
+            type: string
+          example: []
+        shipingInstruction:
+          type: array
+          items:
+            type: string
+          example: []
+    ChannelInfo2:
+      properties:
+        shippingBy:
+          type: string
+          example: '2'
+        status:
+          type: string
+          example: '5'
+        channelType:
+          type: string
+          example: '518'
+        channelCode:
+          type: string
+          example: E47
+        channelName:
+          type: string
+          example: Mugalsarai_POS
+    ChannelCreateUpdateJSON0:
+      properties:
+        channelName:
+          type: string
+          example: MR009
+        channelCode:
+          type: string
+          example: ''
+        status:
+          type: string
+          example: '1'
+        orderSourceWH:
+          type: string
+          example: IWH
+        linkSkuStoAllLocation:
+          type: string
+          example: 'Yes'
+        channelTypeName:
+          type: string
+          example: Myntra
+        orderSyncEnabled:
+          type: string
+          example: 'No'
+        shippingBy:
+          type: string
+          example: '2'
+        billToParty:
+          type: object
+          properties:
+            billPartyCode:
+              type: string
+              example: ''
+            address1:
+              type: string
+              example: Test address 1
+            address2:
+              type: string
+              example: Test address 2
+            billPartyName:
+              type: string
+              example: BillParty3
+            status:
+              type: string
+              example: '1'
+            city:
+              type: string
+              example: '107'
+            country:
+              type: string
+              example: India
+            cstNo:
+              type: string
+              example: w5swfx
+            email:
+              type: string
+              example: test@test.com
+            iecCode:
+              type: string
+              example: '12345678765432123456765432'
+            phoneNo:
+              type: string
+              example: '9999999999'
+            state:
+              type: string
+              example: delhi
+            tinNo:
+              type: string
+              example: '123'
+            udf1:
+              type: string
+              example: ''
+            udf2:
+              type: string
+              example: ''
+            udf3:
+              type: string
+              example: ''
+            udf4:
+              type: string
+              example: ''
+            udf5:
+              type: string
+              example: ''
+            vatNo:
+              type: string
+              example: V4T45T65
+            zipcode:
+              type: string
+              example: VT54T546
+            signImageURL:
+              type: string
+              example: https://www.digitalsingatureimageurl/234567/1234.jpg
+        useShippingLabel:
+          type: string
+          example: 'Yes'
+        useInvoice:
+          type: string
+          example: 'Yes'
+        skuPullEnabled:
+          type: string
+          example: 'Yes'
+        invPerc:
+          type: string
+          example: '75'
+        invSyncEnabled:
+          type: string
+          example: 'Yes'
+        returnPullEnabled:
+          type: string
+          example: 'Yes'
+        prePackEnabled:
+          type: string
+          example: 'Yes'
+        vendorPullEnabled:
+          type: string
+          example: 'Yes'
+        invSyncMethod:
+          type: string
+          example: '1'
+        merchantId:
+          type: string
+          example: testmerchantid
+        apiUrl:
+          type: string
+          example: https://www.test.com/api
+        apiKey:
+          type: string
+          example: fsdcfcxvvzcxvcvcvvcvdfgghhgd
+        apiPassword:
+          type: string
+          example: fgfgvscaxdfvgb
+        userName:
+          type: string
+          example: test@test.com
+        password:
+          type: string
+          example: testpassword
+        authToken:
+          type: string
+          example: ddfdfsdfcxvvvvvfggghbvccc
+        storeId:
+          type: string
+          example: 45dfnd
+        isConfigured:
+          type: string
+          example: 'Yes'
+        channelSkuPrefix:
+          type: string
+          example: AB
+        channelSkuSuffix:
+          type: string
+          example: PQ
+        vendorId:
+          type: string
+          example: XYZ
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        jitVendorEnabled:
+          type: string
+          example: 'Yes'
+        invSyncMinBuffer:
+          type: string
+          example: '5'
+        enableBackOrder:
+          type: string
+          example: 'Yes'
+        enableInventoryRecon:
+          type: string
+          example: 'Yes'
+        channelSLA:
+          type: string
+          example: '48'
+        rtsMode:
+          type: string
+          example: '1'
+        designatedWHforInventory:
+          type: string
+          example: null
+        maxAllowedInv:
+          type: string
+          example: '2000'
+        customerCode:
+          type: string
+          example: ''
+        skuCreateMode:
+          type: string
+          example: M
+        eachQtyPerLine:
+          type: string
+          example: 'Yes'
+        internationalInvoice:
+          type: string
+          example: ''
+        domasticlInvoice:
+          type: string
+          example: ''
+        orderPullFromDate:
+          type: string
+          example: 28-10-2020 06:00:00
+        taxExclusive:
+          type: string
+          example: 'No'
+        priceSyncEnabled:
+          type: string
+          example: 'No'
+        sendLocWiseInv:
+          type: string
+          example: 'No'
+        shippingLabel:
+          type: string
+          example: ''
+        channelDescription:
+          type: string
+          example: ''
+    lpnUpdate:
       properties:
         responseCode:
           type: integer
@@ -1721,7 +1643,85 @@ components:
         responseMessage:
           type: string
           example: Success
-        client:
+        requestStatus:
           type: array
           items:
-            $ref: '#/components/schemas/clientCreate2'
+            $ref: '#/components/schemas/lpnUpdate1'
+    clientCreate2:
+      properties:
+        responseCode:
+          type: string
+          example: '0'
+        responseMessage:
+          type: string
+          example: Success
+        clientID:
+          type: string
+          example: '13022'
+        extClientId:
+          type: string
+          example: VS13022
+    locationFetch0:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        currentPage:
+          type: integer
+          example: 1
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/locationFetch2'
+    NDRResponse1:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        response:
+          type: array
+          items:
+            $ref: '#/components/schemas/NDRResponse2'
+    childLocationDto:
+      properties:
+        locCode:
+          type: string
+          example: ''
+        extlocCode:
+          type: string
+          example: ''
+        locName:
+          type: string
+          example: ''
+    custCreate2:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/custCreate3'
+    NDRResponse2:
+      properties:
+        deliveryNo:
+          type: string
+          example: TESTAM0018
+        awbNo:
+          type: string
+          example: ''
+        status:
+          type: string
+          example: ”Success”
+        errordesc:
+          type: string
+          example: ''

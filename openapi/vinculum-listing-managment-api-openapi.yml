@@ -130,6 +130,27 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    inventoryPriceList1:
+      type: object
+      properties:
+        moderationId:
+          type: string
+          example: 108
+        sku:
+          type: string
+          example: 224808
+        requestedInvQty:
+          type: string
+          example: 1.0
+        approvedInvQty:
+          type: string
+          example: null
+        status:
+          type: string
+          example: Pending
+        requestedSalePrice:
+          type: string
+          example: 1299.0
     inventrypriceStatus1:
       properties:
         responseCode:
@@ -142,27 +163,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/inventoryPriceList1'
-    InventoryList1:
-      type: object
+    InventoryPricedetail1:
       properties:
-        moderationId:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
           type: string
-          example: 24
-        sku:
-          type: string
-          example: TEST_STORE_ABC_TESTING-004-BUY-3-FREE-1
-        requestedInvQty:
-          type: string
-          example: 11
-        approvedInvQty:
-          type: string
-          example: null
-        status:
-          type: string
-          example: Pending
-        requestedSalePrice:
-          type: string
-          example: null
+          example: Success
+        skus:
+          type: array
+          items:
+            $ref: '#/components/schemas/InventoryList1'
     skuBack:
       properties:
         vendorCode:
@@ -180,30 +192,12 @@ components:
         vendorSKUCode:
           type: string
           example: abc123
-    InventoryPricedetail1:
+    SkuBackOrder:
       properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        skus:
+        data:
           type: array
           items:
-            $ref: '#/components/schemas/InventoryList1'
-    ProductFetch1:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        productList:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductList1'
+            $ref: '#/components/schemas/skuBack'
     ProductList1:
       type: object
       properties:
@@ -258,24 +252,18 @@ components:
         serialTracking:
           type: string
           example: 0
-    SkuBackOrder:
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/skuBack'
-    inventoryPriceList1:
+    InventoryList1:
       type: object
       properties:
         moderationId:
           type: string
-          example: 108
+          example: 24
         sku:
           type: string
-          example: 224808
+          example: TEST_STORE_ABC_TESTING-004-BUY-3-FREE-1
         requestedInvQty:
           type: string
-          example: 1.0
+          example: 11
         approvedInvQty:
           type: string
           example: null
@@ -284,4 +272,16 @@ components:
           example: Pending
         requestedSalePrice:
           type: string
-          example: 1299.0
+          example: null
+    ProductFetch1:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        productList:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductList1'

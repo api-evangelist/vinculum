@@ -76,6 +76,95 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    userDefinedFieldCreaeB2b:
+      properties:
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        udf6:
+          type: string
+          example: ''
+        udf7:
+          type: string
+          example: ''
+        udf8:
+          type: string
+          example: ''
+        udf9:
+          type: string
+          example: ''
+        udf10:
+          type: string
+          example: ''
+    createmanifest07:
+      properties:
+        extManifestNo:
+          type: string
+          example: MAN233333
+        manifestType:
+          type: string
+          example: marketplace
+        transporterCode:
+          type: string
+          example: '232322'
+        fulfillmentLocation:
+          type: string
+          example: Confirmed
+        lrNo:
+          type: string
+          example: ''
+        status:
+          type: string
+          example: ''
+        vehicleNo:
+          type: string
+          example: ''
+        driverName:
+          type: string
+          example: ''
+        remarks:
+          type: string
+          example: ''
+        lpnList:
+          type: string
+          example: []
+        userDefinedFields:
+          $ref: '#/components/schemas/userDefinedFieldCreaeB2b'
+    createmanifest1:
+      properties:
+        deliveryNo:
+          type: string
+          example: CHEAB9D19223
+        trackingNo:
+          type: string
+          example: ''
+        packagingType:
+          type: string
+          example: FEDEX_TUBE
+        length:
+          type: string
+          example: 1
+        breadth:
+          type: string
+          example: 1
+        height:
+          type: string
+          example: 1
+        weight:
+          type: string
+          example: 1
     createmanifest0:
       properties:
         businessType:
@@ -129,92 +218,3 @@ components:
         manifestStatus:
           type: string
           example: InvoiceInProcess
-    createmanifest1:
-      properties:
-        deliveryNo:
-          type: string
-          example: CHEAB9D19223
-        trackingNo:
-          type: string
-          example: ''
-        packagingType:
-          type: string
-          example: FEDEX_TUBE
-        length:
-          type: string
-          example: 1
-        breadth:
-          type: string
-          example: 1
-        height:
-          type: string
-          example: 1
-        weight:
-          type: string
-          example: 1
-    createmanifest07:
-      properties:
-        extManifestNo:
-          type: string
-          example: MAN233333
-        manifestType:
-          type: string
-          example: marketplace
-        transporterCode:
-          type: string
-          example: '232322'
-        fulfillmentLocation:
-          type: string
-          example: Confirmed
-        lrNo:
-          type: string
-          example: ''
-        status:
-          type: string
-          example: ''
-        vehicleNo:
-          type: string
-          example: ''
-        driverName:
-          type: string
-          example: ''
-        remarks:
-          type: string
-          example: ''
-        lpnList:
-          type: string
-          example: []
-        userDefinedFields:
-          $ref: '#/components/schemas/userDefinedFieldCreaeB2b'
-    userDefinedFieldCreaeB2b:
-      properties:
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        udf6:
-          type: string
-          example: ''
-        udf7:
-          type: string
-          example: ''
-        udf8:
-          type: string
-          example: ''
-        udf9:
-          type: string
-          example: ''
-        udf10:
-          type: string
-          example: ''
