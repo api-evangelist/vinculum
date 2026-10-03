@@ -76,72 +76,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    userDefinedFieldCreaeB2b:
-      properties:
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        udf6:
-          type: string
-          example: ''
-        udf7:
-          type: string
-          example: ''
-        udf8:
-          type: string
-          example: ''
-        udf9:
-          type: string
-          example: ''
-        udf10:
-          type: string
-          example: ''
-    createmanifest07:
-      properties:
-        extManifestNo:
-          type: string
-          example: MAN233333
-        manifestType:
-          type: string
-          example: marketplace
-        transporterCode:
-          type: string
-          example: '232322'
-        fulfillmentLocation:
-          type: string
-          example: Confirmed
-        lrNo:
-          type: string
-          example: ''
-        status:
-          type: string
-          example: ''
-        vehicleNo:
-          type: string
-          example: ''
-        driverName:
-          type: string
-          example: ''
-        remarks:
-          type: string
-          example: ''
-        lpnList:
-          type: string
-          example: []
-        userDefinedFields:
-          $ref: '#/components/schemas/userDefinedFieldCreaeB2b'
     createmanifest1:
       properties:
         deliveryNo:
@@ -192,6 +126,40 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/createmanifest1'
+    createmanifest07:
+      properties:
+        extManifestNo:
+          type: string
+          example: MAN233333
+        manifestType:
+          type: string
+          example: marketplace
+        transporterCode:
+          type: string
+          example: '232322'
+        fulfillmentLocation:
+          type: string
+          example: Confirmed
+        lrNo:
+          type: string
+          example: ''
+        status:
+          type: string
+          example: ''
+        vehicleNo:
+          type: string
+          example: ''
+        driverName:
+          type: string
+          example: ''
+        remarks:
+          type: string
+          example: ''
+        lpnList:
+          type: string
+          example: []
+        userDefinedFields:
+          $ref: '#/components/schemas/userDefinedFieldCreaeB2b'
     createmanifestB2Bresponse:
       properties:
         responseCode:
@@ -218,3 +186,35 @@ components:
         manifestStatus:
           type: string
           example: InvoiceInProcess
+    userDefinedFieldCreaeB2b:
+      properties:
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        udf6:
+          type: string
+          example: ''
+        udf7:
+          type: string
+          example: ''
+        udf8:
+          type: string
+          example: ''
+        udf9:
+          type: string
+          example: ''
+        udf10:
+          type: string
+          example: ''

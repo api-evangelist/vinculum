@@ -174,88 +174,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    responsertvdetail:
-      properties:
-        totalRtvs:
-          type: integer
-          example: 1
-        totalPages:
-          type: integer
-          example: 1
-        currentPage:
-          type: integer
-          example: 1
-        rtvList:
-          type: array
-          items:
-            $ref: '#/components/schemas/rtvList'
-    rtvList:
-      properties:
-        rtvNo:
-          type: string
-          example: NWB12804
-        poNo:
-          type: string
-          example: NHO123082
-        extPoNo:
-          type: string
-          example: NHO123082
-        vendor:
-          type: string
-          example: CKPLM
-        vendor_name:
-          type: string
-          example: ABC
-        externalVendorCode:
-          type: string
-          example: cip-2020
-        rtvDate:
-          type: string
-          example: 04/12/2018 12:34:31
-        rtvType:
-          type: string
-          example: Normal Return
-        rtvSource:
-          type: string
-          example: With PO
-        status:
-          type: string
-          example: Allocated
-        rtvAmt:
-          type: string
-          example: '78.977'
-        rtvQty:
-          type: string
-          example: '4.00'
-        taxAmt:
-          type: string
-          example: '22.909'
-        onHold:
-          type: string
-          example: '0'
-        created_loc:
-          type: string
-          example: NWH
-        updateDate:
-          type: string
-          example: 04/12/2018 12:34:31
-        remarks:
-          type: string
-          example: ''
-        userDefinedField:
-          type: array
-          items:
-            $ref: '#/components/schemas/userdefineddetail'
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Itemsrtvdetail'
-        del_locname:
-          type: string
-          example: FABINDIA SURFACE
-        printUrl:
-          type: string
-          example: ''
     userdefineddetail:
       type: object
       properties:
@@ -464,3 +382,85 @@ components:
           example: Success
         response:
           $ref: '#/components/schemas/responsertvdetail'
+    responsertvdetail:
+      properties:
+        totalRtvs:
+          type: integer
+          example: 1
+        totalPages:
+          type: integer
+          example: 1
+        currentPage:
+          type: integer
+          example: 1
+        rtvList:
+          type: array
+          items:
+            $ref: '#/components/schemas/rtvList'
+    rtvList:
+      properties:
+        rtvNo:
+          type: string
+          example: NWB12804
+        poNo:
+          type: string
+          example: NHO123082
+        extPoNo:
+          type: string
+          example: NHO123082
+        vendor:
+          type: string
+          example: CKPLM
+        vendor_name:
+          type: string
+          example: ABC
+        externalVendorCode:
+          type: string
+          example: cip-2020
+        rtvDate:
+          type: string
+          example: 04/12/2018 12:34:31
+        rtvType:
+          type: string
+          example: Normal Return
+        rtvSource:
+          type: string
+          example: With PO
+        status:
+          type: string
+          example: Allocated
+        rtvAmt:
+          type: string
+          example: '78.977'
+        rtvQty:
+          type: string
+          example: '4.00'
+        taxAmt:
+          type: string
+          example: '22.909'
+        onHold:
+          type: string
+          example: '0'
+        created_loc:
+          type: string
+          example: NWH
+        updateDate:
+          type: string
+          example: 04/12/2018 12:34:31
+        remarks:
+          type: string
+          example: ''
+        userDefinedField:
+          type: array
+          items:
+            $ref: '#/components/schemas/userdefineddetail'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Itemsrtvdetail'
+        del_locname:
+          type: string
+          example: FABINDIA SURFACE
+        printUrl:
+          type: string
+          example: ''

@@ -189,30 +189,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    asnCreate5:
-      properties:
-        extasnno:
-          type: string
-          example: ASN-123
-        outputKey:
-          type: string
-          example: '486'
-        status:
-          type: string
-          example: Success
-        errorDesc:
-          type: string
-          example: ''
-    asnCreate:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        requestStatus:
-          $ref: '#/components/schemas/asnCre'
     asncancel1:
       properties:
         responseCode:
@@ -225,80 +201,43 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/asncancel2'
-    asnCreate2:
+    asnCreate3:
       properties:
-        sku:
-          type: string
-          example: ASN-111
-        qty:
-          type: string
-          example: '1'
-        extLineNo:
-          type: string
-          example: '1'
-        referenceNo:
+        extLotno:
           type: string
           example: ''
-        polineNo:
+        lottable01:
+          type: string
+          example: '34'
+        lottable02:
           type: string
           example: ''
-        extPolineNo:
+        lottable03:
+          type: string
+          example: '2018-04-24'
+        lottable04:
           type: string
           example: ''
-        boxId:
+        lottable05:
+          type: string
+          example: '34'
+        lottable06:
           type: string
           example: ''
-        udf1:
+        lottable07:
           type: string
           example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        uomName:
-          type: string
-          example: ''
-        unitCost:
-          type: string
-          example: ''
-        usns:
-          type: array
-          example: []
-        asnSerialNos:
-          type: array
-          items:
-            $ref: '#/components/schemas/serialNo'
-        asnLottables:
-          $ref: '#/components/schemas/asnCreate3'
-    serialNo:
+    asncancel2:
       properties:
-        serialNo:
+        referenceKey:
           type: string
-          example: ASN_Serial3
-        serialNo2:
-          type: string
-          example: ''
-        serialNo3:
-          type: string
-          example: ''
-    asnCreate4:
-      properties:
+          example: xx
         responseCode:
-          type: integer
-          example: 0
+          type: string
+          example: '0'
         responseMessage:
           type: string
-          example: Success
-        requestStatus:
-          $ref: '#/components/schemas/asnCreate5'
+          example: ASN cancelled Successfully
     asnDetail1:
       properties:
         responseCode:
@@ -314,142 +253,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/asnDetail2'
-    asncancel2:
+    serialNo:
       properties:
-        referenceKey:
+        serialNo:
           type: string
-          example: xx
-        responseCode:
-          type: string
-          example: '0'
-        responseMessage:
-          type: string
-          example: ASN cancelled Successfully
-    asnCre:
-      properties:
-        extasnno:
-          type: string
-          example: '8286'
-        outputKey:
-          type: string
-          example: NWB968
-        status:
-          type: string
-          example: Success
-        errorDesc:
+          example: ASN_Serial3
+        serialNo2:
           type: string
           example: ''
-    asnDetail2:
-      properties:
-        asnNo:
-          type: string
-          example: '322'
-        extAsnNo:
-          type: string
-          example: '322'
-        asnType:
-          type: string
-          example: Other
-        poNo:
-          type: string
-          example: ''
-        extPoNo:
-          type: string
-          example: ''
-        vendorCode:
-          type: string
-          example: ''
-        customerCode:
-          type: string
-          example: ''
-        status:
-          type: string
-          example: Cancelled
-        createdLoc:
-          type: string
-          example: CHE
-        delLoc:
-          type: string
-          example: IWH
-        expdeldate:
-          type: string
-          example: ''
-        grossweight:
-          type: string
-          example: '0.000'
-        remarks:
-          type: string
-          example: ''
-        trackingNo:
-          type: string
-          example: ''
-        challanNo:
-          type: string
-          example: ''
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        invoiceNo:
-          type: string
-          example: ''
-        asnDate:
-          type: string
-          example: 07/03/2023 10:15:00
-        asnTag:
-          type: string
-          example: []
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/asnDetail3'
-    asnDetail3:
-      properties:
-        sku:
-          type: string
-          example: ANKSKU10
-        lineno:
-          type: string
-          example: '1'
-        extlineno:
-          type: string
-          example: ''
-        qty:
-          type: string
-          example: '2.000'
-        recQty:
-          type: string
-          example: '0.000'
-        referenceno:
-          type: string
-          example: ''
-        boxid:
-          type: string
-          example: ''
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
+        serialNo3:
           type: string
           example: ''
     asncancel0:
@@ -532,29 +344,217 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/asnCreate2'
-    asnCreate3:
+    asnDetail2:
       properties:
-        extLotno:
+        asnNo:
+          type: string
+          example: '322'
+        extAsnNo:
+          type: string
+          example: '322'
+        asnType:
+          type: string
+          example: Other
+        poNo:
           type: string
           example: ''
-        lottable01:
-          type: string
-          example: '34'
-        lottable02:
+        extPoNo:
           type: string
           example: ''
-        lottable03:
-          type: string
-          example: '2018-04-24'
-        lottable04:
+        vendorCode:
           type: string
           example: ''
-        lottable05:
-          type: string
-          example: '34'
-        lottable06:
+        customerCode:
           type: string
           example: ''
-        lottable07:
+        status:
+          type: string
+          example: Cancelled
+        createdLoc:
+          type: string
+          example: CHE
+        delLoc:
+          type: string
+          example: IWH
+        expdeldate:
           type: string
           example: ''
+        grossweight:
+          type: string
+          example: '0.000'
+        remarks:
+          type: string
+          example: ''
+        trackingNo:
+          type: string
+          example: ''
+        challanNo:
+          type: string
+          example: ''
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        invoiceNo:
+          type: string
+          example: ''
+        asnDate:
+          type: string
+          example: 07/03/2023 10:15:00
+        asnTag:
+          type: string
+          example: []
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/asnDetail3'
+    asnCreate5:
+      properties:
+        extasnno:
+          type: string
+          example: ASN-123
+        outputKey:
+          type: string
+          example: '486'
+        status:
+          type: string
+          example: Success
+        errorDesc:
+          type: string
+          example: ''
+    asnCreate:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        requestStatus:
+          $ref: '#/components/schemas/asnCre'
+    asnCreate4:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        requestStatus:
+          $ref: '#/components/schemas/asnCreate5'
+    asnDetail3:
+      properties:
+        sku:
+          type: string
+          example: ANKSKU10
+        lineno:
+          type: string
+          example: '1'
+        extlineno:
+          type: string
+          example: ''
+        qty:
+          type: string
+          example: '2.000'
+        recQty:
+          type: string
+          example: '0.000'
+        referenceno:
+          type: string
+          example: ''
+        boxid:
+          type: string
+          example: ''
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+    asnCre:
+      properties:
+        extasnno:
+          type: string
+          example: '8286'
+        outputKey:
+          type: string
+          example: NWB968
+        status:
+          type: string
+          example: Success
+        errorDesc:
+          type: string
+          example: ''
+    asnCreate2:
+      properties:
+        sku:
+          type: string
+          example: ASN-111
+        qty:
+          type: string
+          example: '1'
+        extLineNo:
+          type: string
+          example: '1'
+        referenceNo:
+          type: string
+          example: ''
+        polineNo:
+          type: string
+          example: ''
+        extPolineNo:
+          type: string
+          example: ''
+        boxId:
+          type: string
+          example: ''
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        uomName:
+          type: string
+          example: ''
+        unitCost:
+          type: string
+          example: ''
+        usns:
+          type: array
+          example: []
+        asnSerialNos:
+          type: array
+          items:
+            $ref: '#/components/schemas/serialNo'
+        asnLottables:
+          $ref: '#/components/schemas/asnCreate3'

@@ -172,172 +172,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    orderDetailList1:
-      type: object
-      properties:
-        orderNo:
-          type: string
-          example: 100000019
-        orderStatus:
-          type: string
-          example: 5
-        orderDate:
-          type: string
-          example: 13/04/2016 00:19:40
-        orderLastUpdateDate:
-          type: string
-          example: 13/04/2016 14:32:05
-        onHold:
-          type: string
-          example: 1
-    OrderDetail1:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        orderList:
-          type: array
-          items:
-            $ref: '#/components/schemas/orderDetailList1'
-    OrderReturn2:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        returns:
-          items:
-            $ref: '#/components/schemas/returnlistforreturn2'
-    orderlistforreturn1:
-      properties:
-        orderNo:
-          type: string
-          example: 501242014-33
-        orderStatus:
-          type: string
-          example: '8'
-        orderDate:
-          type: string
-          example: 20/04/2017 16:06:00
-        customerName:
-          type: string
-          example: puneet Sharma
-        paymentMethod:
-          type: string
-          example: '1'
-        orderAmount:
-          type: string
-          example: '630.00'
-        orderCurrency:
-          type: string
-          example: INR
-        orderTaxAmount:
-          type: string
-          example: '0.00'
-        onHold:
-          type: string
-          example: '1'
-        shippingCharge:
-          type: string
-          example: '0.00'
-        discountAmount:
-          type: string
-          example: null
-        discCouponCode:
-          type: string
-          example: null
-        storeCredit:
-          type: string
-          example: null
-        gvAmount:
-          type: string
-          example: null
-        codCharge:
-          type: string
-          example: null
-        address1:
-          type: string
-          example: 'Flat 105, B2 , Blue Ridge Township, Hinjewadi Phase 1
-
-            Near Symbiosis College'
-        address2:
-          type: string
-          example: null
-        address3:
-          type: string
-          example: null
-        phone:
-          type: string
-          example: '7756845606'
-        email:
-          type: string
-          example: urvashiengineer@gmail.com
-        countryCode:
-          type: string
-          example: IND
-        state:
-          type: string
-          example: Maharashtra
-        city:
-          type: string
-          example: PUNE
-        pinCode:
-          type: string
-          example: '411057'
-        billToName:
-          type: string
-          example: puneet Sharma
-        bill_Address1:
-          type: string
-          example: Flat 105, B2 , Blue Ridge Township, Hinjewadi Phase 1,Near Symbiosis College
-        bill_Address2:
-          type: string
-          example: null
-        bill_Address3:
-          type: string
-          example: null
-        bill_Phone:
-          type: string
-          example: '7756845606'
-        bill_Email:
-          type: string
-          example: urvashiengineer@gmail.com
-        bill_CountryCode:
-          type: string
-          example: IND
-        bill_State:
-          type: string
-          example: Maharashtra
-        bill_City:
-          type: string
-          example: PUNE
-        bill_ZipCode:
-          type: string
-          example: '411057'
-        cancelRemark:
-          type: string
-          example: null
-        reasonForCancellation:
-          type: string
-          example: '1'
-        priority:
-          type: string
-          example: null
-        orderLastUpdateDate:
-          type: string
-          example: 07/11/2017 11:55:14
-        masterOrderNo:
-          type: string
-          example: NYKL00000042
-        orderItems:
-          type: array
-          items:
-            $ref: '#/components/schemas/itemlistforOrderreturn1'
     OrderReturn1:
       properties:
         responseCode:
@@ -435,50 +269,6 @@ components:
         vat:
           type: string
           example: null
-    orderitemsforreturn2:
-      properties:
-        lineNo:
-          type: string
-          example: '1'
-        skuCode:
-          type: string
-          example: CSKU2
-        skuName:
-          type: string
-          example: ChildSKU2
-        orderQty:
-          type: string
-          example: '2.00'
-        cancelledQty:
-          type: string
-          example: null
-        shippedQty:
-          type: string
-          example: '2'
-        returnedQty:
-          type: string
-          example: '1.00'
-        lineAmount:
-          type: string
-          example: '434.50'
-        lineTaxAmount:
-          type: string
-          example: '19.76'
-        unitPrice:
-          type: string
-          example: '450.00'
-        codCharge:
-          type: string
-          example: null
-        invoiceNo:
-          type: string
-          example: MWHP2021000005
-        storeCredit:
-          type: string
-          example: '50.00'
-        lineStatus:
-          type: string
-          example: '10'
     returnlistforreturn2:
       properties:
         internalReturnNo:
@@ -614,3 +404,213 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/orderitemsforreturn2'
+    orderlistforreturn1:
+      properties:
+        orderNo:
+          type: string
+          example: 501242014-33
+        orderStatus:
+          type: string
+          example: '8'
+        orderDate:
+          type: string
+          example: 20/04/2017 16:06:00
+        customerName:
+          type: string
+          example: puneet Sharma
+        paymentMethod:
+          type: string
+          example: '1'
+        orderAmount:
+          type: string
+          example: '630.00'
+        orderCurrency:
+          type: string
+          example: INR
+        orderTaxAmount:
+          type: string
+          example: '0.00'
+        onHold:
+          type: string
+          example: '1'
+        shippingCharge:
+          type: string
+          example: '0.00'
+        discountAmount:
+          type: string
+          example: null
+        discCouponCode:
+          type: string
+          example: null
+        storeCredit:
+          type: string
+          example: null
+        gvAmount:
+          type: string
+          example: null
+        codCharge:
+          type: string
+          example: null
+        address1:
+          type: string
+          example: 'Flat 105, B2 , Blue Ridge Township, Hinjewadi Phase 1
+
+            Near Symbiosis College'
+        address2:
+          type: string
+          example: null
+        address3:
+          type: string
+          example: null
+        phone:
+          type: string
+          example: '7756845606'
+        email:
+          type: string
+          example: urvashiengineer@gmail.com
+        countryCode:
+          type: string
+          example: IND
+        state:
+          type: string
+          example: Maharashtra
+        city:
+          type: string
+          example: PUNE
+        pinCode:
+          type: string
+          example: '411057'
+        billToName:
+          type: string
+          example: puneet Sharma
+        bill_Address1:
+          type: string
+          example: Flat 105, B2 , Blue Ridge Township, Hinjewadi Phase 1,Near Symbiosis College
+        bill_Address2:
+          type: string
+          example: null
+        bill_Address3:
+          type: string
+          example: null
+        bill_Phone:
+          type: string
+          example: '7756845606'
+        bill_Email:
+          type: string
+          example: urvashiengineer@gmail.com
+        bill_CountryCode:
+          type: string
+          example: IND
+        bill_State:
+          type: string
+          example: Maharashtra
+        bill_City:
+          type: string
+          example: PUNE
+        bill_ZipCode:
+          type: string
+          example: '411057'
+        cancelRemark:
+          type: string
+          example: null
+        reasonForCancellation:
+          type: string
+          example: '1'
+        priority:
+          type: string
+          example: null
+        orderLastUpdateDate:
+          type: string
+          example: 07/11/2017 11:55:14
+        masterOrderNo:
+          type: string
+          example: NYKL00000042
+        orderItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/itemlistforOrderreturn1'
+    orderDetailList1:
+      type: object
+      properties:
+        orderNo:
+          type: string
+          example: 100000019
+        orderStatus:
+          type: string
+          example: 5
+        orderDate:
+          type: string
+          example: 13/04/2016 00:19:40
+        orderLastUpdateDate:
+          type: string
+          example: 13/04/2016 14:32:05
+        onHold:
+          type: string
+          example: 1
+    OrderReturn2:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        returns:
+          items:
+            $ref: '#/components/schemas/returnlistforreturn2'
+    OrderDetail1:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        orderList:
+          type: array
+          items:
+            $ref: '#/components/schemas/orderDetailList1'
+    orderitemsforreturn2:
+      properties:
+        lineNo:
+          type: string
+          example: '1'
+        skuCode:
+          type: string
+          example: CSKU2
+        skuName:
+          type: string
+          example: ChildSKU2
+        orderQty:
+          type: string
+          example: '2.00'
+        cancelledQty:
+          type: string
+          example: null
+        shippedQty:
+          type: string
+          example: '2'
+        returnedQty:
+          type: string
+          example: '1.00'
+        lineAmount:
+          type: string
+          example: '434.50'
+        lineTaxAmount:
+          type: string
+          example: '19.76'
+        unitPrice:
+          type: string
+          example: '450.00'
+        codCharge:
+          type: string
+          example: null
+        invoiceNo:
+          type: string
+          example: MWHP2021000005
+        storeCredit:
+          type: string
+          example: '50.00'
+        lineStatus:
+          type: string
+          example: '10'

@@ -218,262 +218,7 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    STOCreate1:
-      properties:
-        extLineNo:
-          type: string
-          example: '1'
-        skuCode:
-          type: string
-          example: STEST001
-        qty:
-          type: string
-          example: '5'
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-    cancelSTO1:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        response:
-          type: array
-          items:
-            $ref: '#/components/schemas/cancelSTO2'
-    dimensionStoDetailV2:
-      properties:
-        length:
-          type: string
-          example: '1.00'
-        breadth:
-          type: string
-          example: '2.00'
-        height:
-          type: string
-          example: '3.00'
-        weight:
-          type: string
-          example: '1.00'
-        weightUnit:
-          type: string
-          example: '19'
-        dimensionUnit:
-          type: string
-          example: '800.00000'
-        noofboxes:
-          type: string
-          example: '1'
-    stoDetailsv23:
-      properties:
-        deliveryNumber:
-          type: string
-          example: CHEB0D005350
-        status:
-          type: string
-          example: delivered
-        qty:
-          type: string
-          example: '10.00'
-        transporter:
-          type: string
-          example: Delhivary Barcode
-        transporterRemark:
-          type: string
-          example: ''
-        inBoundCodes:
-          type: string
-          example: []
-        dimensions:
-          type: array
-          items:
-            $ref: '#/components/schemas/dimensionStoDetailV2'
-        transporterStatus:
-          type: string
-          example: ''
-        extTransCode:
-          type: string
-          example: ''
-        extTransporterName:
-          type: string
-          example: ''
-        trackingNumber:
-          type: string
-          example: ''
-        ewayBillNo:
-          type: string
-          example: ''
-        irnNo:
-          type: string
-          example: ''
-        qrCode:
-          type: string
-          example: ''
-        pickDate:
-          type: string
-          example: ''
-        packDate:
-          type: string
-          example: ''
-        shipDate:
-          type: string
-          example: ''
-        manifestNo:
-          type: string
-          example: ''
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/stoDetailsv24'
-    STOCreate3:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: SUCCESS
-        externalSTONo:
-          type: string
-          example: NWB110497
-        STONo:
-          type: string
-          example: NWB110497
-    cancelSTO2:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: SUCCESS
-        externalSTONo:
-          type: string
-          example: NWB110497
-        STONo:
-          type: string
-          example: NWB110497
-    stoDetails3:
-      properties:
-        deliveryNumber:
-          type: string
-          example: CHEB0D005350
-        status:
-          type: string
-          example: delivered
-        qty:
-          type: string
-          example: '10.00'
-        transporter:
-          type: string
-          example: Delhivary Barcode
-        transporterRemark:
-          type: string
-          example: ''
-        inBoundCodes:
-          type: string
-          example: []
-        dimensions:
-          type: array
-          items:
-            $ref: '#/components/schemas/dimensionStoDetailV1'
-        transporterStatus:
-          type: string
-          example: ''
-        extTransCode:
-          type: string
-          example: ''
-        extTransporterName:
-          type: string
-          example: ''
-        trackingNumber:
-          type: string
-          example: ''
-        ewayBillNo:
-          type: string
-          example: ''
-        irnNo:
-          type: string
-          example: ''
-        qrCode:
-          type: string
-          example: ''
-        pickDate:
-          type: string
-          example: ''
-        packDate:
-          type: string
-          example: ''
-        shipDate:
-          type: string
-          example: ''
-        manifestNo:
-          type: string
-          example: ''
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/stoDetails4'
-    cancelSTO0:
-      properties:
-        stoNo:
-          type: string
-          example: XYZ123
-        reasonCode:
-          type: string
-          example: Misc
-        destSiteCode:
-          type: string
-          example: ''
-        remarks:
-          type: string
-          example: Normal
-    stoDetailsv21:
+    stoDetails1:
       properties:
         responseCode:
           type: integer
@@ -484,255 +229,10 @@ components:
         currentPage:
           type: integer
           example: 1
-        totalPage:
-          type: integer
-          example: 1
         stoList:
           type: array
           items:
-            $ref: '#/components/schemas/stoDetailsv22'
-    stoDetails2:
-      properties:
-        extOrderNo:
-          type: string
-          example: NWB110437
-        orderNo:
-          type: string
-          example: NWB110437
-        status:
-          type: string
-          example: Pending
-        stoType:
-          type: string
-          example: Normal
-        remarks:
-          type: string
-          example: ''
-        orderQty:
-          type: string
-          example: '8.0'
-        orderAmount:
-          type: string
-          example: '800.00000'
-        orderLines:
-          type: string
-          example: '1'
-        ordertaxAmount:
-          type: string
-          example: '0.00000'
-        orderDate:
-          type: string
-          example: 18/12/2019 05:49:50
-        createdDate:
-          type: string
-          example: 18/12/2019 05:49:50
-        updatedDate:
-          type: string
-          example: 18/12/2019 05:49:50
-        fromSiteCode:
-          type: string
-          example: NWB
-        fromSiteName:
-          type: string
-          example: Warehouse Mumbai
-        toSiteCode:
-          type: string
-          example: NWB
-        toSiteName:
-          type: string
-          example: Warehouse Mumbai
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        udf6:
-          type: string
-          example: ''
-        udf7:
-          type: string
-          example: ''
-        udf8:
-          type: string
-          example: ''
-        udf9:
-          type: string
-          example: ''
-        udf10:
-          type: string
-          example: ''
-        shipmentDetail:
-          type: array
-          items:
-            $ref: '#/components/schemas/stoDetails3'
-    stoDetailsv22:
-      properties:
-        extOrderNo:
-          type: string
-          example: UJW21550
-        orderNo:
-          type: string
-          example: UJW21550
-        status:
-          type: string
-          example: Confirmed
-        stoType:
-          type: string
-          example: Normal
-        remarks:
-          type: string
-          example: THIS IS REMA
-        orderQty:
-          type: string
-          example: '1.0'
-        orderAmount:
-          type: string
-          example: '88.990'
-        orderLines:
-          type: string
-          example: '1'
-        ordertaxAmount:
-          type: string
-          example: '0.000'
-        orderDate:
-          type: string
-          example: 14/10/2022 20:53:26
-        createdDate:
-          type: string
-          example: 14/10/2022 20:53:26
-        updatedDate:
-          type: string
-          example: 14/10/2022 20:53:26
-        fromSiteCode:
-          type: string
-          example: CHE
-        fromSiteName:
-          type: string
-          example: Urjakart Warehouse
-        toSiteCode:
-          type: string
-          example: LLW
-        toSiteName:
-          type: string
-          example: Lakshya Lucknow
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        udf6:
-          type: string
-          example: ''
-        udf7:
-          type: string
-          example: ''
-        udf8:
-          type: string
-          example: ''
-        udf9:
-          type: string
-          example: CALLEDFRMSCREEN
-        udf10:
-          type: string
-          example: ''
-        shipmentDetail:
-          type: array
-          items:
-            $ref: '#/components/schemas/stoDetailsv23'
-    dimensionStoDetailV1:
-      properties:
-        length:
-          type: string
-          example: '10.00'
-        breadth:
-          type: string
-          example: '20.00'
-        height:
-          type: string
-          example: '30.00'
-        weight:
-          type: string
-          example: '19.00'
-        weightUnit:
-          type: string
-          example: '19'
-        dimensionUnit:
-          type: string
-          example: '800.00000'
-        noofboxes:
-          type: string
-          example: '1'
-    STOCreate0:
-      properties:
-        stoNo:
-          type: string
-          example: XYZ123
-        mode:
-          type: string
-          example: Create
-        stoType:
-          type: string
-          example: Normal
-        fromLocCode:
-          type: string
-          example: NWB
-        toLocCode:
-          type: string
-          example: NBS
-        reasonCode:
-          type: string
-          example: ''
-        priority:
-          type: string
-          example: ''
-        remarks:
-          type: string
-          example: ''
-        status:
-          type: string
-          example: Confirm
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        orderDate:
-          type: string
-          example: 13/1/2020 12:30:00
-        itemDetails:
-          type: array
-          items:
-            $ref: '#/components/schemas/STOCreate1'
+            $ref: '#/components/schemas/stoDetails2'
     stoDetailsv24:
       properties:
         lineno:
@@ -894,6 +394,421 @@ components:
         unitPrice:
           type: string
           example: '88.990'
+    cancelSTO2:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: SUCCESS
+        externalSTONo:
+          type: string
+          example: NWB110497
+        STONo:
+          type: string
+          example: NWB110497
+    stoDetailsv21:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        currentPage:
+          type: integer
+          example: 1
+        totalPage:
+          type: integer
+          example: 1
+        stoList:
+          type: array
+          items:
+            $ref: '#/components/schemas/stoDetailsv22'
+    stoDetails3:
+      properties:
+        deliveryNumber:
+          type: string
+          example: CHEB0D005350
+        status:
+          type: string
+          example: delivered
+        qty:
+          type: string
+          example: '10.00'
+        transporter:
+          type: string
+          example: Delhivary Barcode
+        transporterRemark:
+          type: string
+          example: ''
+        inBoundCodes:
+          type: string
+          example: []
+        dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/dimensionStoDetailV1'
+        transporterStatus:
+          type: string
+          example: ''
+        extTransCode:
+          type: string
+          example: ''
+        extTransporterName:
+          type: string
+          example: ''
+        trackingNumber:
+          type: string
+          example: ''
+        ewayBillNo:
+          type: string
+          example: ''
+        irnNo:
+          type: string
+          example: ''
+        qrCode:
+          type: string
+          example: ''
+        pickDate:
+          type: string
+          example: ''
+        packDate:
+          type: string
+          example: ''
+        shipDate:
+          type: string
+          example: ''
+        manifestNo:
+          type: string
+          example: ''
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/stoDetails4'
+    STOCreate2:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        response:
+          type: array
+          items:
+            $ref: '#/components/schemas/STOCreate3'
+    STOCreate0:
+      properties:
+        stoNo:
+          type: string
+          example: XYZ123
+        mode:
+          type: string
+          example: Create
+        stoType:
+          type: string
+          example: Normal
+        fromLocCode:
+          type: string
+          example: NWB
+        toLocCode:
+          type: string
+          example: NBS
+        reasonCode:
+          type: string
+          example: ''
+        priority:
+          type: string
+          example: ''
+        remarks:
+          type: string
+          example: ''
+        status:
+          type: string
+          example: Confirm
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        orderDate:
+          type: string
+          example: 13/1/2020 12:30:00
+        itemDetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/STOCreate1'
+    dimensionStoDetailV2:
+      properties:
+        length:
+          type: string
+          example: '1.00'
+        breadth:
+          type: string
+          example: '2.00'
+        height:
+          type: string
+          example: '3.00'
+        weight:
+          type: string
+          example: '1.00'
+        weightUnit:
+          type: string
+          example: '19'
+        dimensionUnit:
+          type: string
+          example: '800.00000'
+        noofboxes:
+          type: string
+          example: '1'
+    STOCreate1:
+      properties:
+        extLineNo:
+          type: string
+          example: '1'
+        skuCode:
+          type: string
+          example: STEST001
+        qty:
+          type: string
+          example: '5'
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+    cancelSTO1:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        response:
+          type: array
+          items:
+            $ref: '#/components/schemas/cancelSTO2'
+    dimensionStoDetailV1:
+      properties:
+        length:
+          type: string
+          example: '10.00'
+        breadth:
+          type: string
+          example: '20.00'
+        height:
+          type: string
+          example: '30.00'
+        weight:
+          type: string
+          example: '19.00'
+        weightUnit:
+          type: string
+          example: '19'
+        dimensionUnit:
+          type: string
+          example: '800.00000'
+        noofboxes:
+          type: string
+          example: '1'
+    stoDetailsv23:
+      properties:
+        deliveryNumber:
+          type: string
+          example: CHEB0D005350
+        status:
+          type: string
+          example: delivered
+        qty:
+          type: string
+          example: '10.00'
+        transporter:
+          type: string
+          example: Delhivary Barcode
+        transporterRemark:
+          type: string
+          example: ''
+        inBoundCodes:
+          type: string
+          example: []
+        dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/dimensionStoDetailV2'
+        transporterStatus:
+          type: string
+          example: ''
+        extTransCode:
+          type: string
+          example: ''
+        extTransporterName:
+          type: string
+          example: ''
+        trackingNumber:
+          type: string
+          example: ''
+        ewayBillNo:
+          type: string
+          example: ''
+        irnNo:
+          type: string
+          example: ''
+        qrCode:
+          type: string
+          example: ''
+        pickDate:
+          type: string
+          example: ''
+        packDate:
+          type: string
+          example: ''
+        shipDate:
+          type: string
+          example: ''
+        manifestNo:
+          type: string
+          example: ''
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/stoDetailsv24'
+    stoDetails2:
+      properties:
+        extOrderNo:
+          type: string
+          example: NWB110437
+        orderNo:
+          type: string
+          example: NWB110437
+        status:
+          type: string
+          example: Pending
+        stoType:
+          type: string
+          example: Normal
+        remarks:
+          type: string
+          example: ''
+        orderQty:
+          type: string
+          example: '8.0'
+        orderAmount:
+          type: string
+          example: '800.00000'
+        orderLines:
+          type: string
+          example: '1'
+        ordertaxAmount:
+          type: string
+          example: '0.00000'
+        orderDate:
+          type: string
+          example: 18/12/2019 05:49:50
+        createdDate:
+          type: string
+          example: 18/12/2019 05:49:50
+        updatedDate:
+          type: string
+          example: 18/12/2019 05:49:50
+        fromSiteCode:
+          type: string
+          example: NWB
+        fromSiteName:
+          type: string
+          example: Warehouse Mumbai
+        toSiteCode:
+          type: string
+          example: NWB
+        toSiteName:
+          type: string
+          example: Warehouse Mumbai
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        udf6:
+          type: string
+          example: ''
+        udf7:
+          type: string
+          example: ''
+        udf8:
+          type: string
+          example: ''
+        udf9:
+          type: string
+          example: ''
+        udf10:
+          type: string
+          example: ''
+        shipmentDetail:
+          type: array
+          items:
+            $ref: '#/components/schemas/stoDetails3'
     stoDetails4:
       properties:
         lineno:
@@ -1055,30 +970,115 @@ components:
         unitPrice:
           type: string
           example: '643.8'
-    STOCreate2:
+    cancelSTO0:
+      properties:
+        stoNo:
+          type: string
+          example: XYZ123
+        reasonCode:
+          type: string
+          example: Misc
+        destSiteCode:
+          type: string
+          example: ''
+        remarks:
+          type: string
+          example: Normal
+    STOCreate3:
       properties:
         responseCode:
           type: integer
           example: 0
         responseMessage:
           type: string
-          example: Success
-        response:
-          type: array
-          items:
-            $ref: '#/components/schemas/STOCreate3'
-    stoDetails1:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
+          example: SUCCESS
+        externalSTONo:
           type: string
-          example: Success
-        currentPage:
-          type: integer
-          example: 1
-        stoList:
+          example: NWB110497
+        STONo:
+          type: string
+          example: NWB110497
+    stoDetailsv22:
+      properties:
+        extOrderNo:
+          type: string
+          example: UJW21550
+        orderNo:
+          type: string
+          example: UJW21550
+        status:
+          type: string
+          example: Confirmed
+        stoType:
+          type: string
+          example: Normal
+        remarks:
+          type: string
+          example: THIS IS REMA
+        orderQty:
+          type: string
+          example: '1.0'
+        orderAmount:
+          type: string
+          example: '88.990'
+        orderLines:
+          type: string
+          example: '1'
+        ordertaxAmount:
+          type: string
+          example: '0.000'
+        orderDate:
+          type: string
+          example: 14/10/2022 20:53:26
+        createdDate:
+          type: string
+          example: 14/10/2022 20:53:26
+        updatedDate:
+          type: string
+          example: 14/10/2022 20:53:26
+        fromSiteCode:
+          type: string
+          example: CHE
+        fromSiteName:
+          type: string
+          example: Urjakart Warehouse
+        toSiteCode:
+          type: string
+          example: LLW
+        toSiteName:
+          type: string
+          example: Lakshya Lucknow
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        udf6:
+          type: string
+          example: ''
+        udf7:
+          type: string
+          example: ''
+        udf8:
+          type: string
+          example: ''
+        udf9:
+          type: string
+          example: CALLEDFRMSCREEN
+        udf10:
+          type: string
+          example: ''
+        shipmentDetail:
           type: array
           items:
-            $ref: '#/components/schemas/stoDetails2'
+            $ref: '#/components/schemas/stoDetailsv23'
