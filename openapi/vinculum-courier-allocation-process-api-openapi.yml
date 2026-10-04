@@ -166,6 +166,18 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    fetchInvoiceResponse1:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        invoiceItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvoiceList1'
     GenerateInvoice1:
       properties:
         responseCode:
@@ -221,15 +233,3 @@ components:
         responseMessage:
           type: string
           example: Success
-    fetchInvoiceResponse1:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        invoiceItems:
-          type: array
-          items:
-            $ref: '#/components/schemas/InvoiceList1'

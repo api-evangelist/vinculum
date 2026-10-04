@@ -41,32 +41,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    putawayCreate1:
-      properties:
-        Lineno:
-          type: string
-          example: '1'
-        skucode:
-          type: string
-          example: CYCTEST1
-        putawayqty:
-          type: string
-          example: '1'
-        putawayBin:
-          type: string
-          example: TEST011
-        From_LPN:
-          type: string
-          example: ''
-        To_LPN:
-          type: string
-          example: ''
-        UOM:
-          type: string
-          example: ''
-        LOT:
-          type: string
-          example: ''
     putawayCreate:
       properties:
         type:
@@ -94,3 +68,29 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/putawayCreate1'
+    putawayCreate1:
+      properties:
+        Lineno:
+          type: string
+          example: '1'
+        skucode:
+          type: string
+          example: CYCTEST1
+        putawayqty:
+          type: string
+          example: '1'
+        putawayBin:
+          type: string
+          example: TEST011
+        From_LPN:
+          type: string
+          example: ''
+        To_LPN:
+          type: string
+          example: ''
+        UOM:
+          type: string
+          example: ''
+        LOT:
+          type: string
+          example: ''

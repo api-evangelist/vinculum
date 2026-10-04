@@ -423,56 +423,107 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/getWhInventory2'
-    movementHistory2:
+    adjustmentdetail:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        totalSku:
+          type: integer
+          example: 1
+        totalPages:
+          type: integer
+          example: 1
+        currentPage:
+          type: integer
+          example: 1
+        skuList:
+          type: array
+          items:
+            $ref: '#/components/schemas/skuList'
+    updateInventoryModelV3:
+      properties:
+        inventoryList:
+          type: array
+          items:
+            $ref: '#/components/schemas/updateInventoryV3'
+    updateInventory:
       properties:
         skuCode:
           type: string
-          example: PICK01
-        skuDesc:
+          example: UPDINV-1
+        uomQty:
           type: string
-          example: 'CallOne BT Power Blaster Speaker S311 ( P: 25, CL: , S: , CL: , A: 0 )'
-        fromZone:
+          example: '5'
+        uom:
           type: string
-          example: Salable
-        toZone:
+          example: ''
+        conversion:
           type: string
-          example: Packzone
-        fromBin:
+          example: '3'
+        bin:
           type: string
-          example: Salebin
-        toBin:
-          type: string
-          example: Pack-Bin
+          example: Saleable
         lpn:
           type: string
           example: ''
-        movementDate:
+        lottable_01:
           type: string
-          example: 29/06/2022 12:58:56
-        movementQty:
-          type: string
-          example: '3.000'
-        locCode:
-          type: string
-          example: CHE
-        locName:
-          type: string
-          example: Chennai_WH
-        user:
-          type: string
-          example: G-harshit.
-        putawayNo:
+          example: '11'
+        lottable_02:
           type: string
           example: ''
-        usnNo:
+        lottable_03:
           type: string
           example: ''
-        remarks:
+        lottable_04:
+          type: string
+          example: ''
+        lottable_05:
+          type: string
+          example: ''
+        lottable_06:
+          type: string
+          example: ''
+        lottable_07:
           type: string
           example: ''
         reason:
           type: string
-          example: Wrong shipment
+          example: MISC
+        mode:
+          type: string
+          example: Increase
+        location:
+          type: string
+          example: UJW
+        operationOn:
+          type: string
+          example: ''
+        remarks:
+          type: string
+          example: adjusted qty
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        lotNo:
+          type: string
+          example: ''
     movementHistory1:
       properties:
         responseCode:
@@ -558,80 +609,23 @@ components:
         lpnNo:
           type: string
           example: ''
-    updateInventory:
+    getWhInventory2:
       properties:
         skuCode:
           type: string
-          example: UPDINV-1
-        uomQty:
-          type: string
-          example: '5'
-        uom:
-          type: string
-          example: ''
-        conversion:
-          type: string
-          example: '3'
-        bin:
-          type: string
-          example: Saleable
-        lpn:
-          type: string
-          example: ''
-        lottable_01:
-          type: string
-          example: '11'
-        lottable_02:
-          type: string
-          example: ''
-        lottable_03:
-          type: string
-          example: ''
-        lottable_04:
-          type: string
-          example: ''
-        lottable_05:
-          type: string
-          example: ''
-        lottable_06:
-          type: string
-          example: ''
-        lottable_07:
-          type: string
-          example: ''
-        reason:
-          type: string
-          example: MISC
-        mode:
-          type: string
-          example: Increase
+          example: PICK01
         location:
           type: string
-          example: UJW
-        operationOn:
+          example: UWH
+        qty:
           type: string
-          example: ''
-        remarks:
+          example: '20'
+        bucket:
           type: string
-          example: adjusted qty
-        udf1:
+          example: Good
+        committedQty:
           type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        lotNo:
-          type: string
-          example: ''
+          example: '15'
     skuList:
       type: object
       properties:
@@ -737,29 +731,6 @@ components:
         lottable07:
           type: string
           example: ''
-    updateInventoryModelV3:
-      properties:
-        inventoryList:
-          type: array
-          items:
-            $ref: '#/components/schemas/updateInventoryV3'
-    getWhInventory2:
-      properties:
-        skuCode:
-          type: string
-          example: PICK01
-        location:
-          type: string
-          example: UWH
-        qty:
-          type: string
-          example: '20'
-        bucket:
-          type: string
-          example: Good
-        committedQty:
-          type: string
-          example: '15'
     updateInventoryV3:
       properties:
         skuCode:
@@ -825,24 +796,53 @@ components:
         udf5:
           type: string
           example: ''
-    adjustmentdetail:
+    movementHistory2:
       properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
+        skuCode:
           type: string
-          example: Success
-        totalSku:
-          type: integer
-          example: 1
-        totalPages:
-          type: integer
-          example: 1
-        currentPage:
-          type: integer
-          example: 1
-        skuList:
-          type: array
-          items:
-            $ref: '#/components/schemas/skuList'
+          example: PICK01
+        skuDesc:
+          type: string
+          example: 'CallOne BT Power Blaster Speaker S311 ( P: 25, CL: , S: , CL: , A: 0 )'
+        fromZone:
+          type: string
+          example: Salable
+        toZone:
+          type: string
+          example: Packzone
+        fromBin:
+          type: string
+          example: Salebin
+        toBin:
+          type: string
+          example: Pack-Bin
+        lpn:
+          type: string
+          example: ''
+        movementDate:
+          type: string
+          example: 29/06/2022 12:58:56
+        movementQty:
+          type: string
+          example: '3.000'
+        locCode:
+          type: string
+          example: CHE
+        locName:
+          type: string
+          example: Chennai_WH
+        user:
+          type: string
+          example: G-harshit.
+        putawayNo:
+          type: string
+          example: ''
+        usnNo:
+          type: string
+          example: ''
+        remarks:
+          type: string
+          example: ''
+        reason:
+          type: string
+          example: Wrong shipment

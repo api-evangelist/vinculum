@@ -179,40 +179,94 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    RequestStatus3:
-      properties:
-        externalpocode:
-          type: string
-          example: '8286'
-        pocode:
-          type: string
-          example: 8286po
-        outputKey:
-          type: integer
-          example: NWB968
-        status:
-          type: string
-          example: Success
-        errorDesc:
-          type: integer
-          example: 'null'
-    poStatusUpdate3:
+    popull:
       properties:
         responseCode:
           type: integer
-          example: '0'
+          example: 0
+        responseStatus:
+          type: string
+          example: Success
+        totalPo:
+          type: integer
+          example: 230
+        totalPages:
+          type: integer
+          example: 3
+        currentPage:
+          type: integer
+          example: 1
+        requestStatus:
+          $ref: '#/components/schemas/RequestStatus2'
+    responseGatePassdetail:
+      properties:
+        totalGatepass:
+          type: integer
+          example: 1
+        totalPages:
+          type: integer
+          example: 1
+        currentPage:
+          type: integer
+          example: 1
+        gatePassList:
+          type: array
+          items:
+            $ref: '#/components/schemas/gatePassList'
+    Items4:
+      type: object
+      properties:
+        chargeName:
+          type: string
+          example: deep
+        chargeType:
+          type: string
+          example: Absolute
+        chargeValue:
+          type: string
+          example: '30.000'
+        chargeAmount:
+          type: string
+          example: '30.000'
+    RequestStatus2:
+      properties:
+        poList:
+          type: array
+          items:
+            $ref: '#/components/schemas/PoList'
+    poStatusUpdate2:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
         responseMessage:
           type: string
           example: Success
-        poCode:
-          type: string
-          example: CHE251833
-        extPoCode:
-          type: string
-          example: ''
-        errorDescription:
+        response:
+          type: array
+          items:
+            $ref: '#/components/schemas/poStatusUpdate3'
+        requestId:
           type: string
           example: ''
+    pocreate3:
+      properties:
+        chargeName:
+          type: string
+          example: xyz
+        chargeValue:
+          type: string
+          example: ''
+    gatePassDetail:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        response:
+          $ref: '#/components/schemas/responseGatePassdetail'
     pocreate1:
       properties:
         vendorCode:
@@ -295,6 +349,75 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/pocreate3'
+    RequestStatus3:
+      properties:
+        externalpocode:
+          type: string
+          example: '8286'
+        pocode:
+          type: string
+          example: 8286po
+        outputKey:
+          type: integer
+          example: NWB968
+        status:
+          type: string
+          example: Success
+        errorDesc:
+          type: integer
+          example: 'null'
+    pocreate2:
+      properties:
+        skuCode:
+          type: string
+          example: Test1
+        uomQty:
+          type: string
+          example: '10.000'
+        unitCost:
+          type: string
+          example: '100.550'
+        extLineNo:
+          type: string
+          example: '1'
+        expDelDate:
+          type: string
+          example: 04/02/2021 15:40:30
+        mrp:
+          type: string
+          example: '100'
+        uomName:
+          type: string
+          example: ''
+        caseSize:
+          type: string
+          example: ''
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+    poStatusUpdate1:
+      properties:
+        poCode:
+          type: string
+          example: CHE251833
+        extPoCode:
+          type: string
+          example: ''
+        status:
+          type: string
+          example: Closed
     gatePassList:
       properties:
         gatepassno:
@@ -351,256 +474,6 @@ components:
         igpdate:
           type: string
           example: ''
-    popull:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseStatus:
-          type: string
-          example: Success
-        totalPo:
-          type: integer
-          example: 230
-        totalPages:
-          type: integer
-          example: 3
-        currentPage:
-          type: integer
-          example: 1
-        requestStatus:
-          $ref: '#/components/schemas/RequestStatus2'
-    pocreate:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        requestStatus:
-          $ref: '#/components/schemas/RequestStatus3'
-    pocreate2:
-      properties:
-        skuCode:
-          type: string
-          example: Test1
-        uomQty:
-          type: string
-          example: '10.000'
-        unitCost:
-          type: string
-          example: '100.550'
-        extLineNo:
-          type: string
-          example: '1'
-        expDelDate:
-          type: string
-          example: 04/02/2021 15:40:30
-        mrp:
-          type: string
-          example: '100'
-        uomName:
-          type: string
-          example: ''
-        caseSize:
-          type: string
-          example: ''
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-    poStatusUpdate1:
-      properties:
-        poCode:
-          type: string
-          example: CHE251833
-        extPoCode:
-          type: string
-          example: ''
-        status:
-          type: string
-          example: Closed
-    Items3:
-      type: object
-      properties:
-        skucode:
-          type: string
-          example: SSSKU011
-        skuname:
-          type: string
-          example: simple sku
-        poqty:
-          type: string
-          example: '2'
-        receivedqty:
-          type: string
-          example: '2'
-        unitcost:
-          type: string
-          example: '10.000'
-        taxamount:
-          type: string
-          example: '1.00'
-        excise:
-          type: string
-          example: ''
-        externallinenumber:
-          type: string
-          example: '1'
-        expdeldate:
-          type: number
-          example: 25/11/2016 15:40:30
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        udf6:
-          type: string
-          example: ''
-        udf7:
-          type: string
-          example: ''
-        udf8:
-          type: string
-          example: ''
-        udf9:
-          type: string
-          example: ''
-        udf10:
-          type: string
-          example: ''
-        polineno:
-          type: string
-          example: '1'
-        mrp:
-          type: string
-          example: '3099.00'
-        vendorskucode:
-          type: string
-          example: ABC1000
-        cgstAmt:
-          type: string
-          example: '123.00'
-        sgstAmt:
-          type: string
-          example: '156.08250'
-        igstAmt:
-          type: string
-          example: '0.00000'
-        cgstRt:
-          type: string
-          example: '9.0'
-        sgstRt:
-          type: string
-          example: '9.0'
-        igstRt:
-          type: string
-          example: '0.0'
-        gstRT:
-          type: string
-          example: '18.000'
-        closedQty:
-          type: string
-          example: '10'
-        asnQty:
-          type: string
-          example: '10'
-        openQty:
-          type: string
-          example: '10'
-        conversion:
-          type: string
-          example: '1.00000'
-        uom:
-          type: string
-          example: Each
-        eaqty:
-          type: string
-          example: '10.000'
-    gatePassDetail:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        response:
-          $ref: '#/components/schemas/responseGatePassdetail'
-    poStatusUpdate2:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        response:
-          type: array
-          items:
-            $ref: '#/components/schemas/poStatusUpdate3'
-        requestId:
-          type: string
-          example: ''
-    Items4:
-      type: object
-      properties:
-        chargeName:
-          type: string
-          example: deep
-        chargeType:
-          type: string
-          example: Absolute
-        chargeValue:
-          type: string
-          example: '30.000'
-        chargeAmount:
-          type: string
-          example: '30.000'
-    responseGatePassdetail:
-      properties:
-        totalGatepass:
-          type: integer
-          example: 1
-        totalPages:
-          type: integer
-          example: 1
-        currentPage:
-          type: integer
-          example: 1
-        gatePassList:
-          type: array
-          items:
-            $ref: '#/components/schemas/gatePassList'
-    RequestStatus2:
-      properties:
-        poList:
-          type: array
-          items:
-            $ref: '#/components/schemas/PoList'
     PoList:
       properties:
         pocode:
@@ -734,11 +607,138 @@ components:
           example: ''
           items:
             $ref: '#/components/schemas/Items4'
-    pocreate3:
+    poStatusUpdate3:
       properties:
-        chargeName:
+        responseCode:
+          type: integer
+          example: '0'
+        responseMessage:
           type: string
-          example: xyz
-        chargeValue:
+          example: Success
+        poCode:
+          type: string
+          example: CHE251833
+        extPoCode:
           type: string
           example: ''
+        errorDescription:
+          type: string
+          example: ''
+    pocreate:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        requestStatus:
+          $ref: '#/components/schemas/RequestStatus3'
+    Items3:
+      type: object
+      properties:
+        skucode:
+          type: string
+          example: SSSKU011
+        skuname:
+          type: string
+          example: simple sku
+        poqty:
+          type: string
+          example: '2'
+        receivedqty:
+          type: string
+          example: '2'
+        unitcost:
+          type: string
+          example: '10.000'
+        taxamount:
+          type: string
+          example: '1.00'
+        excise:
+          type: string
+          example: ''
+        externallinenumber:
+          type: string
+          example: '1'
+        expdeldate:
+          type: number
+          example: 25/11/2016 15:40:30
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        udf6:
+          type: string
+          example: ''
+        udf7:
+          type: string
+          example: ''
+        udf8:
+          type: string
+          example: ''
+        udf9:
+          type: string
+          example: ''
+        udf10:
+          type: string
+          example: ''
+        polineno:
+          type: string
+          example: '1'
+        mrp:
+          type: string
+          example: '3099.00'
+        vendorskucode:
+          type: string
+          example: ABC1000
+        cgstAmt:
+          type: string
+          example: '123.00'
+        sgstAmt:
+          type: string
+          example: '156.08250'
+        igstAmt:
+          type: string
+          example: '0.00000'
+        cgstRt:
+          type: string
+          example: '9.0'
+        sgstRt:
+          type: string
+          example: '9.0'
+        igstRt:
+          type: string
+          example: '0.0'
+        gstRT:
+          type: string
+          example: '18.000'
+        closedQty:
+          type: string
+          example: '10'
+        asnQty:
+          type: string
+          example: '10'
+        openQty:
+          type: string
+          example: '10'
+        conversion:
+          type: string
+          example: '1.00000'
+        uom:
+          type: string
+          example: Each
+        eaqty:
+          type: string
+          example: '10.000'

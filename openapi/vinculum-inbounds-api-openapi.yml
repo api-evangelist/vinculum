@@ -372,6 +372,16 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    inbounddetail:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        response:
+          $ref: '#/components/schemas/responseinbounddetail'
     InboundChargeDetailList:
       type: object
       properties:
@@ -384,283 +394,6 @@ components:
         chargeValue:
           type: string
           example: '0.000'
-    responseinboundqcdetail:
-      properties:
-        totalInbound:
-          type: string
-          example: 1
-        totalPages:
-          type: string
-          example: 1
-        currentPage:
-          type: string
-          example: 1
-        inboundDetailList:
-          type: array
-          items:
-            $ref: '#/components/schemas/InboundQCList'
-    InboundList:
-      properties:
-        pocode:
-          type: string
-          example: DEL000054203
-        gatepasscode:
-          type: string
-          example: DEL000054203
-        ext_pocode:
-          type: string
-          example: ''
-        asncode:
-          type: string
-          example: ''
-        inboundcode:
-          type: string
-          example: DEL000052119
-        externinboundcode:
-          type: string
-          example: ''
-        grnno:
-          type: string
-          example: DEL000054213
-        grndate:
-          type: integer
-          example: '2017-12-16 12:59:31.0'
-        vendor_code:
-          type: integer
-          example: '6259'
-        vendor_name:
-          type: string
-          example: ABC
-        grn_qty:
-          type: integer
-          example: '5.00'
-        grn_amount:
-          type: integer
-          example: '1355.00'
-        status:
-          type: string
-          example: Confirmed
-        pocreated_loc:
-          type: string
-          example: DEL
-        del_loc:
-          type: string
-          example: DEL
-        asn_delloc:
-          type: string
-          example: UJW
-        invoiceno:
-          type: string
-          example: del-296-167964
-        invoicedate:
-          type: number
-          example: '2017-12-16 12:59:31.0'
-        invoice_amt:
-          type: integer
-          example: '684.000'
-        invoicetax:
-          type: integer
-          example: '759.240'
-        no_ofboxes:
-          type: integer
-          example: '1'
-        vehicleno:
-          type: integer
-          example: ''
-        challan_no:
-          type: integer
-          example: ''
-        challan_date:
-          type: integer
-          example: ''
-        remarks:
-          type: string
-          example: ''
-        weight:
-          type: integer
-          example: '0.000'
-        material_rcvddate:
-          type: number
-          example: 16/12/2017
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        udf6:
-          type: string
-          example: ''
-        udf7:
-          type: string
-          example: ''
-        udf8:
-          type: string
-          example: ''
-        udf9:
-          type: string
-          example: ''
-        udf10:
-          type: string
-          example: ''
-        currency:
-          type: string
-          example: ''
-        returnCode:
-          type: string
-          example: ''
-        qcStatus:
-          type: string
-          example: inQC/QCdone/null
-        invoiceTaxAmt:
-          type: string
-          example: ''
-        del_locname:
-          type: string
-          example: ''
-        inbType:
-          type: string
-          example: ''
-        grn_BaseCurrAmount:
-          type: string
-          example: ''
-        conversionRate:
-          type: string
-          example: ''
-        extCustRetCode:
-          type: string
-          example: ''
-        printUrl:
-          type: string
-          example: ''
-        stoNo:
-          type: string
-          example: ''
-        extStoNo:
-          type: string
-          example: ''
-        tcs:
-          type: string
-          example: ''
-        transporterCharges:
-          type: string
-          example: '0.000'
-        inboundChargeDetail:
-          type: array
-          items:
-            $ref: '#/components/schemas/InboundChargeDetailList'
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Itemsinbounddetail'
-    UD:
-      type: object
-      properties:
-        intUSN:
-          type: string
-          example: ''
-        extUSN:
-          type: string
-          example: ''
-    inboundCreate4:
-      properties:
-        receiveType:
-          type: string
-          example: ASN
-        pocode:
-          type: string
-          example: ''
-        vendor_code:
-          type: string
-          example: ''
-        asnNo:
-          type: string
-          example: '2755'
-        returnNo:
-          type: string
-          example: ''
-        deliveryNo:
-          type: string
-          example: ''
-        stoNo:
-          type: string
-          example: ''
-        extInboundNo:
-          type: string
-          example: '2759'
-        status:
-          type: string
-          example: GRN In Process
-        delivery_loc:
-          type: string
-          example: UJW
-        invoiceno:
-          type: string
-          example: del-296-167964
-        invoicedate:
-          type: number
-          example: '2017-12-16 12:59:31.0'
-        invoice_amt:
-          type: integer
-          example: '684.000'
-        invoicetax:
-          type: integer
-          example: '759.240'
-        no_ofboxes:
-          type: integer
-          example: '1'
-        vehicleno:
-          type: integer
-          example: ''
-        challan_no:
-          type: integer
-          example: ''
-        challan_date:
-          type: integer
-          example: ''
-        remarks:
-          type: string
-          example: ''
-        weight:
-          type: integer
-          example: '0.000'
-        material_rcvddate:
-          type: number
-          example: 16/12/2017
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        validateShelfLife:
-          type: string
-          example: ''
-        ewayBill:
-          type: string
-          example: ''
-        transporterCode:
-          type: string
-          example: ''
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/inboundCreateItem4'
     inboundCreateItem4:
       properties:
         lineno:
@@ -738,49 +471,6 @@ components:
         lotNo:
           type: string
           example: ''
-    Itemsinboundqcdetail:
-      type: object
-      properties:
-        sku:
-          type: string
-          example: V18995
-        bin:
-          type: string
-          example: WESHIN
-        lot:
-          type: string
-          example: CHE000001581
-        passQty:
-          type: string
-          example: '1.000'
-        rejectQty:
-          type: integer
-          example: '1.000'
-        usn:
-          type: integer
-          example: ''
-        reason:
-          type: string
-          example: '1.0'
-        remark:
-          type: string
-          example: ''
-        totalQty:
-          type: string
-          example: '2.000'
-        holdQty:
-          type: string
-          example: '2.000'
-    inboundcreatev4:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        requestStatus:
-          $ref: '#/components/schemas/RequestStatusinboundcreatev4'
     RequestStatusinboundcreatev4:
       properties:
         outputKey:
@@ -792,6 +482,21 @@ components:
         errorDesc:
           type: string
           example: 'null'
+    responseinbounddetail:
+      properties:
+        totalInbound:
+          type: integer
+          example: 1
+        totalPages:
+          type: integer
+          example: 1
+        currentPage:
+          type: integer
+          example: 1
+        inboundList:
+          type: array
+          items:
+            $ref: '#/components/schemas/InboundList'
     responseinboundgrndetail:
       properties:
         inboundNo:
@@ -809,38 +514,18 @@ components:
         labelStream:
           type: string
           example: /9j/4AAQSkZJRgABAQEAYABgAAD/4QBaRXhpZgAASUkqAAgAAAAFAAEDBQABAAAASgAAAAMDAQABAAAAAP/nABBRAQABAAAAAQHnABFRBAABAAAAww4AABJRBAABAAAAww4AAAAAAACghgEAj7EAAP/bAEMACAYGBwYFCAcHBwkJCAoMFA0MCwsMGRITDxQdGh8eHRocHCAkLicgIiwjHBwoNyH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUm
-    InboundQCList:
-      properties:
-        inboundNo:
-          type: string
-          example: CHE000000173
-        grnNo:
-          type: string
-          example: CHE000010077
-        rejectBin:
-          type: string
-          example: CHE000010077
-        location:
-          type: string
-          example: CHE
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Itemsinboundqcdetail'
-    inboundcancel2:
+    inboundcancel1:
       properties:
         responseCode:
-          type: string
-          example: '0'
-        response:
-          type: string
-          example: Success
-        referenceKey:
-          type: string
-          example: IWH000033899
+          type: integer
+          example: 0
         responseMessage:
           type: string
-          example: Inbound Cancelled Successfully
+          example: Success
+        requestStatus:
+          type: array
+          items:
+            $ref: '#/components/schemas/inboundcancel2'
     inboundGRNdetail:
       properties:
         responseCode:
@@ -1052,7 +737,186 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/InboundChargeDetailList'
-    inboundcancel1:
+    UD:
+      type: object
+      properties:
+        intUSN:
+          type: string
+          example: ''
+        extUSN:
+          type: string
+          example: ''
+    Itemsinboundqcdetail:
+      type: object
+      properties:
+        sku:
+          type: string
+          example: V18995
+        bin:
+          type: string
+          example: WESHIN
+        lot:
+          type: string
+          example: CHE000001581
+        passQty:
+          type: string
+          example: '1.000'
+        rejectQty:
+          type: integer
+          example: '1.000'
+        usn:
+          type: integer
+          example: ''
+        reason:
+          type: string
+          example: '1.0'
+        remark:
+          type: string
+          example: ''
+        totalQty:
+          type: string
+          example: '2.000'
+        holdQty:
+          type: string
+          example: '2.000'
+    InboundQCList:
+      properties:
+        inboundNo:
+          type: string
+          example: CHE000000173
+        grnNo:
+          type: string
+          example: CHE000010077
+        rejectBin:
+          type: string
+          example: CHE000010077
+        location:
+          type: string
+          example: CHE
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Itemsinboundqcdetail'
+    inboundCreate4:
+      properties:
+        receiveType:
+          type: string
+          example: ASN
+        pocode:
+          type: string
+          example: ''
+        vendor_code:
+          type: string
+          example: ''
+        asnNo:
+          type: string
+          example: '2755'
+        returnNo:
+          type: string
+          example: ''
+        deliveryNo:
+          type: string
+          example: ''
+        stoNo:
+          type: string
+          example: ''
+        extInboundNo:
+          type: string
+          example: '2759'
+        status:
+          type: string
+          example: GRN In Process
+        delivery_loc:
+          type: string
+          example: UJW
+        invoiceno:
+          type: string
+          example: del-296-167964
+        invoicedate:
+          type: number
+          example: '2017-12-16 12:59:31.0'
+        invoice_amt:
+          type: integer
+          example: '684.000'
+        invoicetax:
+          type: integer
+          example: '759.240'
+        no_ofboxes:
+          type: integer
+          example: '1'
+        vehicleno:
+          type: integer
+          example: ''
+        challan_no:
+          type: integer
+          example: ''
+        challan_date:
+          type: integer
+          example: ''
+        remarks:
+          type: string
+          example: ''
+        weight:
+          type: integer
+          example: '0.000'
+        material_rcvddate:
+          type: number
+          example: 16/12/2017
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        validateShelfLife:
+          type: string
+          example: ''
+        ewayBill:
+          type: string
+          example: ''
+        transporterCode:
+          type: string
+          example: ''
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/inboundCreateItem4'
+    responseinboundqcdetail:
+      properties:
+        totalInbound:
+          type: string
+          example: 1
+        totalPages:
+          type: string
+          example: 1
+        currentPage:
+          type: string
+          example: 1
+        inboundDetailList:
+          type: array
+          items:
+            $ref: '#/components/schemas/InboundQCList'
+    inboundcancel2:
+      properties:
+        responseCode:
+          type: string
+          example: '0'
+        response:
+          type: string
+          example: Success
+        referenceKey:
+          type: string
+          example: IWH000033899
+        responseMessage:
+          type: string
+          example: Inbound Cancelled Successfully
+    inboundcreatev4:
       properties:
         responseCode:
           type: integer
@@ -1061,24 +925,170 @@ components:
           type: string
           example: Success
         requestStatus:
-          type: array
-          items:
-            $ref: '#/components/schemas/inboundcancel2'
-    responseinbounddetail:
+          $ref: '#/components/schemas/RequestStatusinboundcreatev4'
+    InboundList:
       properties:
-        totalInbound:
+        pocode:
+          type: string
+          example: DEL000054203
+        gatepasscode:
+          type: string
+          example: DEL000054203
+        ext_pocode:
+          type: string
+          example: ''
+        asncode:
+          type: string
+          example: ''
+        inboundcode:
+          type: string
+          example: DEL000052119
+        externinboundcode:
+          type: string
+          example: ''
+        grnno:
+          type: string
+          example: DEL000054213
+        grndate:
           type: integer
-          example: 1
-        totalPages:
+          example: '2017-12-16 12:59:31.0'
+        vendor_code:
           type: integer
-          example: 1
-        currentPage:
+          example: '6259'
+        vendor_name:
+          type: string
+          example: ABC
+        grn_qty:
           type: integer
-          example: 1
-        inboundList:
+          example: '5.00'
+        grn_amount:
+          type: integer
+          example: '1355.00'
+        status:
+          type: string
+          example: Confirmed
+        pocreated_loc:
+          type: string
+          example: DEL
+        del_loc:
+          type: string
+          example: DEL
+        asn_delloc:
+          type: string
+          example: UJW
+        invoiceno:
+          type: string
+          example: del-296-167964
+        invoicedate:
+          type: number
+          example: '2017-12-16 12:59:31.0'
+        invoice_amt:
+          type: integer
+          example: '684.000'
+        invoicetax:
+          type: integer
+          example: '759.240'
+        no_ofboxes:
+          type: integer
+          example: '1'
+        vehicleno:
+          type: integer
+          example: ''
+        challan_no:
+          type: integer
+          example: ''
+        challan_date:
+          type: integer
+          example: ''
+        remarks:
+          type: string
+          example: ''
+        weight:
+          type: integer
+          example: '0.000'
+        material_rcvddate:
+          type: number
+          example: 16/12/2017
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        udf6:
+          type: string
+          example: ''
+        udf7:
+          type: string
+          example: ''
+        udf8:
+          type: string
+          example: ''
+        udf9:
+          type: string
+          example: ''
+        udf10:
+          type: string
+          example: ''
+        currency:
+          type: string
+          example: ''
+        returnCode:
+          type: string
+          example: ''
+        qcStatus:
+          type: string
+          example: inQC/QCdone/null
+        invoiceTaxAmt:
+          type: string
+          example: ''
+        del_locname:
+          type: string
+          example: ''
+        inbType:
+          type: string
+          example: ''
+        grn_BaseCurrAmount:
+          type: string
+          example: ''
+        conversionRate:
+          type: string
+          example: ''
+        extCustRetCode:
+          type: string
+          example: ''
+        printUrl:
+          type: string
+          example: ''
+        stoNo:
+          type: string
+          example: ''
+        extStoNo:
+          type: string
+          example: ''
+        tcs:
+          type: string
+          example: ''
+        transporterCharges:
+          type: string
+          example: '0.000'
+        inboundChargeDetail:
           type: array
           items:
-            $ref: '#/components/schemas/InboundList'
+            $ref: '#/components/schemas/InboundChargeDetailList'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Itemsinbounddetail'
     inboundqcdetail:
       properties:
         responseCode:
@@ -1089,13 +1099,3 @@ components:
           example: Success
         response:
           $ref: '#/components/schemas/responseinboundqcdetail'
-    inbounddetail:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        response:
-          $ref: '#/components/schemas/responseinbounddetail'

@@ -333,999 +333,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    response07:
-      type: object
-      properties:
-        skucode:
-          type: string
-          example: '0677'
-        location:
-          type: string
-          example: che
-        qty:
-          type: string
-          example: '23'
-        bucket:
-          type: string
-          example: good
-        committedQty:
-          type: string
-          example: '0.000'
-        lotNo:
-          type: string
-          example: CHE000005963
-        lottable_01:
-          type: string
-          example: '32'
-        lottable_02:
-          type: string
-          example: '2022-02-25 00:00:00.0'
-        lottable_03:
-          type: string
-          example: ''
-        lottable_04:
-          type: string
-          example: ''
-        lottable_05:
-          type: string
-          example: ''
-        lottable_06:
-          type: string
-          example: ''
-        lottable_07:
-          type: string
-          example: ''
-        shelflife:
-          type: string
-          example: ''
-        eanCode:
-          type: string
-          example: ''
-        binCode:
-          type: string
-          example: inp01
-        extLocCode:
-          type: string
-          example: ''
-        externLot:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-    ERETAIL-102:
-      type: object
-      properties:
-        skuCode:
-          type: string
-          example: ERETAILTEST102
-        qty:
-          type: integer
-          example: 0
-        committedQty:
-          type: integer
-          example: 0
-        includeNewSKU:
-          type: string
-          example: y
-    articleList:
-      type: object
-      properties:
-        childSkuCode:
-          type: string
-          example: V1707MEMOH8L00001
-        qtyRatio:
-          type: string
-          example: '1.000'
-    response08:
-      type: object
-      properties:
-        skucode:
-          type: string
-          example: '0677'
-        skuDesc:
-          type: string
-          example: soap
-        location:
-          type: string
-          example: che
-        qty:
-          type: string
-          example: '23'
-        bucket:
-          type: string
-          example: good
-        committedQty:
-          type: string
-          example: '0.000'
-        lotNo:
-          type: string
-          example: CHE000005963
-        lottable_01:
-          type: string
-          example: '32'
-        lottable_02:
-          type: string
-          example: '2022-02-25 00:00:00.0'
-        lottable_03:
-          type: string
-          example: ''
-        lottable_04:
-          type: string
-          example: ''
-        lottable_05:
-          type: string
-          example: ''
-        lottable_06:
-          type: string
-          example: ''
-        lottable_07:
-          type: string
-          example: ''
-        shelflife:
-          type: string
-          example: ''
-        eanCode:
-          type: string
-          example: ''
-        binCode:
-          type: string
-          example: inp01
-        ExtLocCode:
-          type: string
-          example: ''
-    ERETAIL-22:
-      type: object
-      properties:
-        skuCode:
-          type: string
-          example: ERETAILTEST22
-        location:
-          type: string
-          example: NHO
-        qty:
-          type: integer
-          example: 0
-        committedQty:
-          type: integer
-          example: 0
-        includeNewSKU:
-          type: string
-          example: y
-    attribute:
-      type: object
-      properties:
-        attribute_name:
-          type: string
-          example: ''
-        attribute_value:
-          type: string
-          example: ''
-    skuBarcode1:
-      properties:
-        skuCode:
-          type: string
-          example: STOCK2
-        skuBarCode:
-          type: string
-          example: asq1
-        uomName:
-          type: string
-          example: EA
-        byDefault:
-          type: string
-          example: 'Yes'
-        isActive:
-          type: integer
-          example: 1
-        skuBarCodeType:
-          type: string
-          example: Type 3
-        caseSize:
-          type: string
-          example: '3'
-        length:
-          type: string
-          example: '4'
-        breath:
-          type: string
-          example: '4'
-        height:
-          type: string
-          example: '4'
-        weight:
-          type: string
-          example: ''
-        cube:
-          type: string
-          example: '99'
-        cost:
-          type: string
-          example: '500.000'
-        isSaleable:
-          type: string
-          example: 'Yes'
-        salePrice:
-          type: string
-          example: '600.000'
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-    inventoryStatus3:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        response:
-          $ref: '#/components/schemas/_Response'
-    binLotLevelInventoryRequest:
-      properties:
-        skuCodes:
-          type: string
-          example: []
-        fromDate:
-          type: string
-          example: ''
-        toDate:
-          type: string
-          example: ''
-        pageNumber:
-          type: string
-          example: ''
-        locCode:
-          type: string
-          example: ''
-        isInvOnHold:
-          type: string
-          example: ''
-        buckets:
-          type: string
-          example: []
-    binlotlevelinventory:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        hasMore:
-          type: string
-          example: 'false'
-        currentPage:
-          type: string
-          example: '1'
-        response:
-          type: array
-          items:
-            $ref: '#/components/schemas/response08'
-    categories:
-      properties:
-        category:
-          $ref: '#/components/schemas/data'
-        subCategory:
-          $ref: '#/components/schemas/data'
-        productType:
-          $ref: '#/components/schemas/data'
-        class:
-          $ref: '#/components/schemas/data'
-        subClass:
-          $ref: '#/components/schemas/data'
-        typeClass:
-          $ref: '#/components/schemas/data'
-    Response:
-      properties:
-        totalSkus:
-          type: integer
-          example: 2
-        totalPages:
-          type: integer
-          example: 1
-        currentPage:
-          type: integer
-          example: 1
-        skuList:
-          type: array
-          items:
-            $ref: '#/components/schemas/skulist'
-    skuChannelMapping:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        currentPage:
-          type: integer
-          example: 1
-        hasMore:
-          type: string
-          example: 'false'
-        channelSkuMapping:
-          type: array
-          items:
-            $ref: '#/components/schemas/loc'
-    _Response:
-      properties:
-        totalSkus:
-          type: integer
-          example: 2
-        totalPages:
-          type: integer
-          example: 1
-        currentPage:
-          type: integer
-          example: 1
-        inventoryMap:
-          type: array
-          items:
-            $ref: '#/components/schemas/InventoryMap1'
-    skuDetail:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        response:
-          $ref: '#/components/schemas/Response'
-    InventoryMap1:
-      type: object
-      properties:
-        T14ORP0184-276:
-          type: array
-          items:
-            $ref: '#/components/schemas/T14'
-        ERETAILTEST102:
-          type: array
-          items:
-            $ref: '#/components/schemas/ERETAIL-102'
-        ERETAILTEST22:
-          type: array
-          items:
-            $ref: '#/components/schemas/ERETAIL-22'
-    data:
-      type: object
-      properties:
-        category_code:
-          type: string
-          example: ''
-        category_desc:
-          type: string
-          example: ''
-    getlotlevelinventory:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        hasMore:
-          type: string
-          example: 'false'
-        currentPage:
-          type: string
-          example: '1'
-        response:
-          type: array
-          items:
-            $ref: '#/components/schemas/response07'
-    skulist:
-      type: object
-      properties:
-        skucode:
-          type: string
-          example: '104487'
-        skuName:
-          type: string
-          example: Sexy Berry Halter
-        classification:
-          type: string
-          example: BOM
-        parentSKU:
-          type: string
-          example: ''
-        desc:
-          type: string
-          example: ''
-        detailDESC:
-          type: string
-          example: ''
-        length:
-          type: string
-          example: ''
-        width:
-          type: string
-          example: ''
-        height:
-          type: string
-          example: ''
-        weight:
-          type: string
-          example: ''
-        size:
-          type: string
-          example: XS
-        color:
-          type: string
-          example: Red
-        brand:
-          type: string
-          example: Def
-        material:
-          type: string
-          example: ''
-        mrp:
-          type: string
-          example: '999.000'
-        salePrice:
-          type: string
-          example: '649.00'
-        baseCost:
-          type: string
-          example: '300.00'
-        vendorName:
-          type: string
-          example: ABC Pvt Ltd
-        isActive:
-          type: string
-          example: 'true'
-        careInstructons:
-          type: string
-          example: ''
-        serialTrackkingRequired:
-          type: string
-          example: 'false'
-        isStocked:
-          type: string
-          example: ''
-        lottableValidation:
-          type: string
-          example: ''
-        isSaleable:
-          type: string
-          example: 'true'
-        imageURL:
-          type: string
-          example: ''
-        pdpURL:
-          type: string
-          example: ''
-        meta_Title:
-          type: string
-          example: ''
-        meta_Keywords:
-          type: string
-          example: ''
-        meta_Description:
-          type: string
-          example: ''
-        createDate:
-          type: number
-          example: 18/07/2017 17:59:33
-        createdBy:
-          type: string
-          example: sa
-        updatedBy:
-          type: string
-          example: sa
-        taxCategory:
-          type: string
-          example: '62082990'
-        categories:
-          type: object
-          items:
-            $ref: '#/components/schemas/categories'
-        backOrder:
-          type: string
-          example: Y
-        backOrderQty:
-          type: string
-          example: '10'
-        careIntructions:
-          type: string
-          example: '10'
-        serialTrackingRequired:
-          type: string
-          example: '10'
-        baseUOM:
-          type: string
-          example: '10'
-        lasthieracyCode:
-          type: string
-          example: '10'
-        isCostbasedonMargin:
-          type: string
-          example: ''
-        primaryStyle:
-          type: string
-          example: ''
-        manufacturer:
-          type: string
-          example: ''
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        udf6:
-          type: string
-          example: ''
-        udf7:
-          type: string
-          example: ''
-        udf8:
-          type: string
-          example: ''
-        udf9:
-          type: string
-          example: ''
-        udf10:
-          type: string
-          example: ''
-        budf3:
-          type: string
-          example: ''
-        budf4:
-          type: string
-          example: ''
-        budf5:
-          type: string
-          example: ''
-        budf6:
-          type: string
-          example: ''
-        budf7:
-          type: string
-          example: ''
-        budf8:
-          type: string
-          example: ''
-        attributedetail:
-          type: array
-          items:
-            $ref: '#/components/schemas/attribute'
-        primaryUPC:
-          type: string
-          example: K011
-        vendorSKUCode:
-          type: string
-          example: ''
-        countryOfOrigin:
-          type: string
-          example: INDIA
-        additionalCess:
-          type: string
-          example: ''
-        additionalCessUnit:
-          type: string
-          example: ''
-        totalShelfLife:
-          type: string
-          example: '10'
-        shelflifeonPicking:
-          type: string
-          example: '10'
-        shelflifeonrcvng:
-          type: string
-          example: '10'
-        taxGroup:
-          type: string
-          example: TG79
-        totalTaxPercentage:
-          type: string
-          example: '11.00'
-        skuImg1:
-          type: string
-          example: http://www.abc.com/xyz.jpg
-        skuImg2:
-          type: string
-          example: http://www.abc.com/xyz.jpg
-        skuImg3:
-          type: string
-          example: http://www.abc.com/xyz.jpg
-        skuImg4:
-          type: string
-          example: http://www.abc.com/xyz.jpg
-        skuImg5:
-          type: string
-          example: http://www.abc.com/xyz.jpg
-        skuImg6:
-          type: string
-          example: http://www.abc.com/xyz.jpg
-        isPurchasable:
-          type: string
-          example: ''
-        isStackable:
-          type: string
-          example: ''
-        thresholdQty:
-          type: string
-          example: ''
-        stdMrgin:
-          type: string
-          example: ''
-        rotateBy:
-          type: string
-          example: ''
-        recvValidationCod:
-          type: string
-          example: ''
-        thresholdAlertReq:
-          type: string
-          example: ''
-        isARSApplicable:
-          type: string
-          example: ''
-        stockCoverDays:
-          type: string
-          example: ''
-        grossWeight:
-          type: string
-          example: ''
-        hazmatUNCode:
-          type: string
-          example: ''
-        bundledArticleList:
-          type: array
-          items:
-            $ref: '#/components/schemas/articleList'
-    loc:
-      type: object
-      properties:
-        channelCode:
-          type: integer
-          example: M10
-        skuCode:
-          type: string
-          example: ICTSCO4-L
-        channelSkuCode:
-          type: string
-          example: ICTSCO4-L
-        channelProductId:
-          type: string
-          example: ''
-    skuUpdate0:
-      properties:
-        skuCode:
-          type: string
-          example: VARSHAT01
-        skuName:
-          type: string
-          example: VARSHAT01
-        skuShortName:
-          type: string
-          example: ''
-        length:
-          type: string
-          example: '10.00'
-        width:
-          type: string
-          example: '10.00'
-        height:
-          type: string
-          example: '10.00'
-        weight:
-          type: string
-          example: '1.00'
-        brand:
-          type: string
-          example: ''
-        mrp:
-          type: string
-          example: '1600.00'
-        salePrice:
-          type: string
-          example: '1500.00'
-        vendorCode:
-          type: string
-          example: ''
-        baseCost:
-          type: string
-          example: '1200.00'
-        taxCategory:
-          type: string
-          example: ''
-        isActive:
-          type: string
-          example: 'yes'
-        pickingInstruction:
-          type: string
-          example: ''
-        shipingInstruction:
-          type: string
-          example: ''
-        imageURL:
-          type: string
-          example: ''
-        hieracyCode:
-          type: string
-          example: ''
-        hierarcyString:
-          type: string
-          example: ''
-        serialCount:
-          type: string
-          example: ''
-        isSKUOnVirtualQty:
-          type: string
-          example: ''
-        virtualQty:
-          type: string
-          example: ''
-        vendorSkuCode:
-          type: string
-          example: ''
-        upc_ean:
-          type: string
-          example: ''
-        barcodeType:
-          type: string
-          example: ''
-        material:
-          type: string
-          example: ''
-        isUniqueBarcode:
-          type: string
-          example: ''
-        shippingCharges:
-          type: string
-          example: ''
-        lottableValidation:
-          type: string
-          example: ''
-        isSaleable:
-          type: string
-          example: ''
-        isStocked:
-          type: string
-          example: ''
-        countryOfOrigin:
-          type: string
-          example: ''
-        uom:
-          type: string
-          example: ''
-        size:
-          type: string
-          example: ''
-        isPoisnous:
-          type: string
-          example: ''
-        isHazardous:
-          type: string
-          example: ''
-        hazmatUNCode:
-          type: string
-          example: ''
-        shelfLifeIndicator:
-          type: string
-          example: ''
-        shelfType:
-          type: string
-          example: ''
-        totalShelfLife:
-          type: string
-          example: ''
-        shelfLifeOnPicking:
-          type: string
-          example: ''
-        shelfLifeOnReceiving:
-          type: string
-          example: ''
-        skuRotation:
-          type: string
-          example: ''
-        budf1:
-          type: string
-          example: ''
-        budf2:
-          type: string
-          example: ''
-        budf3:
-          type: string
-          example: ''
-        budf4:
-          type: string
-          example: ''
-        budf5:
-          type: string
-          example: ''
-        budf6:
-          type: string
-          example: ''
-        budf7:
-          type: string
-          example: ''
-        budf8:
-          type: string
-          example: ''
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        udf6:
-          type: string
-          example: ''
-        udf7:
-          type: string
-          example: ''
-        udf8:
-          type: string
-          example: ''
-        udf9:
-          type: string
-          example: ''
-        udf10:
-          type: string
-          example: ''
-        udf11:
-          type: string
-          example: ''
-        udf12:
-          type: string
-          example: ''
-        udf13:
-          type: string
-          example: ''
-        udf14:
-          type: string
-          example: ''
-        udf15:
-          type: string
-          example: ''
-        additionalCess:
-          type: string
-          example: ''
-        additionalCessUnit:
-          type: string
-          example: ''
-        skuImg1:
-          type: string
-          example: http://www.abc.com/xyz.jpg
-        skuImg2:
-          type: string
-          example: http://www.abc.com/xyz.jpg
-        skuImg3:
-          type: string
-          example: http://www.abc.com/xyz.jpg
-        skuImg4:
-          type: string
-          example: http://www.abc.com/xyz.jpg
-        skuImg5:
-          type: string
-          example: http://www.abc.com/xyz.jpg
-        skuImg6:
-          type: string
-          example: http://www.abc.com/xyz.jpg
-        isPurchasable:
-          type: string
-          example: ''
-        isStackable:
-          type: string
-          example: ''
-        thresholdQty:
-          type: string
-          example: ''
-        stdMrgin:
-          type: string
-          example: ''
-        rotateBy:
-          type: string
-          example: ''
-        recvValidationCode:
-          type: string
-          example: ''
-        thresholdAlertReq:
-          type: string
-          example: ''
-        isARSApplicable:
-          type: string
-          example: ''
-        stockCoverDays:
-          type: string
-          example: ''
-        locations:
-          type: array
-          example: []
-        grossWeight:
-          type: string
-          example: ''
-        skuLevelTaxCat:
-          type: string
-          example: ''
-        isBackOrder:
-          type: string
-          example: ''
-        sizeGroup:
-          type: string
-          example: ''
-        isCostbasedonMargin:
-          type: string
-          example: ''
-        minimumTransferQty:
-          type: string
-          example: ''
-        backOrderQty:
-          type: string
-          example: ''
-        season:
-          type: string
-          example: ''
-    bundledArticlev3skucreate:
-      properties:
-        skuCode:
-          type: string
-          example: ''
-        qty:
-          type: string
-          example: ''
-    T14:
-      type: object
-      properties:
-        skuCode:
-          type: string
-          example: T14ORP0184-276
-        location:
-          type: string
-          example: NWH
-        includeNewSKU:
-          type: string
-          example: y
-        qty:
-          type: integer
-          example: 10
-        committedQty:
-          type: integer
-          example: 0
     skuV3Request:
       properties:
         skuCode:
@@ -1630,5 +637,998 @@ components:
           type: string
           example: ''
         isCostbasedonMargin:
+          type: string
+          example: ''
+    binLotLevelInventoryRequest:
+      properties:
+        skuCodes:
+          type: string
+          example: []
+        fromDate:
+          type: string
+          example: ''
+        toDate:
+          type: string
+          example: ''
+        pageNumber:
+          type: string
+          example: ''
+        locCode:
+          type: string
+          example: ''
+        isInvOnHold:
+          type: string
+          example: ''
+        buckets:
+          type: string
+          example: []
+    response07:
+      type: object
+      properties:
+        skucode:
+          type: string
+          example: '0677'
+        location:
+          type: string
+          example: che
+        qty:
+          type: string
+          example: '23'
+        bucket:
+          type: string
+          example: good
+        committedQty:
+          type: string
+          example: '0.000'
+        lotNo:
+          type: string
+          example: CHE000005963
+        lottable_01:
+          type: string
+          example: '32'
+        lottable_02:
+          type: string
+          example: '2022-02-25 00:00:00.0'
+        lottable_03:
+          type: string
+          example: ''
+        lottable_04:
+          type: string
+          example: ''
+        lottable_05:
+          type: string
+          example: ''
+        lottable_06:
+          type: string
+          example: ''
+        lottable_07:
+          type: string
+          example: ''
+        shelflife:
+          type: string
+          example: ''
+        eanCode:
+          type: string
+          example: ''
+        binCode:
+          type: string
+          example: inp01
+        extLocCode:
+          type: string
+          example: ''
+        externLot:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+    skuChannelMapping:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        currentPage:
+          type: integer
+          example: 1
+        hasMore:
+          type: string
+          example: 'false'
+        channelSkuMapping:
+          type: array
+          items:
+            $ref: '#/components/schemas/loc'
+    _Response:
+      properties:
+        totalSkus:
+          type: integer
+          example: 2
+        totalPages:
+          type: integer
+          example: 1
+        currentPage:
+          type: integer
+          example: 1
+        inventoryMap:
+          type: array
+          items:
+            $ref: '#/components/schemas/InventoryMap1'
+    T14:
+      type: object
+      properties:
+        skuCode:
+          type: string
+          example: T14ORP0184-276
+        location:
+          type: string
+          example: NWH
+        includeNewSKU:
+          type: string
+          example: y
+        qty:
+          type: integer
+          example: 10
+        committedQty:
+          type: integer
+          example: 0
+    Response:
+      properties:
+        totalSkus:
+          type: integer
+          example: 2
+        totalPages:
+          type: integer
+          example: 1
+        currentPage:
+          type: integer
+          example: 1
+        skuList:
+          type: array
+          items:
+            $ref: '#/components/schemas/skulist'
+    skuBarcode1:
+      properties:
+        skuCode:
+          type: string
+          example: STOCK2
+        skuBarCode:
+          type: string
+          example: asq1
+        uomName:
+          type: string
+          example: EA
+        byDefault:
+          type: string
+          example: 'Yes'
+        isActive:
+          type: integer
+          example: 1
+        skuBarCodeType:
+          type: string
+          example: Type 3
+        caseSize:
+          type: string
+          example: '3'
+        length:
+          type: string
+          example: '4'
+        breath:
+          type: string
+          example: '4'
+        height:
+          type: string
+          example: '4'
+        weight:
+          type: string
+          example: ''
+        cube:
+          type: string
+          example: '99'
+        cost:
+          type: string
+          example: '500.000'
+        isSaleable:
+          type: string
+          example: 'Yes'
+        salePrice:
+          type: string
+          example: '600.000'
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+    categories:
+      properties:
+        category:
+          $ref: '#/components/schemas/data'
+        subCategory:
+          $ref: '#/components/schemas/data'
+        productType:
+          $ref: '#/components/schemas/data'
+        class:
+          $ref: '#/components/schemas/data'
+        subClass:
+          $ref: '#/components/schemas/data'
+        typeClass:
+          $ref: '#/components/schemas/data'
+    ERETAIL-102:
+      type: object
+      properties:
+        skuCode:
+          type: string
+          example: ERETAILTEST102
+        qty:
+          type: integer
+          example: 0
+        committedQty:
+          type: integer
+          example: 0
+        includeNewSKU:
+          type: string
+          example: y
+    skulist:
+      type: object
+      properties:
+        skucode:
+          type: string
+          example: '104487'
+        skuName:
+          type: string
+          example: Sexy Berry Halter
+        classification:
+          type: string
+          example: BOM
+        parentSKU:
+          type: string
+          example: ''
+        desc:
+          type: string
+          example: ''
+        detailDESC:
+          type: string
+          example: ''
+        length:
+          type: string
+          example: ''
+        width:
+          type: string
+          example: ''
+        height:
+          type: string
+          example: ''
+        weight:
+          type: string
+          example: ''
+        size:
+          type: string
+          example: XS
+        color:
+          type: string
+          example: Red
+        brand:
+          type: string
+          example: Def
+        material:
+          type: string
+          example: ''
+        mrp:
+          type: string
+          example: '999.000'
+        salePrice:
+          type: string
+          example: '649.00'
+        baseCost:
+          type: string
+          example: '300.00'
+        vendorName:
+          type: string
+          example: ABC Pvt Ltd
+        isActive:
+          type: string
+          example: 'true'
+        careInstructons:
+          type: string
+          example: ''
+        serialTrackkingRequired:
+          type: string
+          example: 'false'
+        isStocked:
+          type: string
+          example: ''
+        lottableValidation:
+          type: string
+          example: ''
+        isSaleable:
+          type: string
+          example: 'true'
+        imageURL:
+          type: string
+          example: ''
+        pdpURL:
+          type: string
+          example: ''
+        meta_Title:
+          type: string
+          example: ''
+        meta_Keywords:
+          type: string
+          example: ''
+        meta_Description:
+          type: string
+          example: ''
+        createDate:
+          type: number
+          example: 18/07/2017 17:59:33
+        createdBy:
+          type: string
+          example: sa
+        updatedBy:
+          type: string
+          example: sa
+        taxCategory:
+          type: string
+          example: '62082990'
+        categories:
+          type: object
+          items:
+            $ref: '#/components/schemas/categories'
+        backOrder:
+          type: string
+          example: Y
+        backOrderQty:
+          type: string
+          example: '10'
+        careIntructions:
+          type: string
+          example: '10'
+        serialTrackingRequired:
+          type: string
+          example: '10'
+        baseUOM:
+          type: string
+          example: '10'
+        lasthieracyCode:
+          type: string
+          example: '10'
+        isCostbasedonMargin:
+          type: string
+          example: ''
+        primaryStyle:
+          type: string
+          example: ''
+        manufacturer:
+          type: string
+          example: ''
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        udf6:
+          type: string
+          example: ''
+        udf7:
+          type: string
+          example: ''
+        udf8:
+          type: string
+          example: ''
+        udf9:
+          type: string
+          example: ''
+        udf10:
+          type: string
+          example: ''
+        budf3:
+          type: string
+          example: ''
+        budf4:
+          type: string
+          example: ''
+        budf5:
+          type: string
+          example: ''
+        budf6:
+          type: string
+          example: ''
+        budf7:
+          type: string
+          example: ''
+        budf8:
+          type: string
+          example: ''
+        attributedetail:
+          type: array
+          items:
+            $ref: '#/components/schemas/attribute'
+        primaryUPC:
+          type: string
+          example: K011
+        vendorSKUCode:
+          type: string
+          example: ''
+        countryOfOrigin:
+          type: string
+          example: INDIA
+        additionalCess:
+          type: string
+          example: ''
+        additionalCessUnit:
+          type: string
+          example: ''
+        totalShelfLife:
+          type: string
+          example: '10'
+        shelflifeonPicking:
+          type: string
+          example: '10'
+        shelflifeonrcvng:
+          type: string
+          example: '10'
+        taxGroup:
+          type: string
+          example: TG79
+        totalTaxPercentage:
+          type: string
+          example: '11.00'
+        skuImg1:
+          type: string
+          example: http://www.abc.com/xyz.jpg
+        skuImg2:
+          type: string
+          example: http://www.abc.com/xyz.jpg
+        skuImg3:
+          type: string
+          example: http://www.abc.com/xyz.jpg
+        skuImg4:
+          type: string
+          example: http://www.abc.com/xyz.jpg
+        skuImg5:
+          type: string
+          example: http://www.abc.com/xyz.jpg
+        skuImg6:
+          type: string
+          example: http://www.abc.com/xyz.jpg
+        isPurchasable:
+          type: string
+          example: ''
+        isStackable:
+          type: string
+          example: ''
+        thresholdQty:
+          type: string
+          example: ''
+        stdMrgin:
+          type: string
+          example: ''
+        rotateBy:
+          type: string
+          example: ''
+        recvValidationCod:
+          type: string
+          example: ''
+        thresholdAlertReq:
+          type: string
+          example: ''
+        isARSApplicable:
+          type: string
+          example: ''
+        stockCoverDays:
+          type: string
+          example: ''
+        grossWeight:
+          type: string
+          example: ''
+        hazmatUNCode:
+          type: string
+          example: ''
+        bundledArticleList:
+          type: array
+          items:
+            $ref: '#/components/schemas/articleList'
+    getlotlevelinventory:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        hasMore:
+          type: string
+          example: 'false'
+        currentPage:
+          type: string
+          example: '1'
+        response:
+          type: array
+          items:
+            $ref: '#/components/schemas/response07'
+    response08:
+      type: object
+      properties:
+        skucode:
+          type: string
+          example: '0677'
+        skuDesc:
+          type: string
+          example: soap
+        location:
+          type: string
+          example: che
+        qty:
+          type: string
+          example: '23'
+        bucket:
+          type: string
+          example: good
+        committedQty:
+          type: string
+          example: '0.000'
+        lotNo:
+          type: string
+          example: CHE000005963
+        lottable_01:
+          type: string
+          example: '32'
+        lottable_02:
+          type: string
+          example: '2022-02-25 00:00:00.0'
+        lottable_03:
+          type: string
+          example: ''
+        lottable_04:
+          type: string
+          example: ''
+        lottable_05:
+          type: string
+          example: ''
+        lottable_06:
+          type: string
+          example: ''
+        lottable_07:
+          type: string
+          example: ''
+        shelflife:
+          type: string
+          example: ''
+        eanCode:
+          type: string
+          example: ''
+        binCode:
+          type: string
+          example: inp01
+        ExtLocCode:
+          type: string
+          example: ''
+    skuUpdate0:
+      properties:
+        skuCode:
+          type: string
+          example: VARSHAT01
+        skuName:
+          type: string
+          example: VARSHAT01
+        skuShortName:
+          type: string
+          example: ''
+        length:
+          type: string
+          example: '10.00'
+        width:
+          type: string
+          example: '10.00'
+        height:
+          type: string
+          example: '10.00'
+        weight:
+          type: string
+          example: '1.00'
+        brand:
+          type: string
+          example: ''
+        mrp:
+          type: string
+          example: '1600.00'
+        salePrice:
+          type: string
+          example: '1500.00'
+        vendorCode:
+          type: string
+          example: ''
+        baseCost:
+          type: string
+          example: '1200.00'
+        taxCategory:
+          type: string
+          example: ''
+        isActive:
+          type: string
+          example: 'yes'
+        pickingInstruction:
+          type: string
+          example: ''
+        shipingInstruction:
+          type: string
+          example: ''
+        imageURL:
+          type: string
+          example: ''
+        hieracyCode:
+          type: string
+          example: ''
+        hierarcyString:
+          type: string
+          example: ''
+        serialCount:
+          type: string
+          example: ''
+        isSKUOnVirtualQty:
+          type: string
+          example: ''
+        virtualQty:
+          type: string
+          example: ''
+        vendorSkuCode:
+          type: string
+          example: ''
+        upc_ean:
+          type: string
+          example: ''
+        barcodeType:
+          type: string
+          example: ''
+        material:
+          type: string
+          example: ''
+        isUniqueBarcode:
+          type: string
+          example: ''
+        shippingCharges:
+          type: string
+          example: ''
+        lottableValidation:
+          type: string
+          example: ''
+        isSaleable:
+          type: string
+          example: ''
+        isStocked:
+          type: string
+          example: ''
+        countryOfOrigin:
+          type: string
+          example: ''
+        uom:
+          type: string
+          example: ''
+        size:
+          type: string
+          example: ''
+        isPoisnous:
+          type: string
+          example: ''
+        isHazardous:
+          type: string
+          example: ''
+        hazmatUNCode:
+          type: string
+          example: ''
+        shelfLifeIndicator:
+          type: string
+          example: ''
+        shelfType:
+          type: string
+          example: ''
+        totalShelfLife:
+          type: string
+          example: ''
+        shelfLifeOnPicking:
+          type: string
+          example: ''
+        shelfLifeOnReceiving:
+          type: string
+          example: ''
+        skuRotation:
+          type: string
+          example: ''
+        budf1:
+          type: string
+          example: ''
+        budf2:
+          type: string
+          example: ''
+        budf3:
+          type: string
+          example: ''
+        budf4:
+          type: string
+          example: ''
+        budf5:
+          type: string
+          example: ''
+        budf6:
+          type: string
+          example: ''
+        budf7:
+          type: string
+          example: ''
+        budf8:
+          type: string
+          example: ''
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        udf6:
+          type: string
+          example: ''
+        udf7:
+          type: string
+          example: ''
+        udf8:
+          type: string
+          example: ''
+        udf9:
+          type: string
+          example: ''
+        udf10:
+          type: string
+          example: ''
+        udf11:
+          type: string
+          example: ''
+        udf12:
+          type: string
+          example: ''
+        udf13:
+          type: string
+          example: ''
+        udf14:
+          type: string
+          example: ''
+        udf15:
+          type: string
+          example: ''
+        additionalCess:
+          type: string
+          example: ''
+        additionalCessUnit:
+          type: string
+          example: ''
+        skuImg1:
+          type: string
+          example: http://www.abc.com/xyz.jpg
+        skuImg2:
+          type: string
+          example: http://www.abc.com/xyz.jpg
+        skuImg3:
+          type: string
+          example: http://www.abc.com/xyz.jpg
+        skuImg4:
+          type: string
+          example: http://www.abc.com/xyz.jpg
+        skuImg5:
+          type: string
+          example: http://www.abc.com/xyz.jpg
+        skuImg6:
+          type: string
+          example: http://www.abc.com/xyz.jpg
+        isPurchasable:
+          type: string
+          example: ''
+        isStackable:
+          type: string
+          example: ''
+        thresholdQty:
+          type: string
+          example: ''
+        stdMrgin:
+          type: string
+          example: ''
+        rotateBy:
+          type: string
+          example: ''
+        recvValidationCode:
+          type: string
+          example: ''
+        thresholdAlertReq:
+          type: string
+          example: ''
+        isARSApplicable:
+          type: string
+          example: ''
+        stockCoverDays:
+          type: string
+          example: ''
+        locations:
+          type: array
+          example: []
+        grossWeight:
+          type: string
+          example: ''
+        skuLevelTaxCat:
+          type: string
+          example: ''
+        isBackOrder:
+          type: string
+          example: ''
+        sizeGroup:
+          type: string
+          example: ''
+        isCostbasedonMargin:
+          type: string
+          example: ''
+        minimumTransferQty:
+          type: string
+          example: ''
+        backOrderQty:
+          type: string
+          example: ''
+        season:
+          type: string
+          example: ''
+    inventoryStatus3:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        response:
+          $ref: '#/components/schemas/_Response'
+    loc:
+      type: object
+      properties:
+        channelCode:
+          type: integer
+          example: M10
+        skuCode:
+          type: string
+          example: ICTSCO4-L
+        channelSkuCode:
+          type: string
+          example: ICTSCO4-L
+        channelProductId:
+          type: string
+          example: ''
+    attribute:
+      type: object
+      properties:
+        attribute_name:
+          type: string
+          example: ''
+        attribute_value:
+          type: string
+          example: ''
+    binlotlevelinventory:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        hasMore:
+          type: string
+          example: 'false'
+        currentPage:
+          type: string
+          example: '1'
+        response:
+          type: array
+          items:
+            $ref: '#/components/schemas/response08'
+    articleList:
+      type: object
+      properties:
+        childSkuCode:
+          type: string
+          example: V1707MEMOH8L00001
+        qtyRatio:
+          type: string
+          example: '1.000'
+    ERETAIL-22:
+      type: object
+      properties:
+        skuCode:
+          type: string
+          example: ERETAILTEST22
+        location:
+          type: string
+          example: NHO
+        qty:
+          type: integer
+          example: 0
+        committedQty:
+          type: integer
+          example: 0
+        includeNewSKU:
+          type: string
+          example: y
+    skuDetail:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        response:
+          $ref: '#/components/schemas/Response'
+    InventoryMap1:
+      type: object
+      properties:
+        T14ORP0184-276:
+          type: array
+          items:
+            $ref: '#/components/schemas/T14'
+        ERETAILTEST102:
+          type: array
+          items:
+            $ref: '#/components/schemas/ERETAIL-102'
+        ERETAILTEST22:
+          type: array
+          items:
+            $ref: '#/components/schemas/ERETAIL-22'
+    bundledArticlev3skucreate:
+      properties:
+        skuCode:
+          type: string
+          example: ''
+        qty:
+          type: string
+          example: ''
+    data:
+      type: object
+      properties:
+        category_code:
+          type: string
+          example: ''
+        category_desc:
           type: string
           example: ''

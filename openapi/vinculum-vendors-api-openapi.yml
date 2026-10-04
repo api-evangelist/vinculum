@@ -155,18 +155,81 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    vendorCre:
+    vendordetail:
       properties:
-        ext_vendor_code:
-          type: string
-          example: VEND001
-        outputKey:
-          type: string
-          example: VEND001
-        status:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
           type: string
           example: Success
-        errorDesc:
+        totalVendors:
+          type: integer
+          example: 1
+        totalPages:
+          type: integer
+          example: 1
+        currentPage:
+          type: integer
+          example: 1
+        vendorList:
+          type: array
+          items:
+            $ref: '#/components/schemas/VendorList'
+    vendorSkuMapping0:
+      properties:
+        skuCode:
+          type: string
+          example: DS_SKU_005
+        vendorSkuCode:
+          type: string
+          example: Test
+        vendorCode:
+          type: string
+          example: RHVET
+        skuCost:
+          type: string
+          example: '100.000'
+        leadTime:
+          type: string
+          example: '15'
+        minOrderQty:
+          type: string
+          example: '10'
+        maxOrderQty:
+          type: string
+          example: '500'
+        purchaseUnitFactor:
+          type: string
+          example: '1'
+        isPrimary:
+          type: string
+          example: 'true'
+        isActive:
+          type: string
+          example: 'false'
+        returnFlag:
+          type: string
+          example: 'false'
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        stdMargin:
+          type: string
+          example: ''
+        mrp:
           type: string
           example: ''
     vendlocskumapping0:
@@ -420,6 +483,20 @@ components:
         vendorCcEmail:
           type: string
           example: []
+    vendorCre:
+      properties:
+        ext_vendor_code:
+          type: string
+          example: VEND001
+        outputKey:
+          type: string
+          example: VEND001
+        status:
+          type: string
+          example: Success
+        errorDesc:
+          type: string
+          example: ''
     VendorCreateResponse:
       properties:
         responseCode:
@@ -430,80 +507,3 @@ components:
           example: Success
         requestStatus:
           $ref: '#/components/schemas/vendorCre'
-    vendorSkuMapping0:
-      properties:
-        skuCode:
-          type: string
-          example: DS_SKU_005
-        vendorSkuCode:
-          type: string
-          example: Test
-        vendorCode:
-          type: string
-          example: RHVET
-        skuCost:
-          type: string
-          example: '100.000'
-        leadTime:
-          type: string
-          example: '15'
-        minOrderQty:
-          type: string
-          example: '10'
-        maxOrderQty:
-          type: string
-          example: '500'
-        purchaseUnitFactor:
-          type: string
-          example: '1'
-        isPrimary:
-          type: string
-          example: 'true'
-        isActive:
-          type: string
-          example: 'false'
-        returnFlag:
-          type: string
-          example: 'false'
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        stdMargin:
-          type: string
-          example: ''
-        mrp:
-          type: string
-          example: ''
-    vendordetail:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        totalVendors:
-          type: integer
-          example: 1
-        totalPages:
-          type: integer
-          example: 1
-        currentPage:
-          type: integer
-          example: 1
-        vendorList:
-          type: array
-          items:
-            $ref: '#/components/schemas/VendorList'
