@@ -1,0 +1,12 @@
+{
+ "url": "https://erp.vineretail.com/swagger/swagger.yaml",
+ "requested_url": "https://erp.vineretail.com/swagger/swagger.yaml",
+ "status": 200,
+ "content_type": "",
+ "bytes": 1527504,
+ "sha256": "79f58699ad812ca4b38053a7716173418ca75edc2328c74114024aab192b8696",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 0.991), but the bytes differ, so the archive is an earlier or reformatted copy."
+}

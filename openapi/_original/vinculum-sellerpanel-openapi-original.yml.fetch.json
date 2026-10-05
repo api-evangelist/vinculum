@@ -1,0 +1,12 @@
+{
+ "url": "https://erp.vineretail.com/SellerPanelV3/swagger.yaml",
+ "requested_url": "https://erp.vineretail.com/SellerPanelV3/swagger.yaml",
+ "status": 200,
+ "content_type": "",
+ "bytes": 71369,
+ "sha256": "82c979ea078213209fafc3a591381a55049bc1b857ca35036aabfd48d2dec4ae",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}
