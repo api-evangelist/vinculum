@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/vinculum/integrations
+- https://n8n.io/integrations/vinculum/
+- https://composio.dev/toolkits/vinculum
+- https://monid.ai/tools/vinculum
+checked:
+- https://composio.dev/toolkits/vinculum
+- https://monid.ai/tools/vinculum
+- https://n8n.io/integrations/vinculum/
+- https://zapier.com/apps/vinculum/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
