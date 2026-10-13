@@ -1,16 +1,34 @@
 generated: '2026-10-12'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/vinculum/integrations
 - https://n8n.io/integrations/vinculum/
 - https://composio.dev/toolkits/vinculum
 - https://monid.ai/tools/vinculum
 checked:
+- https://aws.amazon.com/marketplace/
 - https://composio.dev/toolkits/vinculum
 - https://monid.ai/tools/vinculum
 - https://n8n.io/integrations/vinculum/
 - https://zapier.com/apps/vinculum/integrations
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: AWS Marketplace
+  partner: amazon-web-services
+  partner_match: aggregator
+  type: marketplace
+  marketplace: aws-marketplace
+  channel: distribution
+  relationship: platform-app
+  direction: provider-built
+  evidence: https://aws.amazon.com/marketplace/seller-profile?id=seller-6jngxikxs7la2
+  listing_count: 3
+  apps:
+  - VIN OMS Order Management System (IN)
+  - VIN WMS Warehouse Management System (IN)
+  - VIN PIM Product Information Management (IN)
+  seller_name: VINCULUM SOLUTIONS PRIVATE LIMITED
+  detected_by: sweep-cloud-marketplaces.py
+  detected: '2026-10-13'
 templates: []
