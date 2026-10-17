@@ -174,16 +174,21 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    rtvdetail:
+    responsertvdetail:
       properties:
-        responseCode:
+        totalRtvs:
           type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        response:
-          $ref: '#/components/schemas/responsertvdetail'
+          example: 1
+        totalPages:
+          type: integer
+          example: 1
+        currentPage:
+          type: integer
+          example: 1
+        rtvList:
+          type: array
+          items:
+            $ref: '#/components/schemas/rtvList'
     rtvList:
       properties:
         rtvNo:
@@ -449,18 +454,13 @@ components:
         extLineNo:
           type: string
           example: ''
-    responsertvdetail:
+    rtvdetail:
       properties:
-        totalRtvs:
+        responseCode:
           type: integer
-          example: 1
-        totalPages:
-          type: integer
-          example: 1
-        currentPage:
-          type: integer
-          example: 1
-        rtvList:
-          type: array
-          items:
-            $ref: '#/components/schemas/rtvList'
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        response:
+          $ref: '#/components/schemas/responsertvdetail'

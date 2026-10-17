@@ -172,6 +172,238 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    itemlistforOrderreturn1:
+      properties:
+        lineno:
+          type: string
+          example: '1'
+        deliveryMode:
+          type: string
+          example: '2'
+        skuCode:
+          type: string
+          example: NYJCH00000037
+        skuName:
+          type: string
+          example: 'Juicy Chemistry Coffee and Green Tea Eye '
+        orderQty:
+          type: string
+          example: '1'
+        rejectedQty:
+          type: string
+          example: null
+        cancelledQty:
+          type: string
+          example: '1'
+        shippedQty:
+          type: string
+          example: null
+        returnedQty:
+          type: string
+          example: null
+        deliveredQty:
+          type: string
+          example: null
+        lineAmount:
+          type: string
+          example: '330.00'
+        lineTaxAmount:
+          type: string
+          example: '0.00'
+        unitPrice:
+          type: string
+          example: '350.00'
+        mrp:
+          type: string
+          example: '350.000'
+        discountAmount:
+          type: string
+          example: '20.00'
+        shippingCharge:
+          type: string
+          example: null
+        codCharge:
+          type: string
+          example: null
+        invoiceNo:
+          type: string
+          example: null
+        transCode:
+          type: string
+          example: null
+        transName:
+          type: string
+          example: null
+        awbNo:
+          type: string
+          example: null
+        imeiNos:
+          type: string
+          example: null
+        confirmDate:
+          type: string
+          example: 20/04/2017 18:14:25
+        gvAmount:
+          type: string
+          example: null
+        storeCredit:
+          type: string
+          example: '0.00'
+        lineStatus:
+          type: string
+          example: '8'
+        cst:
+          type: string
+          example: null
+        vat:
+          type: string
+          example: null
+    returnlistforreturn2:
+      properties:
+        internalReturnNo:
+          type: string
+          example: mwhc2353
+        returnNo:
+          type: string
+          example: null
+        orderNo:
+          type: string
+          example: NYKL00002637
+        returnStatus:
+          type: string
+          example: '10'
+        returnDate:
+          type: string
+          example: 19/02/2021 12:06:00
+        orderDate:
+          type: string
+          example: 16/12/2020 11:40:30
+        returnConfirmDate:
+          type: string
+          example: 19/02/2021 12:06:00
+        returnCloseDate:
+          type: string
+          example: null
+        orderStatus:
+          type: string
+          example: '10'
+        sellerId:
+          type: string
+          example: mwhc2
+        returnType:
+          type: string
+          example: Delivered Return
+        paymentMethod:
+          type: string
+          example: '1'
+        orderAmount:
+          type: string
+          example: '1288.00'
+        returnAmount:
+          type: string
+          example: '434.50'
+        orderCurrency:
+          type: string
+          example: GBP
+        retTrackingNo:
+          type: string
+          example: null
+        transporterName:
+          type: string
+          example: null
+        trackingURL:
+          type: string
+          example: ''
+        reasonForCancellation:
+          type: string
+          example: ''
+        comments:
+          type: string
+          example: null
+        refundstoreCredit:
+          type: string
+          example: null
+        customerName:
+          type: string
+          example: Anuj Kaul
+        address1:
+          type: string
+          example: House number 50, First Floor
+        address2:
+          type: string
+          example: ABC Road, Green Park
+        address3:
+          type: string
+          example: ''
+        phone:
+          type: string
+          example: '9999112233'
+        email:
+          type: string
+          example: anujkaul86@gmail.com
+        countryCode:
+          type: string
+          example: IND
+        state:
+          type: string
+          example: Maharashtra
+        city:
+          type: string
+          example: Mumbai
+        pinCode:
+          type: string
+          example: '400001'
+        billToName:
+          type: string
+          example: Anuj Kaul
+        bill_Address1:
+          type: string
+          example: House number 50, First Floor
+        bill_Address2:
+          type: string
+          example: ABC Road, Green Park
+        bill_Address3:
+          type: string
+          example: ''
+        bill_Phone:
+          type: string
+          example: '9999112233'
+        bill_Email:
+          type: string
+          example: anujkaul86@gmail.com
+        bill_CountryCode:
+          type: string
+          example: IND
+        bill_State:
+          type: string
+          example: Maharashtra
+        bill_City:
+          type: string
+          example: Mumbai
+        bill_PinCode:
+          type: string
+          example: '400001'
+        returnLastUpdateDate:
+          type: string
+          example: 08/06/2021 17:11:37
+        masterOrderNo:
+          type: string
+          example: KAAS1559
+        orderItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/orderitemsforreturn2'
+    OrderReturn1:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        orders:
+          items:
+            $ref: '#/components/schemas/orderlistforreturn1'
     orderlistforreturn1:
       properties:
         orderNo:
@@ -309,141 +541,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/orderDetailList1'
-    returnlistforreturn2:
-      properties:
-        internalReturnNo:
-          type: string
-          example: mwhc2353
-        returnNo:
-          type: string
-          example: null
-        orderNo:
-          type: string
-          example: NYKL00002637
-        returnStatus:
-          type: string
-          example: '10'
-        returnDate:
-          type: string
-          example: 19/02/2021 12:06:00
-        orderDate:
-          type: string
-          example: 16/12/2020 11:40:30
-        returnConfirmDate:
-          type: string
-          example: 19/02/2021 12:06:00
-        returnCloseDate:
-          type: string
-          example: null
-        orderStatus:
-          type: string
-          example: '10'
-        sellerId:
-          type: string
-          example: mwhc2
-        returnType:
-          type: string
-          example: Delivered Return
-        paymentMethod:
-          type: string
-          example: '1'
-        orderAmount:
-          type: string
-          example: '1288.00'
-        returnAmount:
-          type: string
-          example: '434.50'
-        orderCurrency:
-          type: string
-          example: GBP
-        retTrackingNo:
-          type: string
-          example: null
-        transporterName:
-          type: string
-          example: null
-        trackingURL:
-          type: string
-          example: ''
-        reasonForCancellation:
-          type: string
-          example: ''
-        comments:
-          type: string
-          example: null
-        refundstoreCredit:
-          type: string
-          example: null
-        customerName:
-          type: string
-          example: Anuj Kaul
-        address1:
-          type: string
-          example: House number 50, First Floor
-        address2:
-          type: string
-          example: ABC Road, Green Park
-        address3:
-          type: string
-          example: ''
-        phone:
-          type: string
-          example: '9999112233'
-        email:
-          type: string
-          example: anujkaul86@gmail.com
-        countryCode:
-          type: string
-          example: IND
-        state:
-          type: string
-          example: Maharashtra
-        city:
-          type: string
-          example: Mumbai
-        pinCode:
-          type: string
-          example: '400001'
-        billToName:
-          type: string
-          example: Anuj Kaul
-        bill_Address1:
-          type: string
-          example: House number 50, First Floor
-        bill_Address2:
-          type: string
-          example: ABC Road, Green Park
-        bill_Address3:
-          type: string
-          example: ''
-        bill_Phone:
-          type: string
-          example: '9999112233'
-        bill_Email:
-          type: string
-          example: anujkaul86@gmail.com
-        bill_CountryCode:
-          type: string
-          example: IND
-        bill_State:
-          type: string
-          example: Maharashtra
-        bill_City:
-          type: string
-          example: Mumbai
-        bill_PinCode:
-          type: string
-          example: '400001'
-        returnLastUpdateDate:
-          type: string
-          example: 08/06/2021 17:11:37
-        masterOrderNo:
-          type: string
-          example: KAAS1559
-        orderItems:
-          type: array
-          items:
-            $ref: '#/components/schemas/orderitemsforreturn2'
     OrderReturn2:
       properties:
         responseCode:
@@ -455,6 +552,24 @@ components:
         returns:
           items:
             $ref: '#/components/schemas/returnlistforreturn2'
+    orderDetailList1:
+      type: object
+      properties:
+        orderNo:
+          type: string
+          example: 100000019
+        orderStatus:
+          type: string
+          example: 5
+        orderDate:
+          type: string
+          example: 13/04/2016 00:19:40
+        orderLastUpdateDate:
+          type: string
+          example: 13/04/2016 14:32:05
+        onHold:
+          type: string
+          example: 1
     orderitemsforreturn2:
       properties:
         lineNo:
@@ -499,118 +614,3 @@ components:
         lineStatus:
           type: string
           example: '10'
-    orderDetailList1:
-      type: object
-      properties:
-        orderNo:
-          type: string
-          example: 100000019
-        orderStatus:
-          type: string
-          example: 5
-        orderDate:
-          type: string
-          example: 13/04/2016 00:19:40
-        orderLastUpdateDate:
-          type: string
-          example: 13/04/2016 14:32:05
-        onHold:
-          type: string
-          example: 1
-    itemlistforOrderreturn1:
-      properties:
-        lineno:
-          type: string
-          example: '1'
-        deliveryMode:
-          type: string
-          example: '2'
-        skuCode:
-          type: string
-          example: NYJCH00000037
-        skuName:
-          type: string
-          example: 'Juicy Chemistry Coffee and Green Tea Eye '
-        orderQty:
-          type: string
-          example: '1'
-        rejectedQty:
-          type: string
-          example: null
-        cancelledQty:
-          type: string
-          example: '1'
-        shippedQty:
-          type: string
-          example: null
-        returnedQty:
-          type: string
-          example: null
-        deliveredQty:
-          type: string
-          example: null
-        lineAmount:
-          type: string
-          example: '330.00'
-        lineTaxAmount:
-          type: string
-          example: '0.00'
-        unitPrice:
-          type: string
-          example: '350.00'
-        mrp:
-          type: string
-          example: '350.000'
-        discountAmount:
-          type: string
-          example: '20.00'
-        shippingCharge:
-          type: string
-          example: null
-        codCharge:
-          type: string
-          example: null
-        invoiceNo:
-          type: string
-          example: null
-        transCode:
-          type: string
-          example: null
-        transName:
-          type: string
-          example: null
-        awbNo:
-          type: string
-          example: null
-        imeiNos:
-          type: string
-          example: null
-        confirmDate:
-          type: string
-          example: 20/04/2017 18:14:25
-        gvAmount:
-          type: string
-          example: null
-        storeCredit:
-          type: string
-          example: '0.00'
-        lineStatus:
-          type: string
-          example: '8'
-        cst:
-          type: string
-          example: null
-        vat:
-          type: string
-          example: null
-    OrderReturn1:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        orders:
-          items:
-            $ref: '#/components/schemas/orderlistforreturn1'

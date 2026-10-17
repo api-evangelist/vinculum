@@ -155,142 +155,20 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    vendordetail:
+    vendorCre:
       properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
+        ext_vendor_code:
+          type: string
+          example: VEND001
+        outputKey:
+          type: string
+          example: VEND001
+        status:
           type: string
           example: Success
-        totalVendors:
-          type: integer
-          example: 1
-        totalPages:
-          type: integer
-          example: 1
-        currentPage:
-          type: integer
-          example: 1
-        vendorList:
-          type: array
-          items:
-            $ref: '#/components/schemas/VendorList'
-    vendorSkuMapping0:
-      properties:
-        skuCode:
-          type: string
-          example: DS_SKU_005
-        vendorSkuCode:
-          type: string
-          example: Test
-        vendorCode:
-          type: string
-          example: RHVET
-        skuCost:
-          type: string
-          example: '100.000'
-        leadTime:
-          type: string
-          example: '15'
-        minOrderQty:
-          type: string
-          example: '10'
-        maxOrderQty:
-          type: string
-          example: '500'
-        purchaseUnitFactor:
-          type: string
-          example: '1'
-        isPrimary:
-          type: string
-          example: 'true'
-        isActive:
-          type: string
-          example: 'false'
-        returnFlag:
-          type: string
-          example: 'false'
-        udf1:
+        errorDesc:
           type: string
           example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        stdMargin:
-          type: string
-          example: ''
-        mrp:
-          type: string
-          example: ''
-    vendlocskumapping0:
-      properties:
-        skuCode:
-          type: string
-          example: BookX
-        vendorSkuCode:
-          type: string
-          example: BookY
-        vendorCode:
-          type: string
-          example: '12345'
-        skuCost:
-          type: string
-          example: '100.000'
-        leadTime:
-          type: string
-          example: '15'
-        minOrderQty:
-          type: string
-          example: '10'
-        maxOrderQty:
-          type: string
-          example: '500'
-        locCode:
-          type: string
-          example: NWB
-        purchaseUnitFactor:
-          type: string
-          example: '1'
-        isPrimary:
-          type: string
-          example: '0'
-        isActive:
-          type: string
-          example: '1'
-        returnFlag:
-          type: string
-          example: '1'
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        skuMRP:
-          type: string
-          example: '120.0'
-        marginPrec:
-          type: string
-          example: '10.0'
     VendorList:
       type: object
       properties:
@@ -483,20 +361,83 @@ components:
         vendorCcEmail:
           type: string
           example: []
-    vendorCre:
+    vendorSkuMapping0:
       properties:
-        ext_vendor_code:
+        skuCode:
           type: string
-          example: VEND001
-        outputKey:
+          example: DS_SKU_005
+        vendorSkuCode:
           type: string
-          example: VEND001
-        status:
+          example: Test
+        vendorCode:
           type: string
-          example: Success
-        errorDesc:
+          example: RHVET
+        skuCost:
+          type: string
+          example: '100.000'
+        leadTime:
+          type: string
+          example: '15'
+        minOrderQty:
+          type: string
+          example: '10'
+        maxOrderQty:
+          type: string
+          example: '500'
+        purchaseUnitFactor:
+          type: string
+          example: '1'
+        isPrimary:
+          type: string
+          example: 'true'
+        isActive:
+          type: string
+          example: 'false'
+        returnFlag:
+          type: string
+          example: 'false'
+        udf1:
           type: string
           example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        stdMargin:
+          type: string
+          example: ''
+        mrp:
+          type: string
+          example: ''
+    vendordetail:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        totalVendors:
+          type: integer
+          example: 1
+        totalPages:
+          type: integer
+          example: 1
+        currentPage:
+          type: integer
+          example: 1
+        vendorList:
+          type: array
+          items:
+            $ref: '#/components/schemas/VendorList'
     VendorCreateResponse:
       properties:
         responseCode:
@@ -507,3 +448,62 @@ components:
           example: Success
         requestStatus:
           $ref: '#/components/schemas/vendorCre'
+    vendlocskumapping0:
+      properties:
+        skuCode:
+          type: string
+          example: BookX
+        vendorSkuCode:
+          type: string
+          example: BookY
+        vendorCode:
+          type: string
+          example: '12345'
+        skuCost:
+          type: string
+          example: '100.000'
+        leadTime:
+          type: string
+          example: '15'
+        minOrderQty:
+          type: string
+          example: '10'
+        maxOrderQty:
+          type: string
+          example: '500'
+        locCode:
+          type: string
+          example: NWB
+        purchaseUnitFactor:
+          type: string
+          example: '1'
+        isPrimary:
+          type: string
+          example: '0'
+        isActive:
+          type: string
+          example: '1'
+        returnFlag:
+          type: string
+          example: '1'
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        skuMRP:
+          type: string
+          example: '120.0'
+        marginPrec:
+          type: string
+          example: '10.0'

@@ -132,27 +132,23 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    STD1:
+    onn:
       properties:
-        shipping_charges:
+        cgstVal:
           type: string
           example: '0.000'
-        shipping_tax_amt:
+        sgstVal:
           type: string
           example: '0.000'
-        shippingChargeUnitPrice:
+        igstVal:
           type: string
           example: '3.819'
-        shippingCgstVal:
+        cesVal:
+          type: string
+        stCesVal:
           type: string
           example: '0.000'
-        shippingSgstVal:
-          type: string
-          example: '0.000'
-        shippingIgstVal:
-          type: string
-          example: '0.000'
-        shippingUgstVal:
+        ugstVal:
           type: string
           example: '0.000'
     RefundPaymentInfo:
@@ -217,6 +213,79 @@ components:
         udf10:
           type: string
           example: ''
+    STD:
+      properties:
+        shipping_charges:
+          type: string
+          example: '0.000'
+        shipping_tax_amt:
+          type: string
+          example: '0.000'
+        shippingChargeUnitPrice:
+          type: string
+          example: '3.819'
+        shippingCgstRate:
+          type: string
+          example: '0.000'
+        shippingCgstVal:
+          type: string
+          example: '0.000'
+        shippingSgstRate:
+          type: string
+          example: '0.000'
+        shippingSgstVal:
+          type: string
+          example: '0.000'
+        shippingIgstRate:
+          type: string
+          example: '0.000'
+        shippingIgstVal:
+          type: string
+          example: '0.000'
+        shippingUgstRate:
+          type: string
+          example: '0.000'
+        shippingUgstVal:
+          type: string
+          example: '0.000'
+    STD1:
+      properties:
+        shipping_charges:
+          type: string
+          example: '0.000'
+        shipping_tax_amt:
+          type: string
+          example: '0.000'
+        shippingChargeUnitPrice:
+          type: string
+          example: '3.819'
+        shippingCgstVal:
+          type: string
+          example: '0.000'
+        shippingSgstVal:
+          type: string
+          example: '0.000'
+        shippingIgstVal:
+          type: string
+          example: '0.000'
+        shippingUgstVal:
+          type: string
+          example: '0.000'
+    responselistforreturn:
+      properties:
+        totalReturns:
+          type: integer
+          example: 2
+        totalPages:
+          type: integer
+          example: 1
+        currentPage:
+          type: integer
+          example: 1
+        order:
+          type: array
+          items:
+            $ref: '#/components/schemas/orderlistforreturn'
     OrderReturn:
       properties:
         responseCode:
@@ -228,25 +297,6 @@ components:
         response:
           items:
             $ref: '#/components/schemas/responselistforreturn'
-    onn:
-      properties:
-        cgstVal:
-          type: string
-          example: '0.000'
-        sgstVal:
-          type: string
-          example: '0.000'
-        igstVal:
-          type: string
-          example: '3.819'
-        cesVal:
-          type: string
-        stCesVal:
-          type: string
-          example: '0.000'
-        ugstVal:
-          type: string
-          example: '0.000'
     itemlistforOrderreturn:
       properties:
         lineno:
@@ -470,56 +520,6 @@ components:
         orderLineNo:
           type: string
           example: '1'
-    STD:
-      properties:
-        shipping_charges:
-          type: string
-          example: '0.000'
-        shipping_tax_amt:
-          type: string
-          example: '0.000'
-        shippingChargeUnitPrice:
-          type: string
-          example: '3.819'
-        shippingCgstRate:
-          type: string
-          example: '0.000'
-        shippingCgstVal:
-          type: string
-          example: '0.000'
-        shippingSgstRate:
-          type: string
-          example: '0.000'
-        shippingSgstVal:
-          type: string
-          example: '0.000'
-        shippingIgstRate:
-          type: string
-          example: '0.000'
-        shippingIgstVal:
-          type: string
-          example: '0.000'
-        shippingUgstRate:
-          type: string
-          example: '0.000'
-        shippingUgstVal:
-          type: string
-          example: '0.000'
-    responselistforreturn:
-      properties:
-        totalReturns:
-          type: integer
-          example: 2
-        totalPages:
-          type: integer
-          example: 1
-        currentPage:
-          type: integer
-          example: 1
-        order:
-          type: array
-          items:
-            $ref: '#/components/schemas/orderlistforreturn'
     orderlistforreturn:
       properties:
         return_no:

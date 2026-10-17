@@ -76,32 +76,88 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    createmanifestB2Bresponse:
+    createmanifest0:
       properties:
-        responseCode:
+        businessType:
           type: string
-          example: '0'
-        responseMessage:
+          example: B2C
+        manifestType:
           type: string
-          example: SUCCESS
-        requestId:
+          example: marketplace
+        channelCode:
+          type: string
+          example: M12
+        status:
+          type: string
+          example: Confirmed
+        vehicleNo:
           type: string
           example: ''
-        extManifestNo:
+        manifestSubmission:
           type: string
-          example: MAN233333
-        manifestNo:
+          example: 'yes'
+        remarks:
           type: string
-          example: TWH000003699
-        invoiceNo:
+          example: ''
+        orderList:
+          type: array
+          items:
+            $ref: '#/components/schemas/createmanifest1'
+    createmanifest1:
+      properties:
+        deliveryNo:
           type: string
-          example: null
-        lrNo:
+          example: CHEAB9D19223
+        trackingNo:
           type: string
-          example: null
-        manifestStatus:
+          example: ''
+        packagingType:
           type: string
-          example: InvoiceInProcess
+          example: FEDEX_TUBE
+        length:
+          type: string
+          example: 1
+        breadth:
+          type: string
+          example: 1
+        height:
+          type: string
+          example: 1
+        weight:
+          type: string
+          example: 1
+    userDefinedFieldCreaeB2b:
+      properties:
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        udf6:
+          type: string
+          example: ''
+        udf7:
+          type: string
+          example: ''
+        udf8:
+          type: string
+          example: ''
+        udf9:
+          type: string
+          example: ''
+        udf10:
+          type: string
+          example: ''
     createmanifest07:
       properties:
         extManifestNo:
@@ -136,85 +192,29 @@ components:
           example: []
         userDefinedFields:
           $ref: '#/components/schemas/userDefinedFieldCreaeB2b'
-    userDefinedFieldCreaeB2b:
+    createmanifestB2Bresponse:
       properties:
-        udf1:
+        responseCode:
+          type: string
+          example: '0'
+        responseMessage:
+          type: string
+          example: SUCCESS
+        requestId:
           type: string
           example: ''
-        udf2:
+        extManifestNo:
           type: string
-          example: ''
-        udf3:
+          example: MAN233333
+        manifestNo:
           type: string
-          example: ''
-        udf4:
+          example: TWH000003699
+        invoiceNo:
           type: string
-          example: ''
-        udf5:
+          example: null
+        lrNo:
           type: string
-          example: ''
-        udf6:
+          example: null
+        manifestStatus:
           type: string
-          example: ''
-        udf7:
-          type: string
-          example: ''
-        udf8:
-          type: string
-          example: ''
-        udf9:
-          type: string
-          example: ''
-        udf10:
-          type: string
-          example: ''
-    createmanifest1:
-      properties:
-        deliveryNo:
-          type: string
-          example: CHEAB9D19223
-        trackingNo:
-          type: string
-          example: ''
-        packagingType:
-          type: string
-          example: FEDEX_TUBE
-        length:
-          type: string
-          example: 1
-        breadth:
-          type: string
-          example: 1
-        height:
-          type: string
-          example: 1
-        weight:
-          type: string
-          example: 1
-    createmanifest0:
-      properties:
-        businessType:
-          type: string
-          example: B2C
-        manifestType:
-          type: string
-          example: marketplace
-        channelCode:
-          type: string
-          example: M12
-        status:
-          type: string
-          example: Confirmed
-        vehicleNo:
-          type: string
-          example: ''
-        manifestSubmission:
-          type: string
-          example: 'yes'
-        remarks:
-          type: string
-          example: ''
-        orderList:
-          type: array
-          items:
-            $ref: '#/components/schemas/createmanifest1'
+          example: InvoiceInProcess

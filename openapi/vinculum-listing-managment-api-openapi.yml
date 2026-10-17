@@ -130,50 +130,36 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    inventrypriceStatus1:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        skus:
+          type: array
+          items:
+            $ref: '#/components/schemas/inventoryPriceList1'
+    InventoryPricedetail1:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        skus:
+          type: array
+          items:
+            $ref: '#/components/schemas/InventoryList1'
     SkuBackOrder:
       properties:
         data:
           type: array
           items:
             $ref: '#/components/schemas/skuBack'
-    inventoryPriceList1:
-      type: object
-      properties:
-        moderationId:
-          type: string
-          example: 108
-        sku:
-          type: string
-          example: 224808
-        requestedInvQty:
-          type: string
-          example: 1.0
-        approvedInvQty:
-          type: string
-          example: null
-        status:
-          type: string
-          example: Pending
-        requestedSalePrice:
-          type: string
-          example: 1299.0
-    skuBack:
-      properties:
-        vendorCode:
-          type: string
-          example: jit_15
-        sku:
-          type: string
-          example: SA2
-        qty:
-          type: string
-          example: 3
-        price:
-          type: string
-          example: 3000
-        vendorSKUCode:
-          type: string
-          example: abc123
     InventoryList1:
       type: object
       properties:
@@ -195,7 +181,7 @@ components:
         requestedSalePrice:
           type: string
           example: null
-    InventoryPricedetail1:
+    ProductFetch1:
       properties:
         responseCode:
           type: integer
@@ -203,10 +189,31 @@ components:
         responseMessage:
           type: string
           example: Success
-        skus:
+        productList:
           type: array
           items:
-            $ref: '#/components/schemas/InventoryList1'
+            $ref: '#/components/schemas/ProductList1'
+    inventoryPriceList1:
+      type: object
+      properties:
+        moderationId:
+          type: string
+          example: 108
+        sku:
+          type: string
+          example: 224808
+        requestedInvQty:
+          type: string
+          example: 1.0
+        approvedInvQty:
+          type: string
+          example: null
+        status:
+          type: string
+          example: Pending
+        requestedSalePrice:
+          type: string
+          example: 1299.0
     ProductList1:
       type: object
       properties:
@@ -261,27 +268,20 @@ components:
         serialTracking:
           type: string
           example: 0
-    ProductFetch1:
+    skuBack:
       properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
+        vendorCode:
           type: string
-          example: Success
-        productList:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductList1'
-    inventrypriceStatus1:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
+          example: jit_15
+        sku:
           type: string
-          example: Success
-        skus:
-          type: array
-          items:
-            $ref: '#/components/schemas/inventoryPriceList1'
+          example: SA2
+        qty:
+          type: string
+          example: 3
+        price:
+          type: string
+          example: 3000
+        vendorSKUCode:
+          type: string
+          example: abc123

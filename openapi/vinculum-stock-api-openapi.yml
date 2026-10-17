@@ -408,21 +408,29 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    getWhInventory1:
+    inventoryHoldUnhold:
       properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
+        uniqueKey:
           type: string
-          example: Success
-        hasMore:
-          type: boolean
-          example: false
-        response:
-          type: array
-          items:
-            $ref: '#/components/schemas/getWhInventory2'
+          example: '1'
+        locCode:
+          type: string
+          example: UJW
+        skuCode:
+          type: string
+          example: hold
+        status:
+          type: string
+          example: rkbc001
+        bin:
+          type: string
+          example: UJW
+        lot:
+          type: string
+          example: ''
+        lpnNo:
+          type: string
+          example: ''
     adjustmentdetail:
       properties:
         responseCode:
@@ -450,98 +458,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/updateInventoryV3'
-    updateInventory:
-      properties:
-        skuCode:
-          type: string
-          example: UPDINV-1
-        uomQty:
-          type: string
-          example: '5'
-        uom:
-          type: string
-          example: ''
-        conversion:
-          type: string
-          example: '3'
-        bin:
-          type: string
-          example: Saleable
-        lpn:
-          type: string
-          example: ''
-        lottable_01:
-          type: string
-          example: '11'
-        lottable_02:
-          type: string
-          example: ''
-        lottable_03:
-          type: string
-          example: ''
-        lottable_04:
-          type: string
-          example: ''
-        lottable_05:
-          type: string
-          example: ''
-        lottable_06:
-          type: string
-          example: ''
-        lottable_07:
-          type: string
-          example: ''
-        reason:
-          type: string
-          example: MISC
-        mode:
-          type: string
-          example: Increase
-        location:
-          type: string
-          example: UJW
-        operationOn:
-          type: string
-          example: ''
-        remarks:
-          type: string
-          example: adjusted qty
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        lotNo:
-          type: string
-          example: ''
-    movementHistory1:
-      properties:
-        responseCode:
-          type: integer
-          example: 0
-        responseMessage:
-          type: string
-          example: Success
-        hasMore:
-          type: boolean
-          example: false
-        currentPage:
-          type: integer
-          example: 1
-        skuList:
-          type: array
-          items:
-            $ref: '#/components/schemas/movementHistory2'
     inventoryMovement:
       properties:
         RefID:
@@ -586,29 +502,21 @@ components:
         fromBin:
           type: string
           example: ''
-    inventoryHoldUnhold:
+    getWhInventory1:
       properties:
-        uniqueKey:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
           type: string
-          example: '1'
-        locCode:
-          type: string
-          example: UJW
-        skuCode:
-          type: string
-          example: hold
-        status:
-          type: string
-          example: rkbc001
-        bin:
-          type: string
-          example: UJW
-        lot:
-          type: string
-          example: ''
-        lpnNo:
-          type: string
-          example: ''
+          example: Success
+        hasMore:
+          type: boolean
+          example: false
+        response:
+          type: array
+          items:
+            $ref: '#/components/schemas/getWhInventory2'
     getWhInventory2:
       properties:
         skuCode:
@@ -626,111 +534,6 @@ components:
         committedQty:
           type: string
           example: '15'
-    skuList:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '75379'
-        skuCode:
-          type: string
-          example: SURJEET01
-        imei:
-          type: string
-          example: ss111
-        imei2:
-          type: string
-          example: ss211
-        imei3:
-          type: string
-          example: ss311
-        bin:
-          type: string
-          example: XYZ-AB
-        qty:
-          type: string
-          example: XYZ-AB
-        bin_bucket:
-          type: string
-          example: Good
-        location:
-          type: string
-          example: IBW
-        reason:
-          type: string
-          example: Order shipment
-        remarks:
-          type: string
-          example: Order shipment
-        cost:
-          type: string
-          example: '99.99'
-        createdBy:
-          type: string
-          example: sa
-        createdDate:
-          type: string
-          example: 05/11/2020 16:52 PM
-        updatedBy:
-          type: string
-          example: sa
-        updatedDate:
-          type: string
-          example: 05/11/2020 16:52 PM
-        udf1:
-          type: string
-          example: ''
-        udf2:
-          type: string
-          example: ''
-        udf3:
-          type: string
-          example: ''
-        udf4:
-          type: string
-          example: ''
-        udf5:
-          type: string
-          example: ''
-        udf6:
-          type: string
-          example: ''
-        udf7:
-          type: string
-          example: ''
-        udf8:
-          type: string
-          example: ''
-        udf9:
-          type: string
-          example: ''
-        udf10:
-          type: string
-          example: ''
-        lotno:
-          type: string
-          example: IBW000008910
-        lottable01:
-          type: string
-          example: ''
-        lottable02:
-          type: string
-          example: ''
-        lottable03:
-          type: string
-          example: ''
-        lottable04:
-          type: string
-          example: ''
-        lottable05:
-          type: string
-          example: '21'
-        lottable06:
-          type: string
-          example: ''
-        lottable07:
-          type: string
-          example: ''
     updateInventoryV3:
       properties:
         skuCode:
@@ -846,3 +649,200 @@ components:
         reason:
           type: string
           example: Wrong shipment
+    skuList:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '75379'
+        skuCode:
+          type: string
+          example: SURJEET01
+        imei:
+          type: string
+          example: ss111
+        imei2:
+          type: string
+          example: ss211
+        imei3:
+          type: string
+          example: ss311
+        bin:
+          type: string
+          example: XYZ-AB
+        qty:
+          type: string
+          example: XYZ-AB
+        bin_bucket:
+          type: string
+          example: Good
+        location:
+          type: string
+          example: IBW
+        reason:
+          type: string
+          example: Order shipment
+        remarks:
+          type: string
+          example: Order shipment
+        cost:
+          type: string
+          example: '99.99'
+        createdBy:
+          type: string
+          example: sa
+        createdDate:
+          type: string
+          example: 05/11/2020 16:52 PM
+        updatedBy:
+          type: string
+          example: sa
+        updatedDate:
+          type: string
+          example: 05/11/2020 16:52 PM
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        udf6:
+          type: string
+          example: ''
+        udf7:
+          type: string
+          example: ''
+        udf8:
+          type: string
+          example: ''
+        udf9:
+          type: string
+          example: ''
+        udf10:
+          type: string
+          example: ''
+        lotno:
+          type: string
+          example: IBW000008910
+        lottable01:
+          type: string
+          example: ''
+        lottable02:
+          type: string
+          example: ''
+        lottable03:
+          type: string
+          example: ''
+        lottable04:
+          type: string
+          example: ''
+        lottable05:
+          type: string
+          example: '21'
+        lottable06:
+          type: string
+          example: ''
+        lottable07:
+          type: string
+          example: ''
+    updateInventory:
+      properties:
+        skuCode:
+          type: string
+          example: UPDINV-1
+        uomQty:
+          type: string
+          example: '5'
+        uom:
+          type: string
+          example: ''
+        conversion:
+          type: string
+          example: '3'
+        bin:
+          type: string
+          example: Saleable
+        lpn:
+          type: string
+          example: ''
+        lottable_01:
+          type: string
+          example: '11'
+        lottable_02:
+          type: string
+          example: ''
+        lottable_03:
+          type: string
+          example: ''
+        lottable_04:
+          type: string
+          example: ''
+        lottable_05:
+          type: string
+          example: ''
+        lottable_06:
+          type: string
+          example: ''
+        lottable_07:
+          type: string
+          example: ''
+        reason:
+          type: string
+          example: MISC
+        mode:
+          type: string
+          example: Increase
+        location:
+          type: string
+          example: UJW
+        operationOn:
+          type: string
+          example: ''
+        remarks:
+          type: string
+          example: adjusted qty
+        udf1:
+          type: string
+          example: ''
+        udf2:
+          type: string
+          example: ''
+        udf3:
+          type: string
+          example: ''
+        udf4:
+          type: string
+          example: ''
+        udf5:
+          type: string
+          example: ''
+        lotNo:
+          type: string
+          example: ''
+    movementHistory1:
+      properties:
+        responseCode:
+          type: integer
+          example: 0
+        responseMessage:
+          type: string
+          example: Success
+        hasMore:
+          type: boolean
+          example: false
+        currentPage:
+          type: integer
+          example: 1
+        skuList:
+          type: array
+          items:
+            $ref: '#/components/schemas/movementHistory2'
