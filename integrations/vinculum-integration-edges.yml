@@ -11,6 +11,9 @@ checked:
 - https://monid.ai/tools/vinculum
 - https://n8n.io/integrations/vinculum/
 - https://zapier.com/apps/vinculum/integrations
+- https://advertising.amazon.com/partners/directory
+- https://sellercentral.amazon.com/gspn
+- https://sellercentral.amazon.com/selling-partner-appstore
 summary: null
 marketplace_apps: []
 edges:
@@ -31,4 +34,20 @@ edges:
   seller_name: VINCULUM SOLUTIONS PRIVATE LIMITED
   detected_by: sweep-cloud-marketplaces.py
   detected: '2026-10-13'
+- partner_name: Amazon Selling Partner Appstore
+  partner: amazon-seller-central
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://sellercentral.amazon.com/selling-partner-appstore/dp/amzn1.sellerapps.app.5c46ec01-2a76-4e2b-bccd-237231302ac7
+  mirror_of: amazon-seller-central/integrations/amazon-seller-central-integration-edges.yml
+  apps:
+  - Vin Reco
+  - Vin-eRetail
+  detected: '2026-10-21'
+  detected_by: sweep-amazon-sp-api-appstore.py
 templates: []
