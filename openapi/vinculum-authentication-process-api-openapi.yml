@@ -48,3 +48,9 @@ components:
         apiOwner:
           type: string
           example: 50JUCH
+x-provenance:
+  method: harvested
+  publisher: Vinculum
+  source: https://erp.vineretail.com/SellerPanelV3/swagger.yaml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
