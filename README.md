@@ -64,6 +64,145 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Vinculum is a company surfaced as a portfolio company of accel and added to the API Evangelist network as a stub for enrichment. Sector: ecommerce. This profile is a lead awaiting the enrichment pipeline.
+Vinculum is an AI-driven SaaS company for omnichannel retail and ecommerce. Its Vin eRetail platform unifies order management (OMS), warehouse management (WMS), product information management (PIM), and endless-aisle omnichannel retail across 150+ sales channels and marketplaces for 1,000+ brands, processing 20M+ orders monthly. The Vin eRetail REST API exposes orders, returns, products/SKUs, inventory/stock, vendors, purchase orders, inbounds, advance shipping notices, transfers, and fulfillment operations, alongside a SellerPanel V3 marketplace API for listing, order, and courier-allocation flows. Originally surfaced as an Accel portfolio company, this profile has been enriched from Vinculum's published Swagger.
 
-Backed by: accel — http://www.vinculumgroup.com
+**Areas:** Company · E-Commerce · Omnichannel · Order Management · Warehouse Management · Inventory · Retail · Marketplace
+
+## Vinculum on APIs.io
+
+Everything profiled for Vinculum is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/vinculum/](https://apis.io/providers/vinculum/)** — or go straight to one of the APIs or properties below.
+
+### APIs (17)
+
+- [Vinculum Advance Shipping Notice API](https://apis.io/apis/vinculum/vinculum-advance-shipping-notice-api/) — API to retrieve or manipulate ASN related information.
+- [Vinculum Authentication Process API](https://apis.io/apis/vinculum/vinculum-authentication-process-api/) — API to retrieve or manipulate Order related information.
+- [Vinculum Common API](https://apis.io/apis/vinculum/vinculum-common-api/) — API to facilitate Common Operations.
+- [Vinculum Courier Allocation Process API](https://apis.io/apis/vinculum/vinculum-courier-allocation-process-api/) — API to retrieve or manipulate Order related information.
+- [Vinculum Inbounds API](https://apis.io/apis/vinculum/vinculum-inbounds-api/) — API to retrieve or manipulate Inbound related information.
+- [Vinculum Listing Managment API](https://apis.io/apis/vinculum/vinculum-listing-managment-api/) — API to retrieve or manipulate Order related information.
+- [Vinculum Manifest API](https://apis.io/apis/vinculum/vinculum-manifest-api/) — API to create Manifest
+- [Vinculum Order Managment API](https://apis.io/apis/vinculum/vinculum-order-managment-api/) — API to retrieve or manipulate Order related information.
+- [Vinculum Order Returns API](https://apis.io/apis/vinculum/vinculum-order-returns-api/) — API to retrieve or create return for an order.
+- [Vinculum Orders API](https://apis.io/apis/vinculum/vinculum-orders-api/) — API to retrieve or manipulate Order related information.
+- [Vinculum Products API](https://apis.io/apis/vinculum/vinculum-products-api/) — API to retrieve or manipulate SKU related information.
+- [Vinculum Purchase Orders API](https://apis.io/apis/vinculum/vinculum-purchase-orders-api/) — API to retrieve or manipulate Purchase Order related information.
+- [Vinculum Putaway API](https://apis.io/apis/vinculum/vinculum-putaway-api/) — API to create putaway
+- [Vinculum Return to Vendor API](https://apis.io/apis/vinculum/vinculum-return-to-vendor-api/) — API to retrieve or manipulate Return to Vendor related information.
+- [Vinculum Stock API](https://apis.io/apis/vinculum/vinculum-stock-api/) — API to retrieve or manipulate Stock related information.
+- [Vinculum Transfers API](https://apis.io/apis/vinculum/vinculum-transfers-api/) — API to create Stock Transfer Order in Eretail
+- [Vinculum Vendors API](https://apis.io/apis/vinculum/vinculum-vendors-api/) — API to retrieve or manipulate Vendor related information.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [vinculum-eretail](https://apis.io/servers/vinculum/vinculum-eretail/)
+
+#### Collections (17)
+
+Postman and Open Collection request collections.
+
+- [Vinculum Advance Shipping Notice API](https://apis.io/collections/vinculum/open-vinculum-advance-shipping-notice-api/)
+- [Vinculum Advance Shipping Notice Authentication Process API](https://apis.io/collections/vinculum/open-vinculum-authentication-process-api/)
+- [Vinculum Advance Shipping Notice Common API](https://apis.io/collections/vinculum/open-vinculum-common-api/)
+- [Vinculum Advance Shipping Notice Courier Allocation Process API](https://apis.io/collections/vinculum/open-vinculum-courier-allocation-process-api/)
+- [Vinculum Advance Shipping Notice Inbounds API](https://apis.io/collections/vinculum/open-vinculum-inbounds-api/)
+- [Vinculum Advance Shipping Notice Listing Managment API](https://apis.io/collections/vinculum/open-vinculum-listing-managment-api/)
+- [Vinculum Advance Shipping Notice Manifest API](https://apis.io/collections/vinculum/open-vinculum-manifest-api/)
+- [Vinculum Advance Shipping Notice Order Managment API](https://apis.io/collections/vinculum/open-vinculum-order-managment-api/)
+- [Vinculum Advance Shipping Notice Order Returns API](https://apis.io/collections/vinculum/open-vinculum-order-returns-api/)
+- [Vinculum Advance Shipping Notice Orders API](https://apis.io/collections/vinculum/open-vinculum-orders-api/)
+- [Vinculum Advance Shipping Notice Products API](https://apis.io/collections/vinculum/open-vinculum-products-api/)
+- [Vinculum Advance Shipping Notice Purchase Orders API](https://apis.io/collections/vinculum/open-vinculum-purchase-orders-api/)
+- [Vinculum Advance Shipping Notice Putaway API](https://apis.io/collections/vinculum/open-vinculum-putaway-api/)
+- [Vinculum Advance Shipping Notice Return to Vendor API](https://apis.io/collections/vinculum/open-vinculum-return-to-vendor-api/)
+- [Vinculum Advance Shipping Notice Stock API](https://apis.io/collections/vinculum/open-vinculum-stock-api/)
+- [Vinculum Advance Shipping Notice Transfers API](https://apis.io/collections/vinculum/open-vinculum-transfers-api/)
+- [Vinculum Advance Shipping Notice Vendors API](https://apis.io/collections/vinculum/open-vinculum-vendors-api/)
+
+#### Overlays (2)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Vinculum Eretail Overlay](https://apis.io/overlays/vinculum/vinculum-eretail-overlay/)
+- [Vinculum Sellerpanel Overlay](https://apis.io/overlays/vinculum/vinculum-sellerpanel-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Vinculum Authentication](https://apis.io/security/vinculum/vinculum-authentication/)
+- [Vinculum Domain Security](https://apis.io/security/vinculum/vinculum-domain-security/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Vinculum Rate Limits](https://apis.io/rate-limits/vinculum/vinculum-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](http://www.vinculumgroup.com)
+- [Documentation](https://docs.vineretail.com)
+- [Support](https://www.vinculumgroup.com/contact-us/)
+- [Blog](https://www.vinculumgroup.com/blog/)
+- [Privacy policy](https://www.vinculumgroup.com/privacy-policy/)
+
+## API Evangelist rating
+
+**Kin Score 31.3** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 78.6 |
+| Contract quality | 37.4 |
+| Contract governance | 4.5 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 37.5 |
+| Access clarity | 10.5 |
+
+**Agent readiness 22.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 20.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/vinculum/](https://apis.io/providers/vinculum/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Vinculum: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/vinculum/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
